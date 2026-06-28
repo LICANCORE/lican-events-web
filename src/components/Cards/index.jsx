@@ -1,0 +1,8 @@
+export function InfoCard({ title, description }) {
+  return (
+    <article className="info-card">
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </article>
+  );
+}
