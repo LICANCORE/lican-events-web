@@ -6,10 +6,22 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     if (hash) {
-      const frame = window.requestAnimationFrame(() => {
+      let frame;
+      let attempts = 0;
+
+      const scrollToTarget = () => {
         const target = document.getElementById(decodeURIComponent(hash.slice(1)));
-        target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+
+        attempts += 1;
+        if (attempts < 10) frame = window.requestAnimationFrame(scrollToTarget);
+      };
+
+      frame = window.requestAnimationFrame(scrollToTarget);
 
       return () => window.cancelAnimationFrame(frame);
     }

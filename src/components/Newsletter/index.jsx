@@ -1,12 +1,14 @@
 import { useId, useState } from 'react';
 
 import { siteConfig } from '../../config/site';
+import useLanguage from '../../i18n/useLanguage';
 import Icon from '../Icon';
 import './newsletter.css';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Newsletter({ id, compact = false }) {
+  const { t } = useLanguage();
   const fieldId = useId();
   const emailId = `${id || fieldId}-email`;
   const rgpdId = `${id || fieldId}-rgpd`;
@@ -28,10 +30,10 @@ export default function Newsletter({ id, compact = false }) {
     const normalizedEmail = email.trim();
 
     if (!EMAIL_PATTERN.test(normalizedEmail)) {
-      nextErrors.email = 'Introduce un email válido.';
+      nextErrors.email = t.newsletter.invalidEmail;
     }
     if (!rgpd) {
-      nextErrors.rgpd = 'Debes aceptar las comunicaciones para suscribirte.';
+      nextErrors.rgpd = t.newsletter.consentError;
     }
 
     if (Object.keys(nextErrors).length) {
@@ -61,7 +63,7 @@ export default function Newsletter({ id, compact = false }) {
       setRgpd(false);
     } catch {
       setStatus('error');
-      setErrors({ submit: 'No se ha podido enviar. Inténtalo de nuevo.' });
+      setErrors({ submit: t.newsletter.submitError });
     }
   };
 
@@ -71,12 +73,12 @@ export default function Newsletter({ id, compact = false }) {
   return (
     <section id={id} className={`newsletter newsletter--${status} ${compact ? 'newsletter--compact' : ''}`}>
       <div className="newsletter__copy">
-        <p className="newsletter__eyebrow">Comunidad LICAN</p>
+        <p className="newsletter__eyebrow">{t.newsletter.eyebrow}</p>
         <h2>
-          <span className="newsletter__title-line">Apúntate a la</span>{' '}
-          <span className="newsletter__title-line">newsletter</span>
+          <span className="newsletter__title-line">{t.newsletter.title1}</span>{' '}
+          <span className="newsletter__title-line">{t.newsletter.title2}</span>
         </h2>
-        <p>Recibe nuestros próximos eventos, ofertas y noticias de LICAN.</p>
+        <p>{t.newsletter.description}</p>
       </div>
 
       <form className="newsletter__form" onSubmit={handleSubmit} noValidate>
@@ -100,7 +102,7 @@ export default function Newsletter({ id, compact = false }) {
             }}
           />
           <button className="button button--primary" type="submit" disabled={isSubmitting || isSuccess}>
-            {isSubmitting ? 'Enviando...' : isSuccess ? 'Suscrito' : 'Enviar'}
+            {isSubmitting ? t.newsletter.sending : isSuccess ? t.newsletter.subscribed : t.newsletter.send}
             {!isSubmitting ? <Icon name={isSuccess ? 'ticket' : 'arrow'} size={17} /> : <span className="newsletter__spinner" aria-hidden="true" />}
           </button>
         </div>
@@ -122,14 +124,14 @@ export default function Newsletter({ id, compact = false }) {
               resetErrorState('rgpd');
             }}
           />
-          <span>Acepto recibir comunicaciones de LICAN EVENTS sobre eventos, ofertas y noticias. Puedo darme de baja en cualquier momento.</span>
+          <span>{t.newsletter.consent}</span>
         </label>
 
         {errors.rgpd ? <p id={`${rgpdId}-error`} className="newsletter__field-error">{errors.rgpd}</p> : null}
 
         <div id={messageId} className="newsletter__status" aria-live="polite">
-          {isSubmitting ? <p>Enviando...</p> : null}
-          {isSuccess ? <p>Ya estás dentro. Te avisaremos de las próximas fechas.</p> : null}
+          {isSubmitting ? <p>{t.newsletter.sending}</p> : null}
+          {isSuccess ? <p>{t.newsletter.success}</p> : null}
           {errors.submit ? <p>{errors.submit}</p> : null}
         </div>
       </form>

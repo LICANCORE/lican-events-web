@@ -4,7 +4,7 @@ export default function AnimatedPageTransition({ children }) {
   const location = useLocation();
 
   return (
-    <div className="page-transition page-transition--entering" key={`${location.pathname}${location.hash}`}>
+    <div className="page-transition page-transition--entering" key={location.pathname}>
       {children}
     </div>
   );

@@ -1,10 +1,10 @@
 export const navigationItems = [
-  { label: 'Inicio', to: '/' },
-  { label: 'Eventos', to: '/#eventos' },
-  { label: 'Servicios', to: '/#servicios' },
-  { label: 'Artistas', to: '/#artistas' },
-  { label: 'Galería', to: '/#galeria' },
-  { label: 'Contacto', to: '/#contacto' },
+  { key: 'home', label: 'Inicio', to: '/' },
+  { key: 'events', label: 'Eventos', to: '/#eventos' },
+  { key: 'services', label: 'Servicios', to: '/#servicios' },
+  { key: 'artists', label: 'Artistas', to: '/#artistas' },
+  { key: 'gallery', label: 'Galería', to: '/#galeria' },
+  { key: 'contact', label: 'Contacto', to: '/#contacto' },
 ];
 
 export const contactLinks = {

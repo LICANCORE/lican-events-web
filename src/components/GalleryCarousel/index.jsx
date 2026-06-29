@@ -11,6 +11,7 @@ export default function GalleryCarousel({ items }) {
   const trackRef = useRef(null);
   const frameRef = useRef(null);
   const closeButtonRef = useRef(null);
+  const previouslyFocusedRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -19,24 +20,47 @@ export default function GalleryCarousel({ items }) {
   ));
   const safeActiveIndex = Math.min(activeIndex, Math.max(0, visibleItems.length - 1));
   const selectedItem = selectedIndex === null ? null : visibleItems[selectedIndex];
+  const lightboxOpen = selectedIndex !== null;
 
   useEffect(() => {
-    if (!selectedItem) return undefined;
+    if (!lightboxOpen) return undefined;
 
-    const previousOverflow = document.body.style.overflow;
-    const handleEscape = (event) => {
-      if (event.key === 'Escape') setSelectedIndex(null);
+    const root = document.documentElement;
+    const body = document.body;
+    const previousRootOverflow = root.style.overflow;
+    const previousBodyOverflow = body.style.overflow;
+    const previousOverscrollBehavior = body.style.overscrollBehavior;
+
+    previouslyFocusedRef.current = document.activeElement;
+
+    const handleLightboxKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setSelectedIndex(null);
+      }
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        const direction = event.key === 'ArrowLeft' ? -1 : 1;
+        setSelectedIndex((current) => (
+          current === null ? null : (current + direction + visibleItems.length) % visibleItems.length
+        ));
+      }
     };
 
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleEscape);
+    root.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    body.style.overscrollBehavior = 'none';
+    window.addEventListener('keydown', handleLightboxKeyDown);
     closeButtonRef.current?.focus();
 
     return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleEscape);
+      root.style.overflow = previousRootOverflow;
+      body.style.overflow = previousBodyOverflow;
+      body.style.overscrollBehavior = previousOverscrollBehavior;
+      window.removeEventListener('keydown', handleLightboxKeyDown);
+      previouslyFocusedRef.current?.focus();
     };
-  }, [selectedItem]);
+  }, [lightboxOpen, visibleItems.length]);
 
   const goTo = (index) => {
     const track = trackRef.current;
@@ -152,10 +176,12 @@ export default function GalleryCarousel({ items }) {
       </div>
       {selectedItem ? createPortal(
         <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={`Imagen completa de ${selectedItem.category}`} onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedIndex(null); }}>
-          <button ref={closeButtonRef} className="gallery-lightbox__close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen completa">×</button>
+          <button ref={closeButtonRef} className="gallery-lightbox__close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen">×</button>
           <button className="gallery-lightbox__nav gallery-lightbox__nav--previous" type="button" onClick={() => moveLightbox(-1)} aria-label="Imagen anterior"><Icon name="arrow" size={23} /></button>
-          <figure>
-            <PublicImage src={selectedItem.image} alt={selectedItem.alt} />
+          <figure className="gallery-lightbox__figure">
+            <div className="gallery-lightbox__media">
+              <PublicImage src={selectedItem.image} alt={selectedItem.alt} />
+            </div>
             <figcaption>{selectedItem.category} · {selectedIndex + 1} / {visibleItems.length}</figcaption>
           </figure>
           <button className="gallery-lightbox__nav gallery-lightbox__nav--next" type="button" onClick={() => moveLightbox(1)} aria-label="Imagen siguiente"><Icon name="arrow" size={23} /></button>
