@@ -19,7 +19,7 @@ import useLanguage from '../../i18n/useLanguage';
 import './home.css';
 
 function Hero() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <section id="inicio" className="home-hero" aria-labelledby="hero-title">
@@ -28,10 +28,16 @@ function Hero() {
       <div className="home-hero__content shell">
         <Eyebrow>Tarragona · Barcelona · Underground</Eyebrow>
         <h1 id="hero-title">
-          <span className="hero-title__line hero-title__lead">
+          {language === 'eng' ? (
+            <>
+              <span className="hero-title__line hero-title__desktop-only">{t.hero.desktopLine1}</span>
+              <span className="hero-title__line hero-title__gradient hero-title__desktop-only">{t.hero.desktopLine2}</span>
+            </>
+          ) : null}
+          <span className={`hero-title__line hero-title__lead ${language === 'eng' ? 'hero-title__mobile-only' : ''}`}>
             <span>{t.hero.line1}</span>{' '}<span>{t.hero.line2}</span>
           </span>
-          <span className="hero-title__line hero-title__gradient">{t.hero.gradient}</span>
+          <span className={`hero-title__line hero-title__gradient ${language === 'eng' ? 'hero-title__mobile-only' : ''}`}>{t.hero.gradient}</span>
         </h1>
         <p>{t.hero.description}</p>
         <div className="button-row">

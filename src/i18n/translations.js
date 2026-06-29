@@ -39,7 +39,7 @@ export const translations = {
   },
   eng: {
     nav: { home: 'Home', events: 'Events', services: 'Services', artists: 'Artists', gallery: 'Gallery', contact: 'Contact', tickets: 'Tickets', openMenu: 'Open menu', language: 'Select language' },
-    hero: { line1: 'Where electronic', line2: 'music vibrates', gradient: 'With you', description: 'Electronic events, audiovisual production, booking and underground experiences from Tarragona and Barcelona.', nextEvent: 'See next event', hireServices: 'Hire services', joinNewsletter: 'Join the newsletter', scroll: 'Go to the next event' },
+    hero: { line1: 'Where electronic', line2: 'music vibrates', gradient: 'With you', desktopLine1: 'Where electronic music', desktopLine2: 'Vibrates with you', description: 'Electronic events, audiovisual production, booking and underground experiences from Tarragona and Barcelona.', nextEvent: 'See next event', hireServices: 'Hire services', joinNewsletter: 'Join the newsletter', scroll: 'Go to the next event' },
     next: { stamp1: 'Next', stamp2: 'event', eyebrow: 'Next date', buy: 'Buy tickets', countdown: 'Countdown', countdownLabel: 'Time remaining until the event', units: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' } },
     parties: { eyebrow: 'Events · Identity', title: 'Our', accent: 'parties', description: 'Three worlds. One way of understanding the dancefloor.', brand: 'A LICAN brand', discover: 'Discover' },
     memory: { eyebrow: 'LICAN archive', title: 'Past', accent: 'events' },
