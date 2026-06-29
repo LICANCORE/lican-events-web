@@ -6,6 +6,11 @@ import './gallery-carousel.css';
 
 const categoryFilters = ['FERAL', 'Headbang Dealers', 'Night Of Series'];
 
+const getGalleryImageSrc = (image) => {
+  const publicPath = image.replace(/^\/+/, '');
+  return encodeURI(`${import.meta.env.BASE_URL}${publicPath}`);
+};
+
 export default function GalleryCarousel({ items }) {
   const trackRef = useRef(null);
   const frameRef = useRef(null);
@@ -13,10 +18,8 @@ export default function GalleryCarousel({ items }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [failedImages, setFailedImages] = useState(() => new Set());
   const visibleItems = items.filter((item) => (
-    !failedImages.has(item.image)
-    && (activeCategory === 'all' || item.category === activeCategory)
+    activeCategory === 'all' || item.category === activeCategory
   ));
   const safeActiveIndex = Math.min(activeIndex, Math.max(0, visibleItems.length - 1));
   const selectedItem = selectedIndex === null ? null : visibleItems[selectedIndex];
@@ -84,11 +87,8 @@ export default function GalleryCarousel({ items }) {
   };
 
   const handleImageError = (image) => {
-    setFailedImages((current) => {
-      const next = new Set(current);
-      next.add(image);
-      return next;
-    });
+    const src = getGalleryImageSrc(image);
+    console.warn('Imagen no encontrada:', src);
   };
 
   const handleFilter = (category) => {
@@ -105,7 +105,7 @@ export default function GalleryCarousel({ items }) {
     });
   };
 
-  if (!visibleItems.length) {
+  if (!items.length) {
     return <p className="gallery-carousel__empty" role="status">No se han encontrado imágenes de galería.</p>;
   }
 
@@ -150,7 +150,7 @@ export default function GalleryCarousel({ items }) {
             aria-roledescription="diapositiva"
           >
             <button className="gallery-carousel__image-button" type="button" onClick={() => setSelectedIndex(index)} aria-label={`Abrir imagen completa de ${item.category}`}>
-              <img src={encodeURI(item.image)} alt={item.alt} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} onError={() => handleImageError(item.image)} />
+              <img src={getGalleryImageSrc(item.image)} alt={item.alt} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} onError={() => handleImageError(item.image)} />
             </button>
             <figcaption>
               <span>{item.category}</span>
@@ -164,7 +164,7 @@ export default function GalleryCarousel({ items }) {
           <button ref={closeButtonRef} className="gallery-lightbox__close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen completa">×</button>
           <button className="gallery-lightbox__nav gallery-lightbox__nav--previous" type="button" onClick={() => moveLightbox(-1)} aria-label="Imagen anterior"><Icon name="arrow" size={23} /></button>
           <figure>
-            <img src={encodeURI(selectedItem.image)} alt={selectedItem.alt} />
+            <img src={getGalleryImageSrc(selectedItem.image)} alt={selectedItem.alt} onError={() => handleImageError(selectedItem.image)} />
             <figcaption>{selectedItem.category} · {selectedIndex + 1} / {visibleItems.length}</figcaption>
           </figure>
           <button className="gallery-lightbox__nav gallery-lightbox__nav--next" type="button" onClick={() => moveLightbox(1)} aria-label="Imagen siguiente"><Icon name="arrow" size={23} /></button>
