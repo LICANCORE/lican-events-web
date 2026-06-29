@@ -41,10 +41,16 @@
 }
 
 @media (max-width: 620px) {
-  .newsletter { padding: 34px 24px; }
-  .newsletter h2 { font-size: 3rem; }
+  .newsletter { width: 100%; max-width: 100%; padding: 34px clamp(18px, 6vw, 24px); }
+  .newsletter h2 { font-size: clamp(2.4rem, 12.5vw, 3rem); line-height: .94; overflow-wrap: break-word; }
   .newsletter__email-row { flex-direction: column; gap: 10px; }
   .newsletter__email-row input, .newsletter__email-row .button { width: 100%; border: 1px solid var(--color-border-soft); border-radius: 2px; }
+}
+
+@media (max-width: 390px) {
+  .newsletter { padding-inline: 16px; }
+  .newsletter h2 { font-size: clamp(2.2rem, 12vw, 2.75rem); }
+  .newsletter__eyebrow { letter-spacing: .14em; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,4 +1,4 @@
-.home-page { overflow: clip; background: var(--color-bg); }
+.home-page { width: 100%; max-width: 100%; overflow: clip; background: var(--color-bg); }
 .home-section { padding-block: clamp(88px, 9vw, 150px); }
 .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; color: #a363ff; font-family: var(--font-display); font-size: .75rem; letter-spacing: .24em; text-transform: uppercase; }
 .eyebrow > span { width: 26px; height: 1px; background: currentColor; }
@@ -137,6 +137,15 @@
 .contact-form__spinner { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,.35); border-top-color: white; border-radius: 50%; animation: contact-spin .7s linear infinite; }
 @keyframes contact-spin { to { transform: rotate(360deg); } }
 
+.home-hero__content,
+.next-event__content,
+.business-cta > *,
+.split-heading > *,
+.artists__layout > *,
+.artist-services article > *,
+.contact > *,
+.form-row > * { min-width: 0; }
+
 @media (max-width: 1180px) {
   .party-card { min-height: 570px; }
   .party-card__content { padding: 26px; }
@@ -193,4 +202,95 @@
   .gallery-heading { display: block; }
   .form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 24px 18px; }
+}
+
+@media (max-width: 768px) {
+  .home-section { padding-block: clamp(70px, 12vw, 92px); }
+  .section-heading { max-width: 100%; }
+  .section-heading h2 {
+    max-width: 100%;
+    font-size: clamp(2.7rem, 13.5vw, 4.8rem);
+    line-height: .92;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .section-heading h2 span { display: block; }
+  .eyebrow { gap: 10px; letter-spacing: .17em; }
+
+  .home-hero { min-height: calc(100svh - var(--header-height)); align-items: flex-end; }
+  .home-hero__content { width: 100%; padding-block: clamp(54px, 12vh, 86px); }
+  .home-hero__content h1 {
+    max-width: 100%;
+    font-size: clamp(3.1rem, 15vw, 6.2rem);
+    line-height: .84;
+    letter-spacing: -.025em;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .home-hero__content > p:not(.eyebrow) { max-width: 38rem; }
+
+  .next-event__content h2 {
+    max-width: 100%;
+    font-size: clamp(2.8rem, 13.5vw, 4.8rem);
+    line-height: .9;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .services-grid, .artist-services { grid-template-columns: minmax(0, 1fr); }
+  .service-card { min-height: 0; padding: 24px 22px; }
+  .artist-services article { min-height: 0; padding: 22px; }
+
+  .business-cta h2 { font-size: clamp(2.7rem, 13vw, 4.5rem); line-height: .92; }
+  .business-cta, .contact { gap: 40px; }
+  .contact__details span { min-width: 0; overflow-wrap: anywhere; }
+  .contact-form, .newsletter-wrap { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .home-section { padding-block: 68px; }
+  .section-heading { margin-bottom: 34px; }
+  .section-heading h2 { font-size: clamp(2.65rem, 13.5vw, 3.65rem); }
+  .artists__intro .section-heading h2 { font-size: clamp(2.3rem, 10.5vw, 2.8rem); }
+  .section-heading__description { font-size: .96rem; }
+  .eyebrow { margin-bottom: 18px; font-size: .68rem; letter-spacing: .13em; }
+
+  .home-hero__content h1 { font-size: clamp(3rem, 15vw, 4rem); }
+  .home-hero__content > p:not(.eyebrow) { margin-bottom: 28px; font-size: .94rem; }
+  .button-row { gap: 12px; }
+
+  .next-event__visual { min-height: 390px; height: 58vh; }
+  .next-event__content { padding: 52px 20px 72px; }
+  .next-event__content h2 { font-size: clamp(2.7rem, 13.5vw, 3.6rem); }
+  .event-meta p { min-width: 0; overflow-wrap: anywhere; }
+  .countdown__units { gap: 8px; }
+
+  .party-card { min-height: 480px; }
+  .party-card__content { padding: 24px 20px; }
+  .party-card h3 { font-size: clamp(2rem, 11vw, 3rem); overflow-wrap: normal; }
+  .party-card .party-card__cta { max-width: 100%; padding-inline: 14px; font-size: .72rem; letter-spacing: .08em; }
+
+  .memory-row { grid-template-columns: 28px 62px minmax(0, 1fr); gap: 12px; }
+  .memory-row h3 { min-width: 0; font-size: clamp(1rem, 5vw, 1.25rem); overflow-wrap: break-word; }
+  .memory-row__thumb { height: 58px; }
+
+  .business-cta { padding: 30px 20px; }
+  .business-cta h2 { font-size: clamp(2.55rem, 12.5vw, 3.25rem); }
+  .service-card, .artist-services article { padding: 20px 18px; }
+  .artists__intro .button { width: 100%; }
+
+  .collaborator-list { gap: 25px; }
+  .contact-form { padding: 22px 16px; }
+  .contact__details a, .contact__details > p { align-items: flex-start; gap: 12px; }
+  .contact__details svg { width: 38px; height: 38px; padding: 9px; }
+  .contact-form label { letter-spacing: .08em; }
+}
+
+@media (max-width: 390px) {
+  .section-heading h2 { font-size: clamp(2.5rem, 13vw, 3.15rem); }
+  .artists__intro .section-heading h2 { font-size: clamp(2.15rem, 10vw, 2.55rem); }
+  .home-hero__content h1 { font-size: clamp(2.85rem, 14.5vw, 3.55rem); }
+  .next-event__content { padding-inline: 18px; }
+  .next-event__content h2 { font-size: clamp(2.55rem, 13vw, 3.1rem); }
+  .business-cta h2 { font-size: clamp(2.4rem, 12vw, 2.9rem); }
+  .countdown__units span { letter-spacing: .08em; }
 }

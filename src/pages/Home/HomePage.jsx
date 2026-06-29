@@ -190,7 +190,7 @@ function Artists() {
     <section id="artistas" className="home-section artists" aria-labelledby="artists-title">
       <div className="shell artists__layout">
         <div className="artists__intro">
-          <SectionTitle eyebrow="DJs · Productores · Artistas" title="Artistas, DJs" accent="y productores" />
+          <SectionTitle eyebrow="DJs · Productores · Artistas" title="Artistas, DJs" accent={'y\u00a0productores'} />
           <p>Book fotográfico, presskit, grabación de sets, contenido audiovisual, visuales, promoción y apoyo para mover tu proyecto con una imagen profesional.</p>
           <ButtonLink to="/#contacto">Quiero trabajar con LICAN</ButtonLink>
         </div>
