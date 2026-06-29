@@ -24,7 +24,10 @@ function Hero() {
       <div className="home-hero__noise" />
       <div className="home-hero__content shell">
         <Eyebrow>Tarragona · Barcelona · Underground</Eyebrow>
-        <h1 id="hero-title">Donde la electrónica <span>vibra</span></h1>
+        <h1 id="hero-title">
+          <span className="hero-title__line">Donde la electrónica</span>
+          <span className="hero-title__line hero-title__gradient">Vibra contigo</span>
+        </h1>
         <p>Eventos electrónicos, producción audiovisual, booking y experiencias underground desde Tarragona y Barcelona.</p>
         <div className="button-row">
           <ButtonLink to={nextEvent.ticketUrl} icon="ticket">Ver próximo evento</ButtonLink>
@@ -38,6 +41,8 @@ function Hero() {
 }
 
 function NextEvent() {
+  const [eventBrand, eventTitle] = nextEvent.name.split(': ');
+
   return (
     <section id="eventos" className="next-event home-section">
       <div className="next-event__visual">
@@ -46,7 +51,10 @@ function NextEvent() {
       </div>
       <div className="next-event__content">
         <Eyebrow>Próxima fecha</Eyebrow>
-        <h2>{nextEvent.name}</h2>
+        <h2>
+          <span className="next-event__title-line">{eventBrand}:</span>
+          <span className="next-event__title-line next-event__title-name">{eventTitle}</span>
+        </h2>
         <div className="event-meta">
           <p><Icon name="calendar" /> <span>{nextEvent.date}</span></p>
           <p><Icon name="clock" /> <span>{nextEvent.time}</span></p>
@@ -152,7 +160,12 @@ function BusinessCta() {
       <div className="business-cta">
         <div>
           <Eyebrow>B2B · Producción</Eyebrow>
-          <h2>Organizamos tu evento <span>a medida</span></h2>
+          <h2>
+            <span className="business-title__lead">
+              <span>Organizamos</span>{' '}<span>tu evento</span>
+            </span>
+            <span className="business-title__accent">a medida</span>
+          </h2>
           <p>Producción, DJs, sonido, visuales, contenido audiovisual, ticketing, campaña y coordinación técnica. Creamos eventos para salas, marcas, ayuntamientos y proyectos culturales.</p>
         </div>
         <div className="business-cta__actions">
@@ -223,7 +236,7 @@ function Collaborators() {
   return (
     <section className="home-section collaborators" aria-labelledby="collaborators-title">
       <div className="shell">
-        <SectionTitle eyebrow="Confianza" title="Colaboradores" accent="y espacios" align="center" />
+        <SectionTitle eyebrow="Confianza" title="Colaboradores" accent="espacios" align="center" />
         <div className="collaborator-list">
           {collaborators.map((name) => <span key={name}>{name}</span>)}
         </div>

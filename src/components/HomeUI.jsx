@@ -9,7 +9,10 @@ export function SectionTitle({ eyebrow, title, accent, description, align = 'lef
   return (
     <header className={`section-heading section-heading--${align}`}>
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2>{title} {accent ? <span>{accent}</span> : null}</h2>
+      <h2>
+        <span className="section-heading__base">{title}</span>
+        {accent ? <> <span className="section-heading__accent">{accent}</span></> : null}
+      </h2>
       {description ? <p className="section-heading__description">{description}</p> : null}
     </header>
   );

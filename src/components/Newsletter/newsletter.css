@@ -15,6 +15,7 @@
 .newsletter--error { border-color: rgba(255, 77, 108, .4); }
 .newsletter__eyebrow { margin: 0 0 18px; color: #a363ff; font: .72rem var(--font-display); letter-spacing: .2em; text-transform: uppercase; }
 .newsletter h2 { max-width: 720px; margin: 0 0 16px; font: clamp(2.6rem, 5vw, 5.4rem)/.9 var(--font-display); text-transform: uppercase; }
+.newsletter__title-line { display: inline; }
 .newsletter__copy > p:last-child { max-width: 660px; margin: 0; color: var(--color-muted); }
 .newsletter__form { min-width: 0; }
 .newsletter__email-row { display: flex; }
@@ -40,16 +41,22 @@
   .newsletter { grid-template-columns: 1fr; gap: 36px; }
 }
 
+@media (max-width: 768px) {
+  .newsletter h2 { font-size: clamp(2.15rem, 9.5vw, 4rem); line-height: .94; letter-spacing: -.025em; }
+  .newsletter__title-line { display: block; width: max-content; max-width: 100%; white-space: nowrap; }
+}
+
 @media (max-width: 620px) {
   .newsletter { width: 100%; max-width: 100%; padding: 34px clamp(18px, 6vw, 24px); }
-  .newsletter h2 { font-size: clamp(2.4rem, 12.5vw, 3rem); line-height: .94; overflow-wrap: break-word; }
+  .newsletter h2 { font-size: clamp(2rem, 9.5vw, 2.7rem); line-height: .94; letter-spacing: -.025em; overflow-wrap: normal; }
+  .newsletter__title-line { display: block; width: max-content; max-width: 100%; white-space: nowrap; }
   .newsletter__email-row { flex-direction: column; gap: 10px; }
   .newsletter__email-row input, .newsletter__email-row .button { width: 100%; border: 1px solid var(--color-border-soft); border-radius: 2px; }
 }
 
 @media (max-width: 390px) {
   .newsletter { padding-inline: 16px; }
-  .newsletter h2 { font-size: clamp(2.2rem, 12vw, 2.75rem); }
+  .newsletter h2 { font-size: clamp(1.95rem, 9vw, 2.2rem); }
   .newsletter__eyebrow { letter-spacing: .14em; }
 }
 

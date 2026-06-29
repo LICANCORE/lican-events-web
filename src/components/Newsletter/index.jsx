@@ -72,7 +72,10 @@ export default function Newsletter({ id, compact = false }) {
     <section id={id} className={`newsletter newsletter--${status} ${compact ? 'newsletter--compact' : ''}`}>
       <div className="newsletter__copy">
         <p className="newsletter__eyebrow">Comunidad LICAN</p>
-        <h2>Apúntate a la newsletter</h2>
+        <h2>
+          <span className="newsletter__title-line">Apúntate a la</span>{' '}
+          <span className="newsletter__title-line">newsletter</span>
+        </h2>
         <p>Recibe nuestros próximos eventos, ofertas y noticias de LICAN.</p>
       </div>
 
