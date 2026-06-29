@@ -9,12 +9,14 @@ import PublicImage from '../../components/PublicImage';
 import { siteConfig } from '../../config/site';
 import { artistServices } from '../../data/artists';
 import { partyBrands } from '../../data/brands';
-import { collaborators } from '../../data/collaborators';
-import { nextEvent, pastEvents } from '../../data/events';
+import { nextEvent } from '../../data/events';
 import { galleryItems } from '../../data/gallery';
 import { contactLinks, inquiryTypes } from '../../data/links';
+import { partnerLogos } from '../../data/partnerLogos';
+import { realizedEventFilters, realizedEvents } from '../../data/realizedEvents';
 import { services } from '../../data/services';
 import usePageTitle from '../../hooks/usePageTitle';
+import { languageMeta } from '../../i18n/translations';
 import useLanguage from '../../i18n/useLanguage';
 import './home.css';
 
@@ -28,16 +30,22 @@ function Hero() {
       <div className="home-hero__content shell">
         <Eyebrow>Tarragona · Barcelona · Underground</Eyebrow>
         <h1 id="hero-title">
+          {language === 'nl' ? (
+            <>
+              <span className="hero-title__line">{t.hero.desktopLine1}</span>
+              <span className="hero-title__line hero-title__gradient">{t.hero.desktopLine2}</span>
+            </>
+          ) : null}
           {language === 'eng' ? (
             <>
               <span className="hero-title__line hero-title__desktop-only">{t.hero.desktopLine1}</span>
               <span className="hero-title__line hero-title__gradient hero-title__desktop-only">{t.hero.desktopLine2}</span>
             </>
           ) : null}
-          <span className={`hero-title__line hero-title__lead ${language === 'eng' ? 'hero-title__mobile-only' : ''}`}>
+          <span className={`hero-title__line hero-title__lead ${language === 'eng' ? 'hero-title__mobile-only' : ''} ${language === 'nl' ? 'hero-title__hidden' : ''}`}>
             <span>{t.hero.line1}</span>{' '}<span>{t.hero.line2}</span>
           </span>
-          <span className={`hero-title__line hero-title__gradient ${language === 'eng' ? 'hero-title__mobile-only' : ''}`}>{t.hero.gradient}</span>
+          <span className={`hero-title__line hero-title__gradient ${language === 'eng' ? 'hero-title__mobile-only' : ''} ${language === 'nl' ? 'hero-title__hidden' : ''}`}>{t.hero.gradient}</span>
         </h1>
         <p>{t.hero.description}</p>
         <div className="button-row">
@@ -148,23 +156,52 @@ function Parties() {
   );
 }
 
-function Memory() {
-  const { t } = useLanguage();
+function RealizedEvents() {
+  const { language, t } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState('all');
+  const visibleEvents = activeFilter === 'all'
+    ? realizedEvents
+    : realizedEvents.filter((event) => event.brandKey === activeFilter);
+  const dateFormatter = new Intl.DateTimeFormat(languageMeta[language].htmlLang, {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
 
   return (
-    <section className="home-section memory" aria-labelledby="memory-title">
+    <section className="home-section realized-events" aria-labelledby="realized-events-title">
       <div className="shell">
-        <SectionTitle eyebrow={t.memory.eyebrow} title={t.memory.title} accent={t.memory.accent} />
-        <div className="memory-list">
-          {pastEvents.map((event, index) => (
-            <article className="memory-row" key={`${event.name}-${event.venue}`}>
-              <span className="memory-row__number">0{index + 1}</span>
-              <div className="memory-row__thumb"><PublicImage src={event.image} alt="" loading="lazy" /></div>
-              <h3>{event.name}</h3>
-              <p>{event.venue}</p>
-              <p>{event.city}</p>
-            </article>
+        <SectionTitle eyebrow={t.realized.eyebrow} title={t.realized.title} accent={t.realized.accent} description={t.realized.description} />
+        <div className="realized-events__filters" aria-label={t.realized.filterLabel}>
+          {realizedEventFilters.map((filter) => (
+            <button type="button" className={activeFilter === filter ? 'realized-events__filter--active' : ''} aria-pressed={activeFilter === filter} onClick={() => setActiveFilter(filter)} key={filter}>
+              {t.realized.filters[filter]}
+            </button>
           ))}
+        </div>
+        <div className="realized-events__grid">
+          {visibleEvents.map((event) => {
+            const description = language === 'cast'
+              ? event.descriptionSEO
+              : t.realized.descriptionTemplates[event.brandKey].replace('{title}', event.title);
+            const venue = event.venue === 'Por confirmar' ? t.common.toBeConfirmed : event.venue;
+            const municipality = event.municipality === 'Por confirmar' ? t.common.toBeConfirmed : event.municipality;
+
+            return (
+              <article className="realized-event-card" key={event.id}>
+                <figure className="realized-event-card__poster">
+                  <PublicImage src={event.image} alt={event.alt} loading="lazy" />
+                </figure>
+                <div className="realized-event-card__content">
+                  <time dateTime={event.date}>{dateFormatter.format(new Date(`${event.date}T12:00:00`))}</time>
+                  <h3>{event.title}</h3>
+                  <p className="realized-event-card__brand">{event.brand}</p>
+                  <p className="realized-event-card__location">{venue} · {municipality}</p>
+                  <p className="realized-event-card__description">{description}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -172,7 +209,7 @@ function Memory() {
 }
 
 function BusinessCta() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <section className="home-section shell">
@@ -180,10 +217,19 @@ function BusinessCta() {
         <div>
           <Eyebrow>{t.business.eyebrow}</Eyebrow>
           <h2>
-            <span className="business-title__lead">
-              <span>{t.business.lead1}</span>{' '}<span>{t.business.lead2}</span>
-            </span>
-            <span className="business-title__accent">{t.business.accent}</span>
+            {language === 'nl' ? (
+              <>
+                <span className="business-title__line">{t.business.lead1}</span>
+                <span className="business-title__line">{t.business.lead2} <span className="business-title__accent">{t.business.accent}</span></span>
+              </>
+            ) : (
+              <>
+                <span className="business-title__lead">
+                  <span>{t.business.lead1}</span>{' '}<span>{t.business.lead2}</span>
+                </span>
+                <span className="business-title__accent">{t.business.accent}</span>
+              </>
+            )}
           </h2>
           <p>{t.business.description}</p>
         </div>
@@ -258,15 +304,25 @@ function Gallery() {
   );
 }
 
-function Collaborators() {
+function Partners() {
   const { t } = useLanguage();
 
   return (
-    <section className="home-section collaborators" aria-labelledby="collaborators-title">
+    <section className="home-section partners" aria-labelledby="partners-title">
       <div className="shell">
-        <SectionTitle eyebrow={t.collaborators.eyebrow} title={t.collaborators.title} accent={t.collaborators.accent} align="center" />
-        <div className="collaborator-list">
-          {collaborators.map((name) => <span key={name}>{name}</span>)}
+        <SectionTitle title={t.partners.title} accent={t.partners.accent} align="center" />
+      </div>
+      <div className="partners-marquee" aria-label={t.partners.ariaLabel}>
+        <div className="partners-marquee__track">
+          {[0, 1].map((groupIndex) => (
+            <div className="partners-marquee__group" aria-hidden={groupIndex === 1 || undefined} key={groupIndex}>
+              {partnerLogos.map((logo) => (
+                <figure className="partners-marquee__logo" key={`${groupIndex}-${logo.image}`}>
+                  <PublicImage src={logo.image} alt={groupIndex === 1 ? '' : logo.alt} loading="lazy" />
+                </figure>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -394,13 +450,13 @@ export default function HomePage() {
       <Hero />
       <NextEvent />
       <Parties />
-      <Memory />
+      <RealizedEvents />
       <BusinessCta />
       <div className="shell newsletter-wrap"><Newsletter id="newsletter" compact /></div>
       <Services />
       <Artists />
       <Gallery />
-      <Collaborators />
+      <Partners />
       <div className="home-section shell"><Newsletter id="comunidad" /></div>
       <Contact />
     </div>
