@@ -1,10 +1,10 @@
 export const navigationItems = [
   { label: 'Inicio', to: '/' },
-  { label: 'Eventos', to: '/eventos' },
-  { label: 'Servicios', to: '/servicios' },
-  { label: 'Artistas', to: '/artistas' },
-  { label: 'Galería', to: '/galeria' },
-  { label: 'Contacto', to: '/contacto' },
+  { label: 'Eventos', to: '/#eventos' },
+  { label: 'Servicios', to: '/#servicios' },
+  { label: 'Artistas', to: '/#artistas' },
+  { label: 'Galería', to: '/#galeria' },
+  { label: 'Contacto', to: '/#contacto' },
 ];
 
 export const contactLinks = {

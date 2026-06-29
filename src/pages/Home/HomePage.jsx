@@ -5,6 +5,7 @@ import Icon from '../../components/Icon';
 import GalleryCarousel from '../../components/GalleryCarousel';
 import { ButtonLink, Eyebrow, SectionTitle } from '../../components/HomeUI';
 import Newsletter from '../../components/Newsletter';
+import PublicImage from '../../components/PublicImage';
 import { siteConfig } from '../../config/site';
 import { artistServices } from '../../data/artists';
 import { partyBrands } from '../../data/brands';
@@ -18,8 +19,8 @@ import './home.css';
 
 function Hero() {
   return (
-    <section className="home-hero" aria-labelledby="hero-title">
-      <img className="home-hero__image" src="/images/headbang-dealers/headbang dealers-dubstep-publico-barcelona-hero.webp" alt="Público de LICAN Events en una noche de música electrónica" />
+    <section id="inicio" className="home-hero" aria-labelledby="hero-title">
+      <PublicImage className="home-hero__image" src="/images/headbang-dealers/headbang dealers-dubstep-publico-barcelona-hero.webp" alt="Público de LICAN Events en una noche de música electrónica" />
       <div className="home-hero__noise" />
       <div className="home-hero__content shell">
         <Eyebrow>Tarragona · Barcelona · Underground</Eyebrow>
@@ -27,20 +28,20 @@ function Hero() {
         <p>Eventos electrónicos, producción audiovisual, booking y experiencias underground desde Tarragona y Barcelona.</p>
         <div className="button-row">
           <ButtonLink to={nextEvent.ticketUrl} icon="ticket">Ver próximo evento</ButtonLink>
-          <ButtonLink to="/servicios" variant="outline">Contratar servicios</ButtonLink>
+          <ButtonLink to="/#servicios" variant="outline">Contratar servicios</ButtonLink>
           <a className="text-link" href="#newsletter">Unirme a la newsletter <Icon name="arrow" size={16} /></a>
         </div>
       </div>
-      <a className="home-hero__scroll" href="#proximo-evento" aria-label="Bajar al próximo evento"><span /> Scroll</a>
+      <a className="home-hero__scroll" href="#eventos" aria-label="Bajar al próximo evento"><span /> Scroll</a>
     </section>
   );
 }
 
 function NextEvent() {
   return (
-    <section id="proximo-evento" className="next-event home-section">
+    <section id="eventos" className="next-event home-section">
       <div className="next-event__visual">
-        <img src={nextEvent.image} alt="Hydraxxx en una sesión FERAL" loading="lazy" />
+        <PublicImage src={nextEvent.image} alt="Hydraxxx en una sesión FERAL" loading="lazy" />
         <span className="next-event__stamp">Próximo<br />evento</span>
       </div>
       <div className="next-event__content">
@@ -109,7 +110,7 @@ function Parties() {
       <div className="party-grid">
         {partyBrands.map((brand) => (
           <article className={`party-card party-card--${brand.accent}`} key={brand.name}>
-            <img src={brand.image} alt={`Ambiente de ${brand.name}`} loading="lazy" />
+            <PublicImage src={brand.image} alt={`Ambiente de ${brand.name}`} loading="lazy" />
             <div className="party-card__overlay" />
             <div className="party-card__content">
               <p className="micro-label">Una marca LICAN</p>
@@ -133,7 +134,7 @@ function Memory() {
           {pastEvents.map((event, index) => (
             <article className="memory-row" key={`${event.name}-${event.venue}`}>
               <span className="memory-row__number">0{index + 1}</span>
-              <div className="memory-row__thumb"><img src={event.image} alt="" loading="lazy" /></div>
+              <div className="memory-row__thumb"><PublicImage src={event.image} alt="" loading="lazy" /></div>
               <h3>{event.name}</h3>
               <p>{event.venue}</p>
               <p>{event.city}</p>
@@ -155,7 +156,7 @@ function BusinessCta() {
           <p>Producción, DJs, sonido, visuales, contenido audiovisual, ticketing, campaña y coordinación técnica. Creamos eventos para salas, marcas, ayuntamientos y proyectos culturales.</p>
         </div>
         <div className="business-cta__actions">
-          <ButtonLink to="/servicios">Ver servicios</ButtonLink>
+          <ButtonLink to="/#servicios">Ver servicios</ButtonLink>
           <ButtonLink to="/#contacto" variant="outline">Solicitar presupuesto</ButtonLink>
         </div>
       </div>
@@ -176,7 +177,7 @@ function Services() {
             <Icon name={service.icon} size={24} />
             <h3>{service.title}</h3>
             <p>{service.description}</p>
-            <Link to="/servicios">Info <Icon name="arrow" size={14} /></Link>
+            <Link to="/#servicios">Info <Icon name="arrow" size={14} /></Link>
           </article>
         ))}
       </div>

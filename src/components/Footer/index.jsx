@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Brand from '../Brand';
 import { contactLinks, navigationItems } from '../../data/links';
 
@@ -12,7 +14,7 @@ export default function Footer() {
       <div>
         <p className="footer__label">Navegación</p>
         <nav className="footer__links" aria-label="Navegación del pie">
-          {navigationItems.map((item) => <a href={item.to} key={item.to}>{item.label}</a>)}
+          {navigationItems.map((item) => <Link to={item.to} key={item.to}>{item.label}</Link>)}
         </nav>
       </div>
       <div>

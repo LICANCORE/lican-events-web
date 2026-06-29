@@ -2,14 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import Icon from '../Icon';
+import PublicImage from '../PublicImage';
 import './gallery-carousel.css';
 
 const categoryFilters = ['FERAL', 'Headbang Dealers', 'Night Of Series'];
-
-const getGalleryImageSrc = (image) => {
-  const publicPath = image.replace(/^\/+/, '');
-  return encodeURI(`${import.meta.env.BASE_URL}${publicPath}`);
-};
 
 export default function GalleryCarousel({ items }) {
   const trackRef = useRef(null);
@@ -86,11 +82,6 @@ export default function GalleryCarousel({ items }) {
     }
   };
 
-  const handleImageError = (image) => {
-    const src = getGalleryImageSrc(image);
-    console.warn('Imagen no encontrada:', src);
-  };
-
   const handleFilter = (category) => {
     setActiveCategory((current) => current === category ? 'all' : category);
     setActiveIndex(0);
@@ -150,7 +141,7 @@ export default function GalleryCarousel({ items }) {
             aria-roledescription="diapositiva"
           >
             <button className="gallery-carousel__image-button" type="button" onClick={() => setSelectedIndex(index)} aria-label={`Abrir imagen completa de ${item.category}`}>
-              <img src={getGalleryImageSrc(item.image)} alt={item.alt} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} onError={() => handleImageError(item.image)} />
+              <PublicImage src={item.image} alt={item.alt} loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} />
             </button>
             <figcaption>
               <span>{item.category}</span>
@@ -164,7 +155,7 @@ export default function GalleryCarousel({ items }) {
           <button ref={closeButtonRef} className="gallery-lightbox__close" type="button" onClick={() => setSelectedIndex(null)} aria-label="Cerrar imagen completa">×</button>
           <button className="gallery-lightbox__nav gallery-lightbox__nav--previous" type="button" onClick={() => moveLightbox(-1)} aria-label="Imagen anterior"><Icon name="arrow" size={23} /></button>
           <figure>
-            <img src={getGalleryImageSrc(selectedItem.image)} alt={selectedItem.alt} onError={() => handleImageError(selectedItem.image)} />
+            <PublicImage src={selectedItem.image} alt={selectedItem.alt} />
             <figcaption>{selectedItem.category} · {selectedIndex + 1} / {visibleItems.length}</figcaption>
           </figure>
           <button className="gallery-lightbox__nav gallery-lightbox__nav--next" type="button" onClick={() => moveLightbox(1)} aria-label="Imagen siguiente"><Icon name="arrow" size={23} /></button>

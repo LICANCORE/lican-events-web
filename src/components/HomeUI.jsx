@@ -18,7 +18,7 @@ export function SectionTitle({ eyebrow, title, accent, description, align = 'lef
 export function ButtonLink({ to, children, variant = 'primary', icon = 'arrow', className = '' }) {
   const classes = `button button--${variant} ${className}`.trim();
   const content = <>{children}<Icon name={icon} size={17} /></>;
-  return to.startsWith('http') || to.startsWith('mailto:') || to.includes('#') ? (
+  return to.startsWith('http') || to.startsWith('mailto:') ? (
     <a className={classes} href={to} target={to.startsWith('http') ? '_blank' : undefined} rel={to.startsWith('http') ? 'noreferrer' : undefined}>{content}</a>
   ) : <Link className={classes} to={to}>{content}</Link>;
 }

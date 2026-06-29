@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { navigationItems } from '../../data/navigation';
 import { nextEvent } from '../../data/events';
@@ -8,6 +8,17 @@ import Icon from '../Icon';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+
+  const handleNavigation = (to) => {
+    setOpen(false);
+
+    const hash = to.split('#')[1];
+    if (hash) {
+      window.requestAnimationFrame(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  };
 
   return (
     <header className="topbar">
@@ -18,7 +29,7 @@ export default function Navbar() {
       </button>
       <nav id="main-navigation" className={`nav-links ${open ? 'nav-links--open' : ''}`} aria-label="Navegación principal">
         {navigationItems.map((item) => (
-          <NavLink key={item.to} to={item.to} end={item.to === '/'} onClick={() => setOpen(false)}>{item.label}</NavLink>
+          <Link key={item.to} to={item.to} onClick={() => handleNavigation(item.to)}>{item.label}</Link>
         ))}
       </nav>
       <a className="button button--primary topbar__tickets" href={nextEvent.ticketUrl} target="_blank" rel="noreferrer"><Icon name="ticket" size={16} /> Entradas</a>
