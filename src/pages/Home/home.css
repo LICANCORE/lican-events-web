@@ -33,6 +33,10 @@
 .next-event__content h2 { max-width: 650px; margin: 0 0 34px; font: clamp(3.4rem, 6.5vw, 7rem)/.85 var(--font-display); letter-spacing: -.02em; text-transform: uppercase; }
 .next-event__title-line { display: block; }
 .next-event__title-name { white-space: nowrap; }
+
+@media (min-width: 769px) {
+  .next-event__title-name { font-size: .72em; }
+}
 .event-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 20px; margin-bottom: 34px; color: #bbb6c3; }
 .event-meta p { display: flex; align-items: center; gap: 12px; margin: 0; }
 .event-meta p:last-child { grid-column: 1 / -1; }
