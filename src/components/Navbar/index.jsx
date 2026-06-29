@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { navigationItems } from '../../data/navigation';
 import { nextEvent } from '../../data/events';
 import useLanguage from '../../i18n/useLanguage';
+import scrollToSection from '../../utils/scrollToSection';
 import Brand from '../Brand';
 import Icon from '../Icon';
 import LanguageSelector from '../LanguageSelector';
@@ -21,7 +22,7 @@ export default function Navbar() {
 
     if (hash && location.pathname === normalizedPathname && location.hash === `#${hash}`) {
       window.requestAnimationFrame(() => {
-        document.getElementById(decodeURIComponent(hash))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        scrollToSection(`#${hash}`);
       });
     }
   };

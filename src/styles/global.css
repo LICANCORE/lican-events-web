@@ -14,7 +14,7 @@
 }
 
 * { box-sizing: border-box; }
-html { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 8px); }
+html { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 12px); }
 body { max-width: 100%; margin: 0; overflow-x: hidden; min-width: 320px; min-height: 100vh; background: var(--color-bg); color: var(--color-text); }
 body::selection { background: var(--color-accent); color: white; }
 a { color: inherit; text-decoration: none; }

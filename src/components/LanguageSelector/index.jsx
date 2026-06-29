@@ -4,8 +4,7 @@ import { languageMeta, supportedLanguages } from '../../i18n/translations';
 import useLanguage from '../../i18n/useLanguage';
 
 function LanguageFlag({ type }) {
-  if (type === 'cat') return <span className="language-flag language-flag--cat" aria-hidden="true" />;
-  return <span className="language-flag" aria-hidden="true">{type === 'es' ? '🇪🇸' : '🇬🇧'}</span>;
+  return <span className={`language-flag language-flag--${type}`} aria-hidden="true" />;
 }
 
 export default function LanguageSelector({ className = '' }) {

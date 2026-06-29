@@ -12,7 +12,9 @@
   --color-magenta: #ff245d;
   --color-orange: #ff850d;
   --content-width: 1400px;
-  --header-height: 80px;
+  --header-height-desktop: 96px;
+  --header-height-mobile: 88px;
+  --header-height: var(--header-height-desktop);
   --radius-sm: 3px;
   --shadow-glow: 0 12px 42px rgba(124, 44, 255, 0.24);
   --transition-base: 220ms ease;

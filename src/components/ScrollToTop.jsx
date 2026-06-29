@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import scrollToSection from '../utils/scrollToSection';
+
 export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
@@ -10,12 +12,7 @@ export default function ScrollToTop() {
       let attempts = 0;
 
       const scrollToTarget = () => {
-        const target = document.getElementById(decodeURIComponent(hash.slice(1)));
-
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          return;
-        }
+        if (scrollToSection(hash)) return;
 
         attempts += 1;
         if (attempts < 10) frame = window.requestAnimationFrame(scrollToTarget);
