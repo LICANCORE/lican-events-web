@@ -3,12 +3,14 @@ export const languagePrefixes = {
   cat: '/cat',
   eng: '/eng',
   nl: '/nl',
+  deutsch: '/deutsch',
 };
 
 const prefixLanguages = {
   cat: 'cat',
   eng: 'eng',
   nl: 'nl',
+  deutsch: 'deutsch',
 };
 
 export function getLanguageFromPathname(pathname) {

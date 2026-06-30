@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       { path: 'nuestras-fiestas/night-of-series', element: <NightOfSeriesPage /> },
       { path: 'colaboradores', element: <ColaboradoresPage /> },
       { path: 'lanza-tu-carrera', element: <LanzaTuCarreraPage /> },
-      ...['cat', 'eng', 'nl'].map(createLanguageRoutes),
+      ...['cat', 'eng', 'nl', 'deutsch'].map(createLanguageRoutes),
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

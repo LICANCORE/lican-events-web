@@ -44,6 +44,7 @@
 .language-flag--cat { background: repeating-linear-gradient(to bottom, #f8d447 0 2px, #d71920 2px 4px); }
 .language-flag--gb { background: linear-gradient(33deg, transparent 48%, #c8102e 48% 52%, transparent 52%), linear-gradient(-33deg, transparent 48%, #c8102e 48% 52%, transparent 52%), linear-gradient(90deg, transparent 43%, #c8102e 43% 57%, transparent 57%), linear-gradient(0deg, transparent 38%, #c8102e 38% 62%, transparent 62%), linear-gradient(33deg, transparent 44%, white 44% 56%, transparent 56%), linear-gradient(-33deg, transparent 44%, white 44% 56%, transparent 56%), #012169; }
 .language-flag--nl { background: linear-gradient(to bottom, #ae1c28 0 33.333%, #fff 33.333% 66.666%, #21468b 66.666% 100%); }
+.language-flag--de { background: linear-gradient(to bottom, #000 0 33.333%, #dd0000 33.333% 66.666%, #ffce00 66.666% 100%); }
 
 .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 0 25px; border: 1px solid transparent; border-radius: var(--radius-sm); font-family: var(--font-display); font-size: .82rem; letter-spacing: .13em; line-height: 1; text-transform: uppercase; cursor: pointer; transition: transform var(--transition-base), border-color var(--transition-base), background var(--transition-base), box-shadow var(--transition-base); }
 .button:hover { transform: translateY(-2px); }
@@ -89,7 +90,7 @@
   .language-selector--mobile { display: block; width: 100%; margin-top: 18px; }
   .language-selector--mobile .language-selector__trigger { width: 100%; justify-content: flex-start; }
   .language-selector--mobile .language-selector__menu { position: static; width: 100%; max-height: 0; margin-top: 0; padding-block: 0; overflow: hidden; transform: none; box-shadow: none; transition: max-height .25s ease, opacity var(--transition-base), margin-top var(--transition-base), padding var(--transition-base), visibility var(--transition-base); }
-  .language-selector--mobile .language-selector__menu--open { max-height: 210px; margin-top: 8px; padding-block: 6px; }
+  .language-selector--mobile .language-selector__menu--open { max-height: 260px; margin-top: 8px; padding-block: 6px; }
   .site-footer { grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
 }
 

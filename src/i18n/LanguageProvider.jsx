@@ -30,7 +30,7 @@ export default function LanguageProvider({ children }) {
 
     const basePath = stripLanguagePrefix(location.pathname);
     document.querySelectorAll('link[data-lican-hreflang]').forEach((link) => link.remove());
-    Object.entries({ cast: 'es', cat: 'ca', eng: 'en', nl: 'nl' }).forEach(([code, hreflang]) => {
+    Object.entries({ cast: 'es', cat: 'ca', eng: 'en', nl: 'nl', deutsch: 'de' }).forEach(([code, hreflang]) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = hreflang;
