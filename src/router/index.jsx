@@ -12,37 +12,55 @@ import ColaboradoresPage from '../pages/Colaboradores/ColaboradoresPage';
 import LanzaTuCarreraPage from '../pages/LanzaTuCarrera/LanzaTuCarreraPage';
 import GaleriaPage from '../pages/Galeria/GaleriaPage';
 import ContactoPage from '../pages/Contacto/ContactoPage';
+import { getLegacyRouteEntries, getLocalizedPath, localizedRoutes } from '../i18n/languageRoutes';
+import RouteRedirect from './RouteRedirect';
 
-const createCoreRoutes = () => [
-  { index: true, element: <HomePage /> },
-  { path: 'eventos', element: <EventosPage /> },
-  { path: 'servicios', element: <ServiciosPage /> },
-  { path: 'artistas', element: <LanzaTuCarreraPage /> },
-  { path: 'galeria', element: <GaleriaPage /> },
-  { path: 'contacto', element: <ContactoPage /> },
-];
+const pageComponents = {
+  home: <HomePage />,
+  events: <EventosPage />,
+  services: <ServiciosPage />,
+  artists: <LanzaTuCarreraPage />,
+  gallery: <GaleriaPage />,
+  contact: <ContactoPage />,
+};
 
-const createLanguageRoutes = (prefix) => ({
-  path: prefix,
-  children: [
-    ...createCoreRoutes(),
-    { path: '*', element: <Navigate to={`/${prefix}`} replace /> },
-  ],
-});
+const createLocalizedChildren = (language) => {
+  const { slugs } = localizedRoutes[language];
+  const canonical = Object.entries(slugs).map(([pageKey, slug]) => (
+    pageKey === 'home'
+      ? { index: true, element: pageComponents.home }
+      : { path: slug, element: pageComponents[pageKey] }
+  ));
+  const legacy = getLegacyRouteEntries(language)
+    .filter(({ slug, pageKey }) => slug !== slugs[pageKey])
+    .map(({ slug, pageKey }) => ({
+      path: slug,
+      element: <RouteRedirect to={getLocalizedPath(language, pageKey)} />,
+    }));
+  return [...canonical, ...legacy];
+};
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
     children: [
-      ...createCoreRoutes(),
+      ...createLocalizedChildren('cast'),
       { path: 'nuestras-fiestas', element: <NuestrasFiestasPage /> },
       { path: 'nuestras-fiestas/feral', element: <FeralPage /> },
       { path: 'nuestras-fiestas/headbang-dealers', element: <HeadbangDealersPage /> },
       { path: 'nuestras-fiestas/night-of-series', element: <NightOfSeriesPage /> },
       { path: 'colaboradores', element: <ColaboradoresPage /> },
       { path: 'lanza-tu-carrera', element: <LanzaTuCarreraPage /> },
-      ...['cat', 'eng', 'nl', 'deutsch'].map(createLanguageRoutes),
+      ...Object.entries(localizedRoutes)
+        .filter(([language]) => language !== 'cast')
+        .map(([language, config]) => ({
+          path: config.prefix,
+          children: [
+            ...createLocalizedChildren(language),
+            { path: '*', element: <Navigate to={getLocalizedPath(language, 'home')} replace /> },
+          ],
+        })),
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

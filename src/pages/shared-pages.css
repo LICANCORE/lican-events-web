@@ -11,8 +11,11 @@
 .content-page .home-section:first-of-type { padding-top: clamp(32px, 4vw, 52px); }
 @media (max-width: 768px) {
   .page-hero { padding-top: 26px; }
-  .page-hero h1 { font-size: clamp(2.7rem, 13vw, 4.4rem); }
+  .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.7rem, 13vw, 4.4rem); line-height: .9; text-wrap: balance; }
+  .page-hero--nl h1 { font-size: clamp(2.15rem, 10.5vw, 3.6rem); letter-spacing: -.04em; }
+  .page-hero--deutsch h1 { font-size: clamp(2rem, 9.5vw, 3.35rem); letter-spacing: -.045em; }
   .page-hero--artists .page-hero__title-line { white-space: nowrap; }
+  .page-hero--artists.page-hero--nl h1 { font-size: clamp(1.9rem, 9.2vw, 3rem); }
   .page-hero--artists.page-hero--deutsch h1 { font-size: clamp(1.9rem, 8.8vw, 3rem); letter-spacing: -.045em; }
   .page-hero--artists.page-hero--deutsch .page-hero__title-line:first-child { font-size: .78em; }
   .page-hero > p:last-child { margin-top: 14px; }

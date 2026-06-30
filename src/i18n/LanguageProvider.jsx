@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import LanguageContext from './language-context';
-import { getLanguageFromPathname, localizePath, stripLanguagePrefix } from './languageRoutes';
+import { detectLangFromPath, detectPageKeyFromPath, getLocalizedPath as getRoutePath, localizePath, switchLanguagePath } from './languageRoutes';
 import { languageMeta, translations } from './translations';
 
 const STORAGE_KEY = 'lican-language';
@@ -18,7 +18,7 @@ const getStoredLanguage = () => {
 export default function LanguageProvider({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const language = getLanguageFromPathname(location.pathname) || getStoredLanguage();
+  const language = detectLangFromPath(location.pathname) || getStoredLanguage();
 
   useEffect(() => {
     try {
@@ -28,21 +28,30 @@ export default function LanguageProvider({ children }) {
     }
     document.documentElement.lang = languageMeta[language].htmlLang;
 
-    const basePath = stripLanguagePrefix(location.pathname);
+    const pageKey = detectPageKeyFromPath(location.pathname) || 'home';
     document.querySelectorAll('link[data-lican-hreflang]').forEach((link) => link.remove());
     Object.entries({ cast: 'es', cat: 'ca', eng: 'en', nl: 'nl', deutsch: 'de' }).forEach(([code, hreflang]) => {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = hreflang;
-      link.href = `https://www.licanevents.com${localizePath(basePath, code)}`;
+      link.href = `https://www.licanevents.com${getRoutePath(code, pageKey)}`;
       link.dataset.licanHreflang = 'true';
       document.head.appendChild(link);
     });
+
+    let canonical = document.querySelector('link[data-lican-canonical]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      canonical.dataset.licanCanonical = 'true';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = `https://www.licanevents.com${getRoutePath(language, pageKey)}`;
   }, [language, location.pathname]);
 
   const changeLanguage = useCallback((nextLanguage) => {
     const current = `${location.pathname}${location.search}${location.hash}`;
-    navigate(localizePath(current, nextLanguage));
+    navigate(switchLanguagePath(current, nextLanguage));
   }, [location.hash, location.pathname, location.search, navigate]);
 
   const getLocalizedPath = useCallback((to) => localizePath(to, language), [language]);
