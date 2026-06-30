@@ -138,6 +138,7 @@
 
 .partners { overflow: hidden; padding-block: 42px; background: #07070c; border-block: 1px solid rgba(255,255,255,.06); }
 .partners .section-heading { max-width: 1000px; margin-bottom: 28px; }
+.partner-title__mobile { display: none; }
 .partners-marquee { width: 100%; overflow-x: auto; overflow-y: hidden; cursor: grab; touch-action: pan-x; overscroll-behavior-inline: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent); mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent); }
 .partners-marquee::-webkit-scrollbar { display: none; }
 .partners-marquee:active { cursor: grabbing; }
@@ -275,6 +276,10 @@
   }
   .section-heading :is(h1, h2) span { display: block; }
   .section-heading__base, .section-heading__accent { width: max-content; max-width: 100%; white-space: nowrap; }
+  .partner-title__desktop { display: none !important; }
+  .partner-title__mobile { display: block; width: 100%; }
+  .partner-title__mobile > span { display: block; width: 100%; white-space: nowrap; }
+  .partners--deutsch .partner-title { font-size: clamp(1.75rem, 8.5vw, 2.7rem) !important; letter-spacing: -.04em; }
   .eyebrow { gap: 10px; letter-spacing: .17em; }
 
   .home-hero { min-height: calc(100svh - var(--header-height)); align-items: flex-end; }
@@ -316,6 +321,7 @@
   .collaborators .section-heading :is(h1, h2),
   .partners .section-heading :is(h1, h2) { font-size: clamp(2.3rem, 10.5vw, 2.85rem); letter-spacing: -.035em; }
   .artists__intro .section-heading :is(h1, h2) { font-size: clamp(2.3rem, 10.5vw, 2.8rem); }
+  .services-section--deutsch .section-heading :is(h1, h2) { font-size: clamp(1.7rem, 8vw, 2.2rem); letter-spacing: -.04em; }
   .section-heading__description { font-size: .96rem; }
   .eyebrow { margin-bottom: 18px; font-size: .68rem; letter-spacing: .13em; }
 
@@ -340,6 +346,7 @@
 
   .business-cta { padding: 30px 20px; }
   .business-cta h2 { font-size: clamp(2.4rem, 11vw, 3rem); letter-spacing: -.02em; }
+  .business-cta--nl h2, .business-cta--deutsch h2 { font-size: clamp(1.9rem, 9vw, 2.45rem); line-height: .94; letter-spacing: -.035em; }
   .service-card, .artist-services article { padding: 20px 18px; }
   .artists__intro .button { width: 100%; }
 

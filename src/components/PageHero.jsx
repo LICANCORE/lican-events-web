@@ -1,12 +1,12 @@
 import useLanguage from '../i18n/useLanguage';
 
 export default function PageHero({ page }) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const content = t.pages[page];
   const titleLines = content.h1Lines || [{ base: content.h1 }];
 
   return (
-    <header className="page-hero shell">
+    <header className={`page-hero page-hero--${page} page-hero--${language} shell`}>
       <p className="eyebrow"><span />LICAN EVENTS</p>
       <h1>
         {titleLines.map((line, index) => (

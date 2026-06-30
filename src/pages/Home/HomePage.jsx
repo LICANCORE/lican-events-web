@@ -18,6 +18,14 @@ import { languageMeta } from '../../i18n/translations';
 import useLanguage from '../../i18n/useLanguage';
 import './home.css';
 
+const partnerTitleLines = {
+  cast: ['Convenios', 'Y marcas', 'Colaboradoras'],
+  cat: ['Convenis', 'I marques', 'Col·laboradores'],
+  eng: ['Partnerships', 'And partner', 'Brands'],
+  nl: ['Samenwerkingen', 'En partnermerken'],
+  deutsch: ['Kooperationen', 'Und Partnermarken'],
+};
+
 export function Hero() {
   const { language, t } = useLanguage();
 
@@ -216,14 +224,15 @@ export function BusinessCta() {
 
   return (
     <section className="home-section shell">
-      <div className="business-cta">
+      <div className={`business-cta business-cta--${language}`}>
         <div>
           <Eyebrow>{t.business.eyebrow}</Eyebrow>
           <h2>
             {language === 'nl' ? (
               <>
                 <span className="business-title__line">{t.business.lead1}</span>
-                <span className="business-title__line">{t.business.lead2} <span className="business-title__accent">{t.business.accent}</span></span>
+                <span className="business-title__line">{t.business.lead2}</span>
+                <span className="business-title__line business-title__accent">{t.business.accent}</span>
               </>
             ) : (
               <>
@@ -245,13 +254,13 @@ export function BusinessCta() {
   );
 }
 
-export function Services() {
-  const { localizePath, t } = useLanguage();
+export function Services({ page = false }) {
+  const { language, localizePath, t } = useLanguage();
 
   return (
-    <section className="home-section shell" aria-labelledby="services-title">
+    <section className={`home-section shell services-section services-section--${language}`} aria-labelledby="services-title">
       <div id="servicios" className="split-heading">
-        <SectionTitle eyebrow={t.services.eyebrow} title={t.services.title} accent={t.services.accent} />
+        <SectionTitle eyebrow={t.services.eyebrow} title={t.services.title} accent={t.services.accent} heading={page ? 'h1' : 'h2'} headingId="services-title" />
           <div><p>{t.services.description}</p><ButtonLink to="/contacto" variant="outline">{t.services.quote}</ButtonLink></div>
       </div>
       <div className="services-grid">
@@ -293,7 +302,7 @@ export function Artists() {
 }
 
 export function Partners() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const marqueeRef = useRef(null);
   const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 });
   const [marqueePaused, setMarqueePaused] = useState(false);
@@ -324,9 +333,18 @@ export function Partners() {
   };
 
   return (
-    <section className="home-section partners" aria-labelledby="partners-title">
+    <section className={`home-section partners partners--${language}`} aria-labelledby="partners-title">
       <div className="shell">
-        <SectionTitle title={t.partners.title} accent={t.partners.accent} align="center" />
+        <header className="section-heading section-heading--center partners__heading">
+          <h2 id="partners-title" className="partner-title">
+            <span className="partner-title__desktop">{t.partners.title} <span className="section-heading__accent">{t.partners.accent}</span></span>
+            <span className="partner-title__mobile">
+              {partnerTitleLines[language].map((line, index) => (
+                <span className={index === partnerTitleLines[language].length - 1 ? 'section-heading__accent' : ''} key={line}>{line}</span>
+              ))}
+            </span>
+          </h2>
+        </header>
       </div>
       <div
         ref={marqueeRef}

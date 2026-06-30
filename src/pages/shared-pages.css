@@ -12,6 +12,9 @@
 @media (max-width: 768px) {
   .page-hero { padding-top: 26px; }
   .page-hero h1 { font-size: clamp(2.7rem, 13vw, 4.4rem); }
+  .page-hero--artists .page-hero__title-line { white-space: nowrap; }
+  .page-hero--artists.page-hero--deutsch h1 { font-size: clamp(1.9rem, 8.8vw, 3rem); letter-spacing: -.045em; }
+  .page-hero--artists.page-hero--deutsch .page-hero__title-line:first-child { font-size: .78em; }
   .page-hero > p:last-child { margin-top: 14px; }
   .contact-cta { width: min(calc(100% - 32px), var(--content-width)); grid-template-columns: 1fr; gap: 22px; padding: 26px 20px; }
   .contact-cta__actions { min-width: 0; }
@@ -20,4 +23,6 @@
 
 @media (max-width: 480px) {
   .page-hero h1 { font-size: clamp(2.45rem, 12vw, 3.5rem); }
+  .page-hero--artists h1 { font-size: clamp(2rem, 10vw, 2.8rem); }
+  .page-hero--artists.page-hero--deutsch h1 { font-size: clamp(1.75rem, 8.2vw, 2.35rem); }
 }

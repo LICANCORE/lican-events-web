@@ -1,5 +1,4 @@
 import ContactCTA from '../../components/ContactCTA';
-import PageHero from '../../components/PageHero';
 import usePageTitle from '../../hooks/usePageTitle';
 import useLanguage from '../../i18n/useLanguage';
 import { BusinessCta, Services } from '../Home/HomePage';
@@ -12,8 +11,7 @@ export default function ServiciosPage() {
 
   return (
     <div className="content-page">
-      <PageHero page="services" />
-      <Services />
+      <Services page />
       <BusinessCta />
       <ContactCTA />
     </div>
