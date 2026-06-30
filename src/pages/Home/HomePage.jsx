@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import Icon from '../../components/Icon';
@@ -294,13 +294,50 @@ export function Artists() {
 
 export function Partners() {
   const { t } = useLanguage();
+  const marqueeRef = useRef(null);
+  const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 });
+  const [marqueePaused, setMarqueePaused] = useState(false);
+
+  const handlePointerDown = (event) => {
+    if (event.pointerType === 'touch') {
+      setMarqueePaused(true);
+      return;
+    }
+
+    const marquee = marqueeRef.current;
+    if (!marquee) return;
+    dragRef.current = { active: true, startX: event.clientX, scrollLeft: marquee.scrollLeft };
+    marquee.setPointerCapture(event.pointerId);
+    setMarqueePaused(true);
+  };
+
+  const handlePointerMove = (event) => {
+    const marquee = marqueeRef.current;
+    if (!marquee || !dragRef.current.active) return;
+    marquee.scrollLeft = dragRef.current.scrollLeft - (event.clientX - dragRef.current.startX);
+  };
+
+  const handlePointerUp = (event) => {
+    if (!dragRef.current.active) return;
+    dragRef.current.active = false;
+    marqueeRef.current?.releasePointerCapture?.(event.pointerId);
+  };
 
   return (
     <section className="home-section partners" aria-labelledby="partners-title">
       <div className="shell">
         <SectionTitle title={t.partners.title} accent={t.partners.accent} align="center" />
       </div>
-      <div className="partners-marquee" aria-label={t.partners.ariaLabel}>
+      <div
+        ref={marqueeRef}
+        className={`partners-marquee ${marqueePaused ? 'partners-marquee--paused' : ''}`}
+        aria-label={t.partners.ariaLabel}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onScroll={() => setMarqueePaused(true)}
+      >
         <div className="partners-marquee__track">
           {[0, 1].map((groupIndex) => (
             <div className="partners-marquee__group" aria-hidden={groupIndex === 1 || undefined} key={groupIndex}>
