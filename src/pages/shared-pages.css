@@ -1,7 +1,7 @@
 .content-page { width: 100%; overflow: clip; }
 .page-hero { padding-block: clamp(24px, 3vw, 44px) clamp(22px, 3vw, 38px); border-bottom: 1px solid var(--color-border); }
 .page-hero h1 { max-width: 1150px; margin: 0; font: clamp(3.1rem, 7vw, 7.2rem)/.88 var(--font-display); letter-spacing: -.035em; text-transform: uppercase; overflow-wrap: normal; }
-.page-hero__title-line { display: block; width: fit-content; max-width: 100%; }
+.page-hero__title-line { display: block; width: 100%; max-width: 100%; text-wrap: balance; }
 .page-hero__title-accent { color: transparent; background: linear-gradient(90deg, #9238ff 0%, #357dff 52%, #15c4f1 100%); background-clip: text; -webkit-background-clip: text; }
 .page-hero > p:last-child { max-width: 760px; margin: 18px 0 0; color: var(--color-muted); font-size: clamp(1rem, 1.5vw, 1.2rem); }
 .contact-cta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; margin-block: clamp(28px, 4vw, 48px); padding: clamp(26px, 3.5vw, 42px); border: 1px solid var(--color-border); background: radial-gradient(circle at 20% 30%, rgba(135,56,255,.16), transparent 38%), var(--color-surface); }
@@ -11,12 +11,12 @@
 .content-page .home-section:first-of-type { padding-top: clamp(32px, 4vw, 52px); }
 @media (max-width: 768px) {
   .page-hero { padding-top: 26px; }
-  .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.7rem, 13vw, 4.4rem); line-height: .9; text-wrap: balance; }
-  .page-hero--nl h1 { font-size: clamp(2.15rem, 10.5vw, 3.6rem); letter-spacing: -.04em; }
-  .page-hero--deutsch h1 { font-size: clamp(2rem, 9.5vw, 3.35rem); letter-spacing: -.045em; }
-  .page-hero--artists .page-hero__title-line { white-space: nowrap; }
-  .page-hero--artists.page-hero--nl h1 { font-size: clamp(1.9rem, 9.2vw, 3rem); }
-  .page-hero--artists.page-hero--deutsch h1 { font-size: clamp(1.9rem, 8.8vw, 3rem); letter-spacing: -.045em; }
+  .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.05rem, 9vw, 3.25rem); line-height: .92; text-wrap: balance; }
+  .page-hero--nl h1 { font-size: clamp(1.6rem, 7.2vw, 2.55rem); letter-spacing: -.05em; }
+  .page-hero--deutsch h1 { font-size: clamp(1.5rem, 6.7vw, 2.4rem); letter-spacing: -.055em; }
+  .page-hero--artists .page-hero__title-line { white-space: normal; }
+  .page-hero--artists.page-hero--nl h1 { font-size: clamp(1.35rem, 6.1vw, 2.1rem); }
+  .page-hero--artists.page-hero--deutsch h1 { font-size: clamp(1.25rem, 5.6vw, 1.9rem); letter-spacing: -.055em; }
   .page-hero--artists.page-hero--deutsch .page-hero__title-line:first-child { font-size: .78em; }
   .page-hero > p:last-child { margin-top: 14px; }
   .contact-cta { width: min(calc(100% - 32px), var(--content-width)); grid-template-columns: 1fr; gap: 22px; padding: 26px 20px; }
@@ -25,7 +25,7 @@
 }
 
 @media (max-width: 480px) {
-  .page-hero h1 { font-size: clamp(2.45rem, 12vw, 3.5rem); }
-  .page-hero--artists h1 { font-size: clamp(2rem, 10vw, 2.8rem); }
-  .page-hero--artists.page-hero--deutsch h1 { font-size: clamp(1.75rem, 8.2vw, 2.35rem); }
+  .page-hero h1 { font-size: clamp(1.85rem, 8.2vw, 2.6rem); }
+  .page-hero--artists h1 { font-size: clamp(1.45rem, 6.6vw, 2.05rem); }
+  .page-hero--artists.page-hero--deutsch h1 { font-size: clamp(1.15rem, 5.2vw, 1.65rem); }
 }

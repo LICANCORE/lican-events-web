@@ -16,6 +16,7 @@
 .newsletter__eyebrow { margin: 0 0 18px; color: #a363ff; font: .72rem var(--font-display); letter-spacing: .2em; text-transform: uppercase; }
 .newsletter h2 { max-width: 720px; margin: 0 0 16px; font: clamp(2.6rem, 5vw, 5.4rem)/.9 var(--font-display); text-transform: uppercase; }
 .newsletter__title-line { display: inline; }
+.newsletter__copy { min-width: 0; }
 .newsletter__copy > p:last-child { max-width: 660px; margin: 0; color: var(--color-muted); }
 .newsletter__form { min-width: 0; }
 .newsletter__email-row { display: flex; }
@@ -42,21 +43,21 @@
 }
 
 @media (max-width: 768px) {
-  .newsletter h2 { font-size: clamp(2.15rem, 9.5vw, 4rem); line-height: .94; letter-spacing: -.025em; }
-  .newsletter__title-line { display: block; width: max-content; max-width: 100%; white-space: nowrap; }
+  .newsletter h2 { font-size: clamp(1.85rem, 8vw, 3.35rem); line-height: .94; letter-spacing: -.025em; }
+  .newsletter__title-line { display: block; width: 100%; max-width: 100%; white-space: normal; text-wrap: balance; }
 }
 
 @media (max-width: 620px) {
   .newsletter { width: 100%; max-width: 100%; padding: 26px clamp(18px, 6vw, 24px); }
-  .newsletter h2 { font-size: clamp(2rem, 9.5vw, 2.7rem); line-height: .94; letter-spacing: -.025em; overflow-wrap: normal; }
-  .newsletter__title-line { display: block; width: max-content; max-width: 100%; white-space: nowrap; }
+  .newsletter h2 { font-size: clamp(1.7rem, 7.7vw, 2.3rem); line-height: .94; letter-spacing: -.025em; overflow-wrap: normal; }
+  .newsletter__title-line { display: block; width: 100%; max-width: 100%; white-space: normal; text-wrap: balance; }
   .newsletter__email-row { flex-direction: column; gap: 10px; }
   .newsletter__email-row input, .newsletter__email-row .button { width: 100%; border: 1px solid var(--color-border-soft); border-radius: 2px; }
 }
 
 @media (max-width: 390px) {
   .newsletter { padding-inline: 16px; }
-  .newsletter h2 { font-size: clamp(1.95rem, 9vw, 2.2rem); }
+  .newsletter h2 { font-size: clamp(1.55rem, 7vw, 1.9rem); }
   .newsletter__eyebrow { letter-spacing: .14em; }
 }
 

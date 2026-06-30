@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { navigationItems } from '../../data/navigation';
+import { headerTicketsUrl } from '../../data/links';
 import useLanguage from '../../i18n/useLanguage';
 import Brand from '../Brand';
 import Icon from '../Icon';
@@ -30,7 +31,7 @@ export default function Navbar() {
       </nav>
       <div className="topbar__actions">
         <LanguageSelector className="language-selector--desktop" />
-        <Link className="button button--primary topbar__tickets" to={localizePath('/eventos')}><Icon name="ticket" size={16} /> {t.nav.tickets}</Link>
+        <a className="button button--primary topbar__tickets" href={headerTicketsUrl} target="_blank" rel="noreferrer"><Icon name="ticket" size={16} /> {t.nav.tickets}</a>
       </div>
     </header>
   );

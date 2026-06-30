@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 import Icon from '../../components/Icon';
 import ContactCTA from '../../components/ContactCTA';
+import Newsletter from '../../components/Newsletter';
 import { ButtonLink, Eyebrow, SectionTitle } from '../../components/HomeUI';
 import PublicImage from '../../components/PublicImage';
 import { siteConfig } from '../../config/site';
@@ -36,7 +37,7 @@ export function Hero() {
       <div className="home-hero__content shell">
         <Eyebrow>Tarragona · Barcelona · Underground</Eyebrow>
         <h1 id="hero-title" className="sr-only">LICAN EVENTS</h1>
-        <div className="home-hero__title">
+        <div className={`home-hero__title home-hero__title--${language}`}>
           {language === 'nl' ? (
             <>
               <span className="hero-title__line">{t.hero.desktopLine1}</span>
@@ -219,7 +220,7 @@ export function RealizedEvents() {
   );
 }
 
-export function BusinessCta() {
+export function BusinessCta({ hideServicesButton = false }) {
   const { language, t } = useLanguage();
 
   return (
@@ -246,7 +247,7 @@ export function BusinessCta() {
           <p>{t.business.description}</p>
         </div>
         <div className="business-cta__actions">
-          <ButtonLink to="/servicios">{t.business.services}</ButtonLink>
+          {!hideServicesButton ? <ButtonLink to="/servicios">{t.business.services}</ButtonLink> : null}
           <ButtonLink to="/contacto" variant="outline">{t.business.quote}</ButtonLink>
         </div>
       </div>
@@ -284,7 +285,9 @@ export function Artists() {
     <section className="home-section artists" aria-labelledby="artists-title">
       <div id="artistas" className="shell artists__layout">
         <div className="artists__intro">
-          <SectionTitle eyebrow={t.artists.eyebrow} title={t.artists.title} accent={t.artists.accent} />
+          <div className="artists__title-container">
+            <SectionTitle eyebrow={t.artists.eyebrow} title={t.artists.title} accent={t.artists.accent} />
+          </div>
           <p>{t.artists.description}</p>
           <ButtonLink to="/contacto?tipo=artistas">{t.artists.cta}</ButtonLink>
         </div>
@@ -442,7 +445,9 @@ export function Contact({ page = false }) {
   return (
     <section className={`home-section contact shell ${page ? 'contact--page' : ''}`} aria-labelledby="contact-title">
       <div id="contacto" className="contact__intro">
-        <SectionTitle eyebrow={t.contact.eyebrow} title={t.contact.title} accent={t.contact.accent} heading={page ? 'h1' : 'h2'} headingId="contact-title" />
+        <div className="contact__title-container">
+          <SectionTitle eyebrow={t.contact.eyebrow} title={t.contact.title} accent={t.contact.accent} heading={page ? 'h1' : 'h2'} headingId="contact-title" />
+        </div>
         <p>{t.contact.description}</p>
         <div className="contact__details">
           <a href={`mailto:${contactLinks.email}`}><Icon name="mail" /><span><small>Email</small>{contactLinks.email}</span></a>
@@ -501,6 +506,9 @@ export default function HomePage() {
       <NextEvent />
       <Partners />
       <ContactCTA />
+      <div className="home-section shell home-newsletter">
+        <Newsletter id="newsletter" />
+      </div>
     </div>
   );
 }

@@ -14,6 +14,8 @@ export const contactLinks = {
   location: 'Tarragona · Barcelona',
 };
 
+export const headerTicketsUrl = 'https://site.fourvenues.com/es/bass-traffickers';
+
 export const inquiryTypes = [
   'Entradas',
   'Contratar servicios',

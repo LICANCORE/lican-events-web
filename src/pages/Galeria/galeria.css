@@ -2,12 +2,12 @@
 .gallery-page__heading { margin-bottom: clamp(45px, 6vw, 80px); }
 .gallery-page__heading > p { margin: 0 0 22px; color: #a363ff; font: .74rem var(--font-display); letter-spacing: .2em; text-transform: uppercase; }
 .gallery-page__heading h2 { margin: 0; font: clamp(4.5rem, 11vw, 10rem)/.82 var(--font-display); letter-spacing: -.03em; text-transform: uppercase; }
-.gallery-page__heading > div { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 28px; color: var(--color-muted); }
+.gallery-page__heading > div { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 28px; color: var(--color-muted); }
 .gallery-page__heading > div p { max-width: 620px; margin: 0; }
 .gallery-page__heading > div span { font: .7rem var(--font-display); letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
 
 @media (max-width: 620px) {
-  .gallery-page__heading h2 { font-size: clamp(3.2rem, 17vw, 5rem); }
+  .gallery-page__heading h2 { font-size: clamp(2.6rem, 13.5vw, 4rem); line-height: .88; }
   .gallery-page__heading > div { align-items: flex-start; flex-direction: column; }
   .gallery-page__heading > div span { white-space: normal; }
 }

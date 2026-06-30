@@ -1,3 +1,4 @@
+@import './fonts.css';
 @import './variables.css';
 @import './layout.css';
 @import './transitions.css';
@@ -13,9 +14,9 @@
   -webkit-font-smoothing: antialiased;
 }
 
-* { box-sizing: border-box; }
-html { max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 12px); }
-body { max-width: 100%; margin: 0; overflow-x: hidden; min-width: 320px; min-height: 100vh; background: var(--color-bg); color: var(--color-text); }
+*, *::before, *::after { box-sizing: border-box; }
+html { width: 100%; max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 12px); }
+body { width: 100%; max-width: 100%; margin: 0; overflow-x: hidden; min-width: 320px; min-height: 100vh; background: var(--color-bg); color: var(--color-text); }
 body::selection { background: var(--color-accent); color: white; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; }
@@ -24,7 +25,23 @@ img, picture, video, canvas, svg { max-width: 100%; }
 img { display: block; height: auto; }
 h1, h2, h3, p { margin-top: 0; }
 #root { width: 100%; max-width: 100%; min-height: 100vh; overflow-x: clip; }
-main, section { max-width: 100%; }
+main, section, article, header, footer, nav, form { max-width: 100%; min-width: 0; }
+.app-shell, .page-content, .home-page, .content-page, .shell, .page-shell,
+.home-section, .home-hero__content, .page-hero, .section-heading,
+.next-event__content, .business-cta, .split-heading, .artists__layout,
+.gallery-page, .gallery-page__heading, .contact, .contact-form,
+.newsletter, .newsletter__copy, .newsletter__form { max-width: 100%; min-width: 0; }
+.home-hero__title, .page-hero h1, .section-heading :is(h1, h2),
+.page-shell__title, .gallery-page__heading h2, .newsletter h2,
+.next-event__content h2, .business-cta h2, .contact-cta h2 {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-family: var(--font-display);
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: balance;
+}
 .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 :focus-visible { outline: 2px solid var(--color-accent-2); outline-offset: 4px; }
 

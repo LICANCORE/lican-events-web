@@ -12,7 +12,7 @@ export default function ServiciosPage() {
   return (
     <div className="content-page">
       <Services page />
-      <BusinessCta />
+      <BusinessCta hideServicesButton />
       <ContactCTA />
     </div>
   );

@@ -24,7 +24,7 @@ export const partyBrands = [
     name: 'NOVA',
     description: 'Electrónica actual, cultura y un formato cercano diseñado para conectar con nuevos públicos.',
     image: '/images/eventos-realizados/2025-08-08_NOVA_03.webp',
-    accent: 'cyan',
+    accent: 'orange',
     to: 'https://www.instagram.com/_nova.cat/',
   },
 ];
