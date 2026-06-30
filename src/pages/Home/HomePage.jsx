@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import Icon from '../../components/Icon';
-import GalleryCarousel from '../../components/GalleryCarousel';
+import ContactCTA from '../../components/ContactCTA';
 import { ButtonLink, Eyebrow, SectionTitle } from '../../components/HomeUI';
-import Newsletter from '../../components/Newsletter';
 import PublicImage from '../../components/PublicImage';
 import { siteConfig } from '../../config/site';
 import { artistServices } from '../../data/artists';
 import { partyBrands } from '../../data/brands';
 import { nextEvent } from '../../data/events';
-import { galleryItems } from '../../data/gallery';
 import { contactLinks, inquiryTypes } from '../../data/links';
 import { partnerLogos } from '../../data/partnerLogos';
 import { realizedEventFilters, realizedEvents } from '../../data/realizedEvents';
@@ -20,7 +18,7 @@ import { languageMeta } from '../../i18n/translations';
 import useLanguage from '../../i18n/useLanguage';
 import './home.css';
 
-function Hero() {
+export function Hero() {
   const { language, t } = useLanguage();
 
   return (
@@ -29,7 +27,8 @@ function Hero() {
       <div className="home-hero__noise" />
       <div className="home-hero__content shell">
         <Eyebrow>Tarragona · Barcelona · Underground</Eyebrow>
-        <h1 id="hero-title">
+        <h1 id="hero-title" className="sr-only">LICAN EVENTS</h1>
+        <div className="home-hero__title">
           {language === 'nl' ? (
             <>
               <span className="hero-title__line">{t.hero.desktopLine1}</span>
@@ -46,11 +45,11 @@ function Hero() {
             <span>{t.hero.line1}</span>{' '}<span>{t.hero.line2}</span>
           </span>
           <span className={`hero-title__line hero-title__gradient ${language === 'eng' ? 'hero-title__mobile-only' : ''} ${language === 'nl' ? 'hero-title__hidden' : ''}`}>{t.hero.gradient}</span>
-        </h1>
+        </div>
         <p>{t.hero.description}</p>
         <div className="button-row">
           <ButtonLink to={nextEvent.ticketUrl} icon="ticket">{t.hero.nextEvent}</ButtonLink>
-          <ButtonLink to="/#servicios" variant="outline">{t.hero.hireServices}</ButtonLink>
+          <ButtonLink to="/servicios" variant="outline">{t.hero.hireServices}</ButtonLink>
           <a className="text-link" href="#newsletter">{t.hero.joinNewsletter} <Icon name="arrow" size={16} /></a>
         </div>
       </div>
@@ -59,7 +58,7 @@ function Hero() {
   );
 }
 
-function NextEvent() {
+export function NextEvent() {
   const [eventBrand, eventTitle] = nextEvent.name.split(': ');
   const { t } = useLanguage();
 
@@ -132,8 +131,8 @@ function EventCountdown({ target }) {
   );
 }
 
-function Parties() {
-  const { t } = useLanguage();
+export function Parties() {
+  const { localizePath, t } = useLanguage();
 
   return (
     <section className="home-section shell" aria-labelledby="parties-title">
@@ -146,8 +145,12 @@ function Parties() {
             <div className="party-card__content">
               <p className="micro-label">{t.parties.brand}</p>
               <h3 className="party-card__logo">{brand.name}</h3>
-              <p>{brand.description}</p>
-              <a className="party-card__cta" href={brand.to} target="_blank" rel="noreferrer">{t.parties.discover} <Icon name="arrow" size={17} /></a>
+              <p>{t.parties.descriptions?.[brand.name] || brand.description}</p>
+              {brand.to.startsWith('http') ? (
+                <a className="party-card__cta" href={brand.to} target="_blank" rel="noreferrer">{t.parties.discover} <Icon name="arrow" size={17} /></a>
+              ) : (
+                <Link className="party-card__cta" to={localizePath(brand.to)}>{t.parties.discover} <Icon name="arrow" size={17} /></Link>
+              )}
             </div>
           </article>
         ))}
@@ -156,7 +159,7 @@ function Parties() {
   );
 }
 
-function RealizedEvents() {
+export function RealizedEvents() {
   const { language, t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
   const visibleEvents = activeFilter === 'all'
@@ -208,7 +211,7 @@ function RealizedEvents() {
   );
 }
 
-function BusinessCta() {
+export function BusinessCta() {
   const { language, t } = useLanguage();
 
   return (
@@ -234,30 +237,30 @@ function BusinessCta() {
           <p>{t.business.description}</p>
         </div>
         <div className="business-cta__actions">
-          <ButtonLink to="/#servicios">{t.business.services}</ButtonLink>
-          <ButtonLink to="/#contacto" variant="outline">{t.business.quote}</ButtonLink>
+          <ButtonLink to="/servicios">{t.business.services}</ButtonLink>
+          <ButtonLink to="/contacto" variant="outline">{t.business.quote}</ButtonLink>
         </div>
       </div>
     </section>
   );
 }
 
-function Services() {
-  const { t } = useLanguage();
+export function Services() {
+  const { localizePath, t } = useLanguage();
 
   return (
     <section className="home-section shell" aria-labelledby="services-title">
       <div id="servicios" className="split-heading">
         <SectionTitle eyebrow={t.services.eyebrow} title={t.services.title} accent={t.services.accent} />
-        <div><p>{t.services.description}</p><ButtonLink to="/#contacto" variant="outline">{t.services.quote}</ButtonLink></div>
+          <div><p>{t.services.description}</p><ButtonLink to="/contacto" variant="outline">{t.services.quote}</ButtonLink></div>
       </div>
       <div className="services-grid">
-        {services.map((service) => (
+        {services.map((service, index) => (
           <article className="service-card" key={service.title}>
             <Icon name={service.icon} size={24} />
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-            <Link to="/#servicios">{t.services.info} <Icon name="arrow" size={14} /></Link>
+            <h3>{t.services.items?.[index]?.title || service.title}</h3>
+            <p>{t.services.items?.[index]?.description || service.description}</p>
+            <Link to={localizePath('/contacto')}>{t.services.info} <Icon name="arrow" size={14} /></Link>
           </article>
         ))}
       </div>
@@ -265,7 +268,7 @@ function Services() {
   );
 }
 
-function Artists() {
+export function Artists() {
   const { t } = useLanguage();
 
   return (
@@ -274,13 +277,13 @@ function Artists() {
         <div className="artists__intro">
           <SectionTitle eyebrow={t.artists.eyebrow} title={t.artists.title} accent={t.artists.accent} />
           <p>{t.artists.description}</p>
-          <ButtonLink to="/#contacto">{t.artists.cta}</ButtonLink>
+          <ButtonLink to="/contacto?tipo=artistas">{t.artists.cta}</ButtonLink>
         </div>
         <div className="artist-services">
-          {artistServices.map((service) => (
+          {artistServices.map((service, index) => (
             <article key={service.title}>
               <Icon name={service.icon} size={21} />
-              <div><h3>{service.title}</h3><p>{service.description}</p></div>
+              <div><h3>{t.artists.items?.[index]?.title || service.title}</h3><p>{t.artists.items?.[index]?.description || service.description}</p></div>
             </article>
           ))}
         </div>
@@ -289,22 +292,7 @@ function Artists() {
   );
 }
 
-function Gallery() {
-  const { t } = useLanguage();
-
-  return (
-    <section className="home-section shell" aria-labelledby="gallery-title">
-      <div className="gallery-heading">
-        <SectionTitle eyebrow={t.gallery.eyebrow} title={t.gallery.title} />
-        <p className="gallery-heading__count">{galleryItems.length} {t.gallery.photos}</p>
-      </div>
-      <div id="galeria" className="scroll-anchor" aria-hidden="true" />
-      <GalleryCarousel items={galleryItems} />
-    </section>
-  );
-}
-
-function Partners() {
+export function Partners() {
   const { t } = useLanguage();
 
   return (
@@ -329,9 +317,16 @@ function Partners() {
   );
 }
 
-function Contact() {
+export function Contact({ page = false }) {
   const { t } = useLanguage();
-  const [fields, setFields] = useState({ name: '', email: '', type: '', message: '', rgpd: false });
+  const [searchParams] = useSearchParams();
+  const [fields, setFields] = useState(() => ({
+    name: '',
+    email: '',
+    type: searchParams.get('tipo') === 'artistas' ? inquiryTypes[2] : '',
+    message: '',
+    rgpd: false,
+  }));
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle');
 
@@ -390,9 +385,9 @@ function Contact() {
   const isSuccess = status === 'success';
 
   return (
-    <section className="home-section contact shell" aria-labelledby="contact-title">
+    <section className={`home-section contact shell ${page ? 'contact--page' : ''}`} aria-labelledby="contact-title">
       <div id="contacto" className="contact__intro">
-        <SectionTitle eyebrow={t.contact.eyebrow} title={t.contact.title} accent={t.contact.accent} />
+        <SectionTitle eyebrow={t.contact.eyebrow} title={t.contact.title} accent={t.contact.accent} heading={page ? 'h1' : 'h2'} headingId="contact-title" />
         <p>{t.contact.description}</p>
         <div className="contact__details">
           <a href={`mailto:${contactLinks.email}`}><Icon name="mail" /><span><small>Email</small>{contactLinks.email}</span></a>
@@ -443,22 +438,14 @@ function Contact() {
 
 export default function HomePage() {
   const { t } = useLanguage();
-  usePageTitle(t.nav.home);
+  usePageTitle(t.nav.home, t.hero.description);
 
   return (
     <div className="home-page">
       <Hero />
       <NextEvent />
-      <Parties />
-      <RealizedEvents />
-      <BusinessCta />
-      <div className="shell newsletter-wrap"><Newsletter id="newsletter" compact /></div>
-      <Services />
-      <Artists />
-      <Gallery />
       <Partners />
-      <div className="home-section shell"><Newsletter id="comunidad" /></div>
-      <Contact />
+      <ContactCTA />
     </div>
   );
 }

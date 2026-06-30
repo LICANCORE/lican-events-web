@@ -1,30 +1,18 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { navigationItems } from '../../data/navigation';
-import { nextEvent } from '../../data/events';
 import useLanguage from '../../i18n/useLanguage';
-import scrollToSection from '../../utils/scrollToSection';
 import Brand from '../Brand';
 import Icon from '../Icon';
 import LanguageSelector from '../LanguageSelector';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
-  const { t } = useLanguage();
+  const { localizePath, t } = useLanguage();
 
-  const handleNavigation = (to) => {
+  const handleNavigation = () => {
     setOpen(false);
-
-    const [pathname, hash] = to.split('#');
-    const normalizedPathname = pathname || '/';
-
-    if (hash && location.pathname === normalizedPathname && location.hash === `#${hash}`) {
-      window.requestAnimationFrame(() => {
-        scrollToSection(`#${hash}`);
-      });
-    }
   };
 
   return (
@@ -36,13 +24,13 @@ export default function Navbar() {
       </button>
       <nav id="main-navigation" className={`nav-links ${open ? 'nav-links--open' : ''}`} aria-label="Navegación principal">
         {navigationItems.map((item) => (
-          <Link key={item.to} to={item.to} onClick={() => handleNavigation(item.to)}>{t.nav[item.key]}</Link>
+          <Link key={item.to} to={localizePath(item.to)} onClick={handleNavigation}>{t.nav[item.key]}</Link>
         ))}
-        <LanguageSelector className="language-selector--mobile" />
+        <LanguageSelector className="language-selector--mobile" onLanguageChange={() => setOpen(false)} />
       </nav>
       <div className="topbar__actions">
         <LanguageSelector className="language-selector--desktop" />
-        <a className="button button--primary topbar__tickets" href={nextEvent.ticketUrl} target="_blank" rel="noreferrer"><Icon name="ticket" size={16} /> {t.nav.tickets}</a>
+        <Link className="button button--primary topbar__tickets" to={localizePath('/eventos')}><Icon name="ticket" size={16} /> {t.nav.tickets}</Link>
       </div>
     </header>
   );

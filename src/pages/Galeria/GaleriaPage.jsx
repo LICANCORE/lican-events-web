@@ -1,24 +1,25 @@
 import GalleryCarousel from '../../components/GalleryCarousel';
+import ContactCTA from '../../components/ContactCTA';
 import { galleryItems } from '../../data/gallery';
 import usePageTitle from '../../hooks/usePageTitle';
+import useLanguage from '../../i18n/useLanguage';
+import '../Home/home.css';
+import '../shared-pages.css';
 import './galeria.css';
 
 export default function GaleriaPage() {
-  usePageTitle('Galería');
+  const { t } = useLanguage();
+  usePageTitle(t.pages.gallery.title, t.pages.gallery.description);
 
   return (
-    <section className="gallery-page" aria-labelledby="gallery-page-title">
-      <div className="shell">
-        <header className="gallery-page__heading">
-          <p>Memoria visual · LICAN Events</p>
-          <h1 id="gallery-page-title">Galería</h1>
-          <div>
-            <p>Una selección de nuestras noches, artistas, visuales y público.</p>
-            <span>{galleryItems.length} fotografías</span>
-          </div>
-        </header>
-        <GalleryCarousel items={galleryItems} />
-      </div>
-    </section>
+    <div className="content-page">
+      <h1 className="sr-only">{t.pages.gallery.h1}</h1>
+      <section className="gallery-page" aria-label={t.pages.gallery.h1}>
+        <div className="shell">
+          <GalleryCarousel items={galleryItems} />
+        </div>
+      </section>
+      <ContactCTA />
+    </div>
   );
 }

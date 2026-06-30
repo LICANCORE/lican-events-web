@@ -20,4 +20,11 @@ export const partyBrands = [
     accent: 'cyan',
     to: 'https://www.instagram.com/nightof____/',
   },
+  {
+    name: 'NOVA',
+    description: 'Electrónica actual, cultura y un formato cercano diseñado para conectar con nuevos públicos.',
+    image: '/images/eventos-realizados/2025-08-08_NOVA_03.webp',
+    accent: 'cyan',
+    to: 'https://www.instagram.com/_nova.cat/',
+  },
 ];

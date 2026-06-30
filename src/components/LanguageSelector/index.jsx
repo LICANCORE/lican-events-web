@@ -7,7 +7,7 @@ function LanguageFlag({ type }) {
   return <span className={`language-flag language-flag--${type}`} aria-hidden="true" />;
 }
 
-export default function LanguageSelector({ className = '' }) {
+export default function LanguageSelector({ className = '', onLanguageChange }) {
   const { language, setLanguage, t } = useLanguage();
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
@@ -43,7 +43,7 @@ export default function LanguageSelector({ className = '' }) {
         {supportedLanguages.map((code) => {
           const option = languageMeta[code];
           return (
-            <button type="button" role="option" aria-selected={language === code} className={language === code ? 'language-selector__option--active' : ''} onClick={() => { setLanguage(code); setOpen(false); }} key={code}>
+            <button type="button" role="option" aria-selected={language === code} className={language === code ? 'language-selector__option--active' : ''} onClick={() => { setLanguage(code); setOpen(false); onLanguageChange?.(code); }} key={code}>
               <LanguageFlag type={option.flag} />
               <span>{option.short}</span>
               <small>{option.label}</small>

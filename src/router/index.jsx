@@ -13,23 +13,36 @@ import LanzaTuCarreraPage from '../pages/LanzaTuCarrera/LanzaTuCarreraPage';
 import GaleriaPage from '../pages/Galeria/GaleriaPage';
 import ContactoPage from '../pages/Contacto/ContactoPage';
 
+const createCoreRoutes = () => [
+  { index: true, element: <HomePage /> },
+  { path: 'eventos', element: <EventosPage /> },
+  { path: 'servicios', element: <ServiciosPage /> },
+  { path: 'artistas', element: <LanzaTuCarreraPage /> },
+  { path: 'galeria', element: <GaleriaPage /> },
+  { path: 'contacto', element: <ContactoPage /> },
+];
+
+const createLanguageRoutes = (prefix) => ({
+  path: prefix,
+  children: [
+    ...createCoreRoutes(),
+    { path: '*', element: <Navigate to={`/${prefix}`} replace /> },
+  ],
+});
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: 'eventos', element: <EventosPage /> },
-      { path: 'servicios', element: <ServiciosPage /> },
+      ...createCoreRoutes(),
       { path: 'nuestras-fiestas', element: <NuestrasFiestasPage /> },
       { path: 'nuestras-fiestas/feral', element: <FeralPage /> },
       { path: 'nuestras-fiestas/headbang-dealers', element: <HeadbangDealersPage /> },
       { path: 'nuestras-fiestas/night-of-series', element: <NightOfSeriesPage /> },
       { path: 'colaboradores', element: <ColaboradoresPage /> },
       { path: 'lanza-tu-carrera', element: <LanzaTuCarreraPage /> },
-      { path: 'artistas', element: <LanzaTuCarreraPage /> },
-      { path: 'galeria', element: <GaleriaPage /> },
-      { path: 'contacto', element: <ContactoPage /> },
+      ...['cat', 'eng', 'nl'].map(createLanguageRoutes),
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

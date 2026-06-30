@@ -7,12 +7,94 @@ export const languageMeta = {
   nl: { short: 'NL', label: 'Nederlands', htmlLang: 'nl', flag: 'nl' },
 };
 
+const pageCopy = {
+  cast: {
+    pages: {
+      events: { h1: 'Fiestas LICAN', h1Lines: [{ base: 'Fiestas', accent: 'LICAN' }], intro: 'Descubre nuestras marcas, próximos eventos y la memoria de las fechas que ya hemos vivido.', title: 'Eventos', description: 'Eventos de música electrónica, fiestas y producción de LICAN EVENTS en Tarragona y Barcelona.' },
+      services: { h1: 'Servicios profesionales para eventos', h1Lines: [{ base: 'Servicios profesionales', accent: 'para eventos' }], intro: 'Producción integral, comunicación y técnica para crear experiencias a medida.', title: 'Servicios para eventos', description: 'Servicios profesionales de producción, marketing, sonido, iluminación y audiovisuales para eventos.' },
+      artists: { h1: 'Servicios para artistas, DJs y productores', h1Lines: [{ base: 'Servicios para' }, { accent: 'artistas, DJs' }, { base: 'productores' }], intro: 'Imagen, contenido, promoción y apoyo profesional para hacer avanzar tu proyecto.', title: 'Servicios para artistas', description: 'Book fotográfico, presskit, sets, visuales, promoción y booking para artistas y DJs.' },
+      gallery: { h1: 'Galería de eventos LICAN', intro: 'Una selección de nuestras noches, artistas, visuales y público.', title: 'Galería', description: 'Fotografías de eventos, artistas y público de LICAN EVENTS.' },
+      contact: { h1: 'Contacta con LICAN EVENTS', intro: 'Entradas, servicios, artistas, patrocinios, colaboraciones o prensa. Cuéntanos qué necesitas.', title: 'Contacto', description: 'Contacta con LICAN EVENTS en Tarragona y Barcelona.' },
+    },
+    contactCta: { eyebrow: 'Hablemos', general: { title: '¿Quieres organizar algo con LICAN?', description: 'Entradas, servicios, artistas, patrocinios o colaboraciones. Escríbenos y lo aterrizamos.' }, artist: { title: 'Envíanos tu proyecto', description: 'Cuéntanos quién eres, qué haces y hacia dónde quieres llevar tu propuesta.' }, contact: 'Contactar' },
+  },
+  cat: {
+    pages: {
+      events: { h1: 'Festes LICAN', h1Lines: [{ base: 'Festes', accent: 'LICAN' }], intro: 'Descobreix les nostres marques, els pròxims esdeveniments i la memòria de les dates viscudes.', title: 'Esdeveniments', description: 'Esdeveniments de música electrònica i festes de LICAN EVENTS a Tarragona i Barcelona.' },
+      services: { h1: 'Serveis professionals per a esdeveniments', h1Lines: [{ base: 'Serveis professionals', accent: 'per a esdeveniments' }], intro: 'Producció integral, comunicació i tècnica per crear experiències a mida.', title: 'Serveis per a esdeveniments', description: 'Producció, màrqueting, so, il·luminació i audiovisuals per a esdeveniments.' },
+      artists: { h1: 'Serveis per a artistes, DJs i productors', h1Lines: [{ base: 'Serveis per a' }, { accent: 'artistes, DJs' }, { base: 'productors' }], intro: 'Imatge, contingut, promoció i suport professional per fer avançar el teu projecte.', title: 'Serveis per a artistes', description: 'Book fotogràfic, presskit, sets, visuals, promoció i booking per a artistes i DJs.' },
+      gallery: { h1: 'Galeria d’esdeveniments LICAN', intro: 'Una selecció de les nostres nits, artistes, visuals i públic.', title: 'Galeria', description: 'Fotografies d’esdeveniments, artistes i públic de LICAN EVENTS.' },
+      contact: { h1: 'Contacta amb LICAN EVENTS', intro: 'Entrades, serveis, artistes, patrocinis, col·laboracions o premsa. Explica’ns què necessites.', title: 'Contacte', description: 'Contacta amb LICAN EVENTS a Tarragona i Barcelona.' },
+    },
+    contactCta: { eyebrow: 'Parlem', general: { title: 'Vols organitzar alguna cosa amb LICAN?', description: 'Entrades, serveis, artistes, patrocinis o col·laboracions. Escriu-nos i ho farem realitat.' }, artist: { title: 'Envia’ns el teu projecte', description: 'Explica’ns qui ets, què fas i cap a on vols portar la teva proposta.' }, contact: 'Contactar' },
+  },
+  eng: {
+    pages: {
+      events: { h1: 'LICAN Parties', h1Lines: [{ accent: 'LICAN', after: 'Parties' }], intro: 'Discover our brands, upcoming events and the archive of the nights we have shared.', title: 'Events', description: 'Electronic music events and LICAN EVENTS parties in Tarragona and Barcelona.' },
+      services: { h1: 'Professional services for events', h1Lines: [{ base: 'Professional services', accent: 'for events' }], intro: 'Full production, communications and technical delivery for tailored experiences.', title: 'Event services', description: 'Professional production, marketing, sound, lighting and audiovisual event services.' },
+      artists: { h1: 'Services for artists, DJs and producers', h1Lines: [{ base: 'Services for' }, { accent: 'artists, DJs' }, { base: 'producers' }], intro: 'Image, content, promotion and professional support to move your project forward.', title: 'Artist services', description: 'Photo books, press kits, sets, visuals, promotion and booking for artists and DJs.' },
+      gallery: { h1: 'LICAN event gallery', intro: 'A selection of our nights, artists, visuals and audiences.', title: 'Gallery', description: 'Photos of LICAN EVENTS nights, artists and audiences.' },
+      contact: { h1: 'Contact LICAN EVENTS', intro: 'Tickets, services, artists, sponsorships, collaborations or press. Tell us what you need.', title: 'Contact', description: 'Contact LICAN EVENTS in Tarragona and Barcelona.' },
+    },
+    contactCta: { eyebrow: 'Let’s talk', general: { title: 'Want to create something with LICAN?', description: 'Tickets, services, artists, sponsorships or collaborations. Write to us and we’ll shape it together.' }, artist: { title: 'Send us your project', description: 'Tell us who you are, what you do and where you want to take your work.' }, contact: 'Contact us' },
+  },
+  nl: {
+    pages: {
+      events: { h1: 'LICAN Feesten', h1Lines: [{ accent: 'LICAN', after: 'Feesten' }], intro: 'Ontdek onze merken, komende events en het archief van eerdere avonden.', title: 'Events', description: 'Elektronische muziekevents en feesten van LICAN EVENTS in Tarragona en Barcelona.' },
+      services: { h1: 'Professionele diensten voor events', h1Lines: [{ base: 'Professionele diensten', accent: 'voor events' }], intro: 'Volledige productie, communicatie en techniek voor ervaringen op maat.', title: 'Eventdiensten', description: 'Professionele productie, marketing, geluid, licht en audiovisuele eventdiensten.' },
+      artists: { h1: 'Diensten voor artiesten, DJs en producers', h1Lines: [{ base: 'Diensten voor' }, { accent: 'artiesten, DJs' }, { base: 'producers' }], intro: 'Beeld, content, promotie en professionele ondersteuning voor jouw project.', title: 'Diensten voor artiesten', description: 'Fotoboeken, presskits, sets, visuals, promotie en booking voor artiesten en DJs.' },
+      gallery: { h1: 'Galerij van LICAN-events', intro: 'Een selectie van onze avonden, artiesten, visuals en publiek.', title: 'Galerij', description: 'Foto’s van LICAN EVENTS, artiesten en publiek.' },
+      contact: { h1: 'Neem contact op met LICAN EVENTS', intro: 'Tickets, diensten, artiesten, sponsoring, samenwerkingen of pers. Vertel ons wat je nodig hebt.', title: 'Contact', description: 'Neem contact op met LICAN EVENTS in Tarragona en Barcelona.' },
+    },
+    contactCta: { eyebrow: 'Laten we praten', general: { title: 'Wil je iets organiseren met LICAN?', description: 'Tickets, diensten, artiesten, sponsoring of samenwerkingen. Schrijf ons en we werken het samen uit.' }, artist: { title: 'Stuur ons jouw project', description: 'Vertel wie je bent, wat je maakt en waar je met je werk naartoe wilt.' }, contact: 'Contact opnemen' },
+  },
+};
+
+function applyExtendedTranslations() {
+Object.entries(pageCopy).forEach(([language, copy]) => Object.assign(translations[language], copy));
+
+translations.cast.parties.descriptions = { FERAL: 'Hard Techno, Schranz, Raw e Industrial. Una experiencia oscura, física y ritual.', 'Headbang Dealers': 'Dubstep, Riddim, Tearout y Drum and Bass. Bass culture y caos controlado.', 'Night Of Series': 'Diversidad electrónica, UV, glow y libertad de expresión.', NOVA: 'Electrónica actual, cultura y un formato cercano para nuevos públicos.' };
+translations.cat.parties.descriptions = { FERAL: 'Hard Techno, Schranz, Raw i Industrial. Una experiència fosca, física i ritual.', 'Headbang Dealers': 'Dubstep, Riddim, Tearout i Drum and Bass. Cultura bass i caos controlat.', 'Night Of Series': 'Diversitat electrònica, UV, glow i llibertat d’expressió.', NOVA: 'Electrònica actual, cultura i un format proper per a nous públics.' };
+translations.eng.parties.descriptions = { FERAL: 'Hard Techno, Schranz, Raw and Industrial. A dark, physical and ritual experience.', 'Headbang Dealers': 'Dubstep, Riddim, Tearout and Drum and Bass. Bass culture and controlled chaos.', 'Night Of Series': 'Electronic diversity, UV, glow and freedom of expression.', NOVA: 'Current electronic music, culture and an approachable format for new audiences.' };
+translations.nl.parties.descriptions = { FERAL: 'Hard Techno, Schranz, Raw en Industrial. Een donkere, fysieke en rituele ervaring.', 'Headbang Dealers': 'Dubstep, Riddim, Tearout en Drum and Bass. Basscultuur en gecontroleerde chaos.', 'Night Of Series': 'Elektronische diversiteit, UV, glow en vrije expressie.', NOVA: 'Moderne elektronische muziek, cultuur en een toegankelijk format voor nieuw publiek.' };
+
+const localizedItems = {
+  cast: {
+    services: ['Producción integral|Concepto, planificación y coordinación completa.', 'Marketing|Estrategia, campaña y comunicación.', 'Visuales|VJing, contenido audiovisual y puesta en escena.', 'Sonido|Diseño y coordinación de sistemas de audio.', 'Iluminación|Diseño lumínico y atmósferas.', 'Fotografía|Cobertura profesional y memoria visual.', 'Vídeo|Aftermovies y piezas audiovisuales.', 'Booking|Selección y contratación de artistas.', 'Patrocinios|Conexión entre marcas, cultura y audiencias.', 'Eventos para marcas|Experiencias a medida para empresas.'],
+    artists: ['Book fotográfico|Imagen artística profesional.', 'Presskit|Biografía, fotos, rider y enlaces.', 'Grabación de sets|Vídeo y audio de actuaciones.', 'Contenido audiovisual|Piezas para presentar tu proyecto.', 'Visuales en directo|Contenido sincronizado con tu música.', 'Promoción|Comunicación y presencia digital.', 'Booking|Apoyo para encontrar escenarios.', 'Apoyo profesional|Seguimiento y red del sector.'],
+  },
+  cat: {
+    services: ['Producció integral|Concepte, planificació i coordinació completa.', 'Màrqueting|Estratègia, campanya i comunicació.', 'Visuals|VJing, contingut audiovisual i posada en escena.', 'So|Disseny i coordinació de sistemes d’àudio.', 'Il·luminació|Disseny lumínic i atmosferes.', 'Fotografia|Cobertura professional i memòria visual.', 'Vídeo|Aftermovies i peces audiovisuals.', 'Booking|Selecció i contractació d’artistes.', 'Patrocinis|Connexió entre marques, cultura i audiències.', 'Esdeveniments per a marques|Experiències a mida per a empreses.'],
+    artists: ['Book fotogràfic|Imatge artística professional.', 'Presskit|Biografia, fotos, rider i enllaços.', 'Gravació de sets|Vídeo i àudio d’actuacions.', 'Contingut audiovisual|Peces per presentar el teu projecte.', 'Visuals en directe|Contingut sincronitzat amb la teva música.', 'Promoció|Comunicació i presència digital.', 'Booking|Suport per trobar escenaris.', 'Suport professional|Seguiment i xarxa del sector.'],
+  },
+  eng: {
+    services: ['Full production|Concept, planning and complete coordination.', 'Marketing|Strategy, campaigns and communications.', 'Visuals|VJing, audiovisual content and staging.', 'Sound|Audio system design and coordination.', 'Lighting|Lighting design and atmospheres.', 'Photography|Professional coverage and visual archive.', 'Video|Aftermovies and audiovisual pieces.', 'Booking|Artist selection and contracting.', 'Sponsorships|Connecting brands, culture and audiences.', 'Brand events|Tailored experiences for companies.'],
+    artists: ['Photo book|Professional artistic imagery.', 'Press kit|Biography, photos, rider and links.', 'Set recording|Video and audio of performances.', 'Audiovisual content|Pieces that present your project.', 'Live visuals|Content synchronized with your music.', 'Promotion|Communications and digital presence.', 'Booking|Support to find the right stages.', 'Professional support|Guidance and industry network.'],
+  },
+  nl: {
+    services: ['Volledige productie|Concept, planning en volledige coördinatie.', 'Marketing|Strategie, campagnes en communicatie.', 'Visuals|VJing, audiovisuele content en enscenering.', 'Geluid|Ontwerp en coördinatie van audiosystemen.', 'Verlichting|Lichtontwerp en sfeer.', 'Fotografie|Professionele verslaglegging en beeldarchief.', 'Video|Aftermovies en audiovisuele content.', 'Booking|Selectie en contractering van artiesten.', 'Sponsoring|Verbinding tussen merken, cultuur en publiek.', 'Events voor merken|Ervaringen op maat voor bedrijven.'],
+    artists: ['Fotoboek|Professionele artistieke beelden.', 'Presskit|Biografie, foto’s, rider en links.', 'Setopnames|Video en audio van optredens.', 'Audiovisuele content|Content die jouw project presenteert.', 'Live visuals|Content gesynchroniseerd met jouw muziek.', 'Promotie|Communicatie en digitale zichtbaarheid.', 'Booking|Ondersteuning om podia te vinden.', 'Professionele begeleiding|Advies en netwerk in de sector.'],
+  },
+};
+
+Object.entries(localizedItems).forEach(([language, groups]) => {
+  translations[language].services.items = groups.services.map((item) => {
+    const [title, description] = item.split('|');
+    return { title, description };
+  });
+  translations[language].artists.items = groups.artists.map((item) => {
+    const [title, description] = item.split('|');
+    return { title, description };
+  });
+});
+}
+
 export const translations = {
   cast: {
     nav: { home: 'Inicio', events: 'Eventos', services: 'Servicios', artists: 'Artistas', gallery: 'Galería', contact: 'Contacto', tickets: 'Entradas', openMenu: 'Abrir menú', language: 'Seleccionar idioma' },
     hero: { line1: 'Donde la', line2: 'electrónica', gradient: 'Vibra contigo', desktopLine1: 'Donde la electrónica', desktopLine2: 'Vibra contigo', description: 'Eventos electrónicos, producción audiovisual, booking y experiencias underground desde Tarragona y Barcelona.', nextEvent: 'Ver próximo evento', hireServices: 'Contratar servicios', joinNewsletter: 'Unirme a la newsletter', scroll: 'Bajar al próximo evento' },
     next: { stamp1: 'Próximo', stamp2: 'evento', eyebrow: 'Próxima fecha', buy: 'Comprar entradas', countdown: 'Cuenta atrás', countdownLabel: 'Tiempo restante para el evento', units: { days: 'Días', hours: 'Horas', minutes: 'Minutos', seconds: 'Segundos' } },
-    parties: { eyebrow: 'Eventos · Identidad', title: 'Nuestras', accent: 'fiestas', description: 'Tres universos. Una misma forma de entender la pista.', brand: 'Una marca LICAN', discover: 'Descubrir' },
+    parties: { eyebrow: 'Eventos · Identidad', title: 'Nuestras', accent: 'fiestas', description: 'Cuatro universos. Una misma forma de entender la pista.', brand: 'Una marca LICAN', discover: 'Descubrir' },
     memory: { eyebrow: 'Memoria LICAN', title: 'Eventos', accent: 'realizados' },
     realized: { eyebrow: 'Memoria LICAN', title: 'Eventos', accent: 'realizados', description: 'Carteles y memoria editorial de las fechas que han construido el universo LICAN.', filterLabel: 'Filtrar eventos realizados por marca', filters: { all: 'Todos', feral: 'FERAL', 'headbang-dealers': 'Headbang Dealers', 'night-of-wolves': 'Night Of Wolves', nova: 'NOVA', lican: 'LICAN' }, descriptionTemplates: { feral: '{title} forma parte de la saga FERAL: hard techno, sonido industrial y una identidad ritual contundente.', 'headbang-dealers': '{title} llevó la cultura bass, el dubstep y la energía headbang a la comunidad underground.', 'night-of-wolves': '{title} reunió electrónica alternativa, estética glow y espíritu de comunidad Night Of Wolves.', nova: '{title} conectó electrónica actual, cultura y un formato accesible para nuevos públicos.', lican: '{title} unió cultura local, producción creativa y música electrónica bajo el sello LICAN EVENTS.' } },
     business: { eyebrow: 'B2B · Producción', lead1: 'Organizamos', lead2: 'tu evento', accent: 'a medida', description: 'Producción, DJs, sonido, visuales, contenido audiovisual, ticketing, campaña y coordinación técnica. Creamos eventos para salas, marcas, ayuntamientos y proyectos culturales.', services: 'Ver servicios', quote: 'Solicitar presupuesto' },
@@ -30,7 +112,7 @@ export const translations = {
     nav: { home: 'Inici', events: 'Esdeveniments', services: 'Serveis', artists: 'Artistes', gallery: 'Galeria', contact: 'Contacte', tickets: 'Entrades', openMenu: 'Obrir menú', language: 'Seleccionar idioma' },
     hero: { line1: 'On', line2: 'l’electrònica', gradient: 'Vibra amb tu', desktopLine1: 'On l’electrònica', desktopLine2: 'Vibra amb tu', description: 'Esdeveniments electrònics, producció audiovisual, booking i experiències underground des de Tarragona i Barcelona.', nextEvent: 'Veure pròxim esdeveniment', hireServices: 'Contractar serveis', joinNewsletter: 'Unir-me a la newsletter', scroll: 'Baixar al pròxim esdeveniment' },
     next: { stamp1: 'Pròxim', stamp2: 'esdeveniment', eyebrow: 'Pròxima data', buy: 'Comprar entrades', countdown: 'Compte enrere', countdownLabel: 'Temps restant per a l’esdeveniment', units: { days: 'Dies', hours: 'Hores', minutes: 'Minuts', seconds: 'Segons' } },
-    parties: { eyebrow: 'Esdeveniments · Identitat', title: 'Les nostres', accent: 'festes', description: 'Tres universos. Una mateixa manera d’entendre la pista.', brand: 'Una marca LICAN', discover: 'Descobrir' },
+    parties: { eyebrow: 'Esdeveniments · Identitat', title: 'Les nostres', accent: 'festes', description: 'Quatre universos. Una mateixa manera d’entendre la pista.', brand: 'Una marca LICAN', discover: 'Descobrir' },
     memory: { eyebrow: 'Memòria LICAN', title: 'Esdeveniments', accent: 'realitzats' },
     realized: { eyebrow: 'Memòria LICAN', title: 'Esdeveniments', accent: 'realitzats', description: 'Cartells i memòria editorial de les dates que han construït l’univers LICAN.', filterLabel: 'Filtrar esdeveniments realitzats per marca', filters: { all: 'Tots', feral: 'FERAL', 'headbang-dealers': 'Headbang Dealers', 'night-of-wolves': 'Night Of Wolves', nova: 'NOVA', lican: 'LICAN' }, descriptionTemplates: { feral: '{title} forma part de la saga FERAL: hard techno, so industrial i una identitat ritual contundent.', 'headbang-dealers': '{title} va portar la cultura bass, el dubstep i l’energia headbang a la comunitat underground.', 'night-of-wolves': '{title} va reunir electrònica alternativa, estètica glow i esperit de comunitat Night Of Wolves.', nova: '{title} va connectar electrònica actual, cultura i un format accessible per a nous públics.', lican: '{title} va unir cultura local, producció creativa i música electrònica sota el segell LICAN EVENTS.' } },
     business: { eyebrow: 'B2B · Producció', lead1: 'Organitzem', lead2: 'el teu esdeveniment', accent: 'a mida', description: 'Producció, DJs, so, visuals, contingut audiovisual, ticketing, campanya i coordinació tècnica. Creem esdeveniments per a sales, marques, ajuntaments i projectes culturals.', services: 'Veure serveis', quote: 'Sol·licitar pressupost' },
@@ -48,7 +130,7 @@ export const translations = {
     nav: { home: 'Home', events: 'Events', services: 'Services', artists: 'Artists', gallery: 'Gallery', contact: 'Contact', tickets: 'Tickets', openMenu: 'Open menu', language: 'Select language' },
     hero: { line1: 'Where electronic', line2: 'music vibrates', gradient: 'With you', desktopLine1: 'Where electronic music', desktopLine2: 'Vibrates with you', description: 'Electronic events, audiovisual production, booking and underground experiences from Tarragona and Barcelona.', nextEvent: 'See next event', hireServices: 'Hire services', joinNewsletter: 'Join the newsletter', scroll: 'Go to the next event' },
     next: { stamp1: 'Next', stamp2: 'event', eyebrow: 'Next date', buy: 'Buy tickets', countdown: 'Countdown', countdownLabel: 'Time remaining until the event', units: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' } },
-    parties: { eyebrow: 'Events · Identity', title: 'Our', accent: 'parties', description: 'Three worlds. One way of understanding the dancefloor.', brand: 'A LICAN brand', discover: 'Discover' },
+    parties: { eyebrow: 'Events · Identity', title: 'Our', accent: 'parties', description: 'Four worlds. One way of understanding the dancefloor.', brand: 'A LICAN brand', discover: 'Discover' },
     memory: { eyebrow: 'LICAN archive', title: 'Past', accent: 'events' },
     realized: { eyebrow: 'LICAN archive', title: 'Past', accent: 'events', description: 'Posters and editorial memories from the nights that shaped the LICAN universe.', filterLabel: 'Filter past events by brand', filters: { all: 'All', feral: 'FERAL', 'headbang-dealers': 'Headbang Dealers', 'night-of-wolves': 'Night Of Wolves', nova: 'NOVA', lican: 'LICAN' }, descriptionTemplates: { feral: '{title} is part of the FERAL saga: hard techno, industrial sound and a powerful ritual identity.', 'headbang-dealers': '{title} brought bass culture, dubstep and headbang energy to the underground community.', 'night-of-wolves': '{title} combined alternative electronic music, glow aesthetics and the Night Of Wolves community spirit.', nova: '{title} connected modern electronic music, culture and an accessible format for new audiences.', lican: '{title} brought together local culture, creative production and electronic music under LICAN EVENTS.' } },
     business: { eyebrow: 'B2B · Production', lead1: 'We organize', lead2: 'your event', accent: 'to measure', description: 'Production, DJs, sound, visuals, audiovisual content, ticketing, campaigns and technical coordination. We create events for venues, brands, councils and cultural projects.', services: 'See services', quote: 'Request a quote' },
@@ -66,7 +148,7 @@ export const translations = {
     nav: { home: 'Home', events: 'Events', services: 'Diensten', artists: 'Artiesten', gallery: 'Galerij', contact: 'Contact', tickets: 'Tickets', openMenu: 'Menu openen', language: 'Taal selecteren' },
     hero: { line1: 'Waar elektronische', line2: 'muziek trilt', gradient: 'Met jou', desktopLine1: 'Waar elektronische', desktopLine2: 'Muziek trilt met jou', description: 'Elektronische events, audiovisuele productie, booking en underground ervaringen vanuit Tarragona en Barcelona.', nextEvent: 'Bekijk het volgende event', hireServices: 'Diensten inhuren', joinNewsletter: 'Aanmelden voor de nieuwsbrief', scroll: 'Ga naar het volgende event' },
     next: { stamp1: 'Volgend', stamp2: 'event', eyebrow: 'Volgende datum', buy: 'Tickets kopen', countdown: 'Aftellen', countdownLabel: 'Resterende tijd tot het event', units: { days: 'Dagen', hours: 'Uren', minutes: 'Minuten', seconds: 'Seconden' } },
-    parties: { eyebrow: 'Events · Identiteit', title: 'Onze', accent: 'feesten', description: 'Drie werelden. Eén visie op de dansvloer.', brand: 'Een LICAN-merk', discover: 'Ontdek' },
+    parties: { eyebrow: 'Events · Identiteit', title: 'Onze', accent: 'feesten', description: 'Vier werelden. Eén visie op de dansvloer.', brand: 'Een LICAN-merk', discover: 'Ontdek' },
     memory: { eyebrow: 'LICAN-archief', title: 'Eerdere', accent: 'events' },
     realized: { eyebrow: 'LICAN-archief', title: 'Eerdere', accent: 'events', description: 'Posters en verhalen van de avonden die het LICAN-universum hebben gevormd.', filterLabel: 'Filter eerdere events op merk', filters: { all: 'Alle', feral: 'FERAL', 'headbang-dealers': 'Headbang Dealers', 'night-of-wolves': 'Night Of Wolves', nova: 'NOVA', lican: 'LICAN' }, descriptionTemplates: { feral: '{title} maakt deel uit van de FERAL-saga: hard techno, industriële sound en een krachtige rituele identiteit.', 'headbang-dealers': '{title} bracht basscultuur, dubstep en headbang-energie naar de underground community.', 'night-of-wolves': '{title} combineerde alternatieve elektronische muziek, glow-esthetiek en de community van Night Of Wolves.', nova: '{title} verbond moderne elektronische muziek en cultuur in een toegankelijk format voor een breed publiek.', lican: '{title} bracht lokale cultuur, creatieve productie en elektronische muziek samen onder LICAN EVENTS.' } },
     business: { eyebrow: 'B2B · Productie', lead1: 'Wij organiseren', lead2: 'jouw event', accent: 'op maat', description: 'Productie, DJs, geluid, visuals, audiovisuele content, ticketing, campagnes en technische coördinatie. We creëren events voor locaties, merken, gemeenten en culturele projecten.', services: 'Bekijk diensten', quote: 'Offerte aanvragen' },
@@ -81,3 +163,5 @@ export const translations = {
     footer: { description: 'Promotor en cultureel productiebedrijf voor underground elektronische muziek.', navigation: 'Navigatie', contact: 'Contact' },
   },
 };
+
+applyExtendedTranslations();

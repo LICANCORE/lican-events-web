@@ -5,7 +5,7 @@ import { contactLinks, navigationItems } from '../../data/links';
 import useLanguage from '../../i18n/useLanguage';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { localizePath, t } = useLanguage();
 
   return (
     <footer className="site-footer">
@@ -17,7 +17,7 @@ export default function Footer() {
       <div>
         <p className="footer__label">{t.footer.navigation}</p>
         <nav className="footer__links" aria-label="Navegación del pie">
-          {navigationItems.map((item) => <Link to={item.to} key={item.to}>{t.nav[item.key]}</Link>)}
+          {navigationItems.map((item) => <Link to={localizePath(item.to)} key={item.to}>{t.nav[item.key]}</Link>)}
         </nav>
       </div>
       <div>
