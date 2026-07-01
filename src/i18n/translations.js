@@ -1,4 +1,6 @@
-export const supportedLanguages = ['cast', 'cat', 'eng', 'nl', 'deutsch'];
+import eoTranslations from './eoTranslations';
+
+export const supportedLanguages = ['cast', 'cat', 'eng', 'nl', 'deutsch', 'eo'];
 
 export const languageMeta = {
   cast: { short: 'CAST', label: 'Castellano', htmlLang: 'es', flag: 'es' },
@@ -6,6 +8,7 @@ export const languageMeta = {
   eng: { short: 'ENG', label: 'English', htmlLang: 'en', flag: 'gb' },
   nl: { short: 'NL', label: 'Nederlands', htmlLang: 'nl', flag: 'nl' },
   deutsch: { short: 'DE', label: 'Deutsch', htmlLang: 'de', flag: 'de' },
+  eo: { short: 'EO', label: 'Esperanto', htmlLang: 'eo', flag: 'eo' },
 };
 
 const pageCopy = {
@@ -167,6 +170,7 @@ export const translations = {
 
 applyExtendedTranslations();
 
+translations.eo = eoTranslations;
 translations.deutsch = JSON.parse(JSON.stringify(translations.eng));
 Object.assign(translations.deutsch, {
   nav: { home: 'Start', events: 'Events', services: 'Services', artists: 'Künstler', gallery: 'Galerie', contact: 'Kontakt', tickets: 'Tickets', openMenu: 'Menü öffnen', language: 'Sprache auswählen' },

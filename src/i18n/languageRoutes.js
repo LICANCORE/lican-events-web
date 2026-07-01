@@ -1,4 +1,4 @@
-export const supportedRouteLanguages = ['cast', 'cat', 'eng', 'nl', 'deutsch'];
+export const supportedRouteLanguages = ['cast', 'cat', 'eng', 'nl', 'deutsch', 'eo'];
 
 export const localizedRoutes = {
   cast: {
@@ -21,6 +21,10 @@ export const localizedRoutes = {
     prefix: 'deutsch',
     slugs: { home: '', events: 'veranstaltungen', services: 'dienstleistungen', artists: 'kuenstler', gallery: 'galerie', contact: 'kontakt' },
   },
+  eo: {
+    prefix: 'eo',
+    slugs: { home: '', events: 'eventoj', services: 'servoj', artists: 'artistoj', gallery: 'galerio', contact: 'kontakto' },
+  },
 };
 
 export const languagePrefixes = Object.fromEntries(
@@ -36,6 +40,7 @@ const legacySlugs = {
   eng: { eventos: 'events', servicios: 'services', artistas: 'artists', galeria: 'gallery', contacto: 'contact' },
   nl: { eventos: 'events', servicios: 'services', artistas: 'artists', galeria: 'gallery', contacto: 'contact' },
   deutsch: { eventos: 'events', servicios: 'services', artistas: 'artists', galeria: 'gallery', contacto: 'contact' },
+  eo: { eventos: 'events', servicios: 'services', artistas: 'artists', galeria: 'gallery', contacto: 'contact' },
 };
 
 const cleanPathname = (pathname = '/') => {

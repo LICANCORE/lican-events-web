@@ -25,6 +25,7 @@ const partnerTitleLines = {
   eng: ['Partnerships', 'And partner', 'Brands'],
   nl: ['Samenwerkingen', 'En partnermerken'],
   deutsch: ['Kooperationen', 'Und Partnermarken'],
+  eo: ['Interkonsentoj', 'Kaj kunlaborantaj', 'Markoj'],
 };
 
 export function Hero() {
