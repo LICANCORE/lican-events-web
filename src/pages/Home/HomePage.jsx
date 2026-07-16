@@ -75,7 +75,7 @@ export function NextEvent() {
   return (
     <section className="next-event home-section">
       <div className="next-event__visual">
-        <PublicImage src={nextEvent.image} alt="Hydraxxx en una sesión FERAL" loading="lazy" />
+        <PublicImage src={nextEvent.image} alt={nextEvent.alt} loading="lazy" />
         <span className="next-event__stamp">{t.next.stamp1}<br />{t.next.stamp2}</span>
       </div>
       <div id="eventos" className="next-event__content">
@@ -85,13 +85,15 @@ export function NextEvent() {
           <span className="next-event__title-line next-event__title-name">{eventTitle}</span>
         </h2>
         <div className="event-meta">
-          <p><Icon name="calendar" /> <span>{nextEvent.date}</span></p>
+          <p><Icon name="calendar" /> <span>{nextEvent.dateLabel}</span></p>
           <p><Icon name="clock" /> <span>{nextEvent.time}</span></p>
           <p><Icon name="pin" /> <span>{nextEvent.venue} · {nextEvent.city}</span></p>
+          <p><Icon name="pin" /> <span>{nextEvent.address}</span></p>
         </div>
         <div className="lineup">
           <p className="micro-label">Line-up</p>
           <ul>{nextEvent.lineUp.map((artist) => <li key={artist}>{artist}</li>)}</ul>
+          <p className="lineup__special">{nextEvent.specialShow}</p>
         </div>
         <EventCountdown target={nextEvent.startsAt} />
         <ButtonLink to={nextEvent.ticketUrl} icon="ticket">{t.next.buy}</ButtonLink>
@@ -101,8 +103,10 @@ export function NextEvent() {
 }
 
 function getRemainingTime(target) {
-  const distance = Math.max(0, new Date(target).getTime() - Date.now());
+  const rawDistance = new Date(target).getTime() - Date.now();
+  const distance = Math.max(0, rawDistance);
   return {
+    hasStarted: rawDistance <= 0,
     days: Math.floor(distance / 86_400_000),
     hours: Math.floor((distance / 3_600_000) % 24),
     minutes: Math.floor((distance / 60_000) % 60),
@@ -129,14 +133,18 @@ function EventCountdown({ target }) {
   return (
     <div className="countdown" aria-label={t.next.countdownLabel}>
       <p className="micro-label">{t.next.countdown}</p>
-      <div className="countdown__units">
-        {units.map(([key, label]) => (
-          <div key={key}>
-            <strong>{String(remaining[key]).padStart(2, '0')}</strong>
-            <span>{label}</span>
-          </div>
-        ))}
-      </div>
+      {remaining.hasStarted ? (
+        <p className="countdown__started">{t.next.started}</p>
+      ) : (
+        <div className="countdown__units">
+          {units.map(([key, label]) => (
+            <div key={key}>
+              <strong>{String(remaining[key]).padStart(2, '0')}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -194,6 +202,7 @@ export function RealizedEvents() {
         </div>
         <div className="realized-events__grid">
           {visibleEvents.map((event) => {
+            const isUpcoming = event.status === 'upcoming' && Date.parse(event.startDateTime || `${event.date}T23:59:59`) > Date.now();
             const description = language === 'cast'
               ? event.descriptionSEO
               : t.realized.descriptionTemplates[event.brandKey].replace('{title}', event.title);
@@ -206,6 +215,7 @@ export function RealizedEvents() {
                   <PublicImage src={event.image} alt={event.alt} loading="lazy" />
                 </figure>
                 <div className="realized-event-card__content">
+                  {isUpcoming ? <p className="realized-event-card__status">{t.realized.status.upcoming}</p> : null}
                   <time dateTime={event.date}>{dateFormatter.format(new Date(`${event.date}T12:00:00`))}</time>
                   <h3>{event.title}</h3>
                   <p className="realized-event-card__brand">{event.brand}</p>
@@ -498,8 +508,7 @@ export function Contact({ page = false }) {
 }
 
 export default function HomePage() {
-  const { t } = useLanguage();
-  usePageTitle(t.nav.home, t.hero.description);
+  usePageTitle('Night Of Psytrance: EKLYPSE ZERO', 'Night Of Psytrance: EKLYPSE ZERO llega a Sala Zero Tarragona el 12 de agosto de 2026 con Afroditta, Julius, KËNDA, Kosmonow, Rubeinstein y el show Eklipsy Lights.');
 
   return (
     <div className="home-page">
