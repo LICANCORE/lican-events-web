@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#050806" />
+    <link rel="icon" type="image/webp" href="/headbangdealers_the_game/favicon.webp" />
+    <meta name="description" content="HEADBANG DEALERS: BASS TRAFFICKERS — campaña rítmica web." />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>HEADBANG DEALERS // BASS TRAFFICKERS</title>
+    <script type="module" crossorigin src="/headbangdealers_the_game/assets/index-ss4OuJ9Q.js"></script>
+    <link rel="stylesheet" crossorigin href="/headbangdealers_the_game/assets/index-BoiHsIBe.css">
+  </head>
+  <body>
+    <main id="app" aria-label="HEADBANG DEALERS: BASS TRAFFICKERS">
+      <section id="game-stage" class="stage stage--portrait">
+        <div id="canvas-host" aria-hidden="true"></div>
+
+        <div id="hud" class="hud is-hidden" aria-live="polite">
+          <div class="hud__top">
+            <div class="readout"><span id="hud-level">TUTORIAL</span><strong id="score">000000</strong></div>
+            <div class="readout readout--combo">
+              <span>COMBO</span>
+              <div class="combo-value">
+                <strong id="combo">x0</strong>
+                <em id="drop-banner" class="drop-indicator is-hidden" data-i18n="dropActive">DROP ACTIVE</em>
+              </div>
+            </div>
+            <div class="readout"><span data-i18n="time">TIEMPO</span><strong id="timer">00:40</strong></div>
+            <button id="pause-button" class="icon-button" data-i18n-aria="pause" aria-label="Pausar">Ⅱ</button>
+          </div>
+          <div class="meter meter--bass">
+            <div class="meter__label"><span data-i18n="bassMeter">MEDIDOR BASS</span><strong id="bass-value">0%</strong></div>
+            <div class="meter__track"><i id="bass-fill"></i></div>
+          </div>
+          <div id="totem-readout" class="totem-readout"><span data-i18n="totem">TÓTEM</span> <strong id="totem-value">100%</strong></div>
+          <div id="feedback" class="feedback" aria-live="assertive"></div>
+          <div id="usb-pickup-prompt" class="usb-pickup-prompt is-hidden" aria-live="assertive">
+            <strong id="usb-pickup-control">S / ↓ — RECOGER ITEM</strong>
+          </div>
+          <div id="item-acquired" class="item-acquired is-hidden" aria-live="assertive">ITEM ACQUIRED</div>
+          <div class="meter meter--neck">
+            <div class="meter__label"><span data-i18n="neckDamage">DAÑO DE CUELLO</span><strong id="neck-state">SAFE</strong></div>
+            <div class="meter__track"><i id="neck-fill"></i></div>
+          </div>
+          <div id="move-joystick" class="move-joystick" role="application" data-i18n-aria="joystickGuide" aria-label="Joystick: izquierda y derecha para desplazarse, arriba para saltar y abajo para agacharse o recoger el ITEM">
+            <span class="joystick-label joystick-label--up" data-i18n="jump">SALTAR</span>
+            <span class="joystick-label joystick-label--down" data-i18n="crouch">AGACHAR</span>
+            <span class="joystick-label joystick-label--left" data-i18n="move">MOVER</span>
+            <span class="joystick-label joystick-label--right" data-i18n="move">MOVER</span>
+            <i id="joystick-knob"></i>
+          </div>
+        </div>
+
+        <section id="menu-screen" class="screen screen--menu">
+          <div class="screen__shade"></div>
+          <div class="screen__content menu-card">
+            <p class="eyebrow" data-i18n="presentedBy">BASS TRAFFICKERS PRESENTA</p>
+            <img class="brand-logo" src="/headbangdealers_the_game/assets/ui/identity/HD_BT_UI_LOGO_HORIZONTAL_v001.webp" alt="Headbang Dealers" />
+            <button id="settings-button" class="settings-gear" type="button" data-i18n-aria="settings" aria-label="Ajustes">⚙</button>
+            <div class="menu-hero">
+              <img id="menu-character-image" src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_TREZE_FRONT_GAME_SELECT_v009.webp" alt="TREZE" />
+              <i class="menu-spark menu-spark--one"></i>
+              <i class="menu-spark menu-spark--two"></i>
+              <i class="menu-spark menu-spark--three"></i>
+            </div>
+            <div class="menu-actions">
+              <h1>VERTEBRAE<br />CHECK</h1>
+              <p class="tagline" data-i18n="tagline">TRAFICA EL BASS. ROMPE EL TÓTEM.</p>
+              <button id="play-button" class="primary-button" data-i18n="play">JUGAR</button>
+              <button id="levels-button" class="menu-button" data-i18n="levels">NIVELES</button>
+              <button id="character-button" class="menu-button">
+                <span data-i18n="characters">PERSONAJES</span> <strong id="selected-character-name">TREZE</strong>
+              </button>
+              <button id="gallery-button" class="menu-button" data-i18n="gallery">COLECCIÓN</button>
+            </div>
+            <div class="campaign-summary">
+              <span data-i18n="campaign">CAMPAÑA</span>
+              <strong id="campaign-progress">0 / 7</strong>
+              <small id="campaign-current">NIVEL 1 DISPONIBLE</small>
+            </div>
+          </div>
+        </section>
+
+        <section id="character-screen" class="screen is-hidden" aria-labelledby="character-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content character-select">
+            <p class="eyebrow">BASS TRAFFICKERS // ROSTER</p>
+            <h2 id="character-title" data-i18n="chooseCharacter">ELIGE PERSONAJE</h2>
+            <div class="character-carousel">
+              <button id="character-prev" class="carousel-arrow carousel-arrow--prev" type="button" data-i18n-aria="previousCharacters" aria-label="Personajes anteriores">&#10094;</button>
+              <div id="character-viewport" class="character-viewport">
+                <div id="character-grid" class="character-grid">
+                  <button id="character-card-treze" class="character-card" data-character-id="treze" aria-pressed="true"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_TREZE_FRONT_GAME_SELECT_v009.webp" alt="TREZE de frente y cuerpo completo" /></span><strong>TREZE</strong></button>
+                  <button id="character-card-hydraxxx" class="character-card character-card--hydraxxx" data-character-id="hydraxxx" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_HYDRAXXX_FRONT_GAME_SELECT_v009.webp" alt="HYDRAXXX de frente y cuerpo completo" /></span><strong>HYDRAXXX</strong></button>
+                  <button id="character-card-henry-rituals" class="character-card character-card--henry-rituals" data-character-id="henryRituals" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v014/HD_BT_HENRY_RITUALS_FRONT_GAME_SELECT_v014.webp" alt="HENRY RITUALS frontal de cuerpo completo" /></span><strong>HENRY RITUALS</strong></button>
+                  <button id="character-card-frankale" class="character-card character-card--frankale" data-character-id="frankale" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_FRANKALE_FRONT_GAME_SELECT_v009.webp" alt="FRANKALE de frente y cuerpo completo" /></span><strong>FRANKALE</strong></button>
+                  <button id="character-card-viko" class="character-card character-card--viko" data-character-id="viko" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_VIKO_FRONT_GAME_SELECT_v009.webp" alt="VIKO de frente y cuerpo completo" /></span><strong>VIKO</strong></button>
+                  <button id="character-card-eddy-clash" class="character-card character-card--eddy-clash" data-character-id="eddyClash" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_EDDY_CLASH_FRONT_GAME_SELECT_v009.webp" alt="EDDY CLASH de frente y cuerpo completo" /></span><strong>EDDY CLASH</strong></button>
+                  <button id="character-card-beutnoise" class="character-card character-card--beutnoise" data-character-id="beutnoise" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_BEUTNOISE_FRONT_GAME_SELECT_v009.webp" alt="BEUTNOISE de frente y cuerpo completo" /></span><strong>BEUTNOISE</strong></button>
+                  <button id="character-card-onionstep" class="character-card character-card--onionstep" data-character-id="onionstep" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_ONIONSTEP_FRONT_GAME_SELECT_v009.webp" alt="ONIONSTEP de frente y cuerpo completo" /></span><strong>ONIONSTEP</strong></button>
+                  <button id="character-card-qveens" class="character-card character-card--qveens" data-character-id="qveens" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_QVEENS_FRONT_GAME_SELECT_v009.webp" alt="QVEENS de frente y cuerpo completo" /></span><strong>QVEENS</strong></button>
+                  <button id="character-card-faye" class="character-card character-card--faye" data-character-id="faye" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_FAYE_FRONT_GAME_SELECT_v009.webp" alt="FAYE de frente y cuerpo completo" /></span><strong>FAYE</strong></button>
+                </div>
+              </div>
+              <button id="character-next" class="carousel-arrow carousel-arrow--next" type="button" data-i18n-aria="nextCharacters" aria-label="Personajes siguientes">&#10095;</button>
+            </div>
+            <p id="character-carousel-status" class="carousel-status" aria-live="polite"></p>
+            <button id="character-back" class="primary-button" data-i18n="confirmBack">CONFIRMAR Y VOLVER</button>
+          </div>
+        </section>
+
+        <section id="levels-screen" class="screen is-hidden" aria-labelledby="levels-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content levels-select">
+            <p class="eyebrow" data-i18n="campaignEyebrow">BASS TRAFFICKERS // CAMPAÑA</p>
+            <h2 id="levels-title" data-i18n="levels">NIVELES</h2>
+            <div class="levels-carousel">
+              <button id="levels-prev" class="carousel-arrow carousel-arrow--prev" type="button" data-i18n-aria="previousLevels" aria-label="Niveles anteriores">&#10094;</button>
+              <div id="levels-viewport" class="levels-viewport">
+                <div id="levels-grid" class="levels-grid" role="list"></div>
+              </div>
+              <button id="levels-next" class="carousel-arrow carousel-arrow--next" type="button" data-i18n-aria="nextLevels" aria-label="Niveles siguientes">&#10095;</button>
+            </div>
+            <p id="levels-carousel-status" class="carousel-status" aria-live="polite"></p>
+            <button id="levels-back" class="text-button" data-i18n="backMenu">VOLVER AL MENÚ</button>
+          </div>
+        </section>
+
+        <section id="gallery-screen" class="screen is-hidden" aria-labelledby="gallery-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content collection-panel">
+            <p class="eyebrow" data-i18n="collectionEyebrow">BASS TRAFFICKERS // COLECCIÓN</p>
+            <h2 id="gallery-title" data-i18n="galleryTitle">COLECCIÓN</h2>
+            <div class="collection-tabs" role="tablist" aria-label="Colección">
+              <button id="collection-usb-button" class="collection-tab is-active" role="tab" aria-selected="true">USB</button>
+              <button id="collection-objects-button" class="collection-tab" role="tab" aria-selected="false" data-i18n="objects">OBJETOS</button>
+            </div>
+            <div class="collection-carousel">
+              <button id="collection-prev" class="carousel-arrow carousel-arrow--prev" type="button" data-i18n-aria="previousCollection" aria-label="Elementos anteriores">&#10094;</button>
+              <div id="collection-viewport" class="collection-viewport">
+                <div id="usb-gallery" class="usb-gallery collection-grid" role="list"></div>
+              </div>
+              <button id="collection-next" class="carousel-arrow carousel-arrow--next" type="button" data-i18n-aria="nextCollection" aria-label="Elementos siguientes">&#10095;</button>
+            </div>
+            <p id="collection-carousel-status" class="carousel-status" aria-live="polite"></p>
+            <button id="gallery-back" class="text-button collection-back" data-i18n="back">VOLVER</button>
+          </div>
+        </section>
+
+        <section id="settings-screen" class="screen is-hidden" aria-labelledby="settings-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content info-panel info-panel--compact">
+            <p class="eyebrow" data-i18n="settingsEyebrow">SISTEMA // ACCESO</p>
+            <h2 id="settings-title" data-i18n="settings">AJUSTES</h2>
+            <label class="language-picker" for="language-select">
+              <span data-i18n="language">IDIOMA</span>
+              <select id="language-select">
+                <option value="en">ENGLISH</option>
+                <option value="es">CASTELLANO</option>
+                <option value="de">DEUTSCH</option>
+                <option value="eo">ESPERANTO</option>
+              </select>
+            </label>
+            <section class="controls-guide" aria-labelledby="controls-title">
+              <h3 id="controls-title" data-i18n="controls">CONTROLES</h3>
+              <p data-i18n="controlMove">Moverse: A / D o flechas izquierda / derecha.</p>
+              <p data-i18n="controlJump">Saltar: W o flecha arriba.</p>
+              <p data-i18n="controlCrouch">Agacharse y recoger ITEM: S o flecha abajo.</p>
+              <p data-i18n="controlHit">Golpear: ESPACIO, clic o toque. En móvil utiliza el joystick.</p>
+            </section>
+            <button id="sound-button" class="menu-button" aria-pressed="true">SONIDO: ON</button>
+            <button id="sfx-button" class="menu-button" aria-pressed="true">EFECTOS DE SONIDO: ON</button>
+            <button id="access-button" class="menu-button" aria-pressed="false">TIMING: NORMAL</button>
+            <button id="reduced-flashes-button" class="menu-button" aria-pressed="false">DESTELLOS: NORMAL</button>
+            <button id="minimal-motion-button" class="menu-button" aria-pressed="false">MOVIMIENTO: NORMAL</button>
+            <button id="screen-shake-button" class="menu-button" aria-pressed="true">SCREEN SHAKE: ON</button>
+            <button id="settings-credits-button" class="menu-button" data-i18n="openCredits">CRÉDITOS</button>
+            <button id="reset-progress-button" class="danger-button" data-i18n="resetProgress">REINICIAR PROGRESO</button>
+            <button id="settings-back" class="text-button" data-i18n="back">VOLVER</button>
+          </div>
+        </section>
+
+        <section id="credits-screen" class="screen is-hidden" aria-labelledby="credits-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content info-panel info-panel--compact">
+            <p class="eyebrow">HEADBANG DEALERS</p>
+            <h2 id="credits-title" data-i18n="credits">CRÉDITOS</h2>
+            <p data-i18n="creditCreative">Dirección creativa y universo: LICAN.</p>
+            <p data-i18n="creditMusic">Música: FranKale, Viko, Eddy Clash, BeutNoise, OnionStep, Qveens y Faye.</p>
+            <p data-i18n="creditProduction">Diseño y producción: BASS TRAFFICKERS.</p>
+            <button id="credits-back" class="text-button" data-i18n="back">VOLVER</button>
+          </div>
+        </section>
+
+        <section id="tutorial-screen" class="screen is-hidden" aria-labelledby="tutorial-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content panel">
+            <p class="eyebrow adaptive-text"><span id="tutorial-level-name">TUTORIAL</span> // <span id="tutorial-song-name">FRANKALE — PABLO</span></p>
+            <h2 id="tutorial-title" data-i18n="tutorialBeat">PULSA AL RITMO</h2>
+            <div class="tutorial-visual" aria-hidden="true"><span class="tutorial-rail"></span><span class="tutorial-bass">BASS</span><span class="tutorial-target"></span></div>
+            <p data-i18n="pressAtMark">Pulsa cuando el aviso BASS llegue a la marca central bajo el Tótem.</p>
+            <div class="judgement-row"><span>PERFECT</span><span>HEAVY</span><span>WEAK</span><span>MISS</span></div>
+            <div class="tutorial-items" aria-label="Objetos de daño y curación">
+              <article id="tutorial-hurt-card" class="tutorial-item tutorial-item--hurt">
+                <img id="tutorial-hurt-image" alt="" />
+                <div><strong data-i18n="hurtItem">OBJETO HURT</strong><span data-i18n="hurtPercent">CONTACTO: +30% DAÑO</span></div>
+              </article>
+              <article class="tutorial-item tutorial-item--health">
+                <span class="tutorial-health-pair">
+                  <img src="/headbangdealers_the_game/assets/items/v013/health/HD_BT_ITEM_BURGER_v013.webp" alt="" />
+                  <img src="/headbangdealers_the_game/assets/items/v013/health/HD_BT_ITEM_VINYL_v013.webp" alt="" />
+                </span>
+                <div><strong data-i18n="healthItem">OBJETO HEALTH</strong><span data-i18n="healthPercent">CONTACTO: −50% DAÑO</span></div>
+              </article>
+              <article class="tutorial-item tutorial-item--miss">
+                <b>MISS</b>
+                <div><strong data-i18n="playerMiss">GOLPE MISS</strong><span data-i18n="missPercent">PULSADO: +15% DAÑO</span></div>
+              </article>
+            </div>
+            <p class="tutorial-note" data-i18n="tutorialControls">A/D o ←/→ para moverte. W o ↑ para saltar. S o ↓ para agacharte y recoger el ITEM. En móvil utiliza las cuatro direcciones del joystick. Puedes golpear el Tótem desde ambos lados.</p>
+            <button id="start-button" class="primary-button" data-i18n="start">EMPEZAR</button>
+            <button id="tutorial-back" class="text-button" data-i18n="back">VOLVER</button>
+          </div>
+        </section>
+
+        <section id="countdown-screen" class="screen screen--clear is-hidden" aria-live="assertive"><div id="countdown-value" class="countdown">3</div></section>
+
+        <section id="pause-screen" class="screen is-hidden" aria-labelledby="pause-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content panel panel--small">
+            <p class="eyebrow" data-i18n="pauseEyebrow">SEÑAL EN PAUSA</p>
+            <h2 id="pause-title" data-i18n="pause">PAUSA</h2>
+            <button id="resume-button" class="primary-button" data-i18n="continue">CONTINUAR</button>
+            <button id="quit-button" class="text-button" data-i18n="exitMenu">SALIR AL MENÚ</button>
+          </div>
+        </section>
+
+        <section id="results-screen" class="screen is-hidden" aria-labelledby="results-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content results-card">
+            <p id="result-kind" class="eyebrow">RUN COMPLETE</p>
+            <p id="result-song-name" class="result-song adaptive-text">FRANKALE — PABLO</p>
+            <img id="rank-badge" class="rank-badge" alt="Insignia de rango" />
+            <h2 id="results-title">BEDROOM BANGER</h2>
+            <p id="result-line" class="tagline"></p>
+            <div id="result-item" class="result-item">
+              <img id="result-usb" alt="USB TRAFF obtenido" />
+              <div><strong id="result-item-status">ITEM ACQUIRED</strong><span id="result-item-title"></span><small id="result-item-artist"></small></div>
+            </div>
+            <div id="result-object" class="result-item result-item--object is-hidden">
+              <img id="result-object-image" alt="Objeto coleccionable obtenido" />
+              <div><strong data-i18n="objectAcquired">OBJETO CONSEGUIDO</strong><span id="result-object-title"></span><small data-i18n="collectionReward">AÑADIDO A COLECCIÓN</small></div>
+            </div>
+            <dl class="results-grid">
+              <dt data-i18n="score">PUNTUACIÓN</dt><dd id="result-score">0</dd>
+              <dt data-i18n="accuracy">PRECISIÓN</dt><dd id="result-accuracy">0%</dd>
+              <dt>PERFECT</dt><dd id="result-perfect">0</dd>
+              <dt>HEAVY</dt><dd id="result-heavy">0</dd>
+              <dt>WEAK</dt><dd id="result-weak">0</dd>
+              <dt>MISS</dt><dd id="result-miss">0</dd>
+              <dt data-i18n="maxCombo">COMBO MÁX.</dt><dd id="result-combo">x0</dd>
+              <dt data-i18n="totalDamage">DAÑO TOTAL</dt><dd id="result-damage">0%</dd>
+              <dt data-i18n="totem">TÓTEM</dt><dd id="result-totem">100%</dd>
+              <dt data-i18n="neck">CUELLO</dt><dd id="result-neck">SAFE</dd>
+              <dt data-i18n="record">RÉCORD</dt><dd id="result-best">0</dd>
+              <dt data-i18n="character">PERSONAJE</dt><dd id="result-unlock-character">—</dd>
+              <dt data-i18n="next">SIGUIENTE</dt><dd id="result-unlock-level">—</dd>
+            </dl>
+            <div class="results-actions">
+              <button id="unlock-cta-button" class="unlock-cta is-hidden">
+                <span data-i18n="newCharacter">¡NUEVO PERSONAJE DESBLOQUEADO!</span>
+                <strong>DESCUBRIR PERSONAJE</strong>
+              </button>
+              <button id="next-level-button" class="primary-button" data-i18n="nextLevel">SIGUIENTE NIVEL</button>
+              <button id="retry-button" class="menu-button">REPETIR</button>
+              <button id="results-levels" class="menu-button" data-i18n="levels">NIVELES</button>
+              <a id="instagram-button" class="menu-button" target="_blank" rel="noopener noreferrer">VER INSTAGRAM DEL ARTISTA</a>
+              <button id="results-menu" class="text-button" data-i18n="mainMenu">MENÚ PRINCIPAL</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="unlock-screen" class="screen unlock-screen is-hidden" aria-labelledby="unlock-title">
+          <div class="screen__shade"></div>
+          <div id="unlock-cinematic" class="screen__content unlock-cinematic" data-phase="off">
+            <p class="eyebrow">USB TRAFF // SECURE DECRYPTION</p>
+            <h2 id="unlock-title" data-i18n="newArtistUnlocked">NUEVO ARTISTA DESBLOQUEADO</h2>
+            <div class="unlock-layout">
+              <div id="unlock-pc-rig" class="unlock-pc-rig" aria-label="Terminal Headbang Dealers">
+                <img id="unlock-pc-off" class="unlock-pc unlock-pc--off" src="/headbangdealers_the_game/assets/unlock/common/HD_BT_UNLOCK_PC_OFF_v011.webp" data-i18n-alt="terminalOff" alt="Terminal apagado" />
+                <img id="unlock-pc-on" class="unlock-pc unlock-pc--on" src="/headbangdealers_the_game/assets/unlock/common/HD_BT_UNLOCK_PC_ON_v011.webp" data-i18n-alt="terminalOn" alt="Terminal encendido" />
+                <img id="unlock-usb" class="unlock-usb" data-i18n-alt="artistUsb" alt="Pendrive del artista" />
+                <i class="unlock-insert-flash" aria-hidden="true"></i>
+                <div class="unlock-terminal-copy" aria-live="assertive">
+                  <span id="unlock-terminal-status">WAITING FOR USB TRAFF...</span>
+                  <strong id="unlock-terminal-artist"></strong>
+                </div>
+              </div>
+              <div class="unlock-reveal" aria-live="polite">
+                <div class="unlock-reveal__frame">
+                  <img id="unlock-character-image" data-i18n-alt="characterUnlockedAlt" alt="Personaje desbloqueado" />
+                  <i class="unlock-reveal__scan" aria-hidden="true"></i>
+                </div>
+                <strong id="unlock-artist-name">—</strong>
+                <span id="unlock-stage-label">ENCRYPTED SIGNAL</span>
+                <div id="unlock-stage-progress" class="unlock-stage-progress" data-i18n-aria="revealProgress" aria-label="Progreso de revelado">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <button id="unlock-continue-button" class="primary-button unlock-continue-inline is-hidden">CONTINUAR</button>
+              </div>
+            </div>
+            <div class="unlock-controls">
+              <button id="unlock-skip-button" class="text-button" data-i18n="skip">SALTAR</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="error-screen" class="screen is-hidden" role="alert">
+          <div class="screen__shade"></div>
+          <div class="screen__content panel">
+            <p class="eyebrow" data-i18n="signalLost">SEÑAL PERDIDA</p>
+            <h2 data-i18n="errorTitle">NO SE PUDO INICIAR</h2>
+            <p id="error-message" data-i18n="unknownError">Error desconocido.</p>
+            <button class="primary-button" data-i18n="reload" onclick="location.reload()">RECARGAR</button>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

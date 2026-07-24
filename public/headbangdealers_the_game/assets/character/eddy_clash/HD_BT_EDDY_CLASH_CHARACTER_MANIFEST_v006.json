@@ -1,0 +1,46 @@
+{
+  "id": "eddyClash",
+  "displayName": "EDDY CLASH",
+  "version": "v006",
+  "format": "WebP lossless with alpha",
+  "canvas": [
+    256,
+    256
+  ],
+  "anchor": [
+    0.5,
+    0.9296875
+  ],
+  "commonScale": 0.587342,
+  "sourceReference": "D:\\0. LICAN\\GAME_HEADBANG_DEALERS_BASS_TRAFFICKERS\\PJ\\EDDY CLASH\\ChatGPT Image 23 jul 2026, 17_46_19.png",
+  "identityTraits": [
+    "shoulder-length brown dreadlocks and full beard",
+    "black shirt with yellow lightning bolt",
+    "black wristbands",
+    "ripped cuffed blue jeans",
+    "silver trouser chain",
+    "black sneakers"
+  ],
+  "poses": {
+    "WALK_RIGHT_01": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_RIGHT_01_v006.webp",
+    "WALK_RIGHT_02": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_RIGHT_02_v006.webp",
+    "WALK_RIGHT_03": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_RIGHT_03_v006.webp",
+    "WALK_RIGHT_04": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_RIGHT_04_v006.webp",
+    "SIDE_RIGHT_NEUTRAL": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_RIGHT_NEUTRAL_v006.webp",
+    "SIDE_RIGHT_LOAD": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_RIGHT_LOAD_v006.webp",
+    "SIDE_RIGHT_ATTACK": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_RIGHT_ATTACK_v006.webp",
+    "SIDE_RIGHT_IMPACT": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_RIGHT_IMPACT_v006.webp",
+    "SIDE_RIGHT_CROUCH": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_RIGHT_CROUCH_v006.webp",
+    "SIDE_RIGHT_JUMP": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_RIGHT_JUMP_v006.webp",
+    "WALK_LEFT_01": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_LEFT_01_v006.webp",
+    "WALK_LEFT_02": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_LEFT_02_v006.webp",
+    "WALK_LEFT_03": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_LEFT_03_v006.webp",
+    "WALK_LEFT_04": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_WALK_LEFT_04_v006.webp",
+    "SIDE_LEFT_NEUTRAL": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_LEFT_NEUTRAL_v006.webp",
+    "SIDE_LEFT_LOAD": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_LEFT_LOAD_v006.webp",
+    "SIDE_LEFT_ATTACK": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_LEFT_ATTACK_v006.webp",
+    "SIDE_LEFT_IMPACT": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_LEFT_IMPACT_v006.webp",
+    "SIDE_LEFT_CROUCH": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_LEFT_CROUCH_v006.webp",
+    "SIDE_LEFT_JUMP": "assets/character/eddy_clash/HD_BT_EDDY_CLASH_SIDE_LEFT_JUMP_v006.webp"
+  }
+}

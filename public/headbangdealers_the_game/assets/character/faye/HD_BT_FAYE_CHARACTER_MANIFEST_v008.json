@@ -1,0 +1,47 @@
+{
+  "id": "faye",
+  "displayName": "FAYE",
+  "version": "v008",
+  "format": "WebP lossless with alpha",
+  "canvas": [
+    256,
+    256
+  ],
+  "anchor": [
+    0.5,
+    0.9296875
+  ],
+  "commonScale": 0.560386,
+  "sourceReference": "D:\\0. LICAN\\GAME_HEADBANG_DEALERS_BASS_TRAFFICKERS\\PJ\\FAYE\\ChatGPT Image 23 jul 2026, 18_39_34.png",
+  "identityTraits": [
+    "dark charcoal-gray baseball cap",
+    "shoulder-length brown-to-blonde ombre hair",
+    "large dark eyes with strong eyelashes",
+    "oversized black sweatshirt with white FAYE chest text",
+    "white skull and skeleton artwork on both sleeves",
+    "loose black trousers",
+    "chunky black-and-white sneakers"
+  ],
+  "poses": {
+    "WALK_RIGHT_01": "assets/character/faye/HD_BT_FAYE_WALK_RIGHT_01_v008.webp",
+    "WALK_RIGHT_02": "assets/character/faye/HD_BT_FAYE_WALK_RIGHT_02_v008.webp",
+    "WALK_RIGHT_03": "assets/character/faye/HD_BT_FAYE_WALK_RIGHT_03_v008.webp",
+    "WALK_RIGHT_04": "assets/character/faye/HD_BT_FAYE_WALK_RIGHT_04_v008.webp",
+    "SIDE_RIGHT_NEUTRAL": "assets/character/faye/HD_BT_FAYE_SIDE_RIGHT_NEUTRAL_v008.webp",
+    "SIDE_RIGHT_LOAD": "assets/character/faye/HD_BT_FAYE_SIDE_RIGHT_LOAD_v008.webp",
+    "SIDE_RIGHT_ATTACK": "assets/character/faye/HD_BT_FAYE_SIDE_RIGHT_ATTACK_v008.webp",
+    "SIDE_RIGHT_IMPACT": "assets/character/faye/HD_BT_FAYE_SIDE_RIGHT_IMPACT_v008.webp",
+    "SIDE_RIGHT_CROUCH": "assets/character/faye/HD_BT_FAYE_SIDE_RIGHT_CROUCH_v008.webp",
+    "SIDE_RIGHT_JUMP": "assets/character/faye/HD_BT_FAYE_SIDE_RIGHT_JUMP_v008.webp",
+    "WALK_LEFT_01": "assets/character/faye/HD_BT_FAYE_WALK_LEFT_01_v008.webp",
+    "WALK_LEFT_02": "assets/character/faye/HD_BT_FAYE_WALK_LEFT_02_v008.webp",
+    "WALK_LEFT_03": "assets/character/faye/HD_BT_FAYE_WALK_LEFT_03_v008.webp",
+    "WALK_LEFT_04": "assets/character/faye/HD_BT_FAYE_WALK_LEFT_04_v008.webp",
+    "SIDE_LEFT_NEUTRAL": "assets/character/faye/HD_BT_FAYE_SIDE_LEFT_NEUTRAL_v008.webp",
+    "SIDE_LEFT_LOAD": "assets/character/faye/HD_BT_FAYE_SIDE_LEFT_LOAD_v008.webp",
+    "SIDE_LEFT_ATTACK": "assets/character/faye/HD_BT_FAYE_SIDE_LEFT_ATTACK_v008.webp",
+    "SIDE_LEFT_IMPACT": "assets/character/faye/HD_BT_FAYE_SIDE_LEFT_IMPACT_v008.webp",
+    "SIDE_LEFT_CROUCH": "assets/character/faye/HD_BT_FAYE_SIDE_LEFT_CROUCH_v008.webp",
+    "SIDE_LEFT_JUMP": "assets/character/faye/HD_BT_FAYE_SIDE_LEFT_JUMP_v008.webp"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "version": 14,
+  "levels": {
+    "tutorial": {
+      "audio": "track-pabloTutorial",
+      "beatmap": "beatmap-pabloTutorial",
+      "background": "/headbangdealers_the_game/assets/environments/HD_BT_ENV_WAREHOUSE_COMPLETE_DESKTOP_v001.webp",
+      "backgroundMobile": "/headbangdealers_the_game/assets/environments/HD_BT_ENV_WAREHOUSE_COMPLETE_MOBILE_v001.webp",
+      "totemPrefix": "/headbangdealers_the_game/assets/targets/HD_BT_TARGET_BASSTOTEM_DAMAGE",
+      "totemSuffix": "_v001.webp",
+      "usb": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_FRANKALE.webp",
+      "collectibleObject": "/headbangdealers_the_game/assets/items/v014/collectibles/HD_BT_ITEM_KEYCHAIN_v014.webp",
+      "hurtItem": null,
+      "available": true,
+      "missingReason": null
+    },
+    "level-2-viko": {
+      "audio": "track-gasPedal",
+      "beatmap": "beatmap-gasPedal",
+      "background": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL02_BACKGROUND.webp",
+      "backgroundMobile": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL02_BACKGROUND.webp",
+      "totemPrefix": "/headbangdealers_the_game/assets/campaign/totems/HD_BT_LEVEL02_TOTEM_DAMAGE",
+      "totemSuffix": ".webp",
+      "usb": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_VIKO.webp",
+      "collectibleObject": null,
+      "hurtItem": null,
+      "available": true,
+      "missingReason": null
+    },
+    "level-3-eddy-clash": {
+      "audio": "track-soHot",
+      "beatmap": "beatmap-soHot",
+      "background": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL03_BACKGROUND.webp",
+      "backgroundMobile": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL03_BACKGROUND.webp",
+      "totemPrefix": "/headbangdealers_the_game/assets/campaign/totems/HD_BT_LEVEL03_TOTEM_DAMAGE",
+      "totemSuffix": ".webp",
+      "usb": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_EDDY_CLASH.webp",
+      "collectibleObject": "/headbangdealers_the_game/assets/items/v013/collectibles/HD_BT_ITEM_LIGHTER_v013.webp",
+      "hurtItem": "/headbangdealers_the_game/assets/items/v013/hurt/HD_BT_ITEM_LEVEL03-SYRINGE_v013.webp",
+      "available": true,
+      "missingReason": null
+    },
+    "level-4-beutnoise": {
+      "audio": "track-forestPunk",
+      "beatmap": "beatmap-forestPunk",
+      "background": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL04_BACKGROUND.webp",
+      "backgroundMobile": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL04_BACKGROUND.webp",
+      "totemPrefix": "/headbangdealers_the_game/assets/campaign/totems/HD_BT_LEVEL04_TOTEM_DAMAGE",
+      "totemSuffix": ".webp",
+      "usb": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_BEUTNOISE.webp",
+      "collectibleObject": null,
+      "hurtItem": "/headbangdealers_the_game/assets/items/v013/hurt/HD_BT_ITEM_LEVEL04-PIZZA_v013.webp",
+      "available": true,
+      "missingReason": null
+    },
+    "level-5-onionstep": {
+      "audio": "track-untouchable",
+      "beatmap": "beatmap-untouchable",
+      "background": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL05_BACKGROUND.webp",
+      "backgroundMobile": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL05_BACKGROUND.webp",
+      "totemPrefix": "/headbangdealers_the_game/assets/campaign/totems/HD_BT_LEVEL05_TOTEM_DAMAGE",
+      "totemSuffix": "_v014.webp",
+      "usb": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_ONIONSTEP.webp",
+      "collectibleObject": "/headbangdealers_the_game/assets/items/v013/collectibles/HD_BT_ITEM_CAP_v013.webp",
+      "hurtItem": "/headbangdealers_the_game/assets/items/v013/hurt/HD_BT_ITEM_LEVEL05-HAMMER_v013.webp",
+      "available": true,
+      "missingReason": null
+    },
+    "level-6-faye": {
+      "audio": "track-tts",
+      "beatmap": "beatmap-tts",
+      "background": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL06_BACKGROUND.webp",
+      "backgroundMobile": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL06_BACKGROUND.webp",
+      "totemPrefix": "/headbangdealers_the_game/assets/campaign/totems/HD_BT_LEVEL06_TOTEM_DAMAGE",
+      "totemSuffix": ".webp",
+      "usb": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_FAYE.webp",
+      "collectibleObject": null,
+      "hurtItem": "/headbangdealers_the_game/assets/items/v014/hurt/HD_BT_ITEM_LEVEL06-HANDCUFFS_v014.webp",
+      "available": true,
+      "missingReason": null
+    },
+    "level-7-qveens": {
+      "audio": "track-carnEvil",
+      "beatmap": "beatmap-carnEvil",
+      "background": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL07_BACKGROUND.webp",
+      "backgroundMobile": "/headbangdealers_the_game/assets/campaign/backgrounds/HD_BT_LEVEL07_BACKGROUND.webp",
+      "totemPrefix": "/headbangdealers_the_game/assets/campaign/totems/HD_BT_LEVEL07_TOTEM_DAMAGE",
+      "totemSuffix": "_v012.webp",
+      "usb": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_QVEENS.webp",
+      "collectibleObject": null,
+      "hurtItem": "/headbangdealers_the_game/assets/items/v013/hurt/HD_BT_ITEM_LEVEL07-BALL_v013.webp",
+      "available": true,
+      "missingReason": null
+    }
+  }
+}

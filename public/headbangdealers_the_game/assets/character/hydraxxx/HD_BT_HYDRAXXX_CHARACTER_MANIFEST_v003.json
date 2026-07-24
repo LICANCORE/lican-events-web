@@ -1,0 +1,435 @@
+{
+  "version": "v003",
+  "character": "HYDRAXXX",
+  "frameCount": 16,
+  "size": [
+    256,
+    256
+  ],
+  "anchor": [
+    0.5,
+    0.9296875
+  ],
+  "groundY": 239,
+  "identitySource": "Alexis HYDRAXXX reference",
+  "proportionSource": "Original TREZE V002 approved by user",
+  "oldAlexisTrezeUsed": false,
+  "frames": [
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_RIGHT_01_v003.webp",
+      "sourceSheet": "hydraxxx_walk_right_4_sheet.png",
+      "sourceFrame": 1,
+      "animationFrame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        66,
+        22,
+        190,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "95516F723FB8156C54B78F6A14C11722D976A8A64E6CC219C869CE742237C775",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_RIGHT_02_v003.webp",
+      "sourceSheet": "hydraxxx_walk_right_4_sheet.png",
+      "sourceFrame": 2,
+      "animationFrame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        68,
+        27,
+        189,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "7591DE86D93A6647F2105CDBB67CEB98D0A23C60E9FE445A275E7EB3B55A70F4",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_RIGHT_03_v003.webp",
+      "sourceSheet": "hydraxxx_walk_right_4_sheet.png",
+      "sourceFrame": 3,
+      "animationFrame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        66,
+        27,
+        190,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "9B67024D6A1A67FA25713ACB31598BC9077A977B155C54512D66F93D78701B75",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_RIGHT_04_v003.webp",
+      "sourceSheet": "hydraxxx_walk_right_4_sheet.png",
+      "sourceFrame": 4,
+      "animationFrame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        83,
+        29,
+        173,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "6E0779E246CC49B688EA3988EC824D08E3B416E0197CA7DCF3BECDEC427B87B9",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_LEFT_01_v003.webp",
+      "sourceSheet": "hydraxxx_walk_left_4_sheet.png",
+      "sourceFrame": 1,
+      "animationFrame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        67,
+        22,
+        189,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "0514CD5B60FC317B2CC09A287837732BF3B60E0A940C0CA0C92D0109A5C72F29",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_LEFT_02_v003.webp",
+      "sourceSheet": "hydraxxx_walk_left_4_sheet.png",
+      "sourceFrame": 2,
+      "animationFrame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        64,
+        22,
+        192,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "585543884D0CE5D774862C78B64554818886D046869E18C11085864DBF9CAB1C",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_LEFT_03_v003.webp",
+      "sourceSheet": "hydraxxx_walk_left_4_sheet.png",
+      "sourceFrame": 3,
+      "animationFrame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        63,
+        24,
+        193,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "63DFF17E916126185B1573CE271E767ED5DD9CA3A27CB564610D63B5E669C980",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_WALK_LEFT_04_v003.webp",
+      "sourceSheet": "hydraxxx_walk_left_4_sheet.png",
+      "sourceFrame": 4,
+      "animationFrame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        61,
+        24,
+        195,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "E690364695A0F11D21B4301F49287E1311578D606D81133D18C058662F7F80FA",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_RIGHT_NEUTRAL_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_right_4_sheet.png",
+      "sourceFrame": 1,
+      "animationFrame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        80,
+        22,
+        177,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "B303F2AB0E61366C962CCF6061A6A3D480DACEF3F236B3DEA0E8AE14ED8CFEDA",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_RIGHT_LOAD_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_right_4_sheet.png",
+      "sourceFrame": 2,
+      "animationFrame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        56,
+        23,
+        200,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "9F7E1129C3A190BFD8899244894A951C85A98F3BDDFE3D66816A346563EA168D",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_RIGHT_ATTACK_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_right_4_sheet.png",
+      "sourceFrame": 3,
+      "animationFrame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        22,
+        50,
+        233,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "A9B1BC6293E5119F891214D720BFE6CEC530EB4362870AFDACEC4B40450ECC6A",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_RIGHT_IMPACT_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_right_4_sheet.png",
+      "sourceFrame": 4,
+      "animationFrame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        18,
+        53,
+        237,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "43C27FEA4226731C3F313AB7A0FC6B80A7000E90EA2A4FEEFAA3DB5F94BCEF9B",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_LEFT_NEUTRAL_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_left_4_sheet.png",
+      "sourceFrame": 1,
+      "animationFrame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        82,
+        22,
+        174,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "0FFE218D138C8D278E11A2F1BD3EAFC7621AD991A6AC5BF7A7D6AADCBE631512",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_LEFT_LOAD_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_left_4_sheet.png",
+      "sourceFrame": 2,
+      "animationFrame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        62,
+        23,
+        194,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "B9BEAEE3F04223262921A04D8DD70C3B9846F18D9E1ABF4A8BDE9EE39A2D6367",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_LEFT_ATTACK_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_left_4_sheet.png",
+      "sourceFrame": 3,
+      "animationFrame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        26,
+        47,
+        230,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "28C46DB02BFB775FA26CE6749A3F2E51F44BAD09482FB4E438ED504B30C6BAB7",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    },
+    {
+      "asset": "HD_BT_HYDRAXXX_SIDE_LEFT_IMPACT_v003.webp",
+      "sourceSheet": "hydraxxx_headbang_left_4_sheet.png",
+      "sourceFrame": 4,
+      "animationFrame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        18,
+        52,
+        237,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "groundY": 239,
+      "sha256": "BE9A1A5EC70F122C757766D49B4D092E257D661E8718F48AA0E46A4C6734A522",
+      "identity": "HYDRAXXX",
+      "proportionReference": "Approved original TREZE V002 roster proportions",
+      "design": "large gunmetal respirator mask, red eyes, compact muscular chibi anatomy",
+      "format": "lossless WebP with alpha"
+    }
+  ]
+}

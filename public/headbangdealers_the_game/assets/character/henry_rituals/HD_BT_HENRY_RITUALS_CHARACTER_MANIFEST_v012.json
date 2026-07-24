@@ -1,0 +1,41 @@
+{
+  "id": "henryRituals",
+  "displayName": "HENRY RITUALS",
+  "version": "v012",
+  "status": "CANONICAL_NORMALIZED_GAMEPLAY",
+  "source": [
+    "henry_rituals_right_walk_approved_v010.png",
+    "henry_rituals_right_actions_approved_v010.png",
+    "henry_rituals_left_walk_approved_v010.png",
+    "henry_rituals_left_actions_approved_v010.png"
+  ],
+  "canvas": [
+    256,
+    256
+  ],
+  "groundLinePx": 238,
+  "purpleAura": true,
+  "assets": {
+    "WALK_RIGHT_01": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_01_v012.webp",
+    "WALK_RIGHT_02": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_02_v012.webp",
+    "WALK_RIGHT_03": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_03_v012.webp",
+    "WALK_RIGHT_04": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_04_v012.webp",
+    "SIDE_RIGHT_NEUTRAL": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_NEUTRAL_v012.webp",
+    "SIDE_RIGHT_LOAD": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_LOAD_v012.webp",
+    "SIDE_RIGHT_ATTACK": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_ATTACK_v012.webp",
+    "SIDE_RIGHT_IMPACT": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_IMPACT_v012.webp",
+    "SIDE_RIGHT_CROUCH": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_CROUCH_v012.webp",
+    "SIDE_RIGHT_JUMP": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_JUMP_v012.webp",
+    "WALK_LEFT_01": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_01_v012.webp",
+    "WALK_LEFT_02": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_02_v012.webp",
+    "WALK_LEFT_03": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_03_v012.webp",
+    "WALK_LEFT_04": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_04_v012.webp",
+    "SIDE_LEFT_NEUTRAL": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_NEUTRAL_v012.webp",
+    "SIDE_LEFT_LOAD": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_LOAD_v012.webp",
+    "SIDE_LEFT_ATTACK": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_ATTACK_v012.webp",
+    "SIDE_LEFT_IMPACT": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_IMPACT_v012.webp",
+    "SIDE_LEFT_CROUCH": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_CROUCH_v012.webp",
+    "SIDE_LEFT_JUMP": "/headbangdealers_the_game/assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_JUMP_v012.webp"
+  },
+  "selector": "/headbangdealers_the_game/assets/character/selector_v012/HD_BT_HENRY_RITUALS_FRONT_GAME_SELECT_v012.webp"
+}

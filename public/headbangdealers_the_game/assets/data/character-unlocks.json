@@ -1,0 +1,17 @@
+{
+  "version": 12,
+  "initial": [
+    "henryRituals",
+    "treze",
+    "hydraxxx"
+  ],
+  "unlocks": {
+    "frankale": "tutorial",
+    "viko": "level-2-viko",
+    "eddyClash": "level-3-eddy-clash",
+    "beutnoise": "level-4-beutnoise",
+    "onionstep": "level-5-onionstep",
+    "faye": "level-6-faye",
+    "qveens": "level-7-qveens"
+  }
+}

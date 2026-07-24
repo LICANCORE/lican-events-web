@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0.0",
+  "documentVersion": "v002",
+  "calculation": "Select the highest-priority rank whose five requirements are all satisfied.",
+  "ranks": [
+    {
+      "id": "BEDROOM_BANGER",
+      "displayName": "BEDROOM BANGER",
+      "priority": 1,
+      "requirements": {
+        "minimumScore": 0,
+        "minimumAccuracyPercent": 0,
+        "minimumMaxCombo": 0,
+        "maximumTotemIntegrityPercent": 100,
+        "maximumNeckDamage": 100
+      },
+      "rewardId": "HD_BT_ITEM_01",
+      "resultLineEN": "THE BEDROOM SURVIVED.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_BEDROOM_BANGER_v001.webp"
+    },
+    {
+      "id": "WARM_UP_DEALER",
+      "displayName": "WARM-UP DEALER",
+      "priority": 2,
+      "requirements": {
+        "minimumScore": 25000,
+        "minimumAccuracyPercent": 45,
+        "minimumMaxCombo": 5,
+        "maximumTotemIntegrityPercent": 100,
+        "maximumNeckDamage": 100
+      },
+      "rewardId": "HD_BT_ITEM_03",
+      "resultLineEN": "SIGNAL FOUND. VOLUME QUESTIONABLE.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_WARM_UP_DEALER_v001.webp"
+    },
+    {
+      "id": "HEAVY_HITTER",
+      "displayName": "HEAVY HITTER",
+      "priority": 3,
+      "requirements": {
+        "minimumScore": 55000,
+        "minimumAccuracyPercent": 60,
+        "minimumMaxCombo": 10,
+        "maximumTotemIntegrityPercent": 75,
+        "maximumNeckDamage": 100
+      },
+      "rewardId": "HD_BT_ITEM_02",
+      "resultLineEN": "THE WALLS FELT THAT.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_HEAVY_HITTER_v001.webp"
+    },
+    {
+      "id": "BASS_DEALER",
+      "displayName": "BASS DEALER",
+      "priority": 4,
+      "requirements": {
+        "minimumScore": 85000,
+        "minimumAccuracyPercent": 70,
+        "minimumMaxCombo": 18,
+        "maximumTotemIntegrityPercent": 50,
+        "maximumNeckDamage": 79
+      },
+      "rewardId": "HD_BT_ITEM_04",
+      "resultLineEN": "BASS SUCCESSFULLY MOVED.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_BASS_DEALER_v001.webp"
+    },
+    {
+      "id": "CERTIFIED_HEADBANGER",
+      "displayName": "CERTIFIED HEADBANGER",
+      "priority": 5,
+      "requirements": {
+        "minimumScore": 115000,
+        "minimumAccuracyPercent": 78,
+        "minimumMaxCombo": 25,
+        "maximumTotemIntegrityPercent": 25,
+        "maximumNeckDamage": 59
+      },
+      "rewardId": "HD_BT_ITEM_08",
+      "resultLineEN": "CERTIFIED. PROBABLY INSURED.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_CERTIFIED_HEADBANGER_v001.webp"
+    },
+    {
+      "id": "RIDDIM_CRIMINAL",
+      "displayName": "RIDDIM CRIMINAL",
+      "priority": 6,
+      "requirements": {
+        "minimumScore": 145000,
+        "minimumAccuracyPercent": 85,
+        "minimumMaxCombo": 35,
+        "maximumTotemIntegrityPercent": 0,
+        "maximumNeckDamage": 59
+      },
+      "rewardId": "HD_BT_ITEM_06",
+      "resultLineEN": "THE GROOVE HAS NO ALIBI.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_RIDDIM_CRIMINAL_v001.webp"
+    },
+    {
+      "id": "BASS_TRAFFICKER",
+      "displayName": "BASS TRAFFICKER",
+      "priority": 7,
+      "requirements": {
+        "minimumScore": 175000,
+        "minimumAccuracyPercent": 92,
+        "minimumMaxCombo": 48,
+        "maximumTotemIntegrityPercent": 0,
+        "maximumNeckDamage": 39
+      },
+      "rewardId": "HD_BT_ITEM_07",
+      "resultLineEN": "BASS SUCCESSFULLY TRAFFICKED.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_BASS_TRAFFICKER_v001.webp"
+    },
+    {
+      "id": "VERTEBRAE_DELETED",
+      "displayName": "VERTEBRAE DELETED",
+      "priority": 8,
+      "requirements": {
+        "minimumScore": 210000,
+        "minimumAccuracyPercent": 97,
+        "minimumMaxCombo": 60,
+        "maximumTotemIntegrityPercent": 0,
+        "maximumNeckDamage": 19
+      },
+      "rewardId": "HD_BT_ITEM_05",
+      "resultLineEN": "PERFECT FORM. FICTIONAL VERTEBRAE.",
+      "badgeAsset": "06_UI_UX/BADGES/ENGINE/HD_BT_UI_BADGE_VERTEBRAE_DELETED_v001.webp"
+    }
+  ]
+}
