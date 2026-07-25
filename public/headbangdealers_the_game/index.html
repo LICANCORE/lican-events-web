@@ -4,14 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#050806" />
+    <script>
+      (() => {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const aspect = width / Math.max(1, height);
+        const coarse = matchMedia("(pointer: coarse)").matches;
+        const noHover = matchMedia("(hover: none)").matches;
+        const portrait = matchMedia("(orientation: portrait)").matches;
+        const touchPoints = navigator.maxTouchPoints || 0;
+        const compact = Math.min(width, height) < 760;
+        const mobile = portrait
+          ? (coarse || noHover || touchPoints > 0 || aspect < 0.92)
+          : (compact && coarse && noHover && aspect < 1.45);
+        document.documentElement.dataset.layout = mobile ? "mobile" : "desktop";
+        document.documentElement.dataset.layoutReady = "true";
+      })();
+    </script>
+    <style>
+      html, body { margin: 0; background: #020403; }
+      html:not([data-app-visible="true"]) #app { visibility: hidden; }
+    </style>
     <link rel="icon" type="image/webp" href="/headbangdealers_the_game/favicon.webp" />
     <meta name="description" content="HEADBANG DEALERS: BASS TRAFFICKERS — campaña rítmica web." />
-    <meta name="robots" content="noindex, nofollow" />
     <title>HEADBANG DEALERS // BASS TRAFFICKERS</title>
-    <script type="module" crossorigin src="/headbangdealers_the_game/assets/index-ss4OuJ9Q.js"></script>
-    <link rel="stylesheet" crossorigin href="/headbangdealers_the_game/assets/index-BoiHsIBe.css">
+    <script type="module" crossorigin src="/headbangdealers_the_game/assets/index-CTKKPaeT.js"></script>
+    <link rel="stylesheet" crossorigin href="/headbangdealers_the_game/assets/index-CC3L44FX.css">
   </head>
   <body>
+    <section id="initial-loader" class="initial-loader" aria-label="Cargando HEADBANG DEALERS" aria-live="polite">
+      <div class="initial-loader__scanlines" aria-hidden="true"></div>
+      <div class="initial-loader__content">
+        <img
+          id="loader-logo"
+          class="initial-loader__logo"
+          src="/headbangdealers_the_game/assets/ui/identity/HEADBANG_DEALERS_GREEN_LOGO.png"
+          alt="HEADBANG DEALERS"
+        />
+        <div id="loader-arena" class="loader-arena">
+          <div class="loader-treze">
+            <img
+              id="loader-treze-image"
+              src="/headbangdealers_the_game/assets/character/HD_BT_TREZE_SIDE_RIGHT_NEUTRAL_v002.webp"
+              alt="TREZE golpeando el círculo de carga"
+            />
+          </div>
+          <div id="loader-circle" class="loader-circle" style="--loader-progress: 0deg">
+            <div class="loader-circle__core">
+              <strong id="loader-fraction">0/4</strong>
+              <span>LOADING</span>
+            </div>
+            <i class="loader-circle__impact" aria-hidden="true"></i>
+          </div>
+          <div id="loader-teeth" class="loader-teeth" aria-hidden="true"></div>
+          <div class="loader-ground" aria-hidden="true"></div>
+        </div>
+        <p id="loader-status" class="initial-loader__status">SYSTEM // LAYOUT</p>
+      </div>
+    </section>
     <main id="app" aria-label="HEADBANG DEALERS: BASS TRAFFICKERS">
       <section id="game-stage" class="stage stage--portrait">
         <div id="canvas-host" aria-hidden="true"></div>
@@ -55,8 +105,16 @@
         <section id="menu-screen" class="screen screen--menu">
           <div class="screen__shade"></div>
           <div class="screen__content menu-card">
-            <p class="eyebrow" data-i18n="presentedBy">BASS TRAFFICKERS PRESENTA</p>
-            <img class="brand-logo" src="/headbangdealers_the_game/assets/ui/identity/HD_BT_UI_LOGO_HORIZONTAL_v001.webp" alt="Headbang Dealers" />
+            <a
+              class="brand-logo-link"
+              href="https://www.instagram.com/headbangdealers/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Headbang Dealers"
+            >
+              <img class="brand-logo" src="/headbangdealers_the_game/assets/ui/identity/HEADBANG_DEALERS_GREEN_LOGO.png" alt="Headbang Dealers" />
+            </a>
+            <p class="menu-presents">Presents: BASS TRAFFICKERS - VERTEBRAE CHECK</p>
             <button id="settings-button" class="settings-gear" type="button" data-i18n-aria="settings" aria-label="Ajustes">⚙</button>
             <div class="menu-hero">
               <img id="menu-character-image" src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_TREZE_FRONT_GAME_SELECT_v009.webp" alt="TREZE" />
@@ -65,8 +123,7 @@
               <i class="menu-spark menu-spark--three"></i>
             </div>
             <div class="menu-actions">
-              <h1>VERTEBRAE<br />CHECK</h1>
-              <p class="tagline" data-i18n="tagline">TRAFICA EL BASS. ROMPE EL TÓTEM.</p>
+              <p class="tagline">Deal The Bass · Break The Totem</p>
               <button id="play-button" class="primary-button" data-i18n="play">JUGAR</button>
               <button id="levels-button" class="menu-button" data-i18n="levels">NIVELES</button>
               <button id="character-button" class="menu-button">
@@ -165,7 +222,7 @@
             <section class="controls-guide" aria-labelledby="controls-title">
               <h3 id="controls-title" data-i18n="controls">CONTROLES</h3>
               <p data-i18n="controlMove">Moverse: A / D o flechas izquierda / derecha.</p>
-              <p data-i18n="controlJump">Saltar: W o flecha arriba.</p>
+              <p data-i18n="controlJump">Saltar / doble salto: pulsa de nuevo W o flecha arriba en el aire. En móvil, mantén el joystick arriba durante 2 segundos.</p>
               <p data-i18n="controlCrouch">Agacharse y recoger ITEM: S o flecha abajo.</p>
               <p data-i18n="controlHit">Golpear: ESPACIO, clic o toque. En móvil utiliza el joystick.</p>
             </section>
@@ -218,7 +275,7 @@
                 <div><strong data-i18n="playerMiss">GOLPE MISS</strong><span data-i18n="missPercent">PULSADO: +15% DAÑO</span></div>
               </article>
             </div>
-            <p class="tutorial-note" data-i18n="tutorialControls">A/D o ←/→ para moverte. W o ↑ para saltar. S o ↓ para agacharte y recoger el ITEM. En móvil utiliza las cuatro direcciones del joystick. Puedes golpear el Tótem desde ambos lados.</p>
+            <p class="tutorial-note" data-i18n="tutorialControls">A/D o ←/→ para moverte. W o ↑ para saltar y pulsa de nuevo en el aire para el doble salto. S o ↓ para agacharte y recoger el ITEM. En móvil, mantén el joystick arriba durante 2 segundos para el doble salto. Puedes golpear el Tótem desde ambos lados.</p>
             <button id="start-button" class="primary-button" data-i18n="start">EMPEZAR</button>
             <button id="tutorial-back" class="text-button" data-i18n="back">VOLVER</button>
           </div>
