@@ -1,0 +1,13 @@
+.intro-terminal__monitor,
+.intro-skull {
+  background: #000;
+}
+
+.intro-skull__upper {
+  z-index: 1;
+  clip-path: none;
+}
+
+.intro-skull .intro-skull__jaw {
+  z-index: 2;
+}
