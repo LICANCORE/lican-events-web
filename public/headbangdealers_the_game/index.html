@@ -21,6 +21,22 @@
         document.documentElement.dataset.layoutReady = "true";
       })();
     </script>
+    <script>
+      (() => {
+        const isEditableTarget = (target) =>
+          target instanceof Element &&
+          Boolean(target.closest("input, textarea, select, [contenteditable]:not([contenteditable='false'])"));
+
+        const keepKeyboardInputIndependent = (event) => {
+          if (isEditableTarget(event.target)) {
+            event.stopPropagation();
+          }
+        };
+
+        document.addEventListener("keydown", keepKeyboardInputIndependent);
+        document.addEventListener("keyup", keepKeyboardInputIndependent);
+      })();
+    </script>
     <style>
       html, body { margin: 0; background: #020403; }
       html:not([data-app-visible="true"]) #app { visibility: hidden; }
