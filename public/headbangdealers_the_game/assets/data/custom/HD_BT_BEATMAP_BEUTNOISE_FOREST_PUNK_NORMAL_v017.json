@@ -20,7 +20,7 @@
     "scoredDurationSec": 89,
     "fadeOutSec": 0,
     "clockMaster": "AudioContext.currentTime",
-    "asset": "/assets/audio/full/HD_BT_AUDIO_FULL_BEUTNOISE_FOREST_PUNK.mp3"
+    "asset": "/headbangdealers_the_game/assets/audio/full/HD_BT_AUDIO_FULL_BEUTNOISE_FOREST_PUNK.mp3"
   },
   "tempo": {
     "globalBpm": 140,

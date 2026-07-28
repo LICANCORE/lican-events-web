@@ -6,7 +6,7 @@
       "levelId": "tutorial",
       "artistName": "FRANKALE",
       "trackTitle": "Pablo",
-      "asset": "/assets/campaign/usb/HD_BT_ITEM_USB_FRANKALE.webp",
+      "asset": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_FRANKALE.webp",
       "collectible": true,
       "available": true
     },
@@ -15,7 +15,7 @@
       "levelId": "level-2-viko",
       "artistName": "VIKO",
       "trackTitle": "Gas Pedal",
-      "asset": "/assets/campaign/usb/HD_BT_ITEM_USB_VIKO.webp",
+      "asset": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_VIKO.webp",
       "collectible": true,
       "available": true
     },
@@ -24,7 +24,7 @@
       "levelId": "level-3-eddy-clash",
       "artistName": "EDDY CLASH",
       "trackTitle": "So Hot",
-      "asset": "/assets/campaign/usb/HD_BT_ITEM_USB_EDDY_CLASH.webp",
+      "asset": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_EDDY_CLASH.webp",
       "collectible": true,
       "available": true
     },
@@ -33,7 +33,7 @@
       "levelId": "level-4-beutnoise",
       "artistName": "BEUTNOISE",
       "trackTitle": "Forest Punk",
-      "asset": "/assets/campaign/usb/HD_BT_ITEM_USB_BEUTNOISE.webp",
+      "asset": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_BEUTNOISE.webp",
       "collectible": true,
       "available": true
     },
@@ -42,7 +42,7 @@
       "levelId": "level-5-onionstep",
       "artistName": "ONIONSTEP",
       "trackTitle": "Untouchable",
-      "asset": "/assets/campaign/usb/HD_BT_ITEM_USB_ONIONSTEP.webp",
+      "asset": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_ONIONSTEP.webp",
       "collectible": true,
       "available": true
     },
@@ -51,7 +51,7 @@
       "levelId": "level-6-faye",
       "artistName": "FAYE",
       "trackTitle": "TTS",
-      "asset": "/assets/campaign/usb/HD_BT_ITEM_USB_FAYE.webp",
+      "asset": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_FAYE.webp",
       "collectible": true,
       "available": true
     },
@@ -60,7 +60,7 @@
       "levelId": "level-7-qveens",
       "artistName": "QVEENS",
       "trackTitle": "Welcome to the CarnEvil",
-      "asset": "/assets/campaign/usb/HD_BT_ITEM_USB_QVEENS.webp",
+      "asset": "/headbangdealers_the_game/assets/campaign/usb/HD_BT_ITEM_USB_QVEENS.webp",
       "collectible": true,
       "available": true
     }

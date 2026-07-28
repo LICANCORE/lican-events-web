@@ -1,7 +1,7 @@
 {
   "version": 12,
-  "pcOff": "/assets/unlock/common/HD_BT_UNLOCK_PC_OFF_v011.webp",
-  "pcOn": "/assets/unlock/common/HD_BT_UNLOCK_PC_ON_v011.webp",
+  "pcOff": "/headbangdealers_the_game/assets/unlock/common/HD_BT_UNLOCK_PC_OFF_v011.webp",
+  "pcOn": "/headbangdealers_the_game/assets/unlock/common/HD_BT_UNLOCK_PC_ON_v011.webp",
   "insertFx": "css:unlock-insert-flash",
   "totalDurationMs": 9000,
   "revealDurationMs": 5000,
@@ -17,79 +17,79 @@
   "sequences": {
     "frankale": {
       "displayName": "FRANKALE",
-      "usb": "/assets/unlock/usb/HD_BT_UNLOCK_USB_FRANKALE_v011.webp",
+      "usb": "/headbangdealers_the_game/assets/unlock/usb/HD_BT_UNLOCK_USB_FRANKALE_v011.webp",
       "stages": [
-        "/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_01_v011.webp",
-        "/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_02_v011.webp",
-        "/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_03_v011.webp",
-        "/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_04_v011.webp",
-        "/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_05_v011.webp"
+        "/headbangdealers_the_game/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_01_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_02_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_03_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_04_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_05_v011.webp"
       ]
     },
     "viko": {
       "displayName": "VIKO",
-      "usb": "/assets/unlock/usb/HD_BT_UNLOCK_USB_VIKO_v011.webp",
+      "usb": "/headbangdealers_the_game/assets/unlock/usb/HD_BT_UNLOCK_USB_VIKO_v011.webp",
       "stages": [
-        "/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_01_v011.webp",
-        "/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_02_v011.webp",
-        "/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_03_v011.webp",
-        "/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_04_v011.webp",
-        "/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_05_v011.webp"
+        "/headbangdealers_the_game/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_01_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_02_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_03_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_04_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/viko/HD_BT_UNLOCK_VIKO_STAGE_05_v011.webp"
       ]
     },
     "eddyClash": {
       "displayName": "EDDY CLASH",
-      "usb": "/assets/unlock/usb/HD_BT_UNLOCK_USB_EDDY_CLASH_v011.webp",
+      "usb": "/headbangdealers_the_game/assets/unlock/usb/HD_BT_UNLOCK_USB_EDDY_CLASH_v011.webp",
       "stages": [
-        "/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_01_v011.webp",
-        "/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_02_v011.webp",
-        "/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_03_v011.webp",
-        "/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_04_v011.webp",
-        "/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_05_v011.webp"
+        "/headbangdealers_the_game/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_01_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_02_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_03_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_04_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/eddyClash/HD_BT_UNLOCK_EDDY_CLASH_STAGE_05_v011.webp"
       ]
     },
     "beutnoise": {
       "displayName": "BEUTNOISE",
-      "usb": "/assets/unlock/usb/HD_BT_UNLOCK_USB_BEUTNOISE_v011.webp",
+      "usb": "/headbangdealers_the_game/assets/unlock/usb/HD_BT_UNLOCK_USB_BEUTNOISE_v011.webp",
       "stages": [
-        "/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_01_v011.webp",
-        "/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_02_v011.webp",
-        "/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_03_v011.webp",
-        "/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_04_v011.webp",
-        "/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_05_v011.webp"
+        "/headbangdealers_the_game/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_01_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_02_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_03_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_04_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/beutnoise/HD_BT_UNLOCK_BEUTNOISE_STAGE_05_v011.webp"
       ]
     },
     "onionstep": {
       "displayName": "ONIONSTEP",
-      "usb": "/assets/unlock/usb/HD_BT_UNLOCK_USB_ONIONSTEP_v011.webp",
+      "usb": "/headbangdealers_the_game/assets/unlock/usb/HD_BT_UNLOCK_USB_ONIONSTEP_v011.webp",
       "stages": [
-        "/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_01_v011.webp",
-        "/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_02_v011.webp",
-        "/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_03_v011.webp",
-        "/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_04_v011.webp",
-        "/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_05_v011.webp"
+        "/headbangdealers_the_game/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_01_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_02_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_03_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_04_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/onionstep/HD_BT_UNLOCK_ONIONSTEP_STAGE_05_v011.webp"
       ]
     },
     "qveens": {
       "displayName": "QVEENS",
-      "usb": "/assets/unlock/usb/HD_BT_UNLOCK_USB_QVEENS_v011.webp",
+      "usb": "/headbangdealers_the_game/assets/unlock/usb/HD_BT_UNLOCK_USB_QVEENS_v011.webp",
       "stages": [
-        "/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_01_v011.webp",
-        "/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_02_v011.webp",
-        "/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_03_v011.webp",
-        "/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_04_v011.webp",
-        "/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_05_v011.webp"
+        "/headbangdealers_the_game/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_01_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_02_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_03_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_04_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/qveens/HD_BT_UNLOCK_QVEENS_STAGE_05_v011.webp"
       ]
     },
     "faye": {
       "displayName": "FAYE",
-      "usb": "/assets/unlock/usb/HD_BT_UNLOCK_USB_FAYE_v011.webp",
+      "usb": "/headbangdealers_the_game/assets/unlock/usb/HD_BT_UNLOCK_USB_FAYE_v011.webp",
       "stages": [
-        "/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_01_v011.webp",
-        "/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_02_v011.webp",
-        "/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_03_v011.webp",
-        "/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_04_v011.webp",
-        "/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_05_v011.webp"
+        "/headbangdealers_the_game/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_01_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_02_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_03_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_04_v011.webp",
+        "/headbangdealers_the_game/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_05_v011.webp"
       ]
     }
   }
