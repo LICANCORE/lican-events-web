@@ -1,0 +1,21 @@
+{
+  "version": "V017",
+  "introSeen": true,
+  "tutorialCompleted": false,
+  "highestUnlockedLevel": 1,
+  "unlockedLevels": ["tutorial"],
+  "completedLevels": [],
+  "destroyedTotems": [],
+  "collectedUsb": [],
+  "collectedObjects": [],
+  "unlockedCharacters": ["treze", "henry", "hydraxxx"],
+  "characterUnlockSequenceViewed": [],
+  "newUnlockPending": [],
+  "selectedCharacter": "treze",
+  "bestScoreByLevel": {},
+  "bestAccuracyByLevel": {},
+  "bestComboByLevel": {},
+  "bestRankByLevel": {},
+  "attemptsByLevel": {},
+  "campaignCompleted": false
+}

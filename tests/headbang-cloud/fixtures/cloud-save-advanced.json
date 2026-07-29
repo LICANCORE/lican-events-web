@@ -1,0 +1,15 @@
+{
+  "cloudSchemaVersion": 1,
+  "identity": {"saveId": "fixture-save", "userId": "fixture-user", "createdAt": "2026-01-01T00:00:00.000Z", "updatedAt": "2026-02-01T00:00:00.000Z"},
+  "source": {"adapterId": "v017", "gameBuildVersion": "V017", "localSaveFormat": "hd_bt_campaign_save_v017"},
+  "progression": {"tutorialCompleted": true, "highestUnlockedLevel": 6, "unlockedLevels": ["tutorial", "level-2-viko", "level-6-faye"], "completedLevels": ["tutorial", "level-2-viko"], "destroyedTotems": ["totem-viko"], "campaignCompleted": false},
+  "collection": {"collectedUsb": ["usb-tutorial", "usb-faye"], "collectedObjects": ["item-08"], "unlockedCharacters": ["treze", "henry", "hydraxxx", "faye"], "characterUnlockSequenceViewed": ["faye"], "newUnlockPending": []},
+  "performance": {"bestScoreByLevel": {"tutorial": 120000}, "bestAccuracyByLevel": {"tutorial": 96}, "bestComboByLevel": {"tutorial": 55}, "bestRankByLevel": {"tutorial": "BASS_TRAFFICKER"}, "attemptsByLevel": {"tutorial": 7}},
+  "player": {"selectedCharacter": "faye", "selectedLevel": "level-6-faye"},
+  "settings": {"language": "es", "musicEnabled": true},
+  "economy": {"points": {"total": 4200, "earnedByLevel": {"tutorial": 1200, "level-2-viko": 3000}}, "currencies": {}, "balances": {}, "inventory": {}, "purchasedItems": [], "redeemedRewards": []},
+  "achievements": {"first-drop": {"unlocked": true, "progress": 1, "target": 1, "unlockedAt": "2026-01-20T10:00:00.000Z"}},
+  "events": {},
+  "extensions": {"fieldUpdatedAt": {"player.selectedCharacter": "2026-02-01T00:00:00.000Z"}},
+  "unknownLocalData": {}
+}

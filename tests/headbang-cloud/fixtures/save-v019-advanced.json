@@ -1,0 +1,68 @@
+{
+  "version": 19,
+  "introSeen": true,
+  "introMasterUsbCollected": true,
+  "masterUsbCount": 5,
+  "tutorialCompleted": true,
+  "highestUnlockedLevel": 10,
+  "unlockedLevels": [
+    "tutorial",
+    "level-2-viko",
+    "level-3-eddy-clash",
+    "level-4-beutnoise",
+    "level-5-onionstep",
+    "level-6-faye",
+    "level-7-qveens",
+    "level-8-magic-bite",
+    "level-9-the-siberian",
+    "level-10-david-neon"
+  ],
+  "completedLevels": [
+    "tutorial",
+    "level-2-viko",
+    "level-3-eddy-clash",
+    "level-4-beutnoise",
+    "level-5-onionstep",
+    "level-6-faye",
+    "level-7-qveens",
+    "level-8-magic-bite",
+    "level-9-the-siberian"
+  ],
+  "destroyedTotems": ["level-8-magic-bite", "level-9-the-siberian"],
+  "collectedUsb": ["level-8-magic-bite", "level-9-the-siberian"],
+  "collectedObjects": ["item-01", "item-04"],
+  "unlockedCharacters": [
+    "treze",
+    "magicBite",
+    "theSiberian",
+    "davidNeon"
+  ],
+  "characterUnlockSequenceViewed": ["magicBite", "theSiberian"],
+  "newUnlockPending": ["davidNeon"],
+  "selectedCharacter": "theSiberian",
+  "selectedLevel": "level-10-david-neon",
+  "bestScoreByLevel": {
+    "level-8-magic-bite": 180000,
+    "level-9-the-siberian": 210000
+  },
+  "bestAccuracyByLevel": {
+    "level-8-magic-bite": 94,
+    "level-9-the-siberian": 97
+  },
+  "bestComboByLevel": {
+    "level-8-magic-bite": 64,
+    "level-9-the-siberian": 78
+  },
+  "bestRankByLevel": {
+    "level-8-magic-bite": "BASS_DEALER",
+    "level-9-the-siberian": "BASS_TRAFFICKER"
+  },
+  "attemptsByLevel": {
+    "level-8-magic-bite": 3,
+    "level-9-the-siberian": 2
+  },
+  "campaignCompleted": false,
+  "v019FutureField": {
+    "keep": true
+  }
+}

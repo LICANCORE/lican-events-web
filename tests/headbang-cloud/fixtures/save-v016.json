@@ -1,0 +1,14 @@
+{
+  "version": "V016",
+  "tutorialCompleted": true,
+  "highestUnlockedLevel": 3,
+  "unlockedLevels": ["tutorial", "level-2-viko", "level-3-eddy-clash"],
+  "completedLevels": ["tutorial", "level-2-viko"],
+  "destroyedTotems": ["totem-viko"],
+  "collectedUsb": ["usb-tutorial", "usb-viko"],
+  "unlockedCharacters": ["treze", "henry", "hydraxxx", "viko"],
+  "selectedCharacter": "viko",
+  "bestScoreByLevel": {"tutorial": 68000, "level-2-viko": 91000},
+  "bestComboByLevel": {"level-2-viko": 24},
+  "attemptsByLevel": {"tutorial": 3, "level-2-viko": 4}
+}

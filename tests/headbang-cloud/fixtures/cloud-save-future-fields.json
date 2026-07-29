@@ -1,0 +1,15 @@
+{
+  "cloudSchemaVersion": 1,
+  "identity": {"saveId": "future-fixture", "userId": "fixture-user", "createdAt": "2026-01-01T00:00:00.000Z", "updatedAt": "2026-03-01T00:00:00.000Z"},
+  "source": {"adapterId": "v020", "gameBuildVersion": "V020", "localSaveFormat": "hd_bt_campaign_save_v020"},
+  "progression": {"tutorialCompleted": true, "highestUnlockedLevel": 8, "unlockedLevels": ["tutorial", "level-8-future"], "completedLevels": ["tutorial"], "destroyedTotems": [], "campaignCompleted": false},
+  "collection": {"collectedUsb": ["usb-future"], "collectedObjects": [], "unlockedCharacters": ["treze", "future-artist"], "characterUnlockSequenceViewed": [], "newUnlockPending": ["future-artist"]},
+  "performance": {"bestScoreByLevel": {}, "bestAccuracyByLevel": {}, "bestComboByLevel": {}, "bestRankByLevel": {}, "attemptsByLevel": {}},
+  "player": {"selectedCharacter": "future-artist", "selectedLevel": "level-8-future"},
+  "settings": {"futureAccessibilityMode": "pulse-safe"},
+  "economy": {"points": {"total": 7000, "earnedByLevel": {"level-8-future": 7000}}, "currencies": {}, "balances": {}, "inventory": {}, "purchasedItems": [], "redeemedRewards": []},
+  "achievements": {"futureAchievement": {"unlocked": true, "progress": 9, "target": 10, "unlockedAt": "2026-02-15T08:00:00.000Z", "futureBadge": "preserve-me"}},
+  "events": {"season-01": {"participated": true}},
+  "extensions": {"fieldUpdatedAt": {}, "futureModule": {"signal": "preserve-me"}},
+  "unknownLocalData": {"futureLocalField": {"nested": ["keep", "this"]}}
+}

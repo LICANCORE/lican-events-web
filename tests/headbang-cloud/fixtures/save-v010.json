@@ -1,0 +1,11 @@
+{
+  "version": "V010",
+  "tutorialCompleted": false,
+  "highestUnlockedLevel": 1,
+  "unlockedLevels": ["tutorial"],
+  "completedLevels": [],
+  "unlockedCharacters": ["treze", "henry", "hydraxxx"],
+  "selectedCharacter": "treze",
+  "bestScoreByLevel": {},
+  "attemptsByLevel": {}
+}

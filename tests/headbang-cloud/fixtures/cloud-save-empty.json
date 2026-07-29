@@ -1,0 +1,15 @@
+{
+  "cloudSchemaVersion": 1,
+  "identity": {"saveId": "", "userId": "", "createdAt": null, "updatedAt": null},
+  "source": {"adapterId": null, "gameBuildVersion": null, "localSaveFormat": null},
+  "progression": {"tutorialCompleted": false, "highestUnlockedLevel": 1, "unlockedLevels": [], "completedLevels": [], "destroyedTotems": [], "campaignCompleted": false},
+  "collection": {"collectedUsb": [], "collectedObjects": [], "unlockedCharacters": [], "characterUnlockSequenceViewed": [], "newUnlockPending": []},
+  "performance": {"bestScoreByLevel": {}, "bestAccuracyByLevel": {}, "bestComboByLevel": {}, "bestRankByLevel": {}, "attemptsByLevel": {}},
+  "player": {"selectedCharacter": null, "selectedLevel": null},
+  "settings": {},
+  "economy": {"currencies": {}, "balances": {}, "inventory": {}, "purchasedItems": [], "redeemedRewards": []},
+  "achievements": {},
+  "events": {},
+  "extensions": {"fieldUpdatedAt": {}},
+  "unknownLocalData": {}
+}

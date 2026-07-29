@@ -1,0 +1,12 @@
+{
+  "version": "V012",
+  "tutorialCompleted": true,
+  "highestUnlockedLevel": 2,
+  "unlockedLevels": ["tutorial", "level-2-viko"],
+  "completedLevels": ["tutorial"],
+  "collectedUsb": ["usb-tutorial"],
+  "unlockedCharacters": ["treze", "henry", "hydraxxx"],
+  "selectedCharacter": "henry",
+  "bestScoreByLevel": {"tutorial": 46000},
+  "attemptsByLevel": {"tutorial": 2}
+}

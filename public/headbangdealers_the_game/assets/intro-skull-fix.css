@@ -10,4 +10,7 @@
 
 .intro-skull .intro-skull__jaw {
   z-index: 2;
+  width: 50%;
+  height: auto;
+  inset: 54.5% auto auto 25%;
 }

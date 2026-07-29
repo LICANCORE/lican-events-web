@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#050806" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <script>
       (() => {
         const width = window.innerWidth;
@@ -44,12 +47,23 @@
     <link rel="icon" type="image/webp" href="/headbangdealers_the_game/favicon.webp" />
     <meta name="description" content="HEADBANG DEALERS: BASS TRAFFICKERS — campaña rítmica web." />
     <title>HEADBANG DEALERS // BASS TRAFFICKERS</title>
+    <script type="module">
+      import("/headbangdealers_the_game/assets/supabase-bridge.js").catch((error) => {
+        const reason = error instanceof Error ? error.message : "unknown error";
+        console.warn(`[HeadbangCloud] Supabase bridge unavailable: ${reason}`);
+      });
+    </script>
     <script type="module" src="/headbangdealers_the_game/assets/newsletter-optional-access.js"></script>
+    <script type="module" src="/headbangdealers_the_game/assets/account-ui.js"></script>
+    <script type="module" src="/headbangdealers_the_game/assets/leaderboard-ui.js"></script>
     <script type="module" src="/headbangdealers_the_game/assets/menu-bassquake.js"></script>
-    <script type="module" crossorigin src="/headbangdealers_the_game/assets/index-G8O8d2xG.js"></script>
+    <script type="module" crossorigin src="/headbangdealers_the_game/assets/index-BRQHkvBv.js"></script>
+    <script type="module" src="/headbangdealers_the_game/assets/game-v019-runtime-fixes.js"></script>
     <script type="module" src="/headbangdealers_the_game/assets/intro-cyber-laugh.js"></script>
-    <link rel="stylesheet" crossorigin href="/headbangdealers_the_game/assets/index-06j889b0.css">
+    <link rel="stylesheet" crossorigin href="/headbangdealers_the_game/assets/index-I0G3Z7iy.css">
     <link rel="stylesheet" href="/headbangdealers_the_game/assets/newsletter-optional-access.css">
+    <link rel="stylesheet" href="/headbangdealers_the_game/assets/account-ui.css">
+    <link rel="stylesheet" href="/headbangdealers_the_game/assets/leaderboard-ui.css">
     <link rel="stylesheet" href="/headbangdealers_the_game/assets/intro-skull-fix.css">
   </head>
   <body>
@@ -81,29 +95,46 @@
           <div class="loader-ground" aria-hidden="true"></div>
         </div>
         <p id="loader-status" class="initial-loader__status">SYSTEM // LAYOUT</p>
+        <div class="loader-rotate-hint" aria-label="Gira el móvil hacia la izquierda para jugar en horizontal">
+          <span class="loader-rotate-hint__arrow" aria-hidden="true">↶</span>
+          <span class="loader-rotate-hint__phone" aria-hidden="true">
+            <i></i>
+          </span>
+          <strong data-i18n="rotateMobile">GIRA EL MÓVIL</strong>
+        </div>
       </div>
     </section>
 
     <!--
-      HEADBANG DEALERS NEWSLETTER GATE
+      HEADBANG DEALERS ACCOUNT + NEWSLETTER GATE
       PERMANENT FEATURE — KEEP IN ALL FUTURE BUILDS
       DO NOT REMOVE — HEADBANG DEALERS NEWSLETTER ACCESS GATE
     -->
     <section id="newsletter-gate" class="newsletter-gate is-hidden" aria-labelledby="newsletter-title">
       <div class="newsletter-gate__scanlines" aria-hidden="true"></div>
       <form id="newsletter-form" class="newsletter-panel" novalidate>
-        <p class="newsletter-panel__eyebrow">HEADBANG DEALERS // SECURE ACCESS</p>
-        <h1 id="newsletter-title">ÚNETE A</h1>
+        <div id="newsletter-panel">
+        <label class="newsletter-language" for="newsletter-language">
+          <span data-gate-copy="language">IDIOMA</span>
+          <select id="newsletter-language">
+            <option value="en">ENGLISH</option>
+            <option value="es">CASTELLANO</option>
+            <option value="de">DEUTSCH</option>
+            <option value="eo">ESPERANTO</option>
+          </select>
+        </label>
+        <p class="newsletter-panel__eyebrow" data-gate-copy="eyebrow">HEADBANG CLOUD // ACCESO</p>
+        <h1 id="newsletter-title" data-gate-copy="title">CREA TU USUARIO</h1>
         <img
           class="newsletter-panel__logo"
-          src="/headbangdealers_the_game/assets/ui/identity/H.D_LOGO_VERDE_HORIZONTAL.png"
+          src="/headbangdealers_the_game/assets/ui/identity/HEADBANG_DEALERS_GREEN_LOGO.png"
           alt="Headbang Dealers"
         />
-        <p class="newsletter-panel__copy">
-          Deja tu email para recibir próximos eventos, novedades del juego y contenido bass.
+        <p class="newsletter-panel__copy" data-gate-copy="copy">
+          Añade tu usuario y contraseña para guardar tu progreso en el juego.
         </p>
         <label class="newsletter-field" for="newsletter-email">
-          <span>TU EMAIL</span>
+          <span data-gate-copy="email">CORREO ELECTRÓNICO</span>
           <input
             id="newsletter-email"
             name="email"
@@ -111,8 +142,35 @@
             inputmode="email"
             autocomplete="email"
             maxlength="254"
+            required
           />
         </label>
+        <div class="newsletter-password-grid">
+          <label class="newsletter-field" for="newsletter-password">
+            <span data-gate-copy="password">CONTRASEÑA</span>
+            <input
+              id="newsletter-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              minlength="10"
+              required
+            />
+          </label>
+          <label class="newsletter-field newsletter-signup-only" for="newsletter-password-confirm">
+            <span data-gate-copy="passwordConfirm">REPETIR CONTRASEÑA</span>
+            <input
+              id="newsletter-password-confirm"
+              name="passwordConfirm"
+              type="password"
+              autocomplete="new-password"
+              minlength="10"
+            />
+          </label>
+        </div>
+        <p class="newsletter-password-rules newsletter-signup-only" data-gate-copy="passwordRules">
+          Mínimo 10 caracteres, mayúscula, minúscula, número y símbolo.
+        </p>
         <input
           id="newsletter-website"
           class="newsletter-honeypot"
@@ -126,19 +184,22 @@
           <input id="newsletter-consent" name="consent" type="checkbox" />
           <span aria-hidden="true"></span>
           <strong>
-            Quiero recibir novedades, eventos y promociones de Headbang Dealers y acepto la política de privacidad.
+            <span data-gate-copy="consent">Quiero recibir novedades, eventos y promociones de Headbang Dealers. Esta opción es voluntaria.</span>
           </strong>
         </label>
         <p id="newsletter-status" class="newsletter-status" aria-live="assertive"></p>
-        <button id="newsletter-submit" class="newsletter-submit is-consent-pending" type="submit">
-          ENTRAR AL JUEGO
+        <button id="newsletter-submit" class="newsletter-submit" type="submit">
+          CREAR USUARIO Y ENTRAR
         </button>
+        <button id="newsletter-mode-toggle" class="newsletter-secondary" type="button">YA TENGO CUENTA</button>
+        <button id="newsletter-guest" class="newsletter-guest" type="button">CONTINUAR COMO INVITADO</button>
         <a
           id="newsletter-privacy-link"
           class="newsletter-privacy is-hidden"
           target="_blank"
           rel="noopener noreferrer"
         >POLÍTICA DE PRIVACIDAD</a>
+        </div>
       </form>
     </section>
 
@@ -234,12 +295,12 @@
               <p id="intro-dialogue" aria-live="polite"></p>
               <span id="intro-progress">01 / 09</span>
             </div>
-            <button id="intro-next-button" class="primary-button is-hidden" type="button">CONTINUAR</button>
+            <button id="intro-next-button" class="primary-button is-hidden" type="button" data-i18n="continue">CONTINUAR</button>
             <button id="intro-collect-usb" class="intro-usb-collect is-hidden" type="button">
               <img src="/headbangdealers_the_game/assets/campaign/master-usb/HD_BT_MASTER_USB_v016.webp" alt="MASTER-PEN Headbang Dealers" />
-              <strong>RECOGER MASTER-PEN</strong>
+              <strong data-i18n="collectMasterPen">RECOGER MASTER-PEN</strong>
             </button>
-            <div id="intro-item-toast" class="intro-item-toast is-hidden" role="status" aria-live="assertive">ITEM GUARDADO: 1 x MASTER-PEN</div>
+            <div id="intro-item-toast" class="intro-item-toast is-hidden" role="status" aria-live="assertive" data-i18n="masterPenSaved">ITEM GUARDADO: 1 x MASTER-PEN</div>
           </div>
         </section>
 
@@ -262,6 +323,9 @@
                   <button id="character-card-onionstep" class="character-card character-card--onionstep" data-character-id="onionstep" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_ONIONSTEP_FRONT_GAME_SELECT_v009.webp" alt="ONIONSTEP de frente y cuerpo completo" /></span><strong>ONIONSTEP</strong></button>
                   <button id="character-card-qveens" class="character-card character-card--qveens" data-character-id="qveens" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_QVEENS_FRONT_GAME_SELECT_v009.webp" alt="QVEENS de frente y cuerpo completo" /></span><strong>QVEENS</strong></button>
                   <button id="character-card-faye" class="character-card character-card--faye" data-character-id="faye" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_FAYE_FRONT_GAME_SELECT_v009.webp" alt="FAYE de frente y cuerpo completo" /></span><strong>FAYE</strong></button>
+                  <button id="character-card-magic-bite" class="character-card character-card--magic-bite" data-character-id="magicBite" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v019/HD_BT_MAGIC_BITE_FRONT_GAME_SELECT_v019.webp" alt="MAGIC BITE de frente y cuerpo completo" /></span><strong>MAGIC BITE</strong></button>
+                  <button id="character-card-the-siberian" class="character-card character-card--the-siberian" data-character-id="theSiberian" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v019/HD_BT_THE_SIBERIAN_FRONT_GAME_SELECT_v019.webp" alt="THE SIBERIAN de frente y cuerpo completo" /></span><strong>THE SIBERIAN</strong></button>
+                  <button id="character-card-david-neon" class="character-card character-card--david-neon" data-character-id="davidNeon" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v019/HD_BT_DAVID_NEON_FRONT_GAME_SELECT_v019.webp" alt="DAVID NEON de frente y cuerpo completo" /></span><strong>DAVID NEON</strong></button>
                 </div>
               </div>
               <button id="character-next" class="carousel-arrow carousel-arrow--next" type="button" data-i18n-aria="nextCharacters" aria-label="Personajes siguientes">&#10095;</button>
