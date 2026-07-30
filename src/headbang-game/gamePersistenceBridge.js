@@ -6,7 +6,7 @@ import {
 import { readLocalGameSave } from './gameSaveSchema.js';
 import { createSyncCoordinator } from './persistence/syncCoordinator.js';
 
-const BRIDGE_VERSION = '3.0.1';
+const BRIDGE_VERSION = '3.0.2';
 const CLOUD_SYNC_ENABLED =
   import.meta.env.VITE_HEADBANG_CLOUD_SYNC_ENABLED === 'true';
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u;
@@ -148,10 +148,22 @@ function getSafeError(error, context = 'generic') {
     message.includes('network') ||
     message.includes('offline')
   ) {
+    const networkMessages = {
+      signup:
+        'No se ha podido crear el usuario porque Supabase no responde. Inténtalo de nuevo.',
+      signin:
+        'No se ha podido iniciar sesión porque Supabase no responde. Inténtalo de nuevo.',
+      recovery:
+        'No se han podido solicitar las instrucciones porque Supabase no responde.',
+      password:
+        'No se ha podido actualizar la contraseña porque Supabase no responde.',
+    };
+
     return {
       errorCode: 'network_error',
       message:
-        'No se ha podido conectar con la cuenta. Puedes seguir jugando como invitado.',
+        networkMessages[context] ??
+        'No se ha podido conectar con Supabase. Puedes seguir jugando como invitado.',
     };
   }
 
