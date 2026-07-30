@@ -6,7 +6,7 @@ import {
 import { readLocalGameSave } from './gameSaveSchema.js';
 import { createSyncCoordinator } from './persistence/syncCoordinator.js';
 
-const BRIDGE_VERSION = '3.0.0';
+const BRIDGE_VERSION = '3.0.1';
 const CLOUD_SYNC_ENABLED =
   import.meta.env.VITE_HEADBANG_CLOUD_SYNC_ENABLED === 'true';
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/u;
@@ -201,6 +201,13 @@ function failureResult(errorCode, message, extra = {}) {
     userId: bridgeStatus.userId,
     message,
     errorCode,
+    // V019's access gate still consumes the legacy nested error shape, while
+    // account-ui.js uses the top-level fields. Keep both until the game bundle
+    // can be rebuilt from source.
+    error: {
+      code: errorCode,
+      message,
+    },
     ...extra,
   };
 }
