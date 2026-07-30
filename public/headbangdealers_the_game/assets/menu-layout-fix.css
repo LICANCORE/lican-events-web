@@ -1,0 +1,5 @@
+@media (orientation: landscape) and (min-aspect-ratio: 23 / 20) {
+  .stage--landscape .menu-hero {
+    transform: translateY(-7%);
+  }
+}
