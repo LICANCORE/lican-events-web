@@ -35,6 +35,59 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate Headbang Cloud configuration
+        env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          node --input-type=module <<'EOF'
+          const rawUrl = process.env.VITE_SUPABASE_URL?.trim();
+          const publishableKey =
+            process.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim();
+
+          if (!rawUrl || !publishableKey) {
+            throw new Error('Missing Headbang Cloud repository variables.');
+          }
+
+          const supabaseUrl = new URL(rawUrl);
+          if (
+            supabaseUrl.protocol !== 'https:' ||
+            !/^[a-z0-9]+\.supabase\.co$/u.test(supabaseUrl.hostname)
+          ) {
+            throw new Error('Invalid VITE_SUPABASE_URL.');
+          }
+
+          const response = await fetch(
+            new URL('/auth/v1/settings', supabaseUrl),
+            {
+              headers: {
+                apikey: publishableKey,
+                Authorization: `Bearer ${publishableKey}`,
+              },
+              signal: AbortSignal.timeout(10_000),
+            },
+          );
+
+          if (!response.ok) {
+            throw new Error(
+              `Supabase Auth configuration check failed (${response.status}).`,
+            );
+          }
+
+          const settings = await response.json();
+          if (settings.disable_signup === true) {
+            throw new Error('Supabase email sign-up is disabled.');
+          }
+          if (settings.external?.email !== true) {
+            throw new Error('Supabase email provider is disabled.');
+          }
+          if (settings.mailer_autoconfirm !== false) {
+            throw new Error('Supabase Confirm Email must remain enabled.');
+          }
+
+          console.log('Headbang Cloud configuration validated.');
+          EOF
+
       - name: Build
         run: npm run build
         env:
