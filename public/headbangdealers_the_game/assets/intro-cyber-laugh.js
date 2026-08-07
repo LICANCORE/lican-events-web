@@ -131,19 +131,87 @@ function patchIntroScene() {
     return;
   }
 
+  // bindControls runs at the end of preload and would otherwise overwrite NEXT/SKIP.
+  if (!scene.initialPreloadComplete) {
+    window.setTimeout(patchIntroScene, 80);
+    return;
+  }
+
   if (scene[PATCH_FLAG]) {
     return;
   }
 
   const originalRenderIntroPage = scene.renderIntroPage;
   scene.renderIntroPage = function renderIntroPageWithCyberLaugh(...args) {
-    const result = originalRenderIntroPage.apply(this, args);
+    const nativeSetInterval = window.setInterval;
+    let typingTick = null;
+    const keepNextReady = () => {
+      const next = document.getElementById("intro-next-button");
+      next?.classList.remove("is-hidden");
+      if (next) next.textContent = "NEXT";
+    };
+
+    window.setInterval = (callback, delay, ...rest) => {
+      typingTick = callback;
+      return nativeSetInterval(() => {
+        callback();
+        keepNextReady();
+      }, delay, ...rest);
+    };
+
+    let result;
+    try {
+      result = originalRenderIntroPage.apply(this, args);
+    } finally {
+      window.setInterval = nativeSetInterval;
+    }
+    this.__introTypingTick = typingTick;
+    keepNextReady();
 
     if (this.introPage === SIXTH_SLIDE_INDEX) {
       playCyberEvilLaugh(this);
     }
 
     return result;
+  };
+
+  const originalAdvanceIntro = scene.advanceIntro.bind(scene);
+  const introIsOnLastPage = () => {
+    const progress = document.getElementById("intro-progress")?.textContent ?? "";
+    const [current, total] = progress.split("/").map((part) => Number(part.trim()));
+    return Number.isFinite(current) && Number.isFinite(total) && current >= total;
+  };
+
+  scene.advanceIntro = () => {
+    if (introIsOnLastPage()) {
+      window.HeadbangStoryMode?.completeIntroAndLaunchStory?.();
+      return;
+    }
+    originalAdvanceIntro();
+  };
+
+  document.getElementById("intro-next-button").onclick = () => {
+    if (scene.introTypingTimer && scene.__introTypingTick) {
+      let guard = 0;
+      while (scene.introTypingTimer && guard < 5000) {
+        scene.__introTypingTick();
+        guard += 1;
+      }
+      const next = document.getElementById("intro-next-button");
+      next?.classList.remove("is-hidden");
+      if (next) next.textContent = "NEXT";
+      return;
+    }
+    if (scene.introPage === 6 && !scene.campaignSave.introMasterUsbCollected) {
+      scene.collectIntroUsb();
+      return;
+    }
+    scene.advanceIntro();
+  };
+
+  document.getElementById("intro-skip-button").onclick = () => {
+    scene.playSfx?.("sfx-confirm", 0.55);
+    window.HeadbangStoryMode?.completeIntroAndLaunchStory?.();
   };
   scene[PATCH_FLAG] = true;
 }

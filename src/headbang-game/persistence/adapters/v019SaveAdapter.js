@@ -15,6 +15,26 @@ function readJson(storage, key) {
     : null;
 }
 
+function withoutRemovedCharacter(save) {
+  const result = structuredClone(save);
+  for (const field of [
+    'unlockedCharacters',
+    'characterUnlockSequenceViewed',
+    'newUnlockPending',
+  ]) {
+    if (Array.isArray(result[field])) {
+      result[field] = result[field].filter((id) => id !== 'theSiberian');
+    }
+  }
+  result.unlockedCharacters = [
+    ...new Set(['treze', ...(result.unlockedCharacters ?? [])]),
+  ];
+  if (result.selectedCharacter === 'theSiberian') {
+    result.selectedCharacter = 'treze';
+  }
+  return result;
+}
+
 export const v019SaveAdapter = Object.freeze({
   ...v017SaveAdapter,
   id: 'v019',
@@ -38,13 +58,13 @@ export const v019SaveAdapter = Object.freeze({
     const selectedLevel = storage.getItem(V019_SELECTED_LEVEL_KEY);
     const selectedCharacter = storage.getItem(V019_SELECTED_CHARACTER_KEY);
 
-    return {
+    return withoutRemovedCharacter({
       ...structuredClone(save),
       ...(selectedLevel && !save.selectedLevel ? { selectedLevel } : {}),
       ...(selectedCharacter && !save.selectedCharacter
         ? { selectedCharacter }
         : {}),
-    };
+    });
   },
 
   toCanonical(localSave) {
@@ -84,7 +104,7 @@ export const v019SaveAdapter = Object.freeze({
       currentLocalSave.version ??
       compatibleCloudSave.extensions.v019?.localVersion ??
       19;
-    return result;
+    return withoutRemovedCharacter(result);
   },
 
   writeAuxiliary(storage, localSave) {

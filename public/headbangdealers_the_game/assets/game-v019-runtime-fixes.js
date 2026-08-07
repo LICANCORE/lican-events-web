@@ -8,11 +8,13 @@ const REPLAY_LABELS = Object.freeze({
   eo: "RIPETI ENKONDUKON",
 });
 
-function gameAssetUrl(value) {
-  if (typeof value !== "string" || !value.startsWith("/assets/")) {
-    return value;
-  }
-  return `${GAME_ASSET_PREFIX}${value}`;
+function engineAssetUrl(value) {
+  if (typeof value !== "string") return value;
+  // The compiled game prefixes unlock-manifest paths itself. Keeping an
+  // already-prefixed URL here produced /headbangdealers_the_game twice.
+  return value.startsWith(`${GAME_ASSET_PREFIX}/assets/`)
+    ? value.slice(GAME_ASSET_PREFIX.length)
+    : value;
 }
 
 function normalizeUnlockManifest(manifest) {
@@ -20,13 +22,13 @@ function normalizeUnlockManifest(manifest) {
     return false;
   }
 
-  manifest.pcOff = gameAssetUrl(manifest.pcOff);
-  manifest.pcOn = gameAssetUrl(manifest.pcOn);
+  manifest.pcOff = engineAssetUrl(manifest.pcOff);
+  manifest.pcOn = engineAssetUrl(manifest.pcOn);
 
   for (const sequence of Object.values(manifest.sequences ?? {})) {
-    sequence.usb = gameAssetUrl(sequence.usb);
+    sequence.usb = engineAssetUrl(sequence.usb);
     if (Array.isArray(sequence.stages)) {
-      sequence.stages = sequence.stages.map(gameAssetUrl);
+      sequence.stages = sequence.stages.map(engineAssetUrl);
     }
   }
 

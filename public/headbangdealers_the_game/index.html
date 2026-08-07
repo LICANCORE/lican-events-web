@@ -2,26 +2,42 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#050806" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <script>
       (() => {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        const aspect = width / Math.max(1, height);
+        const featureEnabled = true;
+        const width = Math.max(1, Math.round(window.visualViewport?.width || window.innerWidth));
+        const height = Math.max(1, Math.round(window.visualViewport?.height || window.innerHeight));
         const coarse = matchMedia("(pointer: coarse)").matches;
         const noHover = matchMedia("(hover: none)").matches;
-        const portrait = matchMedia("(orientation: portrait)").matches;
         const touchPoints = navigator.maxTouchPoints || 0;
-        const compact = Math.min(width, height) < 760;
-        const mobile = portrait
-          ? (coarse || noHover || touchPoints > 0 || aspect < 0.92)
-          : (compact && coarse && noHover && aspect < 1.45);
-        document.documentElement.dataset.layout = mobile ? "mobile" : "desktop";
+        const touchCapable = coarse || noHover || touchPoints > 0;
+        const shortEdge = Math.min(width, height);
+        const longEdge = Math.max(width, height);
+        const landscape = matchMedia("(orientation: landscape)").matches || width > height;
+        const mobile = touchCapable && shortEdge <= 600 && longEdge <= 1400;
+        const tablet = touchCapable && !mobile && shortEdge <= 1024 && longEdge <= 1800;
+        const device = mobile ? "mobile" : tablet ? "tablet" : "desktop";
+        const orientation = landscape ? "landscape" : "portrait";
+        const aspect = width / Math.max(1, height);
+        const compact = shortEdge < 760;
+        const legacyMobile = landscape
+          ? compact && coarse && noHover && aspect < 1.45
+          : coarse || noHover || touchPoints > 0 || aspect < 0.92;
+        document.documentElement.dataset.device = device;
+        document.documentElement.dataset.orientation = orientation;
+        document.documentElement.dataset.layout = featureEnabled
+          ? device === "desktop" || landscape ? "desktop" : `${device}-portrait`
+          : legacyMobile ? "mobile" : "desktop";
         document.documentElement.dataset.layoutReady = "true";
+        document.documentElement.dataset.mobileLandscapeEnabled =
+          String(featureEnabled && device !== "desktop");
+        document.documentElement.dataset.orientationBlocked =
+          String(featureEnabled && device !== "desktop" && !landscape);
       })();
     </script>
     <script>
@@ -57,17 +73,37 @@
     <script type="module" src="/headbangdealers_the_game/assets/account-ui.js"></script>
     <script type="module" src="/headbangdealers_the_game/assets/leaderboard-ui.js"></script>
     <script type="module" src="/headbangdealers_the_game/assets/menu-bassquake.js"></script>
-    <script type="module" crossorigin src="/headbangdealers_the_game/assets/index-BRQHkvBv.js"></script>
+    <script type="module" src="/headbangdealers_the_game/assets/mobile-landscape-bootstrap.js"></script>
     <script type="module" src="/headbangdealers_the_game/assets/game-v019-runtime-fixes.js"></script>
+    <script type="module" src="/headbangdealers_the_game/assets/story-levels-runtime.js"></script>
+    <script type="module" src="/headbangdealers_the_game/assets/story-free-modes.js"></script>
+    <script type="module" src="/headbangdealers_the_game/assets/story-revision-v2.js"></script>
     <script type="module" src="/headbangdealers_the_game/assets/intro-cyber-laugh.js"></script>
-    <link rel="stylesheet" crossorigin href="/headbangdealers_the_game/assets/index-I0G3Z7iy.css">
+    <link rel="stylesheet" crossorigin href="/headbangdealers_the_game/assets/index-qj2cEvii.css">
     <link rel="stylesheet" href="/headbangdealers_the_game/assets/newsletter-optional-access.css">
     <link rel="stylesheet" href="/headbangdealers_the_game/assets/account-ui.css">
     <link rel="stylesheet" href="/headbangdealers_the_game/assets/leaderboard-ui.css">
     <link rel="stylesheet" href="/headbangdealers_the_game/assets/intro-skull-fix.css">
     <link rel="stylesheet" href="/headbangdealers_the_game/assets/menu-layout-fix.css">
+    <link rel="stylesheet" href="/headbangdealers_the_game/assets/mobile-landscape.css">
+    <link rel="stylesheet" href="/headbangdealers_the_game/assets/story-free-modes.css">
+    <link rel="stylesheet" href="/headbangdealers_the_game/assets/story-revision-v2.css">
   </head>
   <body>
+    <section id="orientation-overlay" class="orientation-overlay" aria-labelledby="orientation-title" aria-live="assertive">
+      <div class="orientation-overlay__glitch" aria-hidden="true"></div>
+      <div class="orientation-overlay__content">
+        <div class="orientation-phone" aria-hidden="true">
+          <span></span>
+        </div>
+        <h1 id="orientation-title">GIRA EL MÓVIL HACIA LA IZQUIERDA</h1>
+        <p>HEADBANG DEALERS SOLO SE JUEGA EN HORIZONTAL</p>
+        <button id="orientation-fullscreen-button" type="button">
+          ACTIVAR MODO HORIZONTAL
+        </button>
+      </div>
+    </section>
+
     <section id="initial-loader" class="initial-loader" aria-label="Cargando HEADBANG DEALERS" aria-live="polite">
       <div class="initial-loader__scanlines" aria-hidden="true"></div>
       <div class="initial-loader__content">
@@ -218,12 +254,12 @@
                 <em id="drop-banner" class="drop-indicator is-hidden" data-i18n="dropActive">DROP ACTIVE</em>
               </div>
             </div>
+            <div class="meter meter--bass">
+              <div class="meter__label"><span data-i18n="bassMeter">MEDIDOR BASS</span><strong id="bass-value">0%</strong></div>
+              <div class="meter__track"><i id="bass-fill"></i></div>
+            </div>
             <div class="readout"><span data-i18n="time">TIEMPO</span><strong id="timer">00:40</strong></div>
             <button id="pause-button" class="icon-button" data-i18n-aria="pause" aria-label="Pausar">Ⅱ</button>
-          </div>
-          <div class="meter meter--bass">
-            <div class="meter__label"><span data-i18n="bassMeter">MEDIDOR BASS</span><strong id="bass-value">0%</strong></div>
-            <div class="meter__track"><i id="bass-fill"></i></div>
           </div>
           <div id="totem-readout" class="totem-readout"><span data-i18n="totem">TÓTEM</span> <strong id="totem-value">100%</strong></div>
           <div id="feedback" class="feedback" aria-live="assertive"></div>
@@ -241,6 +277,10 @@
             <span class="joystick-label joystick-label--left" data-i18n="move">MOVER</span>
             <span class="joystick-label joystick-label--right" data-i18n="move">MOVER</span>
             <i id="joystick-knob"></i>
+          </div>
+          <div id="mobile-action-controls" class="mobile-action-controls" aria-label="Controles táctiles">
+            <button id="mobile-action-button" class="mobile-action-button is-control-hidden" type="button" tabindex="-1" aria-hidden="true">AGACHAR</button>
+            <button id="mobile-bass-button" class="mobile-bass-button" type="button">HEAD BANG</button>
           </div>
         </div>
 
@@ -267,7 +307,7 @@
             <div class="menu-actions">
               <p class="tagline">Deal The Bass · Break The Totem</p>
               <button id="play-button" class="primary-button" data-i18n="play">JUGAR</button>
-              <button id="levels-button" class="menu-button" data-i18n="levels">NIVELES</button>
+              <button id="levels-button" class="menu-button">MODO LIBRE</button>
               <button id="character-button" class="menu-button">
                 <span data-i18n="characters">PERSONAJES</span> <strong id="selected-character-name">TREZE</strong>
               </button>
@@ -296,7 +336,10 @@
               <p id="intro-dialogue" aria-live="polite"></p>
               <span id="intro-progress">01 / 09</span>
             </div>
-            <button id="intro-next-button" class="primary-button is-hidden" type="button" data-i18n="continue">CONTINUAR</button>
+            <div class="intro-controls">
+              <button id="intro-skip-button" class="text-button" type="button">SKIP INTRO</button>
+              <button id="intro-next-button" class="primary-button" type="button">NEXT</button>
+            </div>
             <button id="intro-collect-usb" class="intro-usb-collect is-hidden" type="button">
               <img src="/headbangdealers_the_game/assets/campaign/master-usb/HD_BT_MASTER_USB_v016.webp" alt="MASTER-PEN Headbang Dealers" />
               <strong data-i18n="collectMasterPen">RECOGER MASTER-PEN</strong>
@@ -325,7 +368,6 @@
                   <button id="character-card-qveens" class="character-card character-card--qveens" data-character-id="qveens" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_QVEENS_FRONT_GAME_SELECT_v009.webp" alt="QVEENS de frente y cuerpo completo" /></span><strong>QVEENS</strong></button>
                   <button id="character-card-faye" class="character-card character-card--faye" data-character-id="faye" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v009/HD_BT_FAYE_FRONT_GAME_SELECT_v009.webp" alt="FAYE de frente y cuerpo completo" /></span><strong>FAYE</strong></button>
                   <button id="character-card-magic-bite" class="character-card character-card--magic-bite" data-character-id="magicBite" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v019/HD_BT_MAGIC_BITE_FRONT_GAME_SELECT_v019.webp" alt="MAGIC BITE de frente y cuerpo completo" /></span><strong>MAGIC BITE</strong></button>
-                  <button id="character-card-the-siberian" class="character-card character-card--the-siberian" data-character-id="theSiberian" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v019/HD_BT_THE_SIBERIAN_FRONT_GAME_SELECT_v019.webp" alt="THE SIBERIAN de frente y cuerpo completo" /></span><strong>THE SIBERIAN</strong></button>
                   <button id="character-card-david-neon" class="character-card character-card--david-neon" data-character-id="davidNeon" aria-pressed="false"><span class="character-card__visual"><img src="/headbangdealers_the_game/assets/character/selector_v019/HD_BT_DAVID_NEON_FRONT_GAME_SELECT_v019.webp" alt="DAVID NEON de frente y cuerpo completo" /></span><strong>DAVID NEON</strong></button>
                 </div>
               </div>
@@ -333,6 +375,27 @@
             </div>
             <p id="character-carousel-status" class="carousel-status" aria-live="polite"></p>
             <button id="character-back" class="primary-button" data-i18n="confirmBack">CONFIRMAR Y VOLVER</button>
+            <button id="character-menu-button" class="menu-button" type="button">MENÚ PRINCIPAL</button>
+          </div>
+        </section>
+
+        <section id="game-modes-screen" class="screen is-hidden" aria-labelledby="game-modes-title">
+          <div class="screen__shade"></div>
+          <div class="screen__content game-modes-select">
+            <p class="eyebrow">BASS TRAFFICKERS // SIGNAL ROUTER</p>
+            <h2 id="game-modes-title">NIVELES</h2>
+            <div class="game-mode-options">
+              <button id="story-mode-button" class="game-mode-card" type="button">
+                <strong>MODO HISTORIA</strong>
+                <span>15 NIVELES · PROGRESIÓN LINEAL</span>
+              </button>
+              <button id="free-mode-button" class="game-mode-card" type="button">
+                <strong>MODO LIBRE</strong>
+                <span>ESCENARIO Y PERSONAJE A TU ELECCIÓN</span>
+              </button>
+            </div>
+            <p class="mode-inventory-summary">USB <strong id="mode-usb-count">0</strong> · MASTER-PEN <strong id="mode-master-pen-count">0</strong></p>
+            <button id="game-modes-back" class="text-button" type="button">VOLVER AL MENÚ</button>
           </div>
         </section>
 
@@ -341,6 +404,7 @@
           <div class="screen__content levels-select">
             <p class="eyebrow" data-i18n="campaignEyebrow">BASS TRAFFICKERS // CAMPAÑA</p>
             <h2 id="levels-title" data-i18n="levels">NIVELES</h2>
+            <p id="levels-mode-eyebrow" class="levels-mode-eyebrow">MODO HISTORIA</p>
             <p class="levels-master-usb">MASTER-PEN DISPONIBLE: <strong id="levels-master-usb-count">0</strong></p>
             <div class="levels-carousel">
               <button id="levels-prev" class="carousel-arrow carousel-arrow--prev" type="button" data-i18n-aria="previousLevels" aria-label="Niveles anteriores">&#10094;</button>
@@ -350,7 +414,8 @@
               <button id="levels-next" class="carousel-arrow carousel-arrow--next" type="button" data-i18n-aria="nextLevels" aria-label="Niveles siguientes">&#10095;</button>
             </div>
             <p id="levels-carousel-status" class="carousel-status" aria-live="polite"></p>
-            <button id="levels-back" class="text-button" data-i18n="backMenu">VOLVER AL MENÚ</button>
+            <button id="story-reset-button" class="text-button story-reset-button is-hidden" type="button">REINICIAR SOLO HISTORIA</button>
+            <button id="levels-back" class="text-button">VOLVER A MODOS</button>
           </div>
         </section>
 
@@ -503,6 +568,7 @@
               <button id="retry-button" class="menu-button">REPETIR</button>
               <button id="results-levels" class="menu-button" data-i18n="levels">NIVELES</button>
               <a id="instagram-button" class="menu-button" target="_blank" rel="noopener noreferrer">VER INSTAGRAM DEL ARTISTA</a>
+              <a id="result-listen-button" class="menu-button is-hidden" target="_blank" rel="noopener noreferrer">ESCUCHAR TEMA</a>
               <button id="results-menu" class="text-button" data-i18n="mainMenu">MENÚ PRINCIPAL</button>
             </div>
           </div>

@@ -92,26 +92,37 @@
         "/assets/unlock/characters/faye/HD_BT_UNLOCK_FAYE_STAGE_05_v011.webp"
       ]
     },
-    "magicBite": {
-      "displayName": "MAGIC BITE",
-      "usb": "/assets/campaign/master-usb/HD_BT_MASTER_USB_v016.webp",
+    "hydraxxx": {
+      "displayName": "HYDRAXXX",
+      "usb": "/assets/items/usb/story/HD_BT_USB_STORY_HYDRAXXX_v001.png",
       "stages": [
-        "/assets/character/selector_v019/HD_BT_MAGIC_BITE_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_MAGIC_BITE_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_MAGIC_BITE_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_MAGIC_BITE_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_MAGIC_BITE_FRONT_GAME_SELECT_v019.webp"
+        "/assets/unlock/characters/hydraxxx/HD_BT_UNLOCK_HYDRAXXX_STAGE_01_v020.webp",
+        "/assets/unlock/characters/hydraxxx/HD_BT_UNLOCK_HYDRAXXX_STAGE_02_v020.webp",
+        "/assets/unlock/characters/hydraxxx/HD_BT_UNLOCK_HYDRAXXX_STAGE_03_v020.webp",
+        "/assets/unlock/characters/hydraxxx/HD_BT_UNLOCK_HYDRAXXX_STAGE_04_v020.webp",
+        "/assets/unlock/characters/hydraxxx/HD_BT_UNLOCK_HYDRAXXX_STAGE_05_v020.webp"
       ]
     },
-    "theSiberian": {
-      "displayName": "THE SIBERIAN",
-      "usb": "/assets/campaign/master-usb/HD_BT_MASTER_USB_v016.webp",
+    "magicBite": {
+      "displayName": "MAGIC BITE",
+      "usb": "/assets/items/usb/story/HD_BT_USB_STORY_MAGIC_BITE_v001.png",
       "stages": [
-        "/assets/character/selector_v019/HD_BT_THE_SIBERIAN_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_THE_SIBERIAN_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_THE_SIBERIAN_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_THE_SIBERIAN_FRONT_GAME_SELECT_v019.webp",
-        "/assets/character/selector_v019/HD_BT_THE_SIBERIAN_FRONT_GAME_SELECT_v019.webp"
+        "/assets/unlock/characters/magic_bite/HD_BT_UNLOCK_MAGIC_BITE_STAGE_01_v020.webp",
+        "/assets/unlock/characters/magic_bite/HD_BT_UNLOCK_MAGIC_BITE_STAGE_02_v020.webp",
+        "/assets/unlock/characters/magic_bite/HD_BT_UNLOCK_MAGIC_BITE_STAGE_03_v020.webp",
+        "/assets/unlock/characters/magic_bite/HD_BT_UNLOCK_MAGIC_BITE_STAGE_04_v020.webp",
+        "/assets/unlock/characters/magic_bite/HD_BT_UNLOCK_MAGIC_BITE_STAGE_05_v020.webp"
+      ]
+    },
+    "henryRituals": {
+      "displayName": "HENRY RITUALS",
+      "usb": "/assets/items/usb/story/HD_BT_USB_STORY_HENRY_RITUALS_v001.png",
+      "stages": [
+        "/assets/unlock/characters/henry_rituals/HD_BT_UNLOCK_HENRY_RITUALS_STAGE_01_v020.webp",
+        "/assets/unlock/characters/henry_rituals/HD_BT_UNLOCK_HENRY_RITUALS_STAGE_02_v020.webp",
+        "/assets/unlock/characters/henry_rituals/HD_BT_UNLOCK_HENRY_RITUALS_STAGE_03_v020.webp",
+        "/assets/unlock/characters/henry_rituals/HD_BT_UNLOCK_HENRY_RITUALS_STAGE_04_v020.webp",
+        "/assets/unlock/characters/henry_rituals/HD_BT_UNLOCK_HENRY_RITUALS_STAGE_05_v020.webp"
       ]
     },
     "davidNeon": {

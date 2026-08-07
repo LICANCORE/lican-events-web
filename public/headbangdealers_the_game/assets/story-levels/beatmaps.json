@@ -1,0 +1,3677 @@
+{
+  "version": 1,
+  "generatedBy": "WebAudio bass-onset analysis",
+  "levels": {
+    "1": {
+      "sourceDurationSec": 59.479,
+      "sourceStartSec": 0,
+      "sourceEndSec": 59.479,
+      "bpm": 173.25,
+      "analysisConfidence": 1,
+      "audioDurationMs": 59479,
+      "dropStartMs": 36877,
+      "dropEndMs": 49962,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 245,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 1589,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 3104,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 3232,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 4405,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 5760,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 7189,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 8565,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 9077,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 11221,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 11392,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 13536,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 14165,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 15552,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 16683,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 18208,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 19445,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 19669,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 20811,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 22443,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 23680,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 23797,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 25205,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 26368,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 27595,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 27989,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 29355,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 30731,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 32096,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 33184,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 34901,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 35243,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 36512,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 36768,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 38560,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 39936,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 40789,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 41301,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 43200,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 44032,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 45184,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 47328,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 48000,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 48757,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 49323,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 51499,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 52277,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 53141,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 54997,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 55915,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 57227,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 57760,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_053",
+          "timeMs": 58624,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "2": {
+      "sourceDurationSec": 95.8,
+      "sourceStartSec": 0,
+      "sourceEndSec": 61,
+      "bpm": 120.75,
+      "analysisConfidence": 0.913,
+      "audioDurationMs": 61000,
+      "dropStartMs": 37820,
+      "dropEndMs": 51240,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 1205,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 1344,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 2144,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 4437,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 6155,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 8085,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 9141,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 10560,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 11275,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 11573,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 13749,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 14336,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 15083,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 16363,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 17301,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 18763,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 20011,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 20245,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 20832,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 22507,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 24043,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 24256,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 25749,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 26283,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 27925,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 28459,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 29973,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 31157,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 32267,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 32672,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 34187,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 35925,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 37653,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 39691,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 41205,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 41387,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 41909,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 43915,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 44075,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 45568,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 46379,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 47648,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 49291,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 49771,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 51765,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 52779,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 54027,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 55605,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 56096,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 57781,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 59563,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 59765,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "5": {
+      "sourceDurationSec": 197.88,
+      "sourceStartSec": 88,
+      "sourceEndSec": 193,
+      "bpm": 154.25,
+      "analysisConfidence": 1,
+      "audioDurationMs": 105000,
+      "dropStartMs": 65100,
+      "dropEndMs": 88200,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 299,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 2592,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 3648,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 4789,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 6432,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 8075,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 9397,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 10923,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 12000,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 14699,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 17419,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 18901,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 20437,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 22656,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 24960,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 25131,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 26667,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 28875,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 30485,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 31243,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 33355,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 35147,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 35264,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 37632,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 39200,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 40800,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 41131,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 43861,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 45387,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 46635,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 48160,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 49920,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 51456,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 52747,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_L5_DENSE_53_1",
+          "timeMs": 53136,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.25,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_L5_DENSE_53_2",
+          "timeMs": 53525,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.25,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_L5_DENSE_53_3",
+          "timeMs": 53914,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.25,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 54560,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 56085,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 59168,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 59435,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 61003,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 63349,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 64117,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 66240,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 67179,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 68704,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 70240,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 71221,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 73664,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 75200,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 78261,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 79787,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 81323,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 84288,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_053",
+          "timeMs": 87435,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_054",
+          "timeMs": 90485,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_055",
+          "timeMs": 92619,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_056",
+          "timeMs": 94592,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_057",
+          "timeMs": 96907,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_058",
+          "timeMs": 99104,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_059",
+          "timeMs": 101024,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_060",
+          "timeMs": 101952,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_061",
+          "timeMs": 104491,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "6": {
+      "sourceDurationSec": 167.761,
+      "sourceStartSec": 24,
+      "sourceEndSec": 114,
+      "bpm": 139,
+      "analysisConfidence": 1,
+      "audioDurationMs": 90000,
+      "dropStartMs": 55800,
+      "dropEndMs": 75600,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 917,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 2091,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 4213,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 5941,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 8085,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 8725,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 11168,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 12448,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 13952,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 14795,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 17152,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 18837,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 20128,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 21077,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 22955,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 24288,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 26059,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 27584,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 29205,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 31200,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 32939,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 34464,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 36651,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 38528,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 39381,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 40203,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 41728,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 43125,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 45387,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 47104,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 48021,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 48875,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 50592,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 53365,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 53899,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 54880,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 56917,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 58453,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 59851,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 60768,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 62763,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 64448,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 65525,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 67637,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 69216,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 69856,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 70933,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 73664,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 76267,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 78027,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 81440,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 83157,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_053",
+          "timeMs": 85173,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_054",
+          "timeMs": 86443,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_055",
+          "timeMs": 88203,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "7": {
+      "sourceDurationSec": 172.561,
+      "sourceStartSec": 26,
+      "sourceEndSec": 144,
+      "bpm": 87,
+      "analysisConfidence": 1,
+      "audioDurationMs": 118000,
+      "dropStartMs": 73160,
+      "dropEndMs": 99120,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 267,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 1931,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 3659,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 5376,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 7808,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 8149,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 10592,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 12299,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 13621,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 16053,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 16384,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 19168,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 20245,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 21931,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 24075,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 24651,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 27467,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 30219,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 32000,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 33056,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 34720,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 36853,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 38859,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 40917,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 41589,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 44011,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 45440,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 47467,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 48907,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 49952,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 52352,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 52651,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 55424,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 56501,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 57803,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 60523,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 61653,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 63371,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 66827,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 68907,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 71328,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 72299,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 74069,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 75125,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 75819,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 77760,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 80181,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 83008,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 85749,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 86091,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 88864,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 90891,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_053",
+          "timeMs": 91275,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_054",
+          "timeMs": 94091,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_055",
+          "timeMs": 96043,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_056",
+          "timeMs": 97109,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_057",
+          "timeMs": 99531,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_058",
+          "timeMs": 101941,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_059",
+          "timeMs": 102635,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_060",
+          "timeMs": 105397,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_061",
+          "timeMs": 107125,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_062",
+          "timeMs": 107819,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_063",
+          "timeMs": 110240,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_064",
+          "timeMs": 113355,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_065",
+          "timeMs": 116501,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "10": {
+      "sourceDurationSec": 197.32,
+      "sourceStartSec": 97,
+      "sourceEndSec": 181,
+      "bpm": 158.5,
+      "analysisConfidence": 1,
+      "audioDurationMs": 84000,
+      "dropStartMs": 52080,
+      "dropEndMs": 70560,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 363,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 3125,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 4939,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 6336,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 7648,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 9419,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 10795,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 12459,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 13920,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 15424,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 16224,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 18507,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 20011,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 21579,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 24597,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 26101,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 27605,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 28736,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 30997,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 32128,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 34005,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 35328,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 36619,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 38123,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 39253,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 40960,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 43264,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 44459,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 45632,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 47147,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 48629,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 50048,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 50421,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 53077,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 54699,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 56107,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 57248,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 59189,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 60640,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 62208,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 65451,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 66933,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 68597,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 69995,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 71531,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 73035,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 74528,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 75979,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 77621,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 79125,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 80629,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 82133,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_053",
+          "timeMs": 83456,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "12": {
+      "sourceDurationSec": 182.446,
+      "sourceStartSec": 25,
+      "sourceEndSec": 143,
+      "bpm": 146.25,
+      "analysisConfidence": 0.75,
+      "audioDurationMs": 118000,
+      "dropStartMs": 73160,
+      "dropEndMs": 99120,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 725,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 1995,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 3189,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 5301,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 7008,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 8640,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 10208,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 10443,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 13536,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 16736,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 18400,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 20341,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 21952,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 23520,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 25824,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 27723,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 29920,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 31552,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 33429,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 36629,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 39424,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 39819,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 41568,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 43029,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 45536,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 47968,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 49557,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 50400,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 51435,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 53056,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 54688,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 56448,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 57856,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 59691,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 61088,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 63093,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 64448,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 66091,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 67669,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 69525,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 72757,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 75851,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 77525,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 79189,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 81035,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 82475,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 84245,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 85045,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 87605,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 90656,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 94080,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 96352,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_053",
+          "timeMs": 97259,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_054",
+          "timeMs": 98987,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_055",
+          "timeMs": 100757,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_056",
+          "timeMs": 102357,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_057",
+          "timeMs": 103957,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_058",
+          "timeMs": 105824,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_059",
+          "timeMs": 109152,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_060",
+          "timeMs": 110357,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_061",
+          "timeMs": 111552,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_062",
+          "timeMs": 112949,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_063",
+          "timeMs": 113557,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_064",
+          "timeMs": 115936,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_065",
+          "timeMs": 117152,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "13": {
+      "sourceDurationSec": 181.04,
+      "sourceStartSec": 85,
+      "sourceEndSec": 165,
+      "bpm": 87,
+      "analysisConfidence": 1,
+      "audioDurationMs": 80000,
+      "dropStartMs": 49600,
+      "dropEndMs": 67200,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 107,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 2848,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 3541,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 5312,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 6304,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 8427,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 9067,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 10805,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 11829,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 13205,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 14581,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 16629,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 19061,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 21451,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 22155,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 24235,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 25621,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 27691,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 30443,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 31136,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 32523,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 33205,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 35275,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 36672,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 38699,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 41461,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 42165,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 44213,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 46304,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 48373,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 49067,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 49749,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 52501,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 53888,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 55264,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 57333,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 58347,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 60779,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 63541,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 65248,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 66624,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 68384,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 69419,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 71808,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 72171,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 74592,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 77291,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 77739,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 79061,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        }
+      ]
+    },
+    "14": {
+      "sourceDurationSec": 189.52,
+      "sourceStartSec": 70,
+      "sourceEndSec": 161,
+      "bpm": 120.75,
+      "analysisConfidence": 1,
+      "audioDurationMs": 91000,
+      "dropStartMs": 56420,
+      "dropEndMs": 76440,
+      "events": [
+        {
+          "id": "STORY_LVL_EVENT_001",
+          "timeMs": 651,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_002",
+          "timeMs": 2613,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_003",
+          "timeMs": 4117,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_004",
+          "timeMs": 6869,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_005",
+          "timeMs": 7989,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_006",
+          "timeMs": 10229,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_007",
+          "timeMs": 12021,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_008",
+          "timeMs": 14208,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_009",
+          "timeMs": 16000,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_010",
+          "timeMs": 18229,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_011",
+          "timeMs": 19211,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_012",
+          "timeMs": 21429,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_013",
+          "timeMs": 22901,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_014",
+          "timeMs": 25120,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_015",
+          "timeMs": 25621,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_016",
+          "timeMs": 26133,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_017",
+          "timeMs": 28160,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_018",
+          "timeMs": 30187,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_019",
+          "timeMs": 32192,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_020",
+          "timeMs": 33376,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_021",
+          "timeMs": 34368,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_022",
+          "timeMs": 35925,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_023",
+          "timeMs": 37621,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_024",
+          "timeMs": 37920,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_025",
+          "timeMs": 40299,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_026",
+          "timeMs": 42400,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_027",
+          "timeMs": 45792,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_028",
+          "timeMs": 48320,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_029",
+          "timeMs": 48800,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_030",
+          "timeMs": 49739,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_031",
+          "timeMs": 52085,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_032",
+          "timeMs": 53771,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_033",
+          "timeMs": 55701,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_034",
+          "timeMs": 57749,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_035",
+          "timeMs": 59541,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_036",
+          "timeMs": 60672,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_037",
+          "timeMs": 61515,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_038",
+          "timeMs": 64011,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_039",
+          "timeMs": 64480,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_040",
+          "timeMs": 67403,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_041",
+          "timeMs": 69952,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_042",
+          "timeMs": 70368,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_043",
+          "timeMs": 71669,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_044",
+          "timeMs": 74581,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_045",
+          "timeMs": 75403,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_046",
+          "timeMs": 76629,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_047",
+          "timeMs": 79296,
+          "hitType": "STANDARD",
+          "baseDamageScalar": 1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_048",
+          "timeMs": 80629,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_049",
+          "timeMs": 83317,
+          "hitType": "ACCENT",
+          "baseDamageScalar": 1.3,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_050",
+          "timeMs": 85013,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_051",
+          "timeMs": 85525,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_052",
+          "timeMs": 86592,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        },
+        {
+          "id": "STORY_LVL_EVENT_053",
+          "timeMs": 89717,
+          "hitType": "SYNCOPATED",
+          "baseDamageScalar": 1.1,
+          "chargesBassMeter": true
+        }
+      ]
+    }
+  }
+}
