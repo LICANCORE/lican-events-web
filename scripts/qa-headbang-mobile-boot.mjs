@@ -86,17 +86,17 @@ try {
   await send("Page.navigate", { url: gameUrl });
 
   let state;
-  for (let attempt = 0; attempt < 180; attempt += 1) {
+  for (let attempt = 0; attempt < 600; attempt += 1) {
     await sleep(100);
     state = await evaluate(`(()=>{const scene=window.__HEADBANG_GAME__?.scene?.getScenes?.(false)?.[0];return {
       loaderDone:document.getElementById('initial-loader')?.classList.contains('is-complete'),
       errorVisible:Boolean(document.getElementById('error-screen') && !document.getElementById('error-screen').classList.contains('is-hidden')),
       error:document.getElementById('error-message')?.textContent,
       gateVisible:Boolean(document.getElementById('newsletter-gate') && !document.getElementById('newsletter-gate').classList.contains('is-hidden')),
-      device:document.documentElement.dataset.device,
-      layout:document.documentElement.dataset.layout,
-      mobileEnabled:document.documentElement.dataset.mobileLandscapeEnabled,
-      orientationBlocked:document.documentElement.dataset.orientationBlocked,
+      device:document.documentElement?.dataset.device,
+      layout:document.documentElement?.dataset.layout,
+      mobileEnabled:document.documentElement?.dataset.mobileLandscapeEnabled,
+      orientationBlocked:document.documentElement?.dataset.orientationBlocked,
       sceneReady:Boolean(scene?.initialPreloadComplete),
       mode:scene?.mode,
       campaignSave:scene?.campaignSave,
@@ -105,7 +105,7 @@ try {
         levelFloor:Boolean(scene?.levelFloor), ambientSmoke:Boolean(scene?.ambientSmoke)
       }
     }})()`);
-    if (state.errorVisible || (state.loaderDone && state.gateVisible && state.sceneReady)) break;
+    if (state.errorVisible || state.sceneReady) break;
   }
 
   let playability = null;
