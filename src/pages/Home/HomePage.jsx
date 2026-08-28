@@ -93,7 +93,7 @@ export function NextEvent() {
         <div className="lineup">
           <p className="micro-label">Line-up</p>
           <ul>{nextEvent.lineUp.map((artist) => <li key={artist}>{artist}</li>)}</ul>
-          <p className="lineup__special">{nextEvent.specialShow}</p>
+          {nextEvent.specialShow ? <p className="lineup__special">{nextEvent.specialShow}</p> : null}
         </div>
         <EventCountdown target={nextEvent.startsAt} />
         <ButtonLink to={nextEvent.ticketUrl} icon="ticket">{t.next.buy}</ButtonLink>

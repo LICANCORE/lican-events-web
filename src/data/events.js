@@ -1,6 +1,6 @@
-import { eklypseZeroEvent } from './upcomingEvent';
+import { festesGoyaEvent } from './upcomingEvent';
 
-export const nextEvent = eklypseZeroEvent;
+export const nextEvent = festesGoyaEvent;
 
 export const pastEvents = [
   { name: 'FERAL', venue: 'Sala Zero', city: 'Tarragona', image: '/images/feral/feral-hard techno-publico-tarragona-4.webp' },

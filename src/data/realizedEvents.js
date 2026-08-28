@@ -1,4 +1,4 @@
-import { eklypseZeroEvent } from './upcomingEvent';
+import { eklypseZeroEvent, festesGoyaEvent } from './upcomingEvent';
 
 const createEvent = ({ id, file, image, title, brand, brandKey, date, startDateTime, status = 'realized', venue, municipality, province = 'Tarragona', descriptionSEO, alt, lineUp = [], tags = [] }) => ({
   id,
@@ -22,6 +22,22 @@ const createEvent = ({ id, file, image, title, brand, brandKey, date, startDateT
 });
 
 const events = [
+  createEvent({
+    id: festesGoyaEvent.id,
+    image: festesGoyaEvent.image,
+    title: 'Festes del Carrer Goya 2026',
+    brand: festesGoyaEvent.brand,
+    brandKey: festesGoyaEvent.brandKey,
+    date: festesGoyaEvent.date,
+    startDateTime: festesGoyaEvent.startsAt,
+    status: festesGoyaEvent.status,
+    venue: festesGoyaEvent.venue,
+    municipality: festesGoyaEvent.city,
+    descriptionSEO: festesGoyaEvent.descriptionSEO,
+    alt: festesGoyaEvent.alt,
+    lineUp: festesGoyaEvent.lineUp,
+    tags: ['fiesta popular', 'cultura local', 'Charanga Los Desafinaos', 'Dany Hardpy'],
+  }),
   createEvent({
     id: eklypseZeroEvent.id,
     image: eklypseZeroEvent.image,
