@@ -1,0 +1,391 @@
+{
+  "version": "v002",
+  "character": "TREZE",
+  "frameCount": 16,
+  "frames": [
+    {
+      "asset": "HD_BT_TREZE_WALK_RIGHT_01_v002.webp",
+      "sourceSheet": "treze_walk_right_4_sheet.png",
+      "frame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        70,
+        22,
+        203,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "68CC2BBA67A6B1F860863D1087D2ED98B6E214BDC75E1C119108636F7BB27547",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_WALK_RIGHT_02_v002.webp",
+      "sourceSheet": "treze_walk_right_4_sheet.png",
+      "frame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        64,
+        23,
+        174,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "E40E6DC5E064E812887F4ADAAFB954E097D3BEA36A19D23B8B6DCB2DAE15F9F3",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_WALK_RIGHT_03_v002.webp",
+      "sourceSheet": "treze_walk_right_4_sheet.png",
+      "frame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        50,
+        22,
+        184,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "520B209E20629CEBF9811B5C4E849FD5135B4BE62CB782A5D4EB4F6C3E07781F",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_WALK_RIGHT_04_v002.webp",
+      "sourceSheet": "treze_walk_right_4_sheet.png",
+      "frame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        57,
+        23,
+        167,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "9F49B2BC0A67F36DE62773BCB622FB6971F93F8228F0737D34CEB459890DBEBB",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_WALK_LEFT_01_v002.webp",
+      "sourceSheet": "treze_walk_left_4_sheet.png",
+      "frame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        76,
+        22,
+        202,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "F276B72ADC677F3AC3A415E36583A4E871626A0F1A611D13A6C4CFF90126532F",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_WALK_LEFT_02_v002.webp",
+      "sourceSheet": "treze_walk_left_4_sheet.png",
+      "frame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        85,
+        22,
+        191,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "3CE272B77CAEB286BBA9CFA99E1B7C7BCF08E1D71B46A0095EED3E0E4536A35C",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_WALK_LEFT_03_v002.webp",
+      "sourceSheet": "treze_walk_left_4_sheet.png",
+      "frame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        65,
+        22,
+        195,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "9AD34F620F716D297096D3DBB3CAE57BE169C5E018B77A66DD03830EF0E9E010",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_WALK_LEFT_04_v002.webp",
+      "sourceSheet": "treze_walk_left_4_sheet.png",
+      "frame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        59,
+        22,
+        182,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "79F24A65D06144A59A87B1396757065313E883773121988332A7E8F4C8E53F4C",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_RIGHT_NEUTRAL_v002.webp",
+      "sourceSheet": "treze_headbang_right_4_sheet.png",
+      "frame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        51,
+        22,
+        229,
+        238
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "50F77ED4529DE5A426E121AB81911738A51E4C200D6DCA886658E4C7D21C294E",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_RIGHT_LOAD_v002.webp",
+      "sourceSheet": "treze_headbang_right_4_sheet.png",
+      "frame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        26,
+        22,
+        192,
+        237
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "0DF7F6970DB03DCC862E1A02D08F486685402935B9C301E49614D2829DF824D7",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_RIGHT_ATTACK_v002.webp",
+      "sourceSheet": "treze_headbang_right_4_sheet.png",
+      "frame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        35,
+        38,
+        216,
+        238
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "1437C82B4B92EC596AB5C6081F50D6A72B26EB72268030441413EFFD272258BC",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_RIGHT_IMPACT_v002.webp",
+      "sourceSheet": "treze_headbang_right_4_sheet.png",
+      "frame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        26,
+        51,
+        208,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "4228A021C09ABF2595D851E6B740DFC7E0FAFAC5E89A4B0BD445998094BBBA21",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_LEFT_NEUTRAL_v002.webp",
+      "sourceSheet": "treze_headbang_left_4_sheet.png",
+      "frame": 1,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        107,
+        22,
+        214,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "BDE3439480F957662252D10A2AD4EBD2C70D4D1A276C1CCCC5ED651EA06830BE",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_LEFT_LOAD_v002.webp",
+      "sourceSheet": "treze_headbang_left_4_sheet.png",
+      "frame": 2,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        39,
+        26,
+        228,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "4F0895D0225545189015A81F4D28CCE8F57A753EB503BD78E9E5E1496BE4C927",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_LEFT_ATTACK_v002.webp",
+      "sourceSheet": "treze_headbang_left_4_sheet.png",
+      "frame": 3,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        28,
+        48,
+        228,
+        239
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "C6BD23656AFA0522003BB9B5C6DA3CF0E6BCBF06CDF3A422C9048BFF2063FD77",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    },
+    {
+      "asset": "HD_BT_TREZE_SIDE_LEFT_IMPACT_v002.webp",
+      "sourceSheet": "treze_headbang_left_4_sheet.png",
+      "frame": 4,
+      "size": [
+        256,
+        256
+      ],
+      "alphaBounds": [
+        28,
+        46,
+        198,
+        236
+      ],
+      "anchor": [
+        0.5,
+        0.9296875
+      ],
+      "sha256": "CF593F369B38B54AAF267F083700A3D6E0A1EF65C0C0A8AAC00CA3D278B64651",
+      "identity": "TREZE",
+      "bandana": "HEADBANG DEALERS / one line",
+      "earring": "silver hoop on TREZE's left side; perspective-consistent",
+      "format": "lossless WebP"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "henryRituals",
+  "displayName": "HENRY RITUALS",
+  "version": "v010",
+  "status": "HENRY_CANONICAL_APPROVED",
+  "identityAuthority": [
+    "henry_rituals_right_walk_approved_v010.png",
+    "henry_rituals_right_actions_approved_v010.png",
+    "henry_rituals_left_walk_approved_v010.png",
+    "henry_rituals_left_actions_approved_v010.png"
+  ],
+  "invariants": [
+    "circular silver earrings",
+    "approved face, hair, clothing and proportions",
+    "checkerboard trousers and left-hip chain"
+  ],
+  "assets": {
+    "WALK_RIGHT_01": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_01_v010.webp",
+    "WALK_RIGHT_02": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_02_v010.webp",
+    "WALK_RIGHT_03": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_03_v010.webp",
+    "WALK_RIGHT_04": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_RIGHT_04_v010.webp",
+    "SIDE_RIGHT_NEUTRAL": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_NEUTRAL_v010.webp",
+    "SIDE_RIGHT_LOAD": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_LOAD_v010.webp",
+    "SIDE_RIGHT_ATTACK": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_ATTACK_v010.webp",
+    "SIDE_RIGHT_IMPACT": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_IMPACT_v010.webp",
+    "SIDE_RIGHT_CROUCH": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_CROUCH_v010.webp",
+    "SIDE_RIGHT_JUMP": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_RIGHT_JUMP_v010.webp",
+    "WALK_LEFT_01": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_01_v010.webp",
+    "WALK_LEFT_02": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_02_v010.webp",
+    "WALK_LEFT_03": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_03_v010.webp",
+    "WALK_LEFT_04": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_WALK_LEFT_04_v010.webp",
+    "SIDE_LEFT_NEUTRAL": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_NEUTRAL_v010.webp",
+    "SIDE_LEFT_LOAD": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_LOAD_v010.webp",
+    "SIDE_LEFT_ATTACK": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_ATTACK_v010.webp",
+    "SIDE_LEFT_IMPACT": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_IMPACT_v010.webp",
+    "SIDE_LEFT_CROUCH": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_CROUCH_v010.webp",
+    "SIDE_LEFT_JUMP": "assets/character/henry_rituals/HD_BT_HENRY_RITUALS_SIDE_LEFT_JUMP_v010.webp"
+  },
+  "selector": "assets/character/selector_v010/HD_BT_HENRY_RITUALS_FRONT_GAME_SELECT_v010.webp"
+}

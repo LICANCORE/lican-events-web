@@ -1,0 +1,128 @@
+{
+  "menu": {
+    "play": "JUGAR",
+    "free": "MODO LIBRE",
+    "ready": true,
+    "url": "http://127.0.0.1:4173/headbangdealers_the_game/",
+    "title": "HEADBANG DEALERS // BASS TRAFFICKERS",
+    "body": "GIRA EL MÓVIL HACIA LA IZQUIERDA\n        HEADBANG DEALERS SOLO SE JUEGA EN HORIZONTAL\n        \n          ACTIVAR MODO HO"
+  },
+  "introBefore": {
+    "visible": true,
+    "next": "NEXT",
+    "skip": "SKIP INTRO",
+    "speaking": true,
+    "jawAnimation": "story-skull-jaw-talk",
+    "textLength": 21
+  },
+  "introAfterNext": {
+    "page": 0,
+    "typing": false,
+    "textLength": 43
+  },
+  "afterSkip": {
+    "characterScreen": true,
+    "mode": "story",
+    "selectedLevel": "tutorial",
+    "story": {
+      "version": 2,
+      "highestUnlockedLevel": 1,
+      "completedLevels": [],
+      "devCompletedLevels": [],
+      "generatedRewards": [],
+      "collectedUsbIds": [],
+      "collectedRewardLevelIds": [],
+      "unlockedCharacters": [
+        "treze"
+      ],
+      "masterPens": 1,
+      "freeModeStarterMasterPenGranted": true
+    }
+  },
+  "hudDesktop": [
+    {
+      "kind": "readout",
+      "text": "NIVEL 1000000",
+      "top": 69,
+      "height": 61
+    },
+    {
+      "kind": "readout readout--combo",
+      "text": "COMBO x0 DROP ACTIVO",
+      "top": 69,
+      "height": 61
+    },
+    {
+      "kind": "meter meter--bass",
+      "text": "MEDIDOR BASS0%",
+      "top": 69,
+      "height": 61
+    },
+    {
+      "kind": "readout",
+      "text": "TIEMPO00:60",
+      "top": 69,
+      "height": 61
+    },
+    {
+      "kind": "icon-button",
+      "text": "Ⅱ",
+      "top": 69,
+      "height": 61
+    }
+  ],
+  "hudMobile": [
+    {
+      "text": "NIVEL 1000000",
+      "top": 97,
+      "height": 58
+    },
+    {
+      "text": "COMBO x0 DROP ACTIVO",
+      "top": 97,
+      "height": 58
+    },
+    {
+      "text": "MEDIDOR BASS0%",
+      "top": 97,
+      "height": 58
+    },
+    {
+      "text": "TIEMPO00:60",
+      "top": 97,
+      "height": 58
+    },
+    {
+      "text": "Ⅱ",
+      "top": 97,
+      "height": 58
+    }
+  ],
+  "freeModePenCounts": {
+    "first": 1,
+    "second": 1,
+    "mode": "free"
+  },
+  "results": {
+    "cta": "DESBLOQUEAR A FRANKALE",
+    "ctaVisible": true,
+    "ctaAnimation": "story-unlock-cta-pulse",
+    "nextHidden": true,
+    "rewardUsb": "/headbangdealers_the_game/assets/items/usb/story/HD_BT_USB_STORY_FRANKALE_v001.png"
+  },
+  "unlock": {
+    "mode": "unlock-sequence",
+    "usb": "/headbangdealers_the_game/assets/items/usb/story/HD_BT_USB_STORY_FRANKALE_v001.png",
+    "pcOff": "/headbangdealers_the_game/assets/unlock/common/HD_BT_UNLOCK_PC_OFF_v011.webp",
+    "pcOn": "/headbangdealers_the_game/assets/unlock/common/HD_BT_UNLOCK_PC_ON_v011.webp",
+    "stages": 5
+  },
+  "unlockResources": {
+    "phase": "revealing",
+    "pcOffLoaded": true,
+    "pcOnLoaded": true,
+    "usbLoaded": true,
+    "revealLoaded": true,
+    "revealSrc": "/headbangdealers_the_game/assets/unlock/characters/frankale/HD_BT_UNLOCK_FRANKALE_STAGE_01_v011.webp"
+  }
+}

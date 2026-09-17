@@ -1,0 +1,236 @@
+{
+  "activation": {
+    "story-henry-phase-1": {
+      "id": "story-henry-phase-1",
+      "bpm": 120.75,
+      "events": 0,
+      "audio": true,
+      "background": true,
+      "totems": 0
+    },
+    "story-hydraxxx-phase-1": {
+      "id": "story-hydraxxx-phase-1",
+      "bpm": 154.25,
+      "events": 64,
+      "audio": true,
+      "background": true,
+      "totems": 5
+    },
+    "story-beutnoise-phase-1": {
+      "id": "story-beutnoise-phase-1",
+      "bpm": 139,
+      "events": 55,
+      "audio": true,
+      "background": true,
+      "totems": 5
+    },
+    "story-henry-phase-2": {
+      "id": "story-henry-phase-2",
+      "bpm": 87,
+      "events": 65,
+      "audio": true,
+      "background": true,
+      "totems": 5
+    },
+    "story-hydraxxx-phase-2": {
+      "id": "story-hydraxxx-phase-2",
+      "bpm": 158.5,
+      "events": 53,
+      "audio": true,
+      "background": true,
+      "totems": 5
+    },
+    "story-magic-bite": {
+      "id": "story-magic-bite",
+      "bpm": 146.25,
+      "events": 65,
+      "audio": true,
+      "background": true,
+      "totems": 5
+    },
+    "story-treze": {
+      "id": "story-treze",
+      "bpm": 87,
+      "events": 49,
+      "audio": true,
+      "background": true,
+      "totems": 5
+    },
+    "story-henry-phase-3": {
+      "id": "story-henry-phase-3",
+      "bpm": 120.75,
+      "events": 53,
+      "audio": true,
+      "background": true,
+      "totems": 5
+    }
+  },
+  "level2": {
+    "totemVisible": false,
+    "background": "story-level-2-background-open",
+    "actors": 28
+  },
+  "level6": {
+    "ground": 413,
+    "backgroundY": -755.4454835281617,
+    "eyes": [
+      {
+        "x": 172.79999999999998,
+        "y": 295
+      },
+      {
+        "x": 268.8,
+        "y": 323
+      },
+      {
+        "x": 364.8,
+        "y": 268
+      },
+      {
+        "x": 470.4,
+        "y": 281
+      },
+      {
+        "x": 576,
+        "y": 309
+      },
+      {
+        "x": 672,
+        "y": 258
+      }
+    ],
+    "prompt": {
+      "width": 240,
+      "height": 160,
+      "scrollWidth": 236,
+      "scrollHeight": 156
+    },
+    "rabbits": 6,
+    "visibleEyes": 0
+  },
+  "level7": {
+    "before": [
+      {
+        "kind": "skeleton",
+        "alive": true,
+        "harmful": true
+      }
+    ],
+    "after": [
+      {
+        "kind": "skeleton",
+        "alive": false,
+        "harmful": false
+      }
+    ],
+    "boneVisible": true
+  },
+  "level8": {
+    "actors": [
+      {
+        "kind": "razor",
+        "alive": true,
+        "harmful": true
+      }
+    ],
+    "razor": true,
+    "enhanced": true,
+    "before": 78,
+    "after": 104,
+    "finalBass": [
+      79352,
+      79727,
+      80102,
+      80477,
+      80852,
+      81226,
+      81601,
+      81976,
+      82351,
+      82726,
+      83101,
+      83476,
+      83851,
+      84226,
+      84600,
+      84975,
+      85350,
+      85725,
+      86100,
+      86475,
+      86850,
+      87225,
+      87599,
+      87974,
+      88349,
+      88724
+    ],
+    "duration": 89000
+  },
+  "level9": {
+    "actors": [
+      {
+        "kind": "riot",
+        "alive": false,
+        "harmful": false
+      }
+    ],
+    "defeated": true
+  },
+  "level14": {
+    "fallen": true,
+    "fallenHeight": 24.3,
+    "expectedHeight": 24.3,
+    "screen404": true,
+    "neck": 0
+  },
+  "perfectReaction": {
+    "damaged": true,
+    "piece": true,
+    "passiveWaves": 0
+  },
+  "campaign": {
+    "count": 15,
+    "playable": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "level2Reward": "none"
+  },
+  "level2Results": {
+    "itemHidden": true,
+    "next": "SIGUIENTE NIVEL",
+    "completed": true,
+    "reward": "SIN OBJETO NI PERSONAJE"
+  },
+  "mobile": {
+    "layout": [
+      960,
+      540
+    ],
+    "skeletons": 3,
+    "canvas": {
+      "x": 75.328125,
+      "y": 89,
+      "width": 693.328125,
+      "height": 390,
+      "top": 89,
+      "right": 768.65625,
+      "bottom": 479,
+      "left": 75.328125
+    }
+  },
+  "errors": []
+}

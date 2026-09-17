@@ -1,0 +1,281 @@
+{
+  "schemaVersion": "1.0.0",
+  "documentVersion": "v004",
+  "game": "HEADBANG DEALERS: BASS TRAFFICKERS",
+  "mode": "VERTEBRAE_CHECK",
+  "implementedDifficulty": "NORMAL",
+  "controls": {
+    "mobile": [
+      "TAP_PLAY_AREA",
+      "JOYSTICK_FOUR_DIRECTION"
+    ],
+    "desktop": [
+      "SPACE",
+      "LEFT_CLICK",
+      "A_D",
+      "ARROW_LEFT_RIGHT",
+      "W_S",
+      "ARROW_UP_DOWN"
+    ],
+    "pause": {
+      "mobile": "PAUSE_BUTTON",
+      "desktop": "ESCAPE"
+    }
+  },
+  "session": {
+    "countdownMs": 3000,
+    "musicMs": 40000,
+    "resolutionMs": 3000,
+    "totalTargetMs": 46000
+  },
+  "timingWindowsMs": {
+    "normal": {
+      "PERFECT": 120,
+      "HEAVY": 200,
+      "WEAK": 320
+    },
+    "touchAssist": {
+      "PERFECT": 150,
+      "HEAVY": 240,
+      "WEAK": 380
+    },
+    "accessible": {
+      "PERFECT": 180,
+      "HEAVY": 300,
+      "WEAK": 460
+    },
+    "calibrationRangeMs": [
+      -250,
+      250
+    ],
+    "calibrationStepMs": 5
+  },
+  "input": {
+    "minimumCooldownMs": 90,
+    "duplicateSuppressionMs": 80,
+    "unmatchedInputWindowMs": 150,
+    "spamRollingWindowMs": 2000,
+    "spamThreshold": 4,
+    "extremeSpamStrikes": 3,
+    "extremeSpamLockMs": 350,
+    "pausedInput": "IGNORE",
+    "transitionInput": "IGNORE",
+    "selectionPolicy": "NEAREST_UNJUDGED_NOTE"
+  },
+  "scoring": {
+    "base": {
+      "PERFECT": 1000,
+      "HEAVY": 700,
+      "WEAK": 300,
+      "MISS": 0
+    },
+    "accuracyWeights": {
+      "PERFECT": 1.0,
+      "HEAVY": 0.75,
+      "WEAK": 0.4,
+      "MISS": 0.0
+    },
+    "combo": [
+      {
+        "min": 0,
+        "max": 9,
+        "multiplier": 1
+      },
+      {
+        "min": 10,
+        "max": 24,
+        "multiplier": 2
+      },
+      {
+        "min": 25,
+        "max": 49,
+        "multiplier": 3
+      },
+      {
+        "min": 50,
+        "max": null,
+        "multiplier": 4
+      }
+    ],
+    "dropScoreMultiplier": 1.5,
+    "bonuses": {
+      "totemDestroyed": 10000,
+      "accuracyPerPercent": 100,
+      "noMiss": 5000,
+      "neckBelow10": 5000,
+      "perfectFinalHit": 3000
+    },
+    "penalties": {
+      "offBeatInput": 250,
+      "spamInput": 500
+    }
+  },
+  "bassMeter": {
+    "min": 0,
+    "max": 100,
+    "charge": {
+      "PERFECT": 4.0,
+      "HEAVY": 3.0,
+      "WEAK": 1.5,
+      "MISS": 0.0
+    },
+    "offBeatPenalty": 0.0,
+    "spamPenalty": 0.0,
+    "preDropGate": 100,
+    "dropUnlockEvent": "AUDIO_DETECTED_DROP",
+    "dropStartEvent": "AUDIO_DETECTED_DROP",
+    "dropDrainDurationMs": 0
+  },
+  "neckDamage": {
+    "min": 0,
+    "max": 100,
+    "damage": {
+      "PERFECT": 0,
+      "HEAVY": 0,
+      "WEAK": 0,
+      "MISS": 4,
+      "OFF_BEAT": 2,
+      "SPAM": 3
+    },
+    "recoveryPerCleanSection": 2,
+    "states": [
+      {
+        "id": "SAFE",
+        "min": 0,
+        "max": 19
+      },
+      {
+        "id": "STIFF",
+        "min": 20,
+        "max": 39
+      },
+      {
+        "id": "CRACKING",
+        "min": 40,
+        "max": 59
+      },
+      {
+        "id": "DANGER",
+        "min": 60,
+        "max": 79
+      },
+      {
+        "id": "VERTEBRAE_DELETED",
+        "min": 80,
+        "max": 100
+      }
+    ]
+  },
+  "totem": {
+    "integrityStart": 100.0,
+    "damageByJudgement": {
+      "PERFECT": 2.2,
+      "HEAVY": 1.5,
+      "WEAK": 0.6,
+      "MISS": 0.0
+    },
+    "comboDamageStep": 0.05,
+    "comboDamageEvery": 10,
+    "comboDamageCap": 1.25,
+    "dropDamageMultiplier": 1.5,
+    "finalHitDamageMultiplier": 2.0,
+    "spriteThresholds": [
+      {
+        "integrityMax": 100,
+        "sprite": "DAMAGE_00"
+      },
+      {
+        "integrityMax": 75,
+        "sprite": "DAMAGE_25"
+      },
+      {
+        "integrityMax": 50,
+        "sprite": "DAMAGE_50"
+      },
+      {
+        "integrityMax": 25,
+        "sprite": "DAMAGE_75"
+      },
+      {
+        "integrityMax": 0,
+        "sprite": "DAMAGE_100"
+      }
+    ]
+  },
+  "drop": {
+    "condition": "AUDIO_DETECTED_DROP",
+    "activation": "AUTOMATIC_AT_APPROVED_BEATMAP_DROP",
+    "durationMs": 6400,
+    "scoreMultiplier": 1.5,
+    "damageMultiplier": 1.5,
+    "meterDrain": "NONE_ACCUMULATIVE",
+    "finalHitEvent": "APPROVED_BEATMAP_FINAL_HIT"
+  },
+  "difficultySpecifications": [
+    {
+      "id": "EASY",
+      "status": "SPEC_ONLY",
+      "bpm": 150,
+      "eventTarget": 48,
+      "windowsMs": [
+        70,
+        130,
+        200
+      ],
+      "neckMultiplier": 0.75,
+      "scoreMultiplier": 0.85,
+      "rewardMultiplier": 1.0
+    },
+    {
+      "id": "NORMAL",
+      "status": "MVP_BEATMAP_COMPLETE",
+      "bpm": 150,
+      "eventTarget": 64,
+      "windowsMs": [
+        120,
+        200,
+        320
+      ],
+      "neckMultiplier": 1.0,
+      "scoreMultiplier": 1.0,
+      "rewardMultiplier": 1.0
+    },
+    {
+      "id": "HARD",
+      "status": "SPEC_ONLY",
+      "bpm": 150,
+      "eventTarget": 80,
+      "windowsMs": [
+        35,
+        70,
+        120
+      ],
+      "neckMultiplier": 1.25,
+      "scoreMultiplier": 1.1,
+      "rewardMultiplier": 1.25
+    },
+    {
+      "id": "ILLEGAL",
+      "status": "FUTURE_LOCKED",
+      "bpm": 150,
+      "eventTarget": 96,
+      "windowsMs": [
+        25,
+        55,
+        95
+      ],
+      "neckMultiplier": 1.5,
+      "scoreMultiplier": 1.25,
+      "rewardMultiplier": 1.5
+    }
+  ],
+  "accessibility": {
+    "scorePenalty": false,
+    "rewardPenalty": false,
+    "modes": [
+      "FULL_IMPACT",
+      "REDUCED_FLASHES",
+      "MINIMAL_MOTION"
+    ]
+  }
+}

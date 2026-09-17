@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "1.2.0",
+  "generatedAt": "2026-07-24T12:00:00.000Z",
+  "phase": "V012_CAMPAIGN_INTEGRATION",
+  "status": "ALL_APPROVED_TRACKS_INTEGRATED",
+  "audioClockContract": "AudioContext.currentTime",
+  "judgementWindowsMs": {
+    "perfect": 45,
+    "heavy": 90,
+    "weak": 150,
+    "miss": "outside_weak"
+  },
+  "tracks": [
+    {
+      "trackId": "BEUTNOISE_FOREST_PUNK",
+      "title": "Forest Punk",
+      "artist": "Beutnoise",
+      "authorizationState": "CONFIRMED_BY_LICAN",
+      "analysisState": "PILOT_COMPLETE",
+      "integrationState": "INTEGRATED_V012",
+      "selectionState": "C1_APPROVED_BY_LICAN",
+      "approvedAt": "2026-07-23",
+      "recommendedSourceRangeSec": [
+        32.819093,
+        76.319093
+      ],
+      "bpm": 140,
+      "timeSignature": "4/4",
+      "audioPath": "assets/audio/custom/HD_BT_AUDIO_CUSTOM_BEUTNOISE_FOREST_PUNK_PILOT_v012.wav",
+      "beatmapPath": "assets/data/custom/HD_BT_BEATMAP_BEUTNOISE_FOREST_PUNK_NORMAL_v012.json",
+      "durationSec": 43.5,
+      "scoredRangeSec": [
+        1.5,
+        41.5
+      ],
+      "fadeOutRangeSec": [
+        41.5,
+        43.5
+      ],
+      "eventCount": 64,
+      "identityCorrection": "V012_USER_APPROVED"
+    },
+    {
+      "trackId": "EDDY_CLASH_SO_HOT",
+      "title": "So Hot",
+      "artist": "Eddy Clash",
+      "authorizationState": "CONFIRMED_BY_LICAN",
+      "analysisState": "REVIEW_COMPLETE",
+      "integrationState": "INTEGRATED_V012",
+      "selectionState": "C1_APPROVED_BY_LICAN",
+      "approvedAt": "2026-07-23",
+      "bpm": 127,
+      "timeSignature": "4/4",
+      "audioPath": "assets/audio/custom/HD_BT_AUDIO_CUSTOM_EDDY_CLASH_SO_HOT_PILOT_v012.wav",
+      "beatmapPath": "assets/data/custom/HD_BT_BEATMAP_EDDY_CLASH_SO_HOT_NORMAL_v012.json",
+      "durationSec": 43.5,
+      "scoredRangeSec": [
+        1.5,
+        41.5
+      ],
+      "fadeOutRangeSec": [
+        41.5,
+        43.5
+      ],
+      "eventCount": 64,
+      "recommendedSourceRangeSec": [
+        119.458661,
+        162.958661
+      ],
+      "identityCorrection": "V012_USER_APPROVED"
+    },
+    {
+      "trackId": "FAYE_TTS",
+      "title": "TTS",
+      "artist": "FAYE, Scantraxx",
+      "authorizationState": "CONFIRMED_BY_LICAN",
+      "analysisState": "REVIEW_COMPLETE",
+      "integrationState": "APPROVED_NOT_YET_INTEGRATED",
+      "selectionState": "C3_APPROVED_BY_LICAN",
+      "bpm": 154.925,
+      "timeSignature": "4/4",
+      "audioPath": "assets/audio/custom/HD_BT_AUDIO_CUSTOM_FAYE_TTS_PILOT_v001.wav",
+      "beatmapPath": "assets/data/custom/HD_BT_BEATMAP_FAYE_TTS_NORMAL_v001.json",
+      "durationSec": 43.5,
+      "scoredRangeSec": [
+        1.5,
+        41.5
+      ],
+      "fadeOutRangeSec": [
+        41.5,
+        43.5
+      ],
+      "eventCount": 64,
+      "recommendedSourceRangeSec": [
+        128.972925,
+        172.472925
+      ],
+      "approvedAt": "2026-07-23"
+    },
+    {
+      "trackId": "FRANKALE_PABLO",
+      "title": "Pablo",
+      "artist": "FranKale",
+      "authorizationState": "CONFIRMED_BY_LICAN",
+      "analysisState": "TUTORIAL_CUSTOM_COMPLETE",
+      "integrationState": "APPROVED_NOT_YET_INTEGRATED",
+      "selectionState": "C3_TUTORIAL_APPROVED_BY_LICAN",
+      "bpm": 175.025,
+      "timeSignature": "4/4",
+      "audioPath": "assets/audio/custom/HD_BT_AUDIO_CUSTOM_FRANKALE_PABLO_TUTORIAL_v001.wav",
+      "beatmapPath": "assets/data/custom/HD_BT_BEATMAP_FRANKALE_PABLO_TUTORIAL_v001.json",
+      "durationSec": 59.479003,
+      "scoredRangeSec": [
+        1.5,
+        57.479003
+      ],
+      "fadeOutRangeSec": [
+        57.479003,
+        59.479003
+      ],
+      "eventCount": 64,
+      "recommendedSourceRangeSec": [
+        11.520997,
+        71
+      ],
+      "approvedAt": "2026-07-23",
+      "mode": "TUTORIAL",
+      "isOnlyExtendedSession": true
+    },
+    {
+      "trackId": "ONIONSTEP_UNTOUCHABLE",
+      "title": "Untouchable",
+      "artist": "Onionstep",
+      "authorizationState": "CONFIRMED_BY_LICAN",
+      "analysisState": "REVIEW_COMPLETE",
+      "integrationState": "APPROVED_NOT_YET_INTEGRATED",
+      "selectionState": "C1_APPROVED_BY_LICAN",
+      "bpm": 160.05,
+      "timeSignature": "4/4",
+      "audioPath": "assets/audio/custom/HD_BT_AUDIO_CUSTOM_ONIONSTEP_UNTOUCHABLE_PILOT_v001.wav",
+      "beatmapPath": "assets/data/custom/HD_BT_BEATMAP_ONIONSTEP_UNTOUCHABLE_NORMAL_v001.json",
+      "durationSec": 43.5,
+      "scoredRangeSec": [
+        1.5,
+        41.5
+      ],
+      "fadeOutRangeSec": [
+        41.5,
+        43.5
+      ],
+      "eventCount": 64,
+      "recommendedSourceRangeSec": [
+        89.396595,
+        132.896595
+      ],
+      "approvedAt": "2026-07-23"
+    },
+    {
+      "trackId": "QVEENS_WELCOME_TO_THE_CARNEVIL",
+      "title": "Welcome to the CarnEvil",
+      "artist": "Qveens, Tundero",
+      "authorizationState": "CONFIRMED_BY_LICAN",
+      "analysisState": "REVIEW_COMPLETE",
+      "integrationState": "APPROVED_NOT_YET_INTEGRATED",
+      "selectionState": "C1_APPROVED_BY_LICAN",
+      "bpm": 139.95,
+      "timeSignature": "4/4",
+      "audioPath": "assets/audio/custom/HD_BT_AUDIO_CUSTOM_QVEENS_WELCOME_TO_THE_CARNEVIL_PILOT_v001.wav",
+      "beatmapPath": "assets/data/custom/HD_BT_BEATMAP_QVEENS_WELCOME_TO_THE_CARNEVIL_NORMAL_v001.json",
+      "durationSec": 43.5,
+      "scoredRangeSec": [
+        1.5,
+        41.5
+      ],
+      "fadeOutRangeSec": [
+        41.5,
+        43.5
+      ],
+      "eventCount": 65,
+      "recommendedSourceRangeSec": [
+        108.725125,
+        152.225125
+      ],
+      "approvedAt": "2026-07-23"
+    },
+    {
+      "trackId": "VIKO_GAS_PEDAL",
+      "title": "Gas Pedal",
+      "artist": "Viko",
+      "authorizationState": "CONFIRMED_BY_LICAN",
+      "analysisState": "REVIEW_COMPLETE",
+      "integrationState": "APPROVED_NOT_YET_INTEGRATED",
+      "selectionState": "C1_APPROVED_BY_LICAN",
+      "bpm": 128,
+      "timeSignature": "4/4",
+      "audioPath": "assets/audio/custom/HD_BT_AUDIO_CUSTOM_VIKO_GAS_PEDAL_PILOT_v001.wav",
+      "beatmapPath": "assets/data/custom/HD_BT_BEATMAP_VIKO_GAS_PEDAL_NORMAL_v001.json",
+      "durationSec": 43.5,
+      "scoredRangeSec": [
+        1.5,
+        41.5
+      ],
+      "fadeOutRangeSec": [
+        41.5,
+        43.5
+      ],
+      "eventCount": 64,
+      "recommendedSourceRangeSec": [
+        66.743447,
+        110.243447
+      ],
+      "approvedAt": "2026-07-23"
+    }
+  ],
+  "unprocessedTrackIds": [],
+  "durationPolicy": {
+    "standardSessionDurationSec": 43.5,
+    "standardSessionsUnaffected": true,
+    "extendedSessions": [
+      {
+        "trackId": "FRANKALE_PABLO",
+        "mode": "TUTORIAL",
+        "durationSec": 59.479003,
+        "sourceRangeSec": [
+          11.520997,
+          71
+        ]
+      }
+    ]
+  },
+  "catalogVersion": "V009"
+}

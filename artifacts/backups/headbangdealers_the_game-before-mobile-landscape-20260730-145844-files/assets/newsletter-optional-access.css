@@ -1,0 +1,23 @@
+.newsletter-panel__logo {
+  display: block;
+  width: min(92%, 470px);
+  height: auto;
+  max-height: 118px;
+  object-fit: contain;
+  margin: 8px auto 12px;
+  filter: drop-shadow(0 0 14px rgb(85 255 0 / 30%));
+}
+
+.newsletter-submit:not(.is-consent-pending) {
+  color: #071009;
+  background: var(--acid);
+  border-color: var(--acid);
+  box-shadow: 5px 5px #1e4f0b;
+}
+
+@media (max-width: 700px), (orientation: portrait) {
+  .newsletter-panel__logo {
+    max-height: 82px;
+    margin-block: 5px 9px;
+  }
+}
