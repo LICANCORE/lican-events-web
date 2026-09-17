@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import ScrollToTop from '../components/ScrollToTop';
 import LanguageProvider from '../i18n/LanguageProvider';
+import SiteConsent from '../consent/SiteConsent';
 
 export default function MainLayout() {
   return (
@@ -20,6 +21,7 @@ export default function MainLayout() {
         </main>
         <Footer />
         <AnalyticsTracker />
+        <SiteConsent />
       </div>
     </LanguageProvider>
   );

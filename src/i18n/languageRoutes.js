@@ -3,27 +3,27 @@ export const supportedRouteLanguages = ['cast', 'cat', 'eng', 'nl', 'deutsch', '
 export const localizedRoutes = {
   cast: {
     prefix: '',
-    slugs: { home: '', events: 'eventos', services: 'servicios', artists: 'artistas', gallery: 'galeria', contact: 'contacto' },
+    slugs: { home: '', events: 'eventos', services: 'servicios', artists: 'artistas', gallery: 'galeria', contact: 'contacto', cookies: 'politica-de-cookies', privacy: 'politica-de-privacidad' },
   },
   cat: {
     prefix: 'cat',
-    slugs: { home: '', events: 'esdeveniments', services: 'serveis', artists: 'artistes', gallery: 'galeria', contact: 'contacte' },
+    slugs: { home: '', events: 'esdeveniments', services: 'serveis', artists: 'artistes', gallery: 'galeria', contact: 'contacte', cookies: 'politica-de-galetes', privacy: 'politica-de-privacitat' },
   },
   eng: {
     prefix: 'eng',
-    slugs: { home: '', events: 'events', services: 'services', artists: 'artists', gallery: 'gallery', contact: 'contact' },
+    slugs: { home: '', events: 'events', services: 'services', artists: 'artists', gallery: 'gallery', contact: 'contact', cookies: 'cookie-policy', privacy: 'privacy-policy' },
   },
   nl: {
     prefix: 'nl',
-    slugs: { home: '', events: 'events', services: 'diensten', artists: 'artiesten', gallery: 'galerij', contact: 'contact' },
+    slugs: { home: '', events: 'events', services: 'diensten', artists: 'artiesten', gallery: 'galerij', contact: 'contact', cookies: 'cookiebeleid', privacy: 'privacybeleid' },
   },
   deutsch: {
     prefix: 'deutsch',
-    slugs: { home: '', events: 'veranstaltungen', services: 'dienstleistungen', artists: 'kuenstler', gallery: 'galerie', contact: 'kontakt' },
+    slugs: { home: '', events: 'veranstaltungen', services: 'dienstleistungen', artists: 'kuenstler', gallery: 'galerie', contact: 'kontakt', cookies: 'cookie-richtlinie', privacy: 'datenschutz' },
   },
   eo: {
     prefix: 'eo',
-    slugs: { home: '', events: 'eventoj', services: 'servoj', artists: 'artistoj', gallery: 'galerio', contact: 'kontakto' },
+    slugs: { home: '', events: 'eventoj', services: 'servoj', artists: 'artistoj', gallery: 'galerio', contact: 'kontakto', cookies: 'politiko-pri-kuketoj', privacy: 'privateca-politiko' },
   },
 };
 

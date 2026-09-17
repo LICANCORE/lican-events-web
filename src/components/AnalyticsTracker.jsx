@@ -1,12 +1,18 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import useConsent from '../consent/useConsent';
 
 export default function AnalyticsTracker() {
   const { pathname, search } = useLocation();
   const lastPagePath = useRef(null);
+  const { analytics } = useConsent();
 
   useEffect(() => {
     const pagePath = pathname + search;
+    if (!analytics) {
+      if (lastPagePath.current !== pagePath) lastPagePath.current = null;
+      return undefined;
+    }
 
     // Let page title effects and route redirects finish before recording the view.
     // Cleanup also cancels React StrictMode's first development-only effect.
@@ -14,19 +20,14 @@ export default function AnalyticsTracker() {
       if (
         lastPagePath.current === pagePath ||
         window.location.pathname + window.location.search !== pagePath ||
-        typeof window.gtag !== 'function'
+        !window.licanConsent?.getSnapshot().analytics
       ) return;
 
-      window.gtag('event', 'page_view', {
-        page_path: pagePath,
-        page_location: window.location.href,
-        page_title: document.title,
-      });
-      lastPagePath.current = pagePath;
+      if (window.licanConsent.trackPageView(pagePath)) lastPagePath.current = pagePath;
     }, 0);
 
     return () => window.clearTimeout(timer);
-  }, [pathname, search]);
+  }, [pathname, search, analytics]);
 
   return null;
 }

@@ -1,0 +1,45 @@
+export const consentCopy = {
+  cast: {
+    title: 'LICAN RESPETA TU PRIVACIDAD',
+    text: 'Usamos cookies necesarias para el funcionamiento de la web y, con tu permiso, cookies analíticas para entender cómo se utiliza LICAN EVENTS y mejorar nuestros contenidos, eventos y servicios.',
+    reject: 'RECHAZAR', configure: 'CONFIGURAR', accept: 'ACEPTAR', save: 'GUARDAR PREFERENCIAS', preferences: 'PREFERENCIAS DE COOKIES', close: 'Cerrar',
+    necessary: 'Necesarias', analytics: 'Analíticas', marketing: 'Marketing',
+    necessaryText: 'Cookies necesarias para el funcionamiento básico y la seguridad de la web.',
+    analyticsText: 'Nos ayudan a entender cómo se utiliza la web mediante Google Analytics.',
+    marketingText: 'Reservado para futuras herramientas publicitarias y de remarketing. No está activo.',
+    always: 'Siempre activas', inactive: 'No disponible actualmente', cookies: 'Política de cookies', privacy: 'Política de privacidad',
+    storage: 'Tu navegador no permite guardar la elección. Se aplicará durante esta visita.',
+  },
+  cat: {
+    title: 'LICAN RESPECTA LA TEVA PRIVACITAT',
+    text: 'Fem servir galetes necessàries per al funcionament del web i, amb el teu permís, galetes analítiques per entendre com es fa servir LICAN EVENTS i millorar els nostres continguts, esdeveniments i serveis.',
+    reject: 'REBUTJAR', configure: 'CONFIGURAR', accept: 'ACCEPTAR', save: 'DESAR PREFERÈNCIES', preferences: 'PREFERÈNCIES DE GALETES', close: 'Tancar',
+    necessary: 'Necessàries', analytics: 'Analítiques', marketing: 'Màrqueting',
+    necessaryText: 'Galetes necessàries per al funcionament bàsic i la seguretat del web.', analyticsText: 'Ens ajuden a entendre com es fa servir el web mitjançant Google Analytics.',
+    marketingText: 'Reservat per a futures eines publicitàries i de remàrqueting. No està actiu.', always: 'Sempre actives', inactive: 'Actualment no disponible', cookies: 'Política de galetes', privacy: 'Política de privacitat', storage: 'El navegador no permet desar la tria. S’aplicarà durant aquesta visita.',
+  },
+  eng: {
+    title: 'LICAN RESPECTS YOUR PRIVACY',
+    text: 'We use necessary cookies to operate the website and, with your permission, analytics cookies to understand how LICAN EVENTS is used and improve our content, events and services.',
+    reject: 'REJECT', configure: 'CONFIGURE', accept: 'ACCEPT', save: 'SAVE PREFERENCES', preferences: 'COOKIE PREFERENCES', close: 'Close',
+    necessary: 'Necessary', analytics: 'Analytics', marketing: 'Marketing', necessaryText: 'Cookies required for basic website functionality and security.', analyticsText: 'They help us understand website usage through Google Analytics.', marketingText: 'Reserved for future advertising and remarketing tools. Not active.', always: 'Always active', inactive: 'Currently unavailable', cookies: 'Cookie policy', privacy: 'Privacy policy', storage: 'Your browser cannot save your choice. It will apply for this visit.',
+  },
+  nl: {
+    title: 'LICAN RESPECTEERT JE PRIVACY',
+    text: 'We gebruiken noodzakelijke cookies voor de werking van de website en, met jouw toestemming, analytische cookies om te begrijpen hoe LICAN EVENTS wordt gebruikt en onze inhoud, evenementen en diensten te verbeteren.',
+    reject: 'WEIGEREN', configure: 'INSTELLEN', accept: 'ACCEPTEREN', save: 'VOORKEUREN OPSLAAN', preferences: 'COOKIEVOORKEUREN', close: 'Sluiten',
+    necessary: 'Noodzakelijk', analytics: 'Analytisch', marketing: 'Marketing', necessaryText: 'Cookies die nodig zijn voor de basiswerking en beveiliging van de website.', analyticsText: 'Ze helpen ons via Google Analytics te begrijpen hoe de website wordt gebruikt.', marketingText: 'Gereserveerd voor toekomstige reclame- en remarketingtools. Niet actief.', always: 'Altijd actief', inactive: 'Momenteel niet beschikbaar', cookies: 'Cookiebeleid', privacy: 'Privacybeleid', storage: 'Je browser kan je keuze niet opslaan. Deze geldt tijdens dit bezoek.',
+  },
+  deutsch: {
+    title: 'LICAN RESPEKTIERT DEINE PRIVATSPHÄRE',
+    text: 'Wir verwenden notwendige Cookies für den Betrieb der Website und mit deiner Zustimmung Analyse-Cookies, um die Nutzung von LICAN EVENTS zu verstehen und unsere Inhalte, Veranstaltungen und Dienstleistungen zu verbessern.',
+    reject: 'ABLEHNEN', configure: 'EINSTELLEN', accept: 'AKZEPTIEREN', save: 'EINSTELLUNGEN SPEICHERN', preferences: 'COOKIE-EINSTELLUNGEN', close: 'Schließen',
+    necessary: 'Notwendig', analytics: 'Analyse', marketing: 'Marketing', necessaryText: 'Cookies für die grundlegende Funktion und Sicherheit der Website.', analyticsText: 'Sie helfen uns, die Nutzung der Website mit Google Analytics zu verstehen.', marketingText: 'Für zukünftige Werbe- und Remarketing-Tools vorgesehen. Nicht aktiv.', always: 'Immer aktiv', inactive: 'Derzeit nicht verfügbar', cookies: 'Cookie-Richtlinie', privacy: 'Datenschutzerklärung', storage: 'Dein Browser kann die Auswahl nicht speichern. Sie gilt für diesen Besuch.',
+  },
+  eo: {
+    title: 'LICAN RESPEKTAS VIAN PRIVATECON',
+    text: 'Ni uzas necesajn kuketojn por funkciigi la retejon kaj, kun via permeso, analizajn kuketojn por kompreni la uzadon de LICAN EVENTS kaj plibonigi niajn enhavojn, eventojn kaj servojn.',
+    reject: 'RIFUZI', configure: 'AGORDI', accept: 'AKCEPTI', save: 'KONSERVI PREFEROJN', preferences: 'KUKETAJ PREFEROJ', close: 'Fermi',
+    necessary: 'Necesaj', analytics: 'Analizaj', marketing: 'Merkatado', necessaryText: 'Kuketoj necesaj por la baza funkciado kaj sekureco de la retejo.', analyticsText: 'Ili helpas nin kompreni la uzadon de la retejo per Google Analytics.', marketingText: 'Rezervita por estontaj reklamaj kaj remarketadaj iloj. Ne aktiva.', always: 'Ĉiam aktivaj', inactive: 'Nuntempe ne disponebla', cookies: 'Politiko pri kuketoj', privacy: 'Privateca politiko', storage: 'Via retumilo ne povas konservi la elekton. Ĝi validos dum ĉi tiu vizito.',
+  },
+};

@@ -1,0 +1,32 @@
+.lican-consent { color: #f4f2ff; font: 16px/1.55 Arial, Helvetica, sans-serif; letter-spacing: normal; text-align: left; }
+.lican-consent *, .lican-consent *::before, .lican-consent *::after { box-sizing: border-box; }
+.lican-consent-banner, .lican-consent-dialog { background: #10101d; color: #f4f2ff; border: 1px solid #9477df; border-radius: 16px; padding: 24px; box-shadow: 0 12px 60px #0009; }
+.lican-consent-banner { position: fixed; z-index: 2147483000; bottom: max(16px, env(safe-area-inset-bottom)); right: 16px; width: min(640px, calc(100% - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; }
+.lican-consent h2 { font: 700 20px/1.35 Arial, Helvetica, sans-serif; color: #f4f2ff; letter-spacing: .04em; margin: 0 0 12px; overflow-wrap: anywhere; }
+.lican-consent p { margin: 0 0 18px; font-size: 16px; line-height: 1.55; color: #dad7e9; }
+.lican-consent button, .cookie-preferences-button { min-height: 44px; padding: 12px 16px; border: 1px solid #a58adf; background: #28203e; color: #fff; border-radius: 8px; cursor: pointer; font: 700 14px/1.4 Arial, Helvetica, sans-serif; white-space: normal; overflow-wrap: anywhere; }
+.lican-consent button:hover, .cookie-preferences-button:hover { background: #3e315d; }
+.lican-consent :focus-visible, .cookie-preferences-button:focus-visible { outline: 3px solid #75d7ff; outline-offset: 3px; }
+.lican-consent-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.lican-consent-links { display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 12px; }
+.lican-consent-links a { display: inline-flex; align-items: center; min-height: 44px; color: #d1bdff; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.lican-consent-dialog { width: min(600px, calc(100% - 32px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; overflow-y: auto; overscroll-behavior: contain; }
+.lican-consent-dialog::backdrop { background: #03030bb8; }
+.lican-consent-dialog-heading { display: flex; align-items: flex-start; gap: 16px; justify-content: space-between; }
+.lican-consent-dialog-heading button { flex: 0 0 44px; padding: 4px; font-size: 25px; }
+.lican-consent-category { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #454057; padding: 18px 0; cursor: pointer; }
+.lican-consent-category strong, .lican-consent-category span span, .lican-consent-category small { display: block; }
+.lican-consent-category strong { font-size: 17px; margin-bottom: 4px; }
+.lican-consent-category small { color: #bcb3cf; font-size: 14px; margin-top: 4px; }
+.lican-consent-category input { flex: 0 0 44px; width: 44px; height: 44px; accent-color: #b99aff; cursor: pointer; }
+.lican-consent-category input:disabled { cursor: not-allowed; }
+.lican-consent-save { width: 100%; }
+.lican-consent-reopen { position: fixed; z-index: 2147482999; bottom: max(12px, env(safe-area-inset-bottom)); left: 12px; max-width: calc(100% - 24px); opacity: .92; }
+.lican-consent .lican-consent-storage { position: fixed; z-index: 2147483000; bottom: 64px; left: 16px; right: 16px; background: #10101d; padding: 12px; border: 1px solid #9477df; }
+.cookie-preferences-button { text-align: left; width: fit-content; background: transparent; }
+.legal-page { max-width: 880px; margin: 0 auto; padding: 140px 24px 80px; overflow-wrap: anywhere; }
+.legal-page h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.15; margin-bottom: 32px; }
+.legal-page h2 { font-size: 23px; margin: 32px 0 12px; }
+.legal-page p { font-size: 17px; line-height: 1.7; margin-bottom: 18px; }
+.legal-page a { color: #ccb1ff; text-decoration: underline; }
+@media (max-width: 480px) { .lican-consent-banner, .lican-consent-dialog { padding: 18px; } .lican-consent-actions { grid-template-columns: 1fr; gap: 8px; } .lican-consent h2 { font-size: 18px; } }

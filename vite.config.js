@@ -15,7 +15,9 @@ function headbangBridgeDevelopmentAlias() {
         const [pathname, query] = (request.url ?? '').split('?', 2);
         const querySuffix = query ? `?${query}` : '';
 
-        if (pathname === headbangBridgePublicPath) {
+        if (pathname === '/consent-ui.js') {
+          request.url = `/src/consent/standalone.jsx${querySuffix}`;
+        } else if (pathname === headbangBridgePublicPath) {
           request.url = `${headbangBridgeSourcePath}${querySuffix}`;
         } else if (
           pathname === '/headbangdealers_the_game' ||
@@ -42,6 +44,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: fileURLToPath(new URL('index.html', import.meta.url)),
+        consentUi: fileURLToPath(new URL('src/consent/standalone.jsx', import.meta.url)),
         headbangSupabaseBridge: fileURLToPath(
           new URL(
             'src/headbang-game/gamePersistenceBridge.js',
@@ -51,7 +54,7 @@ export default defineConfig({
       },
       output: {
         entryFileNames: (chunkInfo) =>
-          chunkInfo.name === 'headbangSupabaseBridge'
+          chunkInfo.name === 'consentUi' ? 'consent-ui.js' : chunkInfo.name === 'headbangSupabaseBridge'
             ? 'headbangdealers_the_game/assets/supabase-bridge.js'
             : 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',

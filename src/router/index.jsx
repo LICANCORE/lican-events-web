@@ -14,6 +14,7 @@ import GaleriaPage from '../pages/Galeria/GaleriaPage';
 import ContactoPage from '../pages/Contacto/ContactoPage';
 import { getLegacyRouteEntries, getLocalizedPath, localizedRoutes } from '../i18n/languageRoutes';
 import RouteRedirect from './RouteRedirect';
+import LegalPage from '../pages/Legal/LegalPage';
 
 const pageComponents = {
   home: <HomePage />,
@@ -22,6 +23,8 @@ const pageComponents = {
   artists: <LanzaTuCarreraPage />,
   gallery: <GaleriaPage />,
   contact: <ContactoPage />,
+  cookies: <LegalPage type="cookies" />,
+  privacy: <LegalPage type="privacy" />,
 };
 
 const createLocalizedChildren = (language) => {
