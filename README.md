@@ -18,6 +18,18 @@ Its production URL is:
 The game remains an autonomous static build. Its minified core bundle must not
 be edited manually.
 
+### Descubre tu BASS
+
+The standalone quiz is served from `public/descubre-tu-bass/index.html` at
+`https://licanevents.com/descubre-tu-bass` (GitHub Pages adds a trailing slash).
+It is deliberately absent from navigation and has a `noindex, nofollow` robots
+directive. Anyone with the link can access it; it requires no ChatGPT account.
+
+The original self-contained app was imported from
+`https://lican-descubre-tu-bass.licantrece.chatgpt.site/`. Its questions, scoring,
+design, and Spotify links are preserved. Sharing uses the LICAN Events URL.
+Edit this HTML directly; Vite copies it into the deployment unchanged.
+
 ### Supabase
 
 Copy `.env.example` to `.env.local` and provide:

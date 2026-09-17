@@ -22,6 +22,11 @@ function headbangBridgeDevelopmentAlias() {
           pathname === '/headbangdealers_the_game/'
         ) {
           request.url = `/headbangdealers_the_game/index.html${querySuffix}`;
+        } else if (
+          pathname === '/descubre-tu-bass' ||
+          pathname === '/descubre-tu-bass/'
+        ) {
+          request.url = `/descubre-tu-bass/index.html${querySuffix}`;
         }
 
         next();
