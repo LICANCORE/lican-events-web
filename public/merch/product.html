@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030611">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <title>Producto | LICAN MERCH</title>
+    <meta name="description" content="Ficha de producto de LICAN MERCH.">
+    <link rel="canonical" href="https://licanevents.com/merch/product.html">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="LICAN MERCH">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="./css/shop.css">
+  </head>
+  <body>
+    <header class="merch-header" data-site-header></header>
+    <main class="product-page shell" data-product-page hidden>
+      <nav class="breadcrumbs" aria-label="Migas de pan"><a href="./">LICAN MERCH</a><span>/</span><span>PIEZA</span></nav>
+      <article class="product-detail">
+        <div class="product-gallery">
+          <div class="product-gallery__main"><img data-product-main-image src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" width="1000" height="1200"></div>
+          <div class="product-gallery__thumbs" data-product-thumbnails aria-label="Galería del producto"></div>
+        </div>
+        <div class="product-info">
+          <p class="eyebrow" data-product-brand></p>
+          <h1 data-product-name></h1>
+          <p class="product-info__type" data-product-type></p>
+          <p class="product-info__price" data-product-price></p>
+          <p class="product-info__description" data-product-description></p>
+          <div class="product-facts"><h2>DETALLES CONFIRMADOS</h2><ul data-product-features></ul></div>
+          <div class="purchase-panel">
+            <label data-size-field>TALLA<select data-size-select required><option value="">Selecciona una talla</option></select></label>
+            <label>CANTIDAD<input data-quantity type="number" min="1" max="99" value="1" inputmode="numeric"></label>
+            <button class="button button--primary" data-add-to-cart type="button">AÑADIR AL CARRITO</button>
+            <p class="purchase-panel__note" data-purchase-note></p>
+          </div>
+          <details class="pending-data"><summary>INFORMACIÓN TODAVÍA PENDIENTE</summary><ul data-product-pending></ul></details>
+        </div>
+      </article>
+      <section class="section related" data-related-section><div class="section-heading"><div><p class="eyebrow">MISMA FRECUENCIA</p><h2>RELACIONADOS</h2></div></div><div class="product-grid" data-related></div></section>
+    </main>
+    <div data-cart-host></div>
+    <footer class="merch-footer" data-site-footer></footer>
+    <script type="module" src="./js/product.js"></script>
+  </body>
+</html>

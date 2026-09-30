@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030611">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <title>LICAN MERCH | Merchandise oficial LICAN EVENTS</title>
+    <meta name="description" content="LICAN MERCH: piezas oficiales de Headbang Dealers, FERAL, Night of Wolves y Bass Traffickers.">
+    <link rel="canonical" href="https://licanevents.com/merch/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LICAN MERCH — Drop 001">
+    <meta property="og:description" content="Merchandising oficial de la escena LICAN EVENTS.">
+    <meta property="og:url" content="https://licanevents.com/merch/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LICAN MERCH — Drop 001">
+    <link rel="stylesheet" href="./css/shop.css">
+  </head>
+  <body>
+    <header class="merch-header" data-site-header></header>
+    <main>
+      <section class="merch-hero">
+        <div class="merch-hero__noise" aria-hidden="true"></div>
+        <div class="merch-hero__copy">
+          <p class="eyebrow">LICAN EVENTS · CYBER CLUB SYSTEM</p>
+          <h1>WEAR THE<br><span>UNDERGROUND.</span></h1>
+          <p class="merch-hero__lead">Piezas nacidas entre cabina, metal y luz ultravioleta. El uniforme no oficial de nuestra escena.</p>
+          <div class="button-row">
+            <a class="button button--primary" href="#catalogo">EXPLORAR DROP</a>
+            <a class="button button--ghost" href="#colecciones">VER COLECCIONES</a>
+          </div>
+        </div>
+        <div class="merch-hero__visual">
+          <span class="merch-hero__index">DROP<br>001</span>
+          <img data-hero-product src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" width="900" height="1100" fetchpriority="high">
+          <span class="merch-hero__vertical">TARRAGONA · BARCELONA · BASS CULTURE</span>
+        </div>
+        <div class="merch-hero__footer">
+          <span data-product-count>CATÁLOGO EN CARGA</span>
+          <span>OFICIAL / LICAN EVENTS</span>
+        </div>
+      </section>
+
+      <section class="section shell" id="colecciones">
+        <div class="section-heading">
+          <div><p class="eyebrow">IDENTIDADES DEL SISTEMA</p><h2>COLECCIONES</h2></div>
+          <p>Una matriz, distintas frecuencias. Cada submarca conserva su código visual dentro del universo LICAN.</p>
+        </div>
+        <div class="collection-grid" data-collections></div>
+      </section>
+
+      <section class="section shell catalog" id="catalogo">
+        <div class="section-heading">
+          <div><p class="eyebrow">DROP 001</p><h2>CATÁLOGO</h2></div>
+          <p>Todos los datos publicados proceden de las fichas maestras. Precio, stock y venta se activarán únicamente tras su confirmación.</p>
+        </div>
+        <div class="filter-row" data-filters aria-label="Filtrar catálogo"></div>
+        <div class="product-grid" data-catalog-grid aria-live="polite"></div>
+      </section>
+
+      <section class="manifesto">
+        <div class="shell manifesto__grid">
+          <p class="eyebrow">LICAN MERCH / 2026</p>
+          <blockquote>NO ES UN LOGO SOBRE UNA PRENDA.<br><span>ES LA ESCENA QUE LLEVAS CONTIGO.</span></blockquote>
+          <div class="manifesto__meta"><span>EDICIÓN</span><strong>DROP 001</strong><span>ESTADO</span><strong>PREVIEW</strong></div>
+        </div>
+      </section>
+
+      <section class="section shell info-grid" id="envios">
+        <article><span class="info-grid__number">01</span><h3>ENVÍOS</h3><p>Tarifas y zonas pendientes de confirmación. No mostraremos un coste hasta tenerlo validado.</p></article>
+        <article><span class="info-grid__number">02</span><h3>RECOGIDA</h3><p>La recogida en eventos aparece en referencias históricas, pero su vigencia actual está pendiente de confirmar.</p></article>
+        <article><span class="info-grid__number">03</span><h3>PIEZAS</h3><p>Las prendas artesanales pueden presentar variaciones propias del proceso. Consulta cada ficha para conocer lo confirmado.</p></article>
+      </section>
+
+      <section class="section shell faq">
+        <div class="section-heading"><div><p class="eyebrow">DATOS CLAROS</p><h2>FAQ</h2></div></div>
+        <details><summary>¿Ya puedo comprar?</summary><p>Todavía no. El catálogo está en modo preview porque faltan precios, stock y condiciones comerciales confirmadas.</p></details>
+        <details><summary>¿Cómo sabré que una pieza está disponible?</summary><p>La ficha mostrará precio, stock y el botón «Añadir al carrito» activo cuando todos los datos necesarios estén validados.</p></details>
+        <details><summary>¿El pago se realiza en esta web?</summary><p>La selección y los datos de pedido se gestionarán en LICAN MERCH; el pago final se realizará en el checkout seguro alojado de SumUp.</p></details>
+      </section>
+    </main>
+    <div data-cart-host></div>
+    <footer class="merch-footer" data-site-footer></footer>
+    <script type="module" src="./js/catalog.js"></script>
+  </body>
+</html>

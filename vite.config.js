@@ -29,6 +29,8 @@ function headbangBridgeDevelopmentAlias() {
           pathname === '/descubre-tu-bass/'
         ) {
           request.url = `/descubre-tu-bass/index.html${querySuffix}`;
+        } else if (pathname === '/merch' || pathname === '/merch/') {
+          request.url = `/merch/index.html${querySuffix}`;
         }
 
         next();

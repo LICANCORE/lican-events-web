@@ -21,6 +21,7 @@ export default function Footer() {
         <p className="footer__label">{t.footer.navigation}</p>
         <nav className="footer__links" aria-label="Navegación del pie">
           {navigationItems.map((item) => <Link to={localizePath(item.to)} key={item.to}>{t.nav[item.key]}</Link>)}
+          <a href="/merch/">MERCH</a>
         </nav>
       </div>
       <div>

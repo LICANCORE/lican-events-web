@@ -19,6 +19,8 @@ import { languageMeta } from '../../i18n/translations';
 import useLanguage from '../../i18n/useLanguage';
 import './home.css';
 
+const pageLoadedAt = Date.now();
+
 const partnerTitleLines = {
   cast: ['Convenios', 'Y marcas', 'Colaboradoras'],
   cat: ['Convenis', 'I marques', 'Col·laboradores'],
@@ -202,7 +204,7 @@ export function RealizedEvents() {
         </div>
         <div className="realized-events__grid">
           {visibleEvents.map((event) => {
-            const isUpcoming = event.status === 'upcoming' && Date.parse(event.startDateTime || `${event.date}T23:59:59`) > Date.now();
+            const isUpcoming = event.status === 'upcoming' && Date.parse(event.startDateTime || `${event.date}T23:59:59`) > pageLoadedAt;
             const description = language === 'cast'
               ? event.descriptionSEO
               : t.realized.descriptionTemplates[event.brandKey].replace('{title}', event.title);

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030611">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Checkout | LICAN MERCH</title>
+    <meta name="description" content="Checkout seguro de LICAN MERCH.">
+    <link rel="stylesheet" href="./css/shop.css">
+  </head>
+  <body>
+    <header class="merch-header" data-site-header></header>
+    <main class="checkout-page shell" data-checkout-main>
+      <div class="checkout-heading"><p class="eyebrow">CHECKOUT LICAN / PASO 01</p><h1>DATOS DE PEDIDO</h1><p>El pago real se realizará posteriormente en el entorno seguro alojado de SumUp.</p></div>
+      <form class="checkout-layout" data-checkout-form>
+        <div class="checkout-form">
+          <fieldset><legend>CONTACTO</legend><div class="form-grid">
+            <label>Nombre<input name="firstName" autocomplete="given-name" maxlength="80" required></label>
+            <label>Apellidos<input name="lastName" autocomplete="family-name" maxlength="120" required></label>
+            <label>Email<input name="email" type="email" autocomplete="email" maxlength="160" required></label>
+            <label>Teléfono<input name="phone" type="tel" autocomplete="tel" maxlength="40" required></label>
+          </div></fieldset>
+          <fieldset><legend>ENVÍO</legend><div class="form-grid">
+            <label class="form-grid__full">Dirección<input name="address" autocomplete="street-address" maxlength="180" required></label>
+            <label>Código postal<input name="postalCode" autocomplete="postal-code" maxlength="16" required></label>
+            <label>Ciudad<input name="city" autocomplete="address-level2" maxlength="100" required></label>
+            <label>Provincia / región<input name="region" autocomplete="address-level1" maxlength="100" required></label>
+            <label>País<select name="country" autocomplete="country" required><option value="ES">España</option></select></label>
+            <label class="form-grid__full">Método de envío<select name="shippingMethod" required></select></label>
+          </div></fieldset>
+          <label class="checkbox-row"><input name="terms" type="checkbox" required><span>Acepto las condiciones de compra y la política de privacidad. Los textos definitivos de compra, devolución y envío están pendientes de proporcionar.</span></label>
+        </div>
+        <aside class="order-summary">
+          <p class="eyebrow">RESUMEN</p><h2>TU PEDIDO</h2>
+          <div data-checkout-lines></div>
+          <div class="order-summary__totals"><div><span>Subtotal</span><strong data-subtotal></strong></div><div><span>Envío</span><strong data-shipping></strong></div><div class="order-summary__total"><span>Total</span><strong data-total></strong></div></div>
+          <p class="notice notice--warning" data-checkout-blocker>El pago se activará cuando existan precios, stock y tarifa de envío confirmados.</p>
+          <button class="button button--primary" data-pay type="submit">PAGAR CON SUMUP</button>
+          <p class="order-summary__secure">MODO ACTUAL: MOCK · NINGÚN COBRO REAL</p>
+        </aside>
+      </form>
+    </main>
+    <div data-cart-host></div>
+    <footer class="merch-footer" data-site-footer></footer>
+    <script type="module" src="./js/checkout.js"></script>
+  </body>
+</html>

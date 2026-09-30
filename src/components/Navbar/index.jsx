@@ -27,6 +27,7 @@ export default function Navbar() {
         {navigationItems.map((item) => (
           <Link key={item.to} to={localizePath(item.to)} onClick={handleNavigation}>{t.nav[item.key]}</Link>
         ))}
+        <a href="/merch/" onClick={handleNavigation}>MERCH</a>
         <LanguageSelector className="language-selector--mobile" onLanguageChange={() => setOpen(false)} />
       </nav>
       <div className="topbar__actions">

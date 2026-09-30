@@ -30,3 +30,4 @@ dist-ssr
 .env.*.local
 # Local backup archives exceed GitHub's per-file size limit.
 artifacts/backups/*.zip
+artifacts/merch-qa/

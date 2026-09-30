@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-30T21:09:10.544Z",
+  "currency": "EUR",
+  "products": [
+    {
+      "id": "camiseta-bass-traffickers-headbang-dealers",
+      "slug": "camiseta-bass-traffickers-headbang-dealers",
+      "active": true,
+      "featured": true,
+      "purchasable": false,
+      "availability": "coming-soon",
+      "priceCents": null,
+      "currency": "EUR",
+      "stock": null,
+      "variants": [],
+      "name": "Camiseta Bass Traffickers",
+      "brand": "HEADBANG DEALERS",
+      "collection": "Bass Traffickers",
+      "type": "Camiseta oversize",
+      "description": "Camiseta oversize gris acid-grunge con identidad Bass Traffickers en el frontal y Headbang Dealers en la espalda. Incorpora detalles artesanales en verde neón.",
+      "features": [
+        "Corte oversize",
+        "Logos en vinilo flúor UV",
+        "Ojales hechos a mano en la manga izquierda",
+        "Costuras a mano con hilo verde neón",
+        "Cada pieza presenta acabados únicos"
+      ],
+      "requiresSize": true,
+      "pending": [
+        "PVP e impuestos",
+        "Tallas y tabla de medidas",
+        "Composición y gramaje",
+        "Stock",
+        "Cuidados y lavado",
+        "SKU y condiciones de venta"
+      ],
+      "images": [
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-01.webp",
+          "alt": "Camiseta Bass Traffickers — vista 1",
+          "width": 1448,
+          "height": 1086,
+          "bytes": 63686,
+          "source": "1. T-Shirt H.D. - Fotoproducto.png",
+          "sourceWidth": 1448,
+          "sourceHeight": 1086,
+          "sourceBytes": 1998271
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-02.webp",
+          "alt": "Camiseta Bass Traffickers — vista 2",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 113814,
+          "source": "DSC07730.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1743401
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-03.webp",
+          "alt": "Camiseta Bass Traffickers — vista 3",
+          "width": 1600,
+          "height": 1066,
+          "bytes": 217948,
+          "source": "DSC07766.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1333,
+          "sourceBytes": 2091276
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-04.webp",
+          "alt": "Camiseta Bass Traffickers — vista 4",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 122442,
+          "source": "DSC07792.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1500,
+          "sourceBytes": 1924832
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-05.webp",
+          "alt": "Camiseta Bass Traffickers — vista 5",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 133508,
+          "source": "DSC07805.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1884719
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-06.webp",
+          "alt": "Camiseta Bass Traffickers — vista 6",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 184400,
+          "source": "DSC07814.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1958383
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-07.webp",
+          "alt": "Camiseta Bass Traffickers — vista 7",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 156602,
+          "source": "DSC07816.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1878975
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-08.webp",
+          "alt": "Camiseta Bass Traffickers — vista 8",
+          "width": 1600,
+          "height": 1066,
+          "bytes": 266876,
+          "source": "DSC07859.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1333,
+          "sourceBytes": 2439974
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-09.webp",
+          "alt": "Camiseta Bass Traffickers — vista 9",
+          "width": 1600,
+          "height": 1066,
+          "bytes": 151570,
+          "source": "DSC07864.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1333,
+          "sourceBytes": 1832218
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-10.webp",
+          "alt": "Camiseta Bass Traffickers — vista 10",
+          "width": 1600,
+          "height": 1066,
+          "bytes": 79376,
+          "source": "DSC07876.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1333,
+          "sourceBytes": 1585739
+        },
+        {
+          "src": "./assets/products/camiseta-bass-traffickers-headbang-dealers/camiseta-bass-traffickers-headbang-dealers-11.webp",
+          "alt": "Camiseta Bass Traffickers — vista 11",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 143098,
+          "source": "DSC07952.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1928633
+        }
+      ],
+      "sourceFolder": "CAMISETA BASS TRAFFICKERS - HEADBANG DEALERS",
+      "sourceProductFile": "PRODUCT.txt"
+    },
+    {
+      "id": "encendedor-clipper-night-of-wolves",
+      "slug": "encendedor-clipper-night-of-wolves",
+      "active": true,
+      "featured": false,
+      "purchasable": false,
+      "availability": "coming-soon",
+      "priceCents": null,
+      "currency": "EUR",
+      "stock": null,
+      "variants": [],
+      "name": "Clipper Night of Wolves",
+      "brand": "NIGHT OF WOLVES",
+      "collection": "N.O.W.",
+      "type": "Encendedor personalizado",
+      "description": "Encendedor Clipper personalizado con el logotipo Night of Wolves y la identidad LICANCORP. Las imágenes muestran referencias visuales azul y naranja.",
+      "features": [
+        "Identidad Night of Wolves",
+        "Diseño vertical adaptado al cuerpo",
+        "Referencias visuales azul y naranja"
+      ],
+      "requiresSize": false,
+      "pending": [
+        "PVP e impuestos",
+        "Modelo exacto y ficha técnica",
+        "Variantes comerciales definitivas",
+        "Stock",
+        "SKU y condiciones de venta"
+      ],
+      "images": [
+        {
+          "src": "./assets/products/encendedor-clipper-night-of-wolves/encendedor-clipper-night-of-wolves-01.webp",
+          "alt": "Clipper Night of Wolves — vista 1",
+          "width": 1086,
+          "height": 1448,
+          "bytes": 98580,
+          "source": "CLIPPER N.O.W. ERUPTION.png",
+          "sourceWidth": 1086,
+          "sourceHeight": 1448,
+          "sourceBytes": 1881440
+        },
+        {
+          "src": "./assets/products/encendedor-clipper-night-of-wolves/encendedor-clipper-night-of-wolves-02.webp",
+          "alt": "Clipper Night of Wolves — vista 2",
+          "width": 692,
+          "height": 868,
+          "bytes": 28680,
+          "source": "CLIPPER_NOW.png",
+          "sourceWidth": 692,
+          "sourceHeight": 868,
+          "sourceBytes": 902128
+        }
+      ],
+      "sourceFolder": "ENCENDEDOR CLIPPER - NIGHT OF WOLVES",
+      "sourceProductFile": "PRODUCT.txt"
+    },
+    {
+      "id": "encendedor-de-plasma-recargable-tipo-c-headbang-dealers",
+      "slug": "encendedor-de-plasma-recargable-tipo-c-headbang-dealers",
+      "active": true,
+      "featured": false,
+      "purchasable": false,
+      "availability": "coming-soon",
+      "priceCents": null,
+      "currency": "EUR",
+      "stock": null,
+      "variants": [],
+      "name": "Encendedor de plasma Headbang Dealers",
+      "brand": "HEADBANG DEALERS",
+      "collection": "Bass Traffickers",
+      "type": "Encendedor eléctrico recargable",
+      "description": "Encendedor de plasma de estética cyberpunk, con luces, indicador de batería, personalización Headbang Dealers y recarga USB-C.",
+      "features": [
+        "Funcionamiento eléctrico por arco",
+        "Indicador de batería",
+        "Recarga USB-C",
+        "Identidad Headbang Dealers",
+        "No apto para defensa personal"
+      ],
+      "requiresSize": false,
+      "pending": [
+        "PVP e impuestos",
+        "Fabricante y modelo",
+        "Especificaciones eléctricas",
+        "Elementos incluidos",
+        "Stock",
+        "SKU y condiciones de venta"
+      ],
+      "images": [
+        {
+          "src": "./assets/products/encendedor-de-plasma-recargable-tipo-c-headbang-dealers/encendedor-de-plasma-recargable-tipo-c-headbang-dealers-01.webp",
+          "alt": "Encendedor de plasma Headbang Dealers — vista 1",
+          "width": 1448,
+          "height": 1086,
+          "bytes": 98908,
+          "source": "ChatGPT Image 13 jun 2026, 15_43_12.png",
+          "sourceWidth": 1448,
+          "sourceHeight": 1086,
+          "sourceBytes": 2075670
+        },
+        {
+          "src": "./assets/products/encendedor-de-plasma-recargable-tipo-c-headbang-dealers/encendedor-de-plasma-recargable-tipo-c-headbang-dealers-02.webp",
+          "alt": "Encendedor de plasma Headbang Dealers — vista 2",
+          "width": 1122,
+          "height": 1402,
+          "bytes": 72500,
+          "source": "ChatGPT Image 13 jun 2026, 15_44_42.png",
+          "sourceWidth": 1122,
+          "sourceHeight": 1402,
+          "sourceBytes": 1982739
+        }
+      ],
+      "sourceFolder": "ENCENDEDOR DE PLASMA RECARGABLE TIPO C - HEADBANG DEALERS",
+      "sourceProductFile": "PRODUCT.txt"
+    },
+    {
+      "id": "gorra-under-headbang-dealers",
+      "slug": "gorra-under-headbang-dealers",
+      "active": true,
+      "featured": true,
+      "purchasable": false,
+      "availability": "coming-soon",
+      "priceCents": null,
+      "currency": "EUR",
+      "stock": null,
+      "variants": [],
+      "name": "Gorra Under Headbang Dealers",
+      "brand": "HEADBANG DEALERS",
+      "collection": "Bass Traffickers",
+      "type": "Gorra bordada",
+      "description": "Gorra gris de estética distressed y underground, con el logotipo Headbang Dealers bordado en verde flúor y desplazado del centro.",
+      "features": [
+        "Acabado gris desgastado",
+        "Visera curvada con detalles distressed",
+        "Logotipo bordado en verde flúor",
+        "Identidad Headbang Dealers"
+      ],
+      "requiresSize": false,
+      "pending": [
+        "PVP e impuestos",
+        "Composición",
+        "Talla y sistema de ajuste",
+        "Stock",
+        "Cuidados",
+        "SKU y condiciones de venta"
+      ],
+      "images": [
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-01.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 1",
+          "width": 1122,
+          "height": 1402,
+          "bytes": 144852,
+          "source": "1. Gorra H.D. - Fotoproducto.png",
+          "sourceWidth": 1122,
+          "sourceHeight": 1402,
+          "sourceBytes": 2318032
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-02.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 2",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 177160,
+          "source": "DSC07736.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 2026678
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-03.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 3",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 155762,
+          "source": "DSC07739.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1960566
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-04.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 4",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 151018,
+          "source": "DSC07740.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1945337
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-05.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 5",
+          "width": 1600,
+          "height": 1066,
+          "bytes": 83358,
+          "source": "DSC07769.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1333,
+          "sourceBytes": 1576388
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-06.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 6",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 118748,
+          "source": "DSC07773.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1711180
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-07.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 7",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 108594,
+          "source": "DSC07782.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1717242
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-08.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 8",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 78380,
+          "source": "DSC07784.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1529747
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-09.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 9",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 120668,
+          "source": "DSC07794.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1729478
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-10.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 10",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 147056,
+          "source": "DSC07797.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1838912
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-11.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 11",
+          "width": 1600,
+          "height": 1066,
+          "bytes": 97038,
+          "source": "DSC07848.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1333,
+          "sourceBytes": 1684625
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-12.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 12",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 120556,
+          "source": "DSC07867.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1747589
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-13.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 13",
+          "width": 1066,
+          "height": 1600,
+          "bytes": 155792,
+          "source": "DSC07870.jpg",
+          "sourceWidth": 1333,
+          "sourceHeight": 2000,
+          "sourceBytes": 1898233
+        },
+        {
+          "src": "./assets/products/gorra-under-headbang-dealers/gorra-under-headbang-dealers-14.webp",
+          "alt": "Gorra Under Headbang Dealers — vista 14",
+          "width": 1600,
+          "height": 1066,
+          "bytes": 95140,
+          "source": "DSC07995.jpg",
+          "sourceWidth": 2000,
+          "sourceHeight": 1333,
+          "sourceBytes": 1692933
+        }
+      ],
+      "sourceFolder": "GORRA UNDER - HEADBANG DEALERS",
+      "sourceProductFile": "PRODUCT.txt"
+    },
+    {
+      "id": "llavero-nfc-3d-feral",
+      "slug": "llavero-nfc-3d-feral",
+      "active": true,
+      "featured": true,
+      "purchasable": false,
+      "availability": "coming-soon",
+      "priceCents": null,
+      "currency": "EUR",
+      "stock": null,
+      "variants": [],
+      "name": "Llavero FERAL Club NFC",
+      "brand": "FERAL",
+      "collection": "FERAL Club",
+      "type": "Llavero con concepto NFC",
+      "description": "Llavero FERAL en negro y rojo. El historial recoge un concepto NFC con enlace de destino actualizable; sus prestaciones y ventajas actuales requieren verificación.",
+      "features": [
+        "Identidad FERAL",
+        "Diseño negro y rojo",
+        "Concepto NFC documentado; activación pendiente de confirmar"
+      ],
+      "requiresSize": false,
+      "pending": [
+        "PVP e impuestos",
+        "Material y medidas",
+        "Chip NFC instalado y probado",
+        "Ventajas FERAL Club vigentes",
+        "Stock",
+        "SKU y condiciones de venta"
+      ],
+      "images": [
+        {
+          "src": "./assets/products/llavero-nfc-3d-feral/llavero-nfc-3d-feral-01.webp",
+          "alt": "Llavero FERAL Club NFC — vista 1",
+          "width": 1122,
+          "height": 1402,
+          "bytes": 85318,
+          "source": "Llavero NFC Feral Club 1.png",
+          "sourceWidth": 1122,
+          "sourceHeight": 1402,
+          "sourceBytes": 1920274
+        },
+        {
+          "src": "./assets/products/llavero-nfc-3d-feral/llavero-nfc-3d-feral-02.webp",
+          "alt": "Llavero FERAL Club NFC — vista 2",
+          "width": 1122,
+          "height": 1402,
+          "bytes": 84306,
+          "source": "Llavero NFC Feral Club 2.png",
+          "sourceWidth": 1122,
+          "sourceHeight": 1402,
+          "sourceBytes": 1990316
+        }
+      ],
+      "sourceFolder": "LLAVERO NFC 3D - FERAL",
+      "sourceProductFile": "PRODUCT.txt"
+    },
+    {
+      "id": "llavero-nfc-3d-headbang-dealers",
+      "slug": "llavero-nfc-3d-headbang-dealers",
+      "active": true,
+      "featured": false,
+      "purchasable": false,
+      "availability": "coming-soon",
+      "priceCents": null,
+      "currency": "EUR",
+      "stock": null,
+      "variants": [],
+      "name": "Llavero Headbang Dealers",
+      "brand": "HEADBANG DEALERS",
+      "collection": "Headbang Dealers",
+      "type": "Llavero con logotipo",
+      "description": "Llavero con el logotipo Headbang Dealers en verde sobre una base negra recortada siguiendo la silueta de las letras.",
+      "features": [
+        "Identidad Headbang Dealers",
+        "Diseño negro y verde",
+        "Cadena corta y anilla circular"
+      ],
+      "requiresSize": false,
+      "pending": [
+        "PVP e impuestos",
+        "Material y medidas",
+        "Confirmación expresa sobre NFC",
+        "Stock",
+        "SKU y condiciones de venta"
+      ],
+      "images": [
+        {
+          "src": "./assets/products/llavero-nfc-3d-headbang-dealers/llavero-nfc-3d-headbang-dealers-01.webp",
+          "alt": "Llavero Headbang Dealers — vista 1",
+          "width": 1448,
+          "height": 1086,
+          "bytes": 117410,
+          "source": "ChatGPT Image 13 jun 2026, 15_48_47.png",
+          "sourceWidth": 1448,
+          "sourceHeight": 1086,
+          "sourceBytes": 2148063
+        }
+      ],
+      "sourceFolder": "LLAVERO NFC 3D - HEADBANG DEALERS",
+      "sourceProductFile": "PRODUCT.txt"
+    }
+  ]
+}

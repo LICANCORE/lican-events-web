@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "merch:build": "node scripts/build-merch-catalog.mjs",
+    "merch:test": "node --test tests/merch/*.test.js",
+    "merch:smoke": "node tests/merch/browser-smoke.mjs",
     "lint": "eslint .",
     "test": "node --test tests/headbang-cloud/*.test.js",
     "preview": "vite preview"
@@ -25,6 +28,8 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.6.0",
+    "playwright-core": "^1.63.0",
+    "sharp": "^0.35.5",
     "vite": "^8.1.0"
   }
 }
