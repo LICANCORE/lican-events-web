@@ -31,7 +31,9 @@ const productDetails = {
       'Cada pieza presenta acabados únicos',
     ],
     requiresSize: true,
-    pending: ['PVP e impuestos', 'Tallas y tabla de medidas', 'Composición y gramaje', 'Stock', 'Cuidados y lavado', 'SKU y condiciones de venta'],
+    stock: 0,
+    availability: 'sold-out',
+    pending: ['PVP e impuestos', 'Tallas y tabla de medidas', 'Composición y gramaje', 'Cuidados y lavado', 'SKU y condiciones de venta'],
   },
   'ENCENDEDOR CLIPPER - NIGHT OF WOLVES': {
     name: 'Clipper Night of Wolves',

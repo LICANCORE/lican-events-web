@@ -18,11 +18,9 @@ function buildHeader() {
   const links = createElement('div', 'merch-nav__links');
   const shopLink = createElement('a', '', 'CATÁLOGO');
   shopLink.href = './#catalogo';
-  const collectionsLink = createElement('a', '', 'COLECCIONES');
-  collectionsLink.href = './#colecciones';
   const mainLink = createElement('a', '', 'LICAN EVENTS ↗');
   mainLink.href = '/';
-  links.append(shopLink, collectionsLink, mainLink);
+  links.append(shopLink, mainLink);
 
   const actions = createElement('div', 'merch-nav__actions');
   const menuButton = createElement('button', 'icon-button merch-nav__menu', 'MENÚ');
@@ -189,6 +187,7 @@ export async function renderCart() {
 
 export function createProductCard(product) {
   const article = createElement('article', `product-card product-card--${product.brand.toLowerCase().replace(/[^a-z]+/g, '-')}`);
+  const isSoldOut = product.stock === 0 || product.availability === 'sold-out';
   const link = createElement('a', 'product-card__media');
   link.href = productUrl(product);
   const image = document.createElement('img');
@@ -198,13 +197,24 @@ export function createProductCard(product) {
   image.height = product.images[0]?.height ?? 1000;
   image.loading = 'lazy';
   image.decoding = 'async';
-  link.append(image, createElement('span', 'product-card__signal', product.availability === 'coming-soon' ? 'PRÓXIMAMENTE' : 'DISPONIBLE'));
+  const signalLabel = isSoldOut
+    ? 'SOLD OUT'
+    : product.availability === 'coming-soon' ? 'PRÓXIMAMENTE' : 'DISPONIBLE';
+  link.append(image, createElement('span', `product-card__signal${isSoldOut ? ' product-card__signal--sold-out' : ''}`, signalLabel));
 
   const body = createElement('div', 'product-card__body');
-  body.append(createElement('p', 'eyebrow', `${product.brand} · ${product.collection}`), createElement('h3', '', product.name));
+  body.append(
+    createElement('p', 'eyebrow', `${product.brand} · ${product.collection}`),
+    createElement('h3', '', product.name),
+    createElement('p', 'product-card__description', product.description),
+  );
   const meta = createElement('div', 'product-card__meta');
-  meta.append(createElement('strong', '', formatMoney(product.priceCents)), createElement('span', 'status-dot', 'DATOS POR CONFIRMAR'));
-  const action = createElement('a', 'text-link', 'VER PIEZA →');
+  const stockLabel = isSoldOut ? 'SOLD OUT' : Number.isInteger(product.stock) ? `${product.stock} EN STOCK` : 'STOCK POR CONFIRMAR';
+  meta.append(
+    createElement('strong', '', formatMoney(product.priceCents)),
+    createElement('span', `status-dot${isSoldOut ? ' status-dot--sold-out' : ''}`, stockLabel),
+  );
+  const action = createElement('a', 'product-card__action', 'VER PRODUCTO →');
   action.href = productUrl(product);
   body.append(meta, action);
   article.append(link, body);

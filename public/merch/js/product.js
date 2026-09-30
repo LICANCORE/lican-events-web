@@ -49,8 +49,19 @@ function renderProduct(product, catalog) {
 
   const sizeField = qs('[data-size-field]');
   const sizeSelect = qs('[data-size-select]');
+  const quantityInput = qs('[data-quantity]');
+  const isSoldOut = product.stock === 0 || product.availability === 'sold-out';
   if (!product.requiresSize) sizeField.hidden = true;
-  if (product.requiresSize && !product.variants.length) {
+  if (isSoldOut) {
+    sizeSelect.disabled = true;
+    quantityInput.disabled = true;
+    if (product.requiresSize) {
+      const option = document.createElement('option');
+      option.textContent = 'Sin stock disponible';
+      option.value = '';
+      sizeSelect.replaceChildren(option);
+    }
+  } else if (product.requiresSize && !product.variants.length) {
     sizeSelect.disabled = true;
     const option = document.createElement('option');
     option.textContent = 'Tallas pendientes de confirmar';
@@ -67,21 +78,24 @@ function renderProduct(product, catalog) {
 
   const addButton = qs('[data-add-to-cart]');
   const purchaseNote = qs('[data-purchase-note]');
-  const canPurchase = product.purchasable && Number.isInteger(product.priceCents) && (!product.requiresSize || product.variants.length);
+  const canPurchase = !isSoldOut && product.purchasable && Number.isInteger(product.priceCents) && (!product.requiresSize || product.variants.length);
   addButton.disabled = !canPurchase;
-  addButton.textContent = canPurchase ? 'AÑADIR AL CARRITO' : 'VENTA PENDIENTE DE ACTIVAR';
-  purchaseNote.textContent = canPurchase
+  addButton.textContent = isSoldOut ? 'AGOTADO' : canPurchase ? 'AÑADIR AL CARRITO' : 'VENTA PENDIENTE DE ACTIVAR';
+  purchaseNote.textContent = isSoldOut
+    ? 'Esta pieza está agotada y no puede añadirse al carrito.'
+    : canPurchase
     ? 'Impuestos y disponibilidad se validarán antes del pago.'
     : 'Estamos completando precio, stock y condiciones reales. Esta pieza todavía no se puede comprar.';
 
   addButton.addEventListener('click', () => {
+    if (isSoldOut || !canPurchase) return;
     const variantId = sizeSelect.value || null;
     if (product.requiresSize && !variantId) {
       sizeSelect.setCustomValidity('Selecciona una talla.');
       sizeSelect.reportValidity();
       return;
     }
-    const quantity = Math.max(1, Math.min(99, Number.parseInt(qs('[data-quantity]').value, 10) || 1));
+    const quantity = Math.max(1, Math.min(99, Number.parseInt(quantityInput.value, 10) || 1));
     writeCart(addItem(readCart(), product.id, variantId, quantity));
     track('add_to_cart', { currency: product.currency, value: product.priceCents / 100, items: [{ item_id: product.id, quantity }] });
     openCart();

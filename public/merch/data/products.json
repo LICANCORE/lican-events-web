@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T21:09:10.544Z",
+  "generatedAt": "2026-09-30T23:11:01.937Z",
   "currency": "EUR",
   "products": [
     {
@@ -9,10 +9,10 @@
       "active": true,
       "featured": true,
       "purchasable": false,
-      "availability": "coming-soon",
+      "availability": "sold-out",
       "priceCents": null,
       "currency": "EUR",
-      "stock": null,
+      "stock": 0,
       "variants": [],
       "name": "Camiseta Bass Traffickers",
       "brand": "HEADBANG DEALERS",
@@ -31,7 +31,6 @@
         "PVP e impuestos",
         "Tallas y tabla de medidas",
         "Composición y gramaje",
-        "Stock",
         "Cuidados y lavado",
         "SKU y condiciones de venta"
       ],

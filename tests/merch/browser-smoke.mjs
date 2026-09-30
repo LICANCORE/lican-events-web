@@ -30,24 +30,44 @@ async function loadProductImages(page) {
   }
 }
 
+async function firstRowCount(page) {
+  return page.locator('.product-card').evaluateAll((cards) => {
+    if (!cards.length) return 0;
+    const firstTop = cards[0].getBoundingClientRect().top;
+    return cards.filter((card) => Math.abs(card.getBoundingClientRect().top - firstTop) < 1).length;
+  });
+}
+
 try {
   const { context, page } = await openPage({ width: 1440, height: 1000 });
   await page.goto(`${baseUrl}/merch/`, { waitUntil: 'networkidle' });
   assert.match(await page.locator('h1').innerText(), /WEAR THE/);
+  assert.equal(await page.locator('#colecciones, [data-collections]').count(), 0);
+  assert.equal(await page.locator('#catalogo').evaluate((element) => element.getBoundingClientRect().top < 750), true);
   assert.equal(await page.locator('.product-card').count(), 6);
+  assert.equal(await firstRowCount(page), 4);
   await loadProductImages(page);
   assert.equal(await page.locator('.product-card img').evaluateAll((images) => images.every((image) => image.complete && image.naturalWidth > 0)), true);
+  assert.equal(await page.locator('.product-card img').evaluateAll((images) => images.every((image) => getComputedStyle(image).objectFit === 'contain')), true);
+  assert.equal(await page.locator('.product-card__description').evaluateAll((descriptions) => descriptions.every((description) => description.clientHeight <= Number.parseFloat(getComputedStyle(description).lineHeight) * 2 + 1)), true);
+  assert.equal(await page.locator('.product-card').first().locator('.product-card__signal').innerText(), 'SOLD OUT');
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true);
   await page.screenshot({ path: path.join(screenshots, 'desktop-1440.webp'), fullPage: true });
 
   await page.getByRole('button', { name: 'HEADBANG DEALERS' }).click();
   assert.equal(await page.locator('.product-card').count(), 4);
-  await page.getByRole('button', { name: 'TODAS' }).click();
-  await page.locator('.product-card .text-link').first().click();
+  await page.getByRole('button', { name: 'TODOS' }).click();
+  await page.locator('.product-card .product-card__action').first().click();
   await page.waitForLoadState('networkidle');
   assert.match(await page.locator('[data-product-name]').innerText(), /CAMISETA BASS TRAFFICKERS/i);
   assert.equal(await page.locator('[data-product-thumbnails] button').count(), 11);
+  assert.equal(await page.locator('[data-product-main-image]').evaluate((image) => getComputedStyle(image).objectFit), 'contain');
   assert.equal(await page.locator('[data-add-to-cart]').isDisabled(), true);
+  assert.equal(await page.locator('[data-quantity]').isDisabled(), true);
+  assert.equal(await page.locator('[data-size-select]').isDisabled(), true);
+  assert.equal(await page.locator('[data-add-to-cart]').innerText(), 'AGOTADO');
+  await page.locator('[data-add-to-cart]').click({ force: true });
+  assert.equal(await page.locator('.cart-count').innerText(), '0');
   await page.screenshot({ path: path.join(screenshots, 'product-desktop.webp'), fullPage: true });
 
   await page.evaluate(() => localStorage.setItem('lican-merch-cart-v1', JSON.stringify({ items: [{ productId: 'camiseta-bass-traffickers-headbang-dealers', variantId: null, quantity: 2 }] })));
@@ -69,6 +89,8 @@ try {
     assert.equal(await mobile.page.evaluate(() => window.innerWidth), width);
     assert.equal(await mobile.page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true, `overflow at ${width}px`);
     assert.equal(await mobile.page.locator('.product-card').count(), 6);
+    const expectedColumns = width >= 1101 ? 4 : width >= 801 ? 3 : width >= 561 ? 2 : 1;
+    assert.equal(await firstRowCount(mobile.page), expectedColumns, `grid columns at ${width}px`);
     if (width === 390) {
       await loadProductImages(mobile.page);
       await mobile.page.screenshot({ path: path.join(screenshots, 'mobile-390.webp'), fullPage: true });
@@ -104,6 +126,7 @@ try {
     const shirt = data.products.find((product) => product.id === 'camiseta-bass-traffickers-headbang-dealers');
     shirt.priceCents = 2500;
     shirt.stock = 5;
+    shirt.availability = 'in-stock';
     shirt.purchasable = true;
     shirt.variants = [{ id: 'm', name: 'M', priceCents: 2500, stock: 5 }];
     await route.fulfill({ response, json: data });

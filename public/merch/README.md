@@ -4,7 +4,7 @@ Tienda estática integrada en LICAN EVENTS. No usa CMS ni una librería de e-com
 
 ## Estructura
 
-- `index.html`: landing, colecciones, filtros, catálogo, envíos y FAQ.
+- `index.html`: presentación breve, filtros por marca, catálogo, envíos y FAQ.
 - `product.html?product=<slug>`: ficha, galería, talla/cantidad y relacionados.
 - `checkout.html`: datos mínimos del pedido y resumen.
 - `success.html` / `error.html`: estados de retorno. `success.html` no acredita por sí sola un pago.
