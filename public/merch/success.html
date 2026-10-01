@@ -6,7 +6,7 @@
   </head>
   <body data-status="success">
     <header class="merch-header" data-site-header></header>
-    <main class="status-page shell"><div class="status-card status-card--success"><span class="status-card__code">✓</span><p class="eyebrow" data-status-kicker>ESTADO DEL PEDIDO</p><h1 data-status-title>VALIDANDO</h1><p data-status-copy>Estamos validando el estado del pedido.</p><strong data-order-id></strong><p class="notice notice--warning">Visitar esta URL manualmente nunca demuestra que un pedido esté pagado. El backend deberá verificarlo con la API o el webhook de SumUp.</p><a class="button button--primary" href="./">VOLVER A LICAN MERCH</a></div></main>
+    <main class="status-page shell"><div class="status-card status-card--success" data-status-card><span class="status-card__code" data-status-code>…</span><p class="eyebrow" data-status-kicker>ESTADO DEL PEDIDO</p><h1 data-status-title>VALIDANDO</h1><p data-status-copy>Estamos comprobando el estado real con SumUp.</p><strong data-order-id></strong><p class="notice notice--warning" data-status-notice>Esta página solo confirmará el pedido después de verificar el checkout con el Worker.</p><a class="button button--primary" data-status-action href="./checkout.html">VOLVER AL CHECKOUT</a></div></main>
     <div data-cart-host></div><footer class="merch-footer" data-site-footer></footer><script type="module" src="./js/status.js"></script>
   </body>
 </html>

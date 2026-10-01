@@ -37,8 +37,9 @@
           <div data-checkout-lines></div>
           <div class="order-summary__totals"><div><span>Subtotal</span><strong data-subtotal></strong></div><div><span>Envío</span><strong data-shipping></strong></div><div class="order-summary__total"><span>Total</span><strong data-total></strong></div></div>
           <p class="notice notice--warning" data-checkout-blocker>El pago se activará cuando existan precios, stock y tarifa de envío confirmados.</p>
+          <p class="notice notice--error" data-checkout-error hidden>No se ha podido iniciar el pago. Inténtalo de nuevo.</p>
           <button class="button button--primary" data-pay type="submit">PAGAR CON SUMUP</button>
-          <p class="order-summary__secure">MODO ACTUAL: MOCK · NINGÚN COBRO REAL</p>
+          <p class="order-summary__secure" data-payment-mode></p>
         </aside>
       </form>
     </main>

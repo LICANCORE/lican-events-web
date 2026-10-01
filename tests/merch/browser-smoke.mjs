@@ -168,8 +168,17 @@ try {
   }
 
   const checkout = await openPage({ width: 390, height: 860 });
+  await checkout.context.route('https://lican-merch-api.licancorp.workers.dev/store-config', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      headers: { 'Access-Control-Allow-Origin': allowedOriginFor(baseUrl) },
+      body: JSON.stringify({ ok: true, currency: 'EUR', shipping: {} }),
+    });
+  });
   await checkout.page.goto(`${baseUrl}/merch/checkout.html`, { waitUntil: 'networkidle' });
   assert.equal(await checkout.page.locator('[data-pay]').isDisabled(), true);
+  assert.match(await checkout.page.locator('[data-payment-mode]').innerText(), /SUMUP.*PAGO SEGURO/);
   assert.match(await checkout.page.locator('[data-checkout-blocker]').innerText(), /precio|pago/i);
   assert.equal(await checkout.page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true);
   await checkout.page.screenshot({ path: path.join(screenshots, 'checkout-mobile.webp'), fullPage: true });
@@ -191,7 +200,9 @@ try {
   });
   await mockContext.route('**/merch/js/config.js', async (route) => {
     const response = await route.fetch();
-    const source = (await response.text()).replace('peninsula: null', 'peninsula: 495');
+    const source = (await response.text())
+      .replace("export const PAYMENT_MODE = 'sumup';", "export const PAYMENT_MODE = 'mock';")
+      .replace('peninsula: null', 'peninsula: 495');
     await route.fulfill({ response, body: source, contentType: 'application/javascript' });
   });
   const mockPage = await mockContext.newPage();
@@ -226,6 +237,113 @@ try {
   assert.equal(await mockPage.evaluate(() => JSON.parse(localStorage.getItem('lican-merch-cart-v1')).items.length), 0);
   await mockContext.close();
 
+  const sumupContext = await browser.newContext({ viewport: { width: 390, height: 860 } });
+  let checkoutRequest;
+  await sumupContext.addInitScript(() => {
+    window.addEventListener('lican:commerce', (event) => {
+      const events = JSON.parse(sessionStorage.getItem('qa-commerce-events') ?? '[]');
+      events.push(event.detail.event);
+      sessionStorage.setItem('qa-commerce-events', JSON.stringify(events));
+    });
+  });
+  await sumupContext.route('https://lican-merch-api.licancorp.workers.dev/store-config', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      headers: { 'Access-Control-Allow-Origin': allowedOriginFor(baseUrl) },
+      body: JSON.stringify({
+        ok: true,
+        currency: 'EUR',
+        shipping: {
+          peninsula: 495,
+          balearic: null,
+          canary: null,
+          eu: null,
+          international: null,
+          eventPickup: null,
+          freeShippingFromCents: null,
+        },
+      }),
+    });
+  });
+  await sumupContext.route('https://lican-merch-api.licancorp.workers.dev/create-checkout', async (route) => {
+    checkoutRequest = route.request().postDataJSON();
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      headers: { 'Access-Control-Allow-Origin': allowedOriginFor(baseUrl) },
+      body: JSON.stringify({
+        ok: true,
+        checkout_id: '12345678-browser',
+        checkout_reference: 'LICAN-QA-BROWSER',
+        hosted_checkout_url: 'https://checkout.sumup.com/pay/qa-checkout',
+        status: 'PENDING',
+        sandbox: true,
+      }),
+    });
+  });
+  await sumupContext.route('https://lican-merch-api.licancorp.workers.dev/checkout-status?id=12345678-browser', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      headers: { 'Access-Control-Allow-Origin': allowedOriginFor(baseUrl) },
+      body: JSON.stringify({
+        ok: true,
+        checkout_id: '12345678-browser',
+        checkout_reference: 'LICAN-QA-BROWSER',
+        status: 'PAID',
+        amount: 24.95,
+        currency: 'EUR',
+        sandbox: true,
+      }),
+    });
+  });
+  await sumupContext.route('https://checkout.sumup.com/pay/qa-checkout', async (route) => {
+    await route.fulfill({ status: 200, contentType: 'text/html', body: '<h1>SumUp sandbox simulado</h1>' });
+  });
+  const sumupPage = await sumupContext.newPage();
+  watchPage(sumupPage);
+  await sumupPage.goto(`${baseUrl}/merch/`, { waitUntil: 'networkidle' });
+  await sumupPage.locator('.product-card').first().getByRole('button', { name: 'AÑADIR AL CARRITO' }).click();
+  await sumupPage.goto(`${baseUrl}/merch/checkout.html`, { waitUntil: 'networkidle' });
+  await sumupPage.locator('[name="firstName"]').fill('QA');
+  await sumupPage.locator('[name="lastName"]').fill('LICAN');
+  await sumupPage.locator('[name="email"]').fill('qa@example.invalid');
+  await sumupPage.locator('[name="phone"]').fill('+34000000000');
+  await sumupPage.locator('[name="address"]').fill('Dirección de prueba 1');
+  await sumupPage.locator('[name="postalCode"]').fill('43001');
+  await sumupPage.locator('[name="city"]').fill('Tarragona');
+  await sumupPage.locator('[name="region"]').fill('Tarragona');
+  await sumupPage.locator('[name="shippingMethod"]').selectOption('peninsula');
+  await sumupPage.locator('[name="terms"]').check();
+  await sumupPage.locator('[data-pay]').click();
+  await sumupPage.waitForURL('https://checkout.sumup.com/pay/qa-checkout');
+  assert.deepEqual(checkoutRequest, {
+    items: [{ id: 'gorra-under-headbang-dealers', quantity: 1, variant: null }],
+    customer: { name: 'QA', surname: 'LICAN', email: 'qa@example.invalid', phone: '+34000000000' },
+    shipping: {
+      address: 'Dirección de prueba 1',
+      postalCode: '43001',
+      city: 'Tarragona',
+      province: 'Tarragona',
+      country: 'ES',
+      method: 'peninsula',
+    },
+  });
+  const cartProbe = await sumupContext.newPage();
+  await cartProbe.goto(`${baseUrl}/merch/`, { waitUntil: 'networkidle' });
+  assert.equal(await cartProbe.locator('.cart-count').innerText(), '1');
+  await cartProbe.close();
+  await sumupPage.goto(`${baseUrl}/merch/success.html`, { waitUntil: 'networkidle' });
+  assert.equal(await sumupPage.locator('[data-status-title]').innerText(), 'PEDIDO CONFIRMADO');
+  assert.match(await sumupPage.locator('[data-status-kicker]').innerText(), /SUMUP SANDBOX/);
+  assert.match(await sumupPage.locator('[data-order-id]').innerText(), /LICAN-QA-BROWSER/);
+  assert.equal(await sumupPage.locator('.cart-count').innerText(), '0');
+  const sumupEvents = JSON.parse(await sumupPage.evaluate(() => sessionStorage.getItem('qa-commerce-events')));
+  assert.equal(sumupEvents.includes('begin_checkout'), true);
+  assert.equal(sumupEvents.includes('purchase'), false);
+  await sumupContext.close();
+
   const main = await openPage({ width: 1440, height: 900 });
   await main.page.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
   assert.equal(await main.page.locator('a[href="/merch/"]').count() >= 1, true);
@@ -233,7 +351,11 @@ try {
 
   assert.deepEqual(failedRequests, [], `Failed requests:\n${failedRequests.join('\n')}`);
   assert.deepEqual(errors, [], `Console errors:\n${errors.join('\n')}`);
-  console.log('Browser smoke test passed: 7-product catalog, quick buy, sold-out/preorder states, split Clippers, cart, full mock checkout and responsive layouts.');
+  console.log('Browser smoke test passed: catalog, cart, responsive layouts, mock checkout and verified SumUp sandbox return.');
 } finally {
   await browser.close();
+}
+
+function allowedOriginFor(url) {
+  return new URL(url).origin;
 }

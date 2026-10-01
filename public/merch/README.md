@@ -1,6 +1,6 @@
 # LICAN MERCH
 
-Tienda estática integrada en LICAN EVENTS. No usa CMS ni una librería de e-commerce. El catálogo, la ficha de producto, el carrito persistente y el checkout funcionan en el navegador; el cobro real queda desacoplado para conectarlo después a un Cloudflare Worker y SumUp Hosted Checkout.
+Tienda estática integrada en LICAN EVENTS. No usa CMS ni una librería de e-commerce. El catálogo, la ficha de producto y el carrito persistente funcionan en el navegador; el cobro se conecta al Cloudflare Worker de LICAN y a SumUp Hosted Checkout.
 
 ## Estructura
 
@@ -10,7 +10,7 @@ Tienda estática integrada en LICAN EVENTS. No usa CMS ni una librería de e-com
 - `success.html` / `error.html`: estados de retorno. `success.html` no acredita por sí sola un pago.
 - `data/products.json`: fuente pública estructurada del catálogo.
 - `assets/products/`: derivados WebP optimizados. Los originales permanecen intactos en `../MERCH_SHOP`.
-- `js/config.js`: modo de pago y tarifas de envío centralizadas.
+- `js/config.js`: modo de pago y URL pública del Worker.
 - `js/cart.js`: estado del carrito, persistencia e importes en céntimos.
 - `scripts/build-merch-catalog.mjs`: analiza carpetas fuente y genera slugs, WebP y JSON.
 
@@ -46,7 +46,7 @@ Para cambiar una imagen, sustituye o añade el original en la subcarpeta fuente 
 
 ## Envíos
 
-Todas las tarifas viven en `js/config.js` y usan céntimos enteros. Los campos son `peninsula`, `balearic`, `canary`, `eu`, `international`, `eventPickup` y `freeShippingFromCents`. Solo aparecen métodos cuyo valor sea un entero. Actualmente todos están en `null` porque no existe `INFORMACION_TIENDA.txt` ni una tarifa definitiva.
+Las tarifas son autoridad del Worker y usan céntimos enteros. El navegador las obtiene mediante `GET /store-config`; la copia de `js/config.js` solo es un fallback seguro sin tarifas. Los campos son `peninsula`, `balearic`, `canary`, `eu`, `international`, `eventPickup` y `freeShippingFromCents`. Solo aparecen métodos cuyo valor sea un entero. Actualmente todos están en `null` porque no existe `INFORMACION_TIENDA.txt` ni una tarifa definitiva.
 
 ## Carrito
 
@@ -54,23 +54,17 @@ Guarda solo `productId`, `variantId` y `quantity` en `localStorage`, bajo `lican
 
 ## Pago y SumUp
 
-`js/config.js` contiene `PAYMENT_MODE`. El valor actual es `mock`; simula el retorno sin enviar el evento `purchase` ni afirmar que existe un pago real.
+`js/config.js` contiene `PAYMENT_MODE`, actualmente en `sumup`, y apunta a `https://lican-merch-api.licancorp.workers.dev`. El código completo que debe desplegarse en ese Worker está en [`../../cloudflare-worker/worker.js`](../../cloudflare-worker/worker.js); las variables y el procedimiento están documentados en [`../../cloudflare-worker/README.md`](../../cloudflare-worker/README.md).
 
-Para activar SumUp:
+El frontend envía a `POST /create-checkout` únicamente IDs de producto, variante, cantidad y los datos imprescindibles de cliente/envío. El Worker valida el catálogo, stock y variantes, calcula subtotal, envío y total, y devuelve el enlace de SumUp. Antes de salir se guardan el ID y la referencia en `sessionStorage`.
 
-1. Implementar `POST /api/create-checkout` en un Cloudflare Worker.
-2. Guardar únicamente allí `SUMUP_API_KEY` o token, `SUMUP_MERCHANT_CODE`, la URL pública y cualquier secreto de webhook.
-3. Recibir del navegador solo IDs de producto, ID de variante, cantidad y datos necesarios de cliente/envío.
-4. Leer precios y stock desde una fuente fiable en el servidor, recalcular subtotal, envío y total, y crear el checkout con SumUp.
-5. Responder `{ "hosted_checkout_url": "https://..." }`.
-6. Validar el pago con la API de SumUp o un webhook antes de marcar un pedido como `PAID`.
-7. Cambiar `PAYMENT_MODE` a `sumup` y ajustar `PAYMENT_ENDPOINT` si el Worker usa otro dominio.
+Al volver, `success.html` consulta `GET /checkout-status?id=...`. El carrito solo se vacía cuando SumUp responde `PAID`; `PENDING`, `FAILED`, `EXPIRED`, un retorno manual o un error de red conservan la compra. El webhook `POST /sumup-webhook` vuelve a consultar la API de SumUp antes de confiar en el estado recibido.
 
 Nunca se debe incluir una credencial en HTML, JavaScript público, `products.json` ni variables Vite expuestas al navegador.
 
 ## Analítica
 
-`js/tracking.js` centraliza `view_item`, `add_to_cart`, `remove_from_cart`, `view_cart`, `begin_checkout` y `purchase`. Emite `lican:commerce` y se conecta a `gtag`/`fbq` si existen. El modo mock no emite `purchase`.
+`js/tracking.js` centraliza `view_item`, `add_to_cart`, `remove_from_cart`, `view_cart`, `begin_checkout` y `purchase`. Emite `lican:commerce` y se conecta a `gtag`/`fbq` si existen. `begin_checkout` se registra solo después de que el Worker cree correctamente el checkout. `purchase` requiere un estado `PAID` verificado y nunca se emite cuando SumUp identifica el comercio como sandbox.
 
 ## Pendientes legales y comerciales
 
