@@ -93,12 +93,8 @@ const productDetails = {
     availability: 'available',
     pending: ['Material y medidas', 'Confirmación expresa sobre NFC', 'SKU y condiciones de venta'],
   },
-};
-
-const clipperProducts = [
-  {
-    id: 'night-of-wolves-clipper-orange',
-    imageSource: 'CLIPPER N.O.W. ERUPTION.png',
+  'ENCENDEDOR CLIPPER NARANJA - NIGHT OF WOLVES': {
+    slug: 'night-of-wolves-clipper-orange',
     name: 'Clipper Night of Wolves — Naranja',
     brand: 'NIGHT OF WOLVES',
     collection: 'N.O.W.',
@@ -108,13 +104,14 @@ const clipperProducts = [
     requiresSize: false,
     sortOrder: 6,
     priceCents: 300,
+    compareAtPriceCents: 500,
+    offerLabel: 'OFERTA',
     purchasable: true,
     availability: 'available',
     pending: ['Modelo exacto y ficha técnica', 'SKU y condiciones de venta'],
   },
-  {
-    id: 'night-of-wolves-clipper-blue',
-    imageSource: 'CLIPPER_NOW.png',
+  'ENCENDEDOR CLIPPER AZUL - NIGHT OF WOLVES': {
+    slug: 'night-of-wolves-clipper-blue',
     name: 'Clipper Night of Wolves — Azul',
     brand: 'NIGHT OF WOLVES',
     collection: 'N.O.W.',
@@ -124,11 +121,13 @@ const clipperProducts = [
     requiresSize: false,
     sortOrder: 7,
     priceCents: 300,
+    compareAtPriceCents: 500,
+    offerLabel: 'OFERTA',
     purchasable: true,
     availability: 'available',
     pending: ['Modelo exacto y ficha técnica', 'SKU y condiciones de venta'],
   },
-];
+};
 
 const sourceEntries = await readdir(sourceRoot, { withFileTypes: true });
 const folders = sourceEntries.filter((entry) => entry.isDirectory()).sort((a, b) => a.name.localeCompare(b.name, 'es'));
@@ -160,8 +159,8 @@ for (const folder of folders) {
     const pipeline = sharp(sourcePath, { failOn: 'none' }).rotate();
     const metadata = await pipeline.metadata();
     await pipeline
-      .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
-      .webp({ quality: 76, effort: 6, smartSubsample: true, alphaQuality: 82 })
+      .resize({ width: 1440, height: 1440, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: 72, effort: 6, smartSubsample: true, alphaQuality: 78 })
       .toFile(outputPath);
     const outputStats = await stat(outputPath);
     const outputMetadata = await sharp(outputPath).metadata();
@@ -192,15 +191,7 @@ for (const folder of folders) {
     pending: ['Ficha comercial completa', 'PVP', 'Stock'],
   };
 
-  const catalogEntries = folder.name === 'ENCENDEDOR CLIPPER - NIGHT OF WOLVES'
-    ? clipperProducts.map((clipper) => ({
-      slug: clipper.id,
-      details: clipper,
-      images: images
-        .filter((image) => image.source === clipper.imageSource)
-        .map((image, index) => ({ ...image, alt: `${clipper.name} — vista ${index + 1}` })),
-    }))
-    : [{ slug, details, images }];
+  const catalogEntries = [{ slug: details.slug ?? slug, details, images }];
 
   for (const catalogEntry of catalogEntries) {
     products.push({

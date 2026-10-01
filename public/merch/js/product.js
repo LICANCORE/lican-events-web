@@ -40,6 +40,14 @@ function renderProduct(product, catalog) {
   qs('[data-product-type]').textContent = product.type;
   const price = qs('[data-product-price]');
   price.textContent = formatMoney(product.priceCents);
+  if (Number.isInteger(product.priceCents) && Number.isInteger(product.compareAtPriceCents) && product.compareAtPriceCents > product.priceCents) {
+    const offer = createElement('div', 'product-offer');
+    offer.append(
+      createElement('span', '', product.offerLabel ?? 'OFERTA'),
+      createElement('del', '', formatMoney(product.compareAtPriceCents)),
+    );
+    price.before(offer);
+  }
   qs('[data-product-description]').textContent = product.description;
   renderGallery(product);
 

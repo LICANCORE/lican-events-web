@@ -22,7 +22,7 @@ La carpeta fuente esperada es `../MERCH_SHOP`, junto al proyecto. Cada producto 
 npm run merch:build
 ```
 
-El script conserva los originales, rota según EXIF, limita cada derivado a 1600 × 1600 px y genera WebP con calidad 76. También guarda en `products.json` la correspondencia entre cada original y su derivado.
+El script conserva los originales, los ordena por su nombre numérico (`1`, `2`, `3`…), rota según EXIF, limita cada derivado a 1440 × 1440 px y genera WebP con calidad 72 y esfuerzo máximo de compresión. También guarda en `products.json` la correspondencia entre cada original y su derivado. En el catálogo, la imagen 1 es la vista inicial y la imagen 2 aparece al pasar el cursor o enfocar la tarjeta.
 
 Para productos nuevos sin una entrada editorial en `productDetails`, el generador crea un registro seguro con datos comerciales pendientes. Añade los datos confirmados a `productDetails` en `scripts/build-merch-catalog.mjs` y regenera.
 
@@ -37,6 +37,7 @@ Los campos públicos se definen en `productDetails` dentro del generador:
 - `active`: controla si aparece en el catálogo.
 - `sortOrder`: fija el orden manual del catálogo y se conserva dentro de cada filtro.
 - `preorder`: muestra el estado de preventa sin bloquear la compra.
+- `compareAtPriceCents` y `offerLabel`: muestran el precio anterior tachado y la etiqueta de oferta sin alterar el precio real del carrito.
 - `requiresSize`: obliga a seleccionar variante antes de añadir.
 - `variants`: tallas con `{ "id": "m", "name": "M", "priceCents": 2595, "stock": 4 }`.
 - `pending`: información aún no confirmada.

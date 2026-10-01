@@ -198,8 +198,21 @@ export function createProductCard(product) {
   image.height = product.images[0]?.height ?? 1000;
   image.loading = 'lazy';
   image.decoding = 'async';
+  image.className = 'product-card__image product-card__image--primary';
   const signalLabel = isSoldOut ? 'SOLD OUT' : isPreorder ? 'PREVENTA' : product.availability === 'coming-soon' ? 'PRÓXIMAMENTE' : null;
   link.append(image);
+  if (product.images[1]) {
+    const hoverImage = document.createElement('img');
+    hoverImage.src = product.images[1].src;
+    hoverImage.alt = '';
+    hoverImage.width = product.images[1].width ?? 800;
+    hoverImage.height = product.images[1].height ?? 1000;
+    hoverImage.loading = 'lazy';
+    hoverImage.decoding = 'async';
+    hoverImage.className = 'product-card__image product-card__image--secondary';
+    hoverImage.setAttribute('aria-hidden', 'true');
+    link.append(hoverImage);
+  }
   if (signalLabel) {
     const signalModifier = isSoldOut ? ' product-card__signal--sold-out' : isPreorder ? ' product-card__signal--preorder' : '';
     link.append(createElement('span', `product-card__signal${signalModifier}`, signalLabel));
@@ -212,6 +225,14 @@ export function createProductCard(product) {
     createElement('p', 'product-card__description', product.description),
   );
   const meta = createElement('div', 'product-card__meta');
+  if (Number.isInteger(product.priceCents) && Number.isInteger(product.compareAtPriceCents) && product.compareAtPriceCents > product.priceCents) {
+    const offer = createElement('div', 'product-card__offer');
+    offer.append(
+      createElement('span', '', product.offerLabel ?? 'OFERTA'),
+      createElement('del', '', formatMoney(product.compareAtPriceCents)),
+    );
+    meta.append(offer);
+  }
   const stockLabel = isSoldOut ? 'SOLD OUT' : Number.isInteger(product.stock) ? `${product.stock} EN STOCK` : product.purchasable ? 'DISPONIBLE' : 'STOCK POR CONFIRMAR';
   meta.append(
     createElement('strong', '', formatMoney(product.priceCents)),

@@ -66,6 +66,7 @@ try {
   assert.equal(await page.locator('.catalog-banner__background').count(), 1);
   assert.equal(await page.locator('.catalog-banner__background').evaluate((image) => image.complete && image.naturalWidth === 2172 && image.naturalHeight === 724), true);
   assert.equal(await page.locator('.catalog-banner').evaluate((banner) => banner.getBoundingClientRect().height < 300), true);
+  assert.equal(await page.locator('.catalog-banner h1 span').first().evaluate((line) => line.getBoundingClientRect().height <= Number.parseFloat(getComputedStyle(line).lineHeight) + 1), true);
   assert.equal((await page.locator('.catalog-banner').innerText()).includes('DROP'), false);
   assert.equal((await page.locator('.catalog-banner').innerText()).includes('PIEZAS'), false);
   assert.equal(await page.locator('#colecciones, [data-collections]').count(), 0);
@@ -76,6 +77,9 @@ try {
   assert.deepEqual(await page.locator('.product-card__meta strong').allInnerTexts(), [
     '20,00 €', '10,00 €', '3,00 €', 'Precio pendiente', '3,00 €', '3,00 €', '3,00 €',
   ]);
+  assert.deepEqual(await page.locator('.product-card__offer').allInnerTexts(), ['OFERTA\n5,00 €', 'OFERTA\n5,00 €']);
+  assert.equal(await page.locator('.product-card__image--secondary').count(), 7);
+  assert.equal(await page.locator('.product-card__image--secondary').evaluateAll((images) => images.every((image) => image.src.endsWith('-02.webp'))), true);
   assert.equal(await page.locator('.product-card').nth(0).locator('.product-card__signal').innerText(), 'PREVENTA');
   assert.equal(await page.locator('.product-card').nth(3).locator('.product-card__signal').innerText(), 'SOLD OUT');
   assert.equal(await page.locator('.product-card__add:not([disabled])').count(), 6);
@@ -85,6 +89,10 @@ try {
   assert.equal(await page.locator('.product-card img').evaluateAll((images) => images.every((image) => image.complete && image.naturalWidth > 0)), true);
   assert.equal(await page.locator('.product-card img').evaluateAll((images) => images.every((image) => getComputedStyle(image).objectFit === 'contain')), true);
   assert.equal(await page.locator('.product-card__description').evaluateAll((descriptions) => descriptions.every((description) => description.clientHeight <= Number.parseFloat(getComputedStyle(description).lineHeight) * 2 + 1)), true);
+  await page.locator('.product-card').first().hover();
+  await page.waitForTimeout(300);
+  assert.equal(await page.locator('.product-card').first().locator('.product-card__image--primary').evaluate((image) => getComputedStyle(image).opacity), '0');
+  assert.equal(await page.locator('.product-card').first().locator('.product-card__image--secondary').evaluate((image) => getComputedStyle(image).opacity), '1');
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true);
   await page.screenshot({ path: path.join(screenshots, 'desktop-1440.webp'), fullPage: true });
 
@@ -117,7 +125,7 @@ try {
 
   await page.goto(`${baseUrl}/merch/product.html?product=camiseta-bass-traffickers-headbang-dealers`, { waitUntil: 'networkidle' });
   assert.match(await page.locator('[data-product-name]').innerText(), /CAMISETA BASS TRAFFICKERS/i);
-  assert.equal(await page.locator('[data-product-thumbnails] button').count(), 11);
+  assert.equal(await page.locator('[data-product-thumbnails] button').count(), 10);
   assert.equal(await page.locator('[data-product-main-image]').evaluate((image) => getComputedStyle(image).objectFit), 'contain');
   assert.equal(await page.locator('.product-status-badge').innerText(), 'SOLD OUT');
   assert.equal(await page.locator('[data-add-to-cart]').isDisabled(), true);
@@ -139,7 +147,8 @@ try {
     await page.goto(`${baseUrl}/merch/product.html?product=${slug}`, { waitUntil: 'networkidle' });
     assert.match(await page.locator('[data-product-name]').innerText(), new RegExp(color, 'i'));
     assert.equal(await page.locator('[data-product-price]').innerText(), '3,00 €');
-    assert.equal(await page.locator('[data-product-thumbnails] button').count(), 1);
+    assert.equal((await page.locator('.product-offer').innerText()).replace(/\s+/g, ' ').trim(), 'OFERTA 5,00 €');
+    assert.equal(await page.locator('[data-product-thumbnails] button').count(), 2);
   }
   await context.close();
 
