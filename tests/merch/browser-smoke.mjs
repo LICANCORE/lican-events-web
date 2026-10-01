@@ -12,12 +12,16 @@ const browser = await chromium.launch({ executablePath, headless: true });
 const errors = [];
 const failedRequests = [];
 
-async function openPage(viewport) {
-  const context = await browser.newContext({ viewport });
-  const page = await context.newPage();
+function watchPage(page) {
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${request.url()}`));
+}
+
+async function openPage(viewport) {
+  const context = await browser.newContext({ viewport });
+  const page = await context.newPage();
+  watchPage(page);
   return { context, page };
 }
 
@@ -38,30 +42,79 @@ async function firstRowCount(page) {
   });
 }
 
+async function cardNames(page) {
+  return page.locator('.product-card h3').allTextContents();
+}
+
+const orderedNames = [
+  'Gorra Under Headbang Dealers',
+  'Encendedor de plasma Headbang Dealers',
+  'Llavero Headbang Dealers',
+  'Camiseta Bass Traffickers',
+  'Llavero FERAL Club NFC',
+  'Clipper Night of Wolves — Naranja',
+  'Clipper Night of Wolves — Azul',
+];
+
 try {
   const { context, page } = await openPage({ width: 1440, height: 1000 });
   await page.goto(`${baseUrl}/merch/`, { waitUntil: 'networkidle' });
-  assert.match(await page.locator('h1').innerText(), /WEAR THE/);
+  assert.equal(await page.locator('.merch-hero').count(), 0);
+  assert.equal(await page.getByText('WEAR THE UNDERGROUND', { exact: true }).count(), 0);
+  assert.equal(await page.locator('.catalog-banner').count(), 1);
+  assert.equal((await page.locator('h1').innerText()).trim(), 'MERCH');
   assert.equal(await page.locator('#colecciones, [data-collections]').count(), 0);
-  assert.equal(await page.locator('#catalogo').evaluate((element) => element.getBoundingClientRect().top < 750), true);
-  assert.equal(await page.locator('.product-card').count(), 6);
+  assert.equal(await page.locator('#catalogo').evaluate((element) => element.getBoundingClientRect().top < 100), true);
+  assert.equal(await page.locator('.product-card').count(), 7);
   assert.equal(await firstRowCount(page), 4);
+  assert.deepEqual(await cardNames(page), orderedNames);
+  assert.deepEqual(await page.locator('.product-card__meta strong').allInnerTexts(), [
+    '20,00 €', '10,00 €', '3,00 €', 'Precio pendiente', '3,00 €', '3,00 €', '3,00 €',
+  ]);
+  assert.equal(await page.locator('.product-card').nth(0).locator('.product-card__signal').innerText(), 'PREVENTA');
+  assert.equal(await page.locator('.product-card').nth(3).locator('.product-card__signal').innerText(), 'SOLD OUT');
+  assert.equal(await page.locator('.product-card__add:not([disabled])').count(), 6);
+  assert.equal(await page.locator('.product-card').nth(3).locator('.product-card__add').isDisabled(), true);
+  assert.equal(await page.locator('.product-card').nth(3).locator('.quantity-stepper button:disabled').count(), 2);
   await loadProductImages(page);
   assert.equal(await page.locator('.product-card img').evaluateAll((images) => images.every((image) => image.complete && image.naturalWidth > 0)), true);
   assert.equal(await page.locator('.product-card img').evaluateAll((images) => images.every((image) => getComputedStyle(image).objectFit === 'contain')), true);
   assert.equal(await page.locator('.product-card__description').evaluateAll((descriptions) => descriptions.every((description) => description.clientHeight <= Number.parseFloat(getComputedStyle(description).lineHeight) * 2 + 1)), true);
-  assert.equal(await page.locator('.product-card').first().locator('.product-card__signal').innerText(), 'SOLD OUT');
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true);
   await page.screenshot({ path: path.join(screenshots, 'desktop-1440.webp'), fullPage: true });
 
-  await page.getByRole('button', { name: 'HEADBANG DEALERS' }).click();
-  assert.equal(await page.locator('.product-card').count(), 4);
-  await page.getByRole('button', { name: 'TODOS' }).click();
-  await page.locator('.product-card .product-card__action').first().click();
-  await page.waitForLoadState('networkidle');
+  const filterCounts = new Map([
+    ['HEADBANG DEALERS', 4],
+    ['FERAL', 1],
+    ['NIGHT OF WOLVES', 2],
+  ]);
+  for (const [filter, count] of filterCounts) {
+    await page.getByRole('button', { name: filter, exact: true }).click();
+    assert.equal(await page.locator('.product-card').count(), count, `${filter} filter`);
+  }
+  await page.getByRole('button', { name: 'TODOS', exact: true }).click();
+  assert.deepEqual(await cardNames(page), orderedNames);
+
+  const capCard = page.locator('.product-card').first();
+  await capCard.getByRole('button', { name: 'Aumentar cantidad' }).click();
+  await capCard.getByRole('button', { name: 'Aumentar cantidad' }).click();
+  assert.equal(await capCard.locator('.quantity-stepper__value').innerText(), '3');
+  await capCard.getByRole('button', { name: 'AÑADIR AL CARRITO' }).click();
+  assert.equal(await page.locator('.cart-count').innerText(), '3');
+  assert.equal(await page.locator('.cart-line').count(), 1);
+  assert.equal(await page.locator('.cart-line input').inputValue(), '3');
+  await page.reload({ waitUntil: 'networkidle' });
+  assert.equal(await page.locator('.cart-count').innerText(), '3');
+  await page.getByRole('button', { name: 'Abrir carrito' }).click();
+  assert.equal(await page.locator('.cart-line input').inputValue(), '3');
+  await page.getByRole('button', { name: 'VACIAR CARRITO' }).click();
+  assert.equal(await page.locator('.cart-count').innerText(), '0');
+
+  await page.goto(`${baseUrl}/merch/product.html?product=camiseta-bass-traffickers-headbang-dealers`, { waitUntil: 'networkidle' });
   assert.match(await page.locator('[data-product-name]').innerText(), /CAMISETA BASS TRAFFICKERS/i);
   assert.equal(await page.locator('[data-product-thumbnails] button').count(), 11);
   assert.equal(await page.locator('[data-product-main-image]').evaluate((image) => getComputedStyle(image).objectFit), 'contain');
+  assert.equal(await page.locator('.product-status-badge').innerText(), 'SOLD OUT');
   assert.equal(await page.locator('[data-add-to-cart]').isDisabled(), true);
   assert.equal(await page.locator('[data-quantity]').isDisabled(), true);
   assert.equal(await page.locator('[data-size-select]').isDisabled(), true);
@@ -70,32 +123,34 @@ try {
   assert.equal(await page.locator('.cart-count').innerText(), '0');
   await page.screenshot({ path: path.join(screenshots, 'product-desktop.webp'), fullPage: true });
 
-  await page.evaluate(() => localStorage.setItem('lican-merch-cart-v1', JSON.stringify({ items: [{ productId: 'camiseta-bass-traffickers-headbang-dealers', variantId: null, quantity: 2 }] })));
-  await page.reload({ waitUntil: 'networkidle' });
-  assert.equal(await page.locator('.cart-count').innerText(), '2');
-  await page.getByRole('button', { name: 'Abrir carrito' }).click();
-  assert.equal(await page.locator('.cart-line').count(), 1);
-  assert.match(await page.locator('.cart-summary').innerText(), /Faltan precios confirmados/);
-  await page.locator('.cart-line input').fill('3');
-  await page.locator('.cart-line input').press('Tab');
-  assert.equal(await page.locator('.cart-count').innerText(), '3');
-  await page.getByRole('button', { name: 'ELIMINAR' }).click();
-  assert.match(await page.locator('.cart-empty').innerText(), /carrito está vacío/);
+  await page.goto(`${baseUrl}/merch/product.html?product=gorra-under-headbang-dealers`, { waitUntil: 'networkidle' });
+  assert.equal(await page.locator('.product-status-badge').innerText(), 'PREVENTA');
+  assert.match(await page.locator('[data-purchase-note]').innerText(), /fecha de entrega.*no est[áa] confirmada/i);
+
+  for (const [slug, color] of [
+    ['night-of-wolves-clipper-orange', 'Naranja'],
+    ['night-of-wolves-clipper-blue', 'Azul'],
+  ]) {
+    await page.goto(`${baseUrl}/merch/product.html?product=${slug}`, { waitUntil: 'networkidle' });
+    assert.match(await page.locator('[data-product-name]').innerText(), new RegExp(color, 'i'));
+    assert.equal(await page.locator('[data-product-price]').innerText(), '3,00 €');
+    assert.equal(await page.locator('[data-product-thumbnails] button').count(), 1);
+  }
   await context.close();
 
   for (const width of [320, 375, 390, 430, 768, 1024, 1920]) {
-    const mobile = await openPage({ width, height: width <= 430 ? 860 : 1000 });
-    await mobile.page.goto(`${baseUrl}/merch/`, { waitUntil: 'networkidle' });
-    assert.equal(await mobile.page.evaluate(() => window.innerWidth), width);
-    assert.equal(await mobile.page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true, `overflow at ${width}px`);
-    assert.equal(await mobile.page.locator('.product-card').count(), 6);
+    const responsive = await openPage({ width, height: width <= 430 ? 860 : 1000 });
+    await responsive.page.goto(`${baseUrl}/merch/`, { waitUntil: 'networkidle' });
+    assert.equal(await responsive.page.evaluate(() => window.innerWidth), width);
+    assert.equal(await responsive.page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true, `overflow at ${width}px`);
+    assert.equal(await responsive.page.locator('.product-card').count(), 7);
     const expectedColumns = width >= 1101 ? 4 : width >= 801 ? 3 : width >= 561 ? 2 : 1;
-    assert.equal(await firstRowCount(mobile.page), expectedColumns, `grid columns at ${width}px`);
+    assert.equal(await firstRowCount(responsive.page), expectedColumns, `grid columns at ${width}px`);
     if (width === 390) {
-      await loadProductImages(mobile.page);
-      await mobile.page.screenshot({ path: path.join(screenshots, 'mobile-390.webp'), fullPage: true });
+      await loadProductImages(responsive.page);
+      await responsive.page.screenshot({ path: path.join(screenshots, 'mobile-390.webp'), fullPage: true });
     }
-    await mobile.context.close();
+    await responsive.context.close();
   }
 
   const checkout = await openPage({ width: 390, height: 860 });
@@ -108,7 +163,7 @@ try {
 
   const status = await openPage({ width: 390, height: 860 });
   await status.page.goto(`${baseUrl}/merch/success.html?mode=mock&order=MOCK-QA`, { waitUntil: 'networkidle' });
-  assert.match(await status.page.locator('[data-status-copy]').innerText(), /ningún cobro/i);
+  assert.match(await status.page.locator('[data-status-copy]').innerText(), /ning[úu]n cobro/i);
   assert.match(await status.page.locator('[data-order-id]').innerText(), /MOCK-QA/);
   await status.context.close();
 
@@ -120,30 +175,19 @@ try {
       sessionStorage.setItem('qa-commerce-events', JSON.stringify(events));
     });
   });
-  await mockContext.route('**/merch/data/products.json', async (route) => {
-    const response = await route.fetch();
-    const data = await response.json();
-    const shirt = data.products.find((product) => product.id === 'camiseta-bass-traffickers-headbang-dealers');
-    shirt.priceCents = 2500;
-    shirt.stock = 5;
-    shirt.availability = 'in-stock';
-    shirt.purchasable = true;
-    shirt.variants = [{ id: 'm', name: 'M', priceCents: 2500, stock: 5 }];
-    await route.fulfill({ response, json: data });
-  });
   await mockContext.route('**/merch/js/config.js', async (route) => {
     const response = await route.fetch();
     const source = (await response.text()).replace('peninsula: null', 'peninsula: 495');
     await route.fulfill({ response, body: source, contentType: 'application/javascript' });
   });
   const mockPage = await mockContext.newPage();
-  mockPage.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-  mockPage.on('pageerror', (error) => errors.push(error.message));
-  await mockPage.goto(`${baseUrl}/merch/product.html?product=camiseta-bass-traffickers-headbang-dealers`, { waitUntil: 'networkidle' });
-  await mockPage.locator('[data-size-select]').selectOption('m');
-  await mockPage.locator('[data-quantity]').fill('2');
-  await mockPage.locator('[data-add-to-cart]').click();
-  assert.equal(await mockPage.locator('.cart-count').innerText(), '2');
+  watchPage(mockPage);
+  await mockPage.goto(`${baseUrl}/merch/`, { waitUntil: 'networkidle' });
+  const mockCap = mockPage.locator('.product-card').first();
+  await mockCap.getByRole('button', { name: 'Aumentar cantidad' }).click();
+  await mockCap.getByRole('button', { name: 'Aumentar cantidad' }).click();
+  await mockCap.getByRole('button', { name: 'AÑADIR AL CARRITO' }).click();
+  assert.equal(await mockPage.locator('.cart-count').innerText(), '3');
   await mockPage.locator('.cart-summary .button--primary').click();
   await mockPage.waitForLoadState('networkidle');
   await mockPage.locator('[name="firstName"]').fill('QA');
@@ -157,10 +201,10 @@ try {
   await mockPage.locator('[name="shippingMethod"]').selectOption('peninsula');
   await mockPage.locator('[name="terms"]').check();
   assert.equal(await mockPage.locator('[data-pay]').isEnabled(), true);
-  assert.match(await mockPage.locator('[data-total]').innerText(), /54,95/);
+  assert.match(await mockPage.locator('[data-total]').innerText(), /64,95/);
   await mockPage.locator('[data-pay]').click();
   await mockPage.waitForURL('**/merch/success.html?mode=mock&order=*');
-  assert.match(await mockPage.locator('[data-status-copy]').innerText(), /ningún cobro/i);
+  assert.match(await mockPage.locator('[data-status-copy]').innerText(), /ning[úu]n cobro/i);
   const trackedEvents = JSON.parse(await mockPage.evaluate(() => sessionStorage.getItem('qa-commerce-events')));
   assert.equal(trackedEvents.includes('add_to_cart'), true);
   assert.equal(trackedEvents.includes('begin_checkout'), true);
@@ -175,7 +219,7 @@ try {
 
   assert.deepEqual(failedRequests, [], `Failed requests:\n${failedRequests.join('\n')}`);
   assert.deepEqual(errors, [], `Console errors:\n${errors.join('\n')}`);
-  console.log('Browser smoke test passed: catalog, product, cart, full mock checkout, status, navigation and 8 responsive widths.');
+  console.log('Browser smoke test passed: 7-product catalog, quick buy, sold-out/preorder states, split Clippers, cart, full mock checkout and responsive layouts.');
 } finally {
   await browser.close();
 }

@@ -38,7 +38,8 @@ function renderProduct(product, catalog) {
   qs('[data-product-brand]').textContent = `${product.brand} · ${product.collection}`;
   qs('[data-product-name]').textContent = product.name;
   qs('[data-product-type]').textContent = product.type;
-  qs('[data-product-price]').textContent = formatMoney(product.priceCents);
+  const price = qs('[data-product-price]');
+  price.textContent = formatMoney(product.priceCents);
   qs('[data-product-description]').textContent = product.description;
   renderGallery(product);
 
@@ -51,6 +52,12 @@ function renderProduct(product, catalog) {
   const sizeSelect = qs('[data-size-select]');
   const quantityInput = qs('[data-quantity]');
   const isSoldOut = product.stock === 0 || product.availability === 'sold-out';
+  const isPreorder = product.preorder === true || product.availability === 'preorder';
+  if (isSoldOut || isPreorder) {
+    const status = createElement('span', `product-status-badge${isSoldOut ? ' product-status-badge--sold-out' : ''}`, isSoldOut ? 'SOLD OUT' : 'PREVENTA');
+    price.before(status);
+  }
+  if (Number.isInteger(product.stock) && product.stock > 0) quantityInput.max = String(product.stock);
   if (!product.requiresSize) sizeField.hidden = true;
   if (isSoldOut) {
     sizeSelect.disabled = true;
@@ -83,6 +90,8 @@ function renderProduct(product, catalog) {
   addButton.textContent = isSoldOut ? 'AGOTADO' : canPurchase ? 'AÑADIR AL CARRITO' : 'VENTA PENDIENTE DE ACTIVAR';
   purchaseNote.textContent = isSoldOut
     ? 'Esta pieza está agotada y no puede añadirse al carrito.'
+    : isPreorder
+    ? 'Producto en preventa. La fecha de entrega todavía no está confirmada.'
     : canPurchase
     ? 'Impuestos y disponibilidad se validarán antes del pago.'
     : 'Estamos completando precio, stock y condiciones reales. Esta pieza todavía no se puede comprar.';
@@ -95,9 +104,17 @@ function renderProduct(product, catalog) {
       sizeSelect.reportValidity();
       return;
     }
-    const quantity = Math.max(1, Math.min(99, Number.parseInt(quantityInput.value, 10) || 1));
-    writeCart(addItem(readCart(), product.id, variantId, quantity));
-    track('add_to_cart', { currency: product.currency, value: product.priceCents / 100, items: [{ item_id: product.id, quantity }] });
+    const requestedQuantity = Math.max(1, Math.min(Number.parseInt(quantityInput.max, 10) || 99, Number.parseInt(quantityInput.value, 10) || 1));
+    const cart = readCart();
+    const existing = cart.items.find((item) => item.productId === product.id && item.variantId === variantId)?.quantity ?? 0;
+    const allowedQuantity = Number.isInteger(product.stock) ? Math.max(0, product.stock - existing) : requestedQuantity;
+    const quantity = Math.min(requestedQuantity, allowedQuantity);
+    if (quantity < 1) {
+      openCart();
+      return;
+    }
+    writeCart(addItem(cart, product.id, variantId, quantity));
+    track('add_to_cart', { currency: product.currency, value: (product.priceCents * quantity) / 100, items: [{ item_id: product.id, item_name: product.name, price: product.priceCents / 100, quantity }] });
     openCart();
   });
 

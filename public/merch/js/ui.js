@@ -1,5 +1,5 @@
 import { loadCatalog } from './data.js';
-import { cartTotals, clearCart, readCart, removeItem, updateItem, writeCart } from './cart.js';
+import { addItem, cartTotals, clearCart, readCart, removeItem, updateItem, writeCart } from './cart.js';
 import { track } from './tracking.js';
 import { createElement, formatMoney, productUrl, qs } from './utils.js';
 
@@ -188,6 +188,7 @@ export async function renderCart() {
 export function createProductCard(product) {
   const article = createElement('article', `product-card product-card--${product.brand.toLowerCase().replace(/[^a-z]+/g, '-')}`);
   const isSoldOut = product.stock === 0 || product.availability === 'sold-out';
+  const isPreorder = product.preorder === true || product.availability === 'preorder';
   const link = createElement('a', 'product-card__media');
   link.href = productUrl(product);
   const image = document.createElement('img');
@@ -197,10 +198,12 @@ export function createProductCard(product) {
   image.height = product.images[0]?.height ?? 1000;
   image.loading = 'lazy';
   image.decoding = 'async';
-  const signalLabel = isSoldOut
-    ? 'SOLD OUT'
-    : product.availability === 'coming-soon' ? 'PRÓXIMAMENTE' : 'DISPONIBLE';
-  link.append(image, createElement('span', `product-card__signal${isSoldOut ? ' product-card__signal--sold-out' : ''}`, signalLabel));
+  const signalLabel = isSoldOut ? 'SOLD OUT' : isPreorder ? 'PREVENTA' : product.availability === 'coming-soon' ? 'PRÓXIMAMENTE' : null;
+  link.append(image);
+  if (signalLabel) {
+    const signalModifier = isSoldOut ? ' product-card__signal--sold-out' : isPreorder ? ' product-card__signal--preorder' : '';
+    link.append(createElement('span', `product-card__signal${signalModifier}`, signalLabel));
+  }
 
   const body = createElement('div', 'product-card__body');
   body.append(
@@ -209,14 +212,68 @@ export function createProductCard(product) {
     createElement('p', 'product-card__description', product.description),
   );
   const meta = createElement('div', 'product-card__meta');
-  const stockLabel = isSoldOut ? 'SOLD OUT' : Number.isInteger(product.stock) ? `${product.stock} EN STOCK` : 'STOCK POR CONFIRMAR';
+  const stockLabel = isSoldOut ? 'SOLD OUT' : Number.isInteger(product.stock) ? `${product.stock} EN STOCK` : product.purchasable ? 'DISPONIBLE' : 'STOCK POR CONFIRMAR';
   meta.append(
     createElement('strong', '', formatMoney(product.priceCents)),
     createElement('span', `status-dot${isSoldOut ? ' status-dot--sold-out' : ''}`, stockLabel),
   );
+  const purchase = createElement('div', 'product-card__purchase');
+  const stepper = createElement('div', 'quantity-stepper');
+  stepper.setAttribute('aria-label', `Cantidad de ${product.name}`);
+  const decrease = createElement('button', 'quantity-stepper__button', '−');
+  decrease.type = 'button';
+  decrease.setAttribute('aria-label', 'Disminuir cantidad');
+  const quantityValue = createElement('output', 'quantity-stepper__value', '1');
+  quantityValue.setAttribute('aria-live', 'polite');
+  const increase = createElement('button', 'quantity-stepper__button', '+');
+  increase.type = 'button';
+  increase.setAttribute('aria-label', 'Aumentar cantidad');
+  const maxQuantity = Number.isInteger(product.stock) && product.stock > 0 ? product.stock : 99;
+  let quantity = 1;
+  const syncQuantity = () => { quantityValue.textContent = String(quantity); };
+  decrease.addEventListener('click', () => { quantity = Math.max(1, quantity - 1); syncQuantity(); });
+  increase.addEventListener('click', () => { quantity = Math.min(maxQuantity, quantity + 1); syncQuantity(); });
+  stepper.append(decrease, quantityValue, increase);
+
+  let addButton;
+  if (product.requiresSize && !isSoldOut) {
+    addButton = createElement('a', 'product-card__add', 'SELECCIONAR OPCIONES');
+    addButton.href = productUrl(product);
+  } else {
+    addButton = createElement('button', 'product-card__add', isSoldOut ? 'AGOTADO' : 'AÑADIR AL CARRITO');
+    addButton.type = 'button';
+    const canQuickAdd = !isSoldOut && product.purchasable && Number.isInteger(product.priceCents);
+    addButton.disabled = !canQuickAdd;
+    if (canQuickAdd) {
+      addButton.addEventListener('click', () => {
+        const cart = readCart();
+        const existing = cart.items.find((item) => item.productId === product.id && item.variantId === null)?.quantity ?? 0;
+        const allowedQuantity = Number.isInteger(product.stock) ? Math.max(0, product.stock - existing) : quantity;
+        const quantityToAdd = Math.min(quantity, allowedQuantity);
+        if (quantityToAdd < 1) {
+          openCart();
+          return;
+        }
+        writeCart(addItem(cart, product.id, null, quantityToAdd));
+        track('add_to_cart', {
+          currency: product.currency,
+          value: (product.priceCents * quantityToAdd) / 100,
+          items: [{ item_id: product.id, item_name: product.name, price: product.priceCents / 100, quantity: quantityToAdd }],
+        });
+        openCart();
+      });
+    }
+  }
+  if (isSoldOut || product.requiresSize) {
+    decrease.disabled = true;
+    increase.disabled = true;
+    stepper.classList.add('quantity-stepper--disabled');
+  }
+
   const action = createElement('a', 'product-card__action', 'VER PRODUCTO →');
   action.href = productUrl(product);
-  body.append(meta, action);
+  purchase.append(stepper, addButton, action);
+  body.append(meta, purchase);
   article.append(link, body);
   return article;
 }

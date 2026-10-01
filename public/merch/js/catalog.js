@@ -22,20 +22,14 @@ async function initCatalog() {
   await initShell();
   try {
     const catalog = await loadCatalog();
-    const products = catalog.products.filter((product) => product.active);
+    const products = catalog.products
+      .filter((product) => product.active)
+      .sort((a, b) => (a.sortOrder ?? Number.MAX_SAFE_INTEGER) - (b.sortOrder ?? Number.MAX_SAFE_INTEGER));
     const grid = qs('[data-catalog-grid]');
     products.forEach((product) => grid.append(createProductCard(product)));
     renderFilters(products, grid);
 
-    const featured = products.find((product) => product.featured && product.images.length) ?? products[0];
-    if (featured) {
-      const heroImage = qs('[data-hero-product]');
-      heroImage.src = featured.images[0].src;
-      heroImage.alt = featured.images[0].alt;
-      heroImage.width = featured.images[0].width;
-      heroImage.height = featured.images[0].height;
-    }
-    qs('[data-product-count]').textContent = `${products.length} PIEZAS / DROP 001`;
+    qs('[data-product-count]').textContent = `${products.length} PIEZAS · DROP 001`;
   } catch (error) {
     qs('[data-catalog-grid]').replaceChildren(createElement('p', 'notice notice--error', error.message));
   }

@@ -35,6 +35,8 @@ Los campos públicos se definen en `productDetails` dentro del generador:
 - `stock`: unidades confirmadas. Mantener `null` mientras no exista el dato.
 - `purchasable`: cambiar a `true` solo cuando precio, stock y condiciones estén validados.
 - `active`: controla si aparece en el catálogo.
+- `sortOrder`: fija el orden manual del catálogo y se conserva dentro de cada filtro.
+- `preorder`: muestra el estado de preventa sin bloquear la compra.
 - `requiresSize`: obliga a seleccionar variante antes de añadir.
 - `variants`: tallas con `{ "id": "m", "name": "M", "priceCents": 2595, "stock": 4 }`.
 - `pending`: información aún no confirmada.
@@ -71,4 +73,4 @@ Nunca se debe incluir una credencial en HTML, JavaScript público, `products.jso
 
 ## Pendientes legales y comerciales
 
-Faltan los textos definitivos de compra, devoluciones y envíos. También faltan PVP, impuestos, stock y, según el producto, tallas, materiales y fichas técnicas. Hasta completarlos, las seis piezas permanecen visibles en modo preview y la compra está bloqueada de forma intencionada.
+Faltan los textos definitivos de compra, devoluciones y envíos, además de stock cuantificado y varias fichas técnicas. El catálogo contiene siete productos: los Clippers naranja y azul son referencias independientes; seis productos tienen compra habilitada y la camiseta permanece visible con stock 0 y estado `SOLD OUT`.
