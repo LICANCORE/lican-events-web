@@ -62,7 +62,12 @@ try {
   assert.equal(await page.locator('.merch-hero').count(), 0);
   assert.equal(await page.getByText('WEAR THE UNDERGROUND', { exact: true }).count(), 0);
   assert.equal(await page.locator('.catalog-banner').count(), 1);
-  assert.equal((await page.locator('h1').innerText()).trim(), 'MERCH');
+  assert.equal((await page.locator('h1').innerText()).replace(/\s+/g, ' ').trim(), 'Descubre la filosofía LICAN a través de nuestros productos. La REVOLUCIÓN del merchandise en eventos. Lleva en tu día a día la cultura BASS.');
+  assert.equal(await page.locator('.catalog-banner__background').count(), 1);
+  assert.equal(await page.locator('.catalog-banner__background').evaluate((image) => image.complete && image.naturalWidth === 2172 && image.naturalHeight === 724), true);
+  assert.equal(await page.locator('.catalog-banner').evaluate((banner) => banner.getBoundingClientRect().height < 300), true);
+  assert.equal((await page.locator('.catalog-banner').innerText()).includes('DROP'), false);
+  assert.equal((await page.locator('.catalog-banner').innerText()).includes('PIEZAS'), false);
   assert.equal(await page.locator('#colecciones, [data-collections]').count(), 0);
   assert.equal(await page.locator('#catalogo').evaluate((element) => element.getBoundingClientRect().top < 100), true);
   assert.equal(await page.locator('.product-card').count(), 7);

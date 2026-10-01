@@ -66,20 +66,17 @@ h1, h2, h3, p { margin-top: 0; }
 .cart-trigger { min-height: 44px; padding: 8px 13px; border: 1px solid rgba(0, 229, 255, .38); color: var(--white); background: rgba(0, 229, 255, .05); font-family: var(--display); font-size: .64rem; letter-spacing: .11em; cursor: pointer; }
 .cart-count { min-width: 22px; height: 22px; display: inline-grid; place-items: center; margin-left: 8px; color: var(--black); background: var(--cyan); border-radius: 50%; }
 
-.catalog-banner { position: relative; min-height: 310px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 24px; padding: clamp(28px, 4vw, 52px); overflow: hidden; border: 1px solid rgba(207,56,255,.3); background: radial-gradient(circle at 78% 30%, rgba(23,59,255,.35), transparent 30%), radial-gradient(circle at 54% 90%, rgba(207,56,255,.18), transparent 28%), linear-gradient(125deg, #050817 0 48%, #081c3d 100%); }
-.catalog-banner::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 38px 38px; mask-image: linear-gradient(90deg, black, transparent 80%); }
-.catalog-banner::after { content: "LICAN"; position: absolute; right: -1.5%; bottom: -28%; color: rgba(242,244,255,.035); font-family: var(--display); font-size: clamp(8rem, 20vw, 18rem); line-height: 1; pointer-events: none; }
-.catalog-banner__copy { position: relative; z-index: 3; width: min(53%, 650px); }
-.catalog-banner h1 { margin-bottom: 14px; font-family: var(--display); font-size: clamp(3.5rem, 7vw, 7rem); letter-spacing: -.06em; line-height: .78; }
-.catalog-banner__copy > p:not(.eyebrow) { max-width: 520px; margin-bottom: 13px; color: #bdc3d2; }
-.catalog-banner__count { color: var(--cyan); font-family: var(--display); font-size: .6rem; letter-spacing: .16em; }
-.catalog-banner__art { position: absolute; z-index: 1; top: 0; right: 0; bottom: 0; width: 55%; pointer-events: none; }
-.catalog-banner__art > span { position: absolute; top: 20px; right: 24px; color: rgba(242,244,255,.18); font-family: var(--display); font-size: 2.8rem; letter-spacing: -.05em; }
-.catalog-banner__product { position: absolute; width: 42%; aspect-ratio: 1; object-fit: cover; border: 1px solid rgba(242,244,255,.14); box-shadow: 0 18px 50px rgba(0,0,0,.48); filter: saturate(.88) contrast(1.08); }
-.catalog-banner__product--cap { z-index: 2; right: 4%; bottom: -20%; transform: rotate(5deg); }
-.catalog-banner__product--lighter { z-index: 1; right: 34%; bottom: -28%; transform: rotate(-6deg); }
-.catalog-banner__product--feral { z-index: 0; right: 2%; bottom: 42%; width: 31%; opacity: .68; transform: rotate(-3deg); }
-.catalog-banner__filters { position: relative; z-index: 4; max-width: 72%; margin: 28px 0 0; }
+.catalog-banner { position: relative; min-height: 270px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 18px; padding: 24px 28px 20px; overflow: hidden; border: 1px solid rgba(207,56,255,.34); background: var(--black); isolation: isolate; }
+.catalog-banner::before { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(3,6,17,.95) 0%, rgba(3,6,17,.78) 34%, rgba(3,6,17,.16) 66%, rgba(3,6,17,.05) 100%), linear-gradient(0deg, rgba(3,6,17,.9) 0%, transparent 38%); }
+.catalog-banner__background { position: absolute; z-index: 0; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; filter: saturate(.92) contrast(1.05); }
+.catalog-banner__copy { position: relative; z-index: 3; width: min(58%, 720px); text-shadow: 0 2px 18px rgba(0,0,0,.9); }
+.catalog-banner__copy .eyebrow { margin-bottom: 9px; color: var(--cyan); }
+.catalog-banner h1 { margin: 0; font-family: var(--display); font-size: clamp(1.18rem, 2vw, 1.86rem); font-weight: 800; letter-spacing: -.025em; line-height: 1.12; text-transform: none; }
+.catalog-banner h1 span { display: block; }
+.catalog-banner h1 span + span { margin-top: 4px; }
+.catalog-banner h1 strong { color: var(--cyan); font-weight: inherit; }
+.catalog-banner h1 span:nth-child(2) strong { color: #e85cff; }
+.catalog-banner .catalog-banner__filters { position: relative; z-index: 4; max-width: 100%; margin: 20px 0 0; padding-top: 10px; border-top: 1px solid rgba(242,244,255,.16); background: linear-gradient(90deg, rgba(3,6,17,.82), transparent 82%); }
 
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: clamp(32px, 5vw, 64px); }
 .section-heading h2 { margin: 0; font-family: var(--display); font-size: clamp(2.2rem, 5vw, 5rem); letter-spacing: -.045em; line-height: .9; }
@@ -248,10 +245,9 @@ h1, h2, h3, p { margin-top: 0; }
 
 @media (max-width: 800px) {
   .shell, .merch-nav { width: min(calc(100% - 36px), var(--shell)); }
-  .catalog-banner { min-height: 340px; }
-  .catalog-banner__copy { width: 70%; }
-  .catalog-banner__art { width: 62%; opacity: .62; }
-  .catalog-banner__filters { max-width: 100%; }
+  .catalog-banner { min-height: 280px; }
+  .catalog-banner__copy { width: 72%; }
+  .catalog-banner .catalog-banner__filters { max-width: 100%; }
   .section-heading { display: block; }
   .section-heading > p { margin-top: 24px; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -276,14 +272,14 @@ h1, h2, h3, p { margin-top: 0; }
   .cart-count { font-size: .62rem; }
   .button-row .button { width: 100%; }
   .catalog { padding-top: 18px; }
-  .catalog-banner { min-height: 390px; padding: 24px 18px 18px; }
+  .catalog-banner { min-height: 288px; padding: 16px 14px 14px; }
+  .catalog-banner::before { background: linear-gradient(180deg, rgba(3,6,17,.06) 0 34%, rgba(3,6,17,.96) 48% 100%); }
+  .catalog-banner__background { height: auto; aspect-ratio: 3 / 1; object-fit: contain; object-position: top center; }
   .catalog-banner__copy { width: 100%; }
-  .catalog-banner h1 { font-size: clamp(3.2rem, 17vw, 5rem); }
-  .catalog-banner__copy > p:not(.eyebrow) { max-width: 29ch; font-size: .85rem; }
-  .catalog-banner__art { top: 36px; width: 88%; opacity: .38; }
-  .catalog-banner__product--cap { right: -12%; }
-  .catalog-banner__product--lighter { right: 30%; }
-  .catalog-banner__filters { gap: 6px; margin-top: 24px; padding-top: 10px; background: linear-gradient(transparent, rgba(3,6,17,.84) 30%); }
+  .catalog-banner__copy .eyebrow { margin-top: 112px; margin-bottom: 6px; }
+  .catalog-banner h1 { font-size: clamp(.98rem, 4.4vw, 1.18rem); line-height: 1.15; }
+  .catalog-banner h1 span + span { margin-top: 3px; }
+  .catalog-banner .catalog-banner__filters { gap: 6px; margin-top: 14px; padding-top: 8px; background: none; }
   .filter-chip { min-height: 38px; padding: 8px 10px; font-size: .54rem; }
   .product-grid { grid-template-columns: 1fr; }
   .product-card__body { min-height: 300px; }

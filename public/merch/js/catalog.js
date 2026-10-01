@@ -28,8 +28,6 @@ async function initCatalog() {
     const grid = qs('[data-catalog-grid]');
     products.forEach((product) => grid.append(createProductCard(product)));
     renderFilters(products, grid);
-
-    qs('[data-product-count]').textContent = `${products.length} PIEZAS · DROP 001`;
   } catch (error) {
     qs('[data-catalog-grid]').replaceChildren(createElement('p', 'notice notice--error', error.message));
   }
