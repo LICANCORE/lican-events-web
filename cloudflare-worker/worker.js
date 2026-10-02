@@ -28,6 +28,8 @@ const PENINSULA_LOW_ORDER_LIMIT_CENTS = 2500;
 const PENINSULA_FREE_SHIPPING_FROM_CENTS = 4000;
 const PENINSULA_LOW_SHIPPING_CENTS = 499;
 const PENINSULA_MID_SHIPPING_CENTS = 399;
+const BALEARIC_FREE_SHIPPING_FROM_CENTS = 4000;
+const BALEARIC_SHIPPING_CENTS = 499;
 const EUROPE_SHIPPING_CENTS = 1299;
 
 const EUROPEAN_COUNTRIES = Object.freeze({
@@ -69,22 +71,13 @@ class ApiError extends Error {
   }
 }
 
-function normalizeLocation(value) {
-  return value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim()
-    .toLowerCase();
-}
-
-function spanishRestrictedZone(postalCode, province) {
+function spanishPostalZone(postalCode) {
   const prefix = postalCode.slice(0, 2);
-  const normalizedProvince = normalizeLocation(province);
-  if (prefix === '35' || prefix === '38' || ['las palmas', 'santa cruz de tenerife', 'canarias'].includes(normalizedProvince)) return 'canary';
-  if (prefix === '07' || ['illes balears', 'islas baleares', 'baleares'].includes(normalizedProvince)) return 'balearic';
-  if (prefix === '51' || normalizedProvince === 'ceuta') return 'ceuta-melilla';
-  if (prefix === '52' || normalizedProvince === 'melilla') return 'ceuta-melilla';
-  return null;
+  if (prefix === '07') return 'balearic';
+  if (prefix === '35' || prefix === '38') return 'canary';
+  if (prefix === '51') return 'ceuta';
+  if (prefix === '52') return 'melilla';
+  return 'peninsula';
 }
 
 export function getShippingConfig() {
@@ -95,6 +88,10 @@ export function getShippingConfig() {
       under25Cents: PENINSULA_LOW_SHIPPING_CENTS,
       from25To39Cents: PENINSULA_MID_SHIPPING_CENTS,
     },
+    balearic: {
+      freeFromCents: BALEARIC_FREE_SHIPPING_FROM_CENTS,
+      under40Cents: BALEARIC_SHIPPING_CENTS,
+    },
     europe: { flatRateCents: EUROPE_SHIPPING_CENTS },
   };
 }
@@ -103,14 +100,19 @@ export function calculateShipping({ country, postalCode, province, subtotalCents
   if (!Number.isSafeInteger(subtotalCents) || subtotalCents < 0) throw new ApiError('INVALID_ORDER_TOTAL');
   const normalizedCountry = requiredString(country, 2, 'INVALID_SHIPPING').toUpperCase();
   const normalizedPostalCode = requiredString(postalCode, 16, 'INVALID_SHIPPING').replace(/\s+/g, '');
-  const normalizedProvince = requiredString(province, 100, 'INVALID_SHIPPING');
+  requiredString(province, 100, 'INVALID_SHIPPING');
 
   if (normalizedCountry === 'ES') {
     if (!/^\d{5}$/.test(normalizedPostalCode)) throw new ApiError('INVALID_SHIPPING');
-    const restrictedZone = spanishRestrictedZone(normalizedPostalCode, normalizedProvince);
-    if (restrictedZone === 'canary') throw new ApiError('CANARY_NOT_AVAILABLE');
-    if (restrictedZone === 'balearic') throw new ApiError('BALEARIC_NOT_AVAILABLE');
-    if (restrictedZone === 'ceuta-melilla') throw new ApiError('CEUTA_MELILLA_NOT_AVAILABLE');
+    const zone = spanishPostalZone(normalizedPostalCode);
+    if (zone === 'canary') throw new ApiError('CANARY_NOT_AVAILABLE');
+    if (zone === 'ceuta') throw new ApiError('CEUTA_NOT_AVAILABLE');
+    if (zone === 'melilla') throw new ApiError('MELILLA_NOT_AVAILABLE');
+
+    if (zone === 'balearic') {
+      const shippingCents = subtotalCents < BALEARIC_FREE_SHIPPING_FROM_CENTS ? BALEARIC_SHIPPING_CENTS : 0;
+      return { zone, shippingCents, freeShipping: shippingCents === 0 };
+    }
 
     let shippingCents;
     if (subtotalCents < PENINSULA_LOW_ORDER_LIMIT_CENTS) shippingCents = PENINSULA_LOW_SHIPPING_CENTS;
@@ -398,7 +400,7 @@ function storeConfig(origin) {
     ok: true,
     currency: CURRENCY,
     shipping: getShippingConfig(),
-    availableZones: ['peninsula', 'europe'],
+    availableZones: ['peninsula', 'balearic', 'europe'],
     countries: [
       { code: 'ES', name: 'España' },
       ...Object.entries(EUROPEAN_COUNTRIES).map(([code, name]) => ({ code, name })),

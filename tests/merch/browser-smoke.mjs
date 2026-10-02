@@ -23,9 +23,13 @@ function storeConfigPayload() {
         under25Cents: 499,
         from25To39Cents: 399,
       },
+      balearic: {
+        freeFromCents: 4000,
+        under40Cents: 499,
+      },
       europe: { flatRateCents: 1299 },
     },
-    availableZones: ['peninsula', 'europe'],
+    availableZones: ['peninsula', 'balearic', 'europe'],
     countries: [
       { code: 'ES', name: 'España' },
       { code: 'DE', name: 'Alemania' },
@@ -206,9 +210,12 @@ try {
   const checkout = await openPage({ width: 390, height: 860 });
   await checkout.page.goto(`${baseUrl}/merch/checkout.html`, { waitUntil: 'networkidle' });
   assert.equal(await checkout.page.locator('[data-pay]').isDisabled(), true);
+  assert.equal(await checkout.page.locator('input[type="checkbox"], [name="terms"]').count(), 0);
+  assert.equal((await checkout.page.locator('body').innerText()).includes('textos definitivos'), false);
+  assert.equal(await checkout.page.locator('.checkout-legal a').count(), 2);
   assert.match(await checkout.page.locator('[data-payment-mode]').innerText(), /SUMUP.*PAGO SEGURO/);
   assert.match(await checkout.page.locator('[data-checkout-blocker]').innerText(), /direcci.n/i);
-  assert.match(await checkout.page.locator('[data-shipping-policy]').innerText(), /4,99.*3,99.*gratis.*12,99/is);
+  assert.match(await checkout.page.locator('[data-shipping-policy]').innerText(), /Pen.nsula.*4,99.*3,99.*Baleares.*4,99.*Europa.*12,99/is);
   assert.equal(await checkout.page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true);
   await checkout.page.screenshot({ path: path.join(screenshots, 'checkout-mobile.webp'), fullPage: true });
   await checkout.context.close();
@@ -253,7 +260,6 @@ try {
   await mockPage.locator('[name="city"]').fill('Tarragona');
   await mockPage.locator('[name="region"]').fill('Tarragona');
   await mockPage.locator('[name="country"]').selectOption('ES');
-  await mockPage.locator('[name="terms"]').check();
   assert.equal(await mockPage.locator('[data-pay]').isEnabled(), true);
   assert.match(await mockPage.locator('[data-shipping]').innerText(), /GRATIS/);
   assert.match(await mockPage.locator('[data-total]').innerText(), /60,00/);
@@ -333,17 +339,44 @@ try {
   await sumupPage.locator('[name="country"]').selectOption('ES');
   assert.match(await sumupPage.locator('[data-shipping]').innerText(), /4,99/);
   assert.match(await sumupPage.locator('[data-free-shipping-message]').innerText(), /20,00/);
+  await sumupPage.locator('[name="postalCode"]').fill('07001');
+  await sumupPage.locator('[name="region"]').fill('Illes Balears');
+  assert.match(await sumupPage.locator('[data-shipping]').innerText(), /4,99/);
+  assert.equal(await sumupPage.locator('[data-pay]').isEnabled(), true);
+  await sumupPage.evaluate(() => {
+    const cart = JSON.parse(localStorage.getItem('lican-merch-cart-v1'));
+    cart.items[0].quantity = 2;
+    localStorage.setItem('lican-merch-cart-v1', JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent('lican:cart-change', { detail: cart }));
+  });
+  assert.match(await sumupPage.locator('[data-shipping]').innerText(), /GRATIS/);
+  assert.match(await sumupPage.locator('[data-free-shipping-message]').innerText(), /env.o gratis/i);
+  await sumupPage.evaluate(() => {
+    const cart = JSON.parse(localStorage.getItem('lican-merch-cart-v1'));
+    cart.items[0].quantity = 1;
+    localStorage.setItem('lican-merch-cart-v1', JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent('lican:cart-change', { detail: cart }));
+  });
   await sumupPage.locator('[name="country"]').selectOption('DE');
   assert.match(await sumupPage.locator('[data-shipping]').innerText(), /12,99/);
   assert.equal(await sumupPage.locator('[data-free-shipping-message]').isHidden(), true);
   await sumupPage.locator('[name="country"]').selectOption('ES');
   await sumupPage.locator('[name="postalCode"]').fill('35001');
   await sumupPage.locator('[name="region"]').fill('Las Palmas');
-  assert.match(await sumupPage.locator('[data-destination-error]').innerText(), /Canarias/i);
+  assert.match(await sumupPage.locator('[data-destination-error]').innerText(), /Islas Canarias/i);
   assert.equal(await sumupPage.locator('[data-pay]').isDisabled(), true);
+  await sumupPage.locator('[name="postalCode"]').fill('38001');
+  await sumupPage.locator('[name="region"]').fill('Santa Cruz de Tenerife');
+  assert.match(await sumupPage.locator('[data-destination-error]').innerText(), /Islas Canarias/i);
+  await sumupPage.locator('[name="postalCode"]').fill('51001');
+  await sumupPage.locator('[name="region"]').fill('Ceuta');
+  assert.match(await sumupPage.locator('[data-destination-error]').innerText(), /Ceuta/i);
+  await sumupPage.locator('[name="postalCode"]').fill('52001');
+  await sumupPage.locator('[name="region"]').fill('Melilla');
+  assert.match(await sumupPage.locator('[data-destination-error]').innerText(), /Melilla/i);
   await sumupPage.locator('[name="postalCode"]').fill('43001');
   await sumupPage.locator('[name="region"]').fill('Tarragona');
-  await sumupPage.locator('[name="terms"]').check();
+  assert.equal(await sumupPage.locator('[data-pay]').isEnabled(), true);
   await sumupPage.locator('[data-pay]').click();
   await sumupPage.waitForURL('https://checkout.sumup.com/pay/qa-checkout');
   assert.deepEqual(checkoutRequest, {

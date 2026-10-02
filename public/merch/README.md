@@ -46,7 +46,7 @@ Para cambiar una imagen, sustituye o añade el original en la subcarpeta fuente 
 
 ## Envíos
 
-Las tarifas son autoridad exclusiva del Worker y usan céntimos enteros. El navegador obtiene mediante `GET /store-config` la política pública necesaria para mostrar estimaciones, pero nunca envía un coste fiable. Península cuesta 4,99 € por debajo de 25 €, 3,99 € desde 25 € hasta 39,99 € y es gratis desde 40 €. Los países europeos habilitados tienen tarifa fija de 12,99 €. Baleares, Canarias, Ceuta, Melilla, Reino Unido y el resto internacional no están disponibles.
+Las tarifas son autoridad exclusiva del Worker y usan céntimos enteros. El navegador obtiene mediante `GET /store-config` la política pública necesaria para mostrar estimaciones, pero nunca envía un coste fiable. Península cuesta 4,99 € por debajo de 25 €, 3,99 € desde 25 € hasta 39,99 € y es gratis desde 40 €. Baleares cuesta 4,99 € por debajo de 40 € y es gratis desde 40 €. Los países europeos habilitados tienen tarifa fija de 12,99 €. Canarias, Ceuta, Melilla, Reino Unido y el resto internacional no están disponibles.
 
 ## Carrito
 

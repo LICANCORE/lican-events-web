@@ -222,8 +222,6 @@ h1, h2, h3, p { margin-top: 0; }
 .shipping-policy .eyebrow { margin-bottom: 5px; }
 .shipping-policy strong:not(:first-of-type) { margin-top: 12px; }
 .shipping-policy p { margin: 0; }
-.checkbox-row { grid-template-columns: 20px 1fr !important; align-items: start; gap: 12px !important; color: var(--muted) !important; font-size: .72rem !important; font-weight: 500 !important; letter-spacing: 0 !important; line-height: 1.5; text-transform: none !important; }
-.checkbox-row input { min-height: 18px; accent-color: var(--blue); }
 .order-summary { position: sticky; top: 108px; padding: 28px; border: 1px solid rgba(207,56,255,.35); background: linear-gradient(150deg, rgba(8,28,61,.48), rgba(8,11,24,.92)); }
 .order-summary h2 { font-family: var(--display); font-size: 1.8rem; }
 .checkout-line { display: flex; justify-content: space-between; gap: 20px; padding-block: 16px; border-bottom: 1px solid var(--line); font-size: .82rem; }
@@ -232,6 +230,8 @@ h1, h2, h3, p { margin-top: 0; }
 .order-summary__totals > div { display: flex; justify-content: space-between; gap: 20px; padding-block: 7px; }
 .order-summary__total { margin-top: 10px; padding-top: 18px !important; border-top: 1px solid var(--line); font-size: 1.1rem; }
 .order-summary .button { width: 100%; }
+.checkout-legal { margin: 13px 0 0; color: var(--muted); font-size: .67rem; line-height: 1.45; text-align: center; }
+.checkout-legal a { color: var(--white); text-decoration: underline; text-underline-offset: 2px; }
 .order-summary__secure { margin: 14px 0 0; color: var(--muted); font-size: .59rem; font-weight: 800; letter-spacing: .1em; text-align: center; }
 
 .status-page { min-height: calc(100svh - 78px); display: grid; place-items: center; padding-block: 70px; }

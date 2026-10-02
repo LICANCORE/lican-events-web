@@ -61,7 +61,7 @@ function buildFooter() {
   legal.id = 'legal-pending';
   legal.append(createElement('strong', '', 'LEGAL'));
   const privacy = createElement('a', '', 'Privacidad'); privacy.href = '/privacidad';
-  legal.append(privacy, createElement('span', 'muted', 'Compra · devoluciones · envíos: documentos pendientes'));
+  legal.append(privacy);
   grid.append(about, nav, legal);
   footer.append(grid, createElement('p', 'merch-footer__copy', `© ${new Date().getFullYear()} LICAN EVENTS`));
 }
@@ -188,8 +188,9 @@ export async function renderCart() {
       const destination = readShippingDestination();
       const estimate = calculateEstimatedShipping(policy, destination, totals.subtotalCents);
       let shippingCopy = `Envío gratis a Península desde ${formatMoney(policy.shipping.peninsula.freeFromCents)}.`;
-      if (estimate.zone === 'peninsula') {
-        const remainingCents = Math.max(0, policy.shipping.peninsula.freeFromCents - totals.subtotalCents);
+      if (['peninsula', 'balearic'].includes(estimate.zone)) {
+        const freeFromCents = policy.shipping[estimate.zone].freeFromCents;
+        const remainingCents = Math.max(0, freeFromCents - totals.subtotalCents);
         shippingCopy = remainingCents > 0
           ? `Te faltan ${formatMoney(remainingCents)} para conseguir envío gratis.`
           : '¡Tienes envío gratis!';

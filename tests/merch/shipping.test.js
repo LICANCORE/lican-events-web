@@ -11,9 +11,13 @@ const policy = normalizeShippingPolicy({
       under25Cents: 499,
       from25To39Cents: 399,
     },
+    balearic: {
+      freeFromCents: 4000,
+      under40Cents: 499,
+    },
     europe: { flatRateCents: 1299 },
   },
-  availableZones: ['peninsula', 'europe'],
+  availableZones: ['peninsula', 'balearic', 'europe'],
   countries: [
     { code: 'ES', name: 'España' },
     { code: 'FR', name: 'Francia' },
@@ -32,8 +36,19 @@ test('frontend does not promise free shipping for Europe', () => {
   assert.deepEqual(estimate, { shippingCents: 1299, zone: 'europe', error: null });
 });
 
-test('frontend blocks restricted Spanish destinations with customer-facing copy', () => {
+test('frontend applies the dedicated Balearic rule', () => {
   const estimate = calculateEstimatedShipping(policy, { country: 'ES', postalCode: '07001', province: 'Illes Balears' }, 3000);
-  assert.equal(estimate.error, 'BALEARIC_NOT_AVAILABLE');
-  assert.match(shippingErrorMessage(estimate.error), /Baleares/);
+  assert.deepEqual(estimate, { shippingCents: 499, zone: 'balearic', error: null });
+  assert.equal(calculateEstimatedShipping(policy, { country: 'ES', postalCode: '07800', province: 'Illes Balears' }, 4000).shippingCents, 0);
 });
+
+for (const [postalCode, province, message] of [
+  ['35001', 'Las Palmas', /Islas Canarias/],
+  ['51001', 'Ceuta', /Ceuta/],
+  ['52001', 'Melilla', /Melilla/],
+]) {
+  test(`frontend blocks ${postalCode} with customer-facing copy`, () => {
+    const estimate = calculateEstimatedShipping(policy, { country: 'ES', postalCode, province }, 3000);
+    assert.match(shippingErrorMessage(estimate.error), message);
+  });
+}

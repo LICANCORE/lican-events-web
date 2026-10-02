@@ -58,16 +58,18 @@ function renderSummary() {
   destinationError.textContent = estimate.error ? shippingErrorMessage(estimate.error) : '';
 
   const freeShippingMessage = qs('[data-free-shipping-message]');
-  const peninsulaFreeFrom = shippingPolicy?.shipping.peninsula.freeFromCents;
-  freeShippingMessage.hidden = estimate.zone !== 'peninsula' || !Number.isInteger(totals.subtotalCents);
+  const freeShippingZone = ['peninsula', 'balearic'].includes(estimate.zone);
+  const freeShippingFrom = freeShippingZone ? shippingPolicy.shipping[estimate.zone].freeFromCents : null;
+  freeShippingMessage.hidden = !freeShippingZone || !Number.isInteger(totals.subtotalCents);
   if (!freeShippingMessage.hidden) {
-    const remainingCents = Math.max(0, peninsulaFreeFrom - totals.subtotalCents);
+    const remainingCents = Math.max(0, freeShippingFrom - totals.subtotalCents);
     freeShippingMessage.textContent = remainingCents > 0
       ? `Te faltan ${formatMoney(remainingCents)} para conseguir envío gratis.`
       : '¡Tienes envío gratis!';
   }
 
-  const ready = totals.lines.length > 0 && totals.pricesComplete && Number.isInteger(totals.shippingCents) && !estimate.error;
+  const formValid = qs('[data-checkout-form]').checkValidity();
+  const ready = totals.lines.length > 0 && totals.pricesComplete && Number.isInteger(totals.shippingCents) && !estimate.error && formValid;
   const blocker = qs('[data-checkout-blocker]');
   blocker.hidden = ready;
   if (!ready) {
@@ -75,7 +77,9 @@ function renderSummary() {
       ? shippingErrorMessage(estimate.error)
       : !shippingPolicy
         ? STORE_CONFIG.shippingMessage
-        : 'Completa una dirección de envío disponible para calcular el total.';
+        : Number.isInteger(totals.shippingCents)
+          ? 'Completa todos los datos obligatorios para continuar.'
+          : 'Completa una dirección de envío disponible para calcular el total.';
   }
   const button = qs('[data-pay]');
   button.disabled = !ready || submitting;
@@ -167,6 +171,7 @@ async function submitCheckout(event) {
 function renderShippingPolicy() {
   const target = qs('[data-shipping-policy]');
   const peninsula = shippingPolicy.shipping.peninsula;
+  const balearic = shippingPolicy.shipping.balearic;
   const europe = shippingPolicy.shipping.europe;
   target.replaceChildren(
     createElement('p', 'eyebrow', 'TARIFAS DE ENVÍO'),
@@ -174,6 +179,9 @@ function renderShippingPolicy() {
     createElement('p', 'muted', `Pedidos inferiores a ${formatMoney(peninsula.lowOrderLimitCents)} — envío ${formatMoney(peninsula.under25Cents)}`),
     createElement('p', 'muted', `Pedidos de ${formatMoney(peninsula.lowOrderLimitCents)} a ${formatMoney(peninsula.freeFromCents - 1)} — envío ${formatMoney(peninsula.from25To39Cents)}`),
     createElement('p', 'muted', `Pedidos desde ${formatMoney(peninsula.freeFromCents)} — envío gratis`),
+    createElement('strong', '', 'Baleares'),
+    createElement('p', 'muted', `Pedidos inferiores a ${formatMoney(balearic.freeFromCents)} — envío ${formatMoney(balearic.under40Cents)}`),
+    createElement('p', 'muted', `Pedidos desde ${formatMoney(balearic.freeFromCents)} — envío gratis`),
     createElement('strong', '', 'Europa'),
     createElement('p', 'muted', `Envío europeo — ${formatMoney(europe.flatRateCents)}`),
   );
@@ -194,10 +202,11 @@ function renderCountries() {
   });
 }
 
-function watchDestination() {
-  ['country', 'postalCode', 'region'].forEach((name) => {
-    qs(`[name="${name}"]`).addEventListener(name === 'country' ? 'change' : 'input', () => {
-      saveShippingDestination(readDestination());
+function watchForm() {
+  const destinationFields = new Set(['country', 'postalCode', 'region']);
+  qs('[data-checkout-form]').querySelectorAll('input, select').forEach((field) => {
+    field.addEventListener(field.tagName === 'SELECT' ? 'change' : 'input', () => {
+      if (destinationFields.has(field.name)) saveShippingDestination(readDestination());
       renderSummary();
     });
   });
@@ -209,7 +218,7 @@ async function initCheckout() {
   [catalog, shippingPolicy] = await Promise.all([loadCatalog(), loadShippingPolicy()]);
   renderCountries();
   renderShippingPolicy();
-  watchDestination();
+  watchForm();
   qs('[data-payment-mode]').textContent = PAYMENT_MODE === 'mock'
     ? 'MODO MOCK · NINGÚN COBRO REAL'
     : 'SUMUP · PAGO SEGURO REDIRIGIDO';

@@ -7,25 +7,18 @@ function validCents(value) {
   return Number.isSafeInteger(value) && value >= 0;
 }
 
-function normalizeLocation(value) {
-  return String(value ?? '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim()
-    .toLowerCase();
-}
-
-function restrictedSpanishZone(postalCode, province) {
+function spanishPostalZone(postalCode) {
   const prefix = postalCode.slice(0, 2);
-  const normalizedProvince = normalizeLocation(province);
-  if (prefix === '35' || prefix === '38' || ['las palmas', 'santa cruz de tenerife', 'canarias'].includes(normalizedProvince)) return 'CANARY_NOT_AVAILABLE';
-  if (prefix === '07' || ['illes balears', 'islas baleares', 'baleares'].includes(normalizedProvince)) return 'BALEARIC_NOT_AVAILABLE';
-  if (prefix === '51' || prefix === '52' || ['ceuta', 'melilla'].includes(normalizedProvince)) return 'CEUTA_MELILLA_NOT_AVAILABLE';
-  return null;
+  if (prefix === '07') return 'balearic';
+  if (prefix === '35' || prefix === '38') return 'canary';
+  if (prefix === '51') return 'ceuta';
+  if (prefix === '52') return 'melilla';
+  return 'peninsula';
 }
 
 export function normalizeShippingPolicy(payload) {
   const peninsula = payload?.shipping?.peninsula;
+  const balearic = payload?.shipping?.balearic;
   const europe = payload?.shipping?.europe;
   const countries = Array.isArray(payload?.countries)
     ? payload.countries.filter((country) => /^[A-Z]{2}$/.test(country?.code) && typeof country?.name === 'string')
@@ -35,6 +28,8 @@ export function normalizeShippingPolicy(payload) {
     || !validCents(peninsula?.freeFromCents)
     || !validCents(peninsula?.under25Cents)
     || !validCents(peninsula?.from25To39Cents)
+    || !validCents(balearic?.freeFromCents)
+    || !validCents(balearic?.under40Cents)
     || !validCents(europe?.flatRateCents)
     || !countries.some((country) => country.code === 'ES')
   ) return null;
@@ -42,6 +37,7 @@ export function normalizeShippingPolicy(payload) {
     currency: payload.currency ?? STORE_CONFIG.currency,
     shipping: {
       peninsula: { ...peninsula },
+      balearic: { ...balearic },
       europe: { ...europe },
     },
     availableZones: Array.isArray(payload.availableZones) ? [...payload.availableZones] : [],
@@ -71,8 +67,15 @@ export function calculateEstimatedShipping(policy, destination, subtotalCents) {
 
   if (country === 'ES') {
     if (!/^\d{5}$/.test(postalCode) || !province) return { shippingCents: null, zone: null, error: null };
-    const error = restrictedSpanishZone(postalCode, province);
-    if (error) return { shippingCents: null, zone: null, error };
+    const zone = spanishPostalZone(postalCode);
+    if (zone === 'canary') return { shippingCents: null, zone: null, error: 'CANARY_NOT_AVAILABLE' };
+    if (zone === 'ceuta') return { shippingCents: null, zone: null, error: 'CEUTA_NOT_AVAILABLE' };
+    if (zone === 'melilla') return { shippingCents: null, zone: null, error: 'MELILLA_NOT_AVAILABLE' };
+    if (zone === 'balearic') {
+      const rates = policy.shipping.balearic;
+      const shippingCents = subtotalCents < rates.freeFromCents ? rates.under40Cents : 0;
+      return { shippingCents, zone, error: null };
+    }
     const rates = policy.shipping.peninsula;
     let shippingCents;
     if (subtotalCents < rates.lowOrderLimitCents) shippingCents = rates.under25Cents;
@@ -89,9 +92,9 @@ export function calculateEstimatedShipping(policy, destination, subtotalCents) {
 
 export function shippingErrorMessage(code) {
   const messages = {
-    CANARY_NOT_AVAILABLE: 'Actualmente no realizamos envíos a Canarias.',
-    BALEARIC_NOT_AVAILABLE: 'Actualmente no realizamos envíos a Baleares.',
-    CEUTA_MELILLA_NOT_AVAILABLE: 'Actualmente no realizamos envíos a Ceuta o Melilla.',
+    CANARY_NOT_AVAILABLE: 'Actualmente no realizamos envíos a Islas Canarias.',
+    CEUTA_NOT_AVAILABLE: 'Actualmente no realizamos envíos a Ceuta.',
+    MELILLA_NOT_AVAILABLE: 'Actualmente no realizamos envíos a Melilla.',
     INTERNATIONAL_NOT_AVAILABLE: 'Actualmente no realizamos envíos a este destino.',
     UNSUPPORTED_COUNTRY: 'Actualmente no realizamos envíos a este destino.',
     INVALID_SHIPPING: 'Revisa el país, la provincia y el código postal.',

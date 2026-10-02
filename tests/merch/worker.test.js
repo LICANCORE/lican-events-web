@@ -39,6 +39,10 @@ test('publishes the definitive shipping policy without Cloudflare rate variables
       under25Cents: 499,
       from25To39Cents: 399,
     },
+    balearic: {
+      freeFromCents: 4000,
+      under40Cents: 499,
+    },
     europe: { flatRateCents: 1299 },
   });
 });
@@ -62,6 +66,31 @@ for (const [subtotalCents, expectedShippingCents] of [
   });
 }
 
+for (const [postalCode, province] of [
+  ['08001', 'Barcelona'],
+  ['43001', 'Tarragona'],
+  ['28001', 'Madrid'],
+  ['29001', 'Málaga'],
+]) {
+  test(`accepts mainland postal code ${postalCode}`, () => {
+    assert.equal(calculateShipping({ country: 'ES', postalCode, province, subtotalCents: 2500 }).zone, 'peninsula');
+  });
+}
+
+for (const postalCode of ['07001', '07100', '07300', '07800']) {
+  for (const [subtotalCents, expectedShippingCents] of [[1000, 499], [2499, 499], [2500, 499], [3999, 499], [4000, 0], [10000, 0]]) {
+    test(`calculates Balearic ${postalCode} shipping for ${subtotalCents} cents`, () => {
+      assert.deepEqual(calculateShipping({
+        country: 'ES', postalCode, province: 'Illes Balears', subtotalCents,
+      }), {
+        zone: 'balearic',
+        shippingCents: expectedShippingCents,
+        freeShipping: expectedShippingCents === 0,
+      });
+    });
+  }
+}
+
 for (const [country, subtotalCents] of [['FR', 1000], ['FR', 10000], ['DE', 3000]]) {
   test(`charges the fixed European rate for ${country} at ${subtotalCents} cents`, () => {
     assert.deepEqual(calculateShipping({
@@ -71,11 +100,10 @@ for (const [country, subtotalCents] of [['FR', 1000], ['FR', 10000], ['DE', 3000
 }
 
 for (const [name, destination, error] of [
-  ['Canary postal codes', { country: 'ES', postalCode: '35001', province: 'Las Palmas' }, 'CANARY_NOT_AVAILABLE'],
-  ['Canary provinces', { country: 'ES', postalCode: '28001', province: 'Santa Cruz de Tenerife' }, 'CANARY_NOT_AVAILABLE'],
-  ['Balearic postal codes', { country: 'ES', postalCode: '07001', province: 'Illes Balears' }, 'BALEARIC_NOT_AVAILABLE'],
-  ['Ceuta', { country: 'ES', postalCode: '51001', province: 'Ceuta' }, 'CEUTA_MELILLA_NOT_AVAILABLE'],
-  ['Melilla', { country: 'ES', postalCode: '52001', province: 'Melilla' }, 'CEUTA_MELILLA_NOT_AVAILABLE'],
+  ['Las Palmas', { country: 'ES', postalCode: '35001', province: 'Las Palmas' }, 'CANARY_NOT_AVAILABLE'],
+  ['Santa Cruz de Tenerife', { country: 'ES', postalCode: '38001', province: 'Santa Cruz de Tenerife' }, 'CANARY_NOT_AVAILABLE'],
+  ['Ceuta', { country: 'ES', postalCode: '51001', province: 'Ceuta' }, 'CEUTA_NOT_AVAILABLE'],
+  ['Melilla', { country: 'ES', postalCode: '52001', province: 'Melilla' }, 'MELILLA_NOT_AVAILABLE'],
   ['the United Kingdom', { country: 'GB', postalCode: 'SW1A1AA', province: 'London' }, 'INTERNATIONAL_NOT_AVAILABLE'],
   ['the United States', { country: 'US', postalCode: '10001', province: 'New York' }, 'INTERNATIONAL_NOT_AVAILABLE'],
 ]) {
@@ -97,6 +125,35 @@ test('calculates product and shipping totals exclusively on the server', () => {
     unitPriceCents: 2000,
   }]);
 });
+
+for (const [name, items, subtotalCents, shippingCents, totalCents] of [
+  ['13 euros', [
+    { id: 'encendedor-de-plasma-recargable-tipo-c-headbang-dealers', quantity: 1, variant: null },
+    { id: 'llavero-nfc-3d-headbang-dealers', quantity: 1, variant: null },
+  ], 1300, 499, 1799],
+  ['26 euros', [
+    { id: 'gorra-under-headbang-dealers', quantity: 1, variant: null },
+    { id: 'llavero-nfc-3d-headbang-dealers', quantity: 2, variant: null },
+  ], 2600, 499, 3099],
+  ['40 euros', [{ id: 'gorra-under-headbang-dealers', quantity: 2, variant: null }], 4000, 0, 4000],
+  ['46 euros', [
+    { id: 'gorra-under-headbang-dealers', quantity: 2, variant: null },
+    { id: 'llavero-nfc-3d-headbang-dealers', quantity: 2, variant: null },
+  ], 4600, 0, 4600],
+]) {
+  test(`calculates the complete Balearic order for ${name}`, () => {
+    const order = validateOrder(validPayload({
+      items,
+      shipping: {
+        address: 'Dirección de prueba 1', postalCode: '07001', city: 'Palma', province: 'Illes Balears', country: 'ES',
+      },
+    }));
+    assert.equal(order.subtotalCents, subtotalCents);
+    assert.equal(order.shippingCents, shippingCents);
+    assert.equal(order.totalCents, totalCents);
+    assert.equal(order.shippingZone, 'balearic');
+  });
+}
 
 for (const [name, mutate, error] of [
   ['unknown products', (payload) => { payload.items[0].id = 'inventado'; }, 'PRODUCT_NOT_FOUND'],
@@ -143,6 +200,9 @@ test('creates a hosted checkout with the server-calculated amount and strict COR
   };
   const response = await worker.fetch(jsonRequest('/create-checkout', {
     ...validPayload(),
+    shipping: {
+      address: 'Dirección de prueba 1', postalCode: '07001', city: 'Palma', province: 'Illes Balears', country: 'ES',
+    },
     total: 0.01,
     shipping_cents: 1,
     items: [{ id: 'gorra-under-headbang-dealers', quantity: 1, variant: null, price: 0.01 }],
@@ -164,7 +224,7 @@ test('creates a hosted checkout with the server-calculated amount and strict COR
   assert.equal(payload.subtotal_cents, 2000);
   assert.equal(payload.shipping_cents, 499);
   assert.equal(payload.total_cents, 2499);
-  assert.equal(payload.shipping_zone, 'peninsula');
+  assert.equal(payload.shipping_zone, 'balearic');
 });
 
 test('returns the structured public shipping policy', async () => {
@@ -176,6 +236,8 @@ test('returns the structured public shipping policy', async () => {
   assert.equal(payload.shipping.peninsula.under25Cents, 499);
   assert.equal(payload.shipping.peninsula.from25To39Cents, 399);
   assert.equal(payload.shipping.peninsula.freeFromCents, 4000);
+  assert.equal(payload.shipping.balearic.under40Cents, 499);
+  assert.equal(payload.shipping.balearic.freeFromCents, 4000);
   assert.equal(payload.shipping.europe.flatRateCents, 1299);
   assert.equal(payload.countries.some(({ code }) => code === 'FR'), true);
   assert.equal(payload.countries.some(({ code }) => code === 'GB'), false);

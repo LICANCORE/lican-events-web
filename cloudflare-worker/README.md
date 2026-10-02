@@ -18,19 +18,26 @@ https://lican-merch-api.licancorp.workers.dev
 
 Los límites se aplican al subtotal de productos antes del envío, sin redondeos y siempre en céntimos enteros.
 
+### Baleares
+
+- Subtotal inferior a 40,00 €: 4,99 €.
+- Subtotal desde 40,00 €: gratis.
+
+Los códigos postales españoles con prefijo `07` se clasifican como `balearic`. No utilizan el tramo peninsular de 3,99 €.
+
 ### Europa
 
 Los países incluidos explícitamente en `EUROPEAN_COUNTRIES` tienen una tarifa fija de 12,99 €, sea cual sea el subtotal. No se aplica envío gratuito europeo.
 
 ### No disponible
 
-- Baleares (`BALEARIC_NOT_AVAILABLE`).
 - Canarias (`CANARY_NOT_AVAILABLE`).
-- Ceuta y Melilla (`CEUTA_MELILLA_NOT_AVAILABLE`).
+- Ceuta (`CEUTA_NOT_AVAILABLE`).
+- Melilla (`MELILLA_NOT_AVAILABLE`).
 - Reino Unido, Estados Unidos y envíos internacionales (`INTERNATIONAL_NOT_AVAILABLE`).
 - Cualquier país no incluido en la lista cerrada (`UNSUPPORTED_COUNTRY`).
 
-La clasificación española comprueba tanto los prefijos postales 07, 35, 38, 51 y 52 como los nombres de provincia. Baleares podrá habilitarse cuando LICAN defina una tarifa comercial específica. Los destinos internacionales también pueden incorporarse más adelante ampliando la política server-side.
+La clasificación española usa el código postal: `07` Baleares, `35` y `38` Canarias, `51` Ceuta y `52` Melilla. Los destinos internacionales pueden incorporarse más adelante ampliando la política server-side.
 
 ## Endpoints
 
@@ -73,9 +80,9 @@ npm run merch:test
 npm run merch:smoke
 ```
 
-Las pruebas unitarias cubren exactamente 0,01 €, 24,99 €, 25,00 €, 39,99 €, 40,00 € y 100,00 € en Península; Francia con 10 € y 100 €; Alemania; y los bloqueos de Canarias, Baleares, Ceuta, Melilla, Reino Unido y Estados Unidos. También comprueban que cualquier coste enviado por el navegador se ignora.
+Las pruebas unitarias cubren los límites peninsulares y los tramos baleares con `07001`, `07100`, `07300` y `07800`; Francia y Alemania; y los bloqueos de Canarias, Ceuta, Melilla, Reino Unido y Estados Unidos. También comprueban que cualquier coste enviado por el navegador se ignora.
 
-Para una prueba visual, usa un código postal peninsular como `43001`, provincia `Tarragona` y país España. Cambia el país a Francia o Alemania para ver 12,99 €. Usa `35001 / Las Palmas`, `07001 / Illes Balears` o `51001 / Ceuta` para comprobar el bloqueo.
+Para una prueba visual, usa `43001 / Tarragona` para Península y `07001 / Illes Balears` para Baleares. Cambia el país a Francia o Alemania para ver 12,99 €. Usa `35001 / Las Palmas`, `38001 / Santa Cruz de Tenerife`, `51001 / Ceuta` o `52001 / Melilla` para comprobar los bloqueos.
 
 ## Sandbox y producción
 
