@@ -1,67 +1,91 @@
 # Cloudflare Worker · LICAN MERCH + SumUp
 
-Este directorio contiene el código completo del Worker que actúa como autoridad del checkout. El navegador nunca envía precios: solo referencias de producto, cantidades, variante y los datos necesarios de cliente y envío. `worker.js` valida esos datos contra su catálogo, calcula el total en céntimos y crea un SumUp Hosted Checkout.
+Este directorio contiene el código completo del Worker que actúa como autoridad del checkout. El navegador envía referencias de producto, cantidades, variante y los datos necesarios de cliente/dirección; nunca decide precios, zona, portes ni total. `worker.js` valida el catálogo, calcula todo en céntimos y crea un SumUp Hosted Checkout.
 
-El código no contiene claves ni credenciales. La URL pública esperada es:
+URL pública esperada:
 
 ```text
 https://lican-merch-api.licancorp.workers.dev
 ```
 
+## Política definitiva de envíos
+
+### España peninsular
+
+- Subtotal inferior a 25,00 €: 4,99 €.
+- Subtotal desde 25,00 € hasta 39,99 €: 3,99 €.
+- Subtotal desde 40,00 €: gratis.
+
+Los límites se aplican al subtotal de productos antes del envío, sin redondeos y siempre en céntimos enteros.
+
+### Europa
+
+Los países incluidos explícitamente en `EUROPEAN_COUNTRIES` tienen una tarifa fija de 12,99 €, sea cual sea el subtotal. No se aplica envío gratuito europeo.
+
+### No disponible
+
+- Baleares (`BALEARIC_NOT_AVAILABLE`).
+- Canarias (`CANARY_NOT_AVAILABLE`).
+- Ceuta y Melilla (`CEUTA_MELILLA_NOT_AVAILABLE`).
+- Reino Unido, Estados Unidos y envíos internacionales (`INTERNATIONAL_NOT_AVAILABLE`).
+- Cualquier país no incluido en la lista cerrada (`UNSUPPORTED_COUNTRY`).
+
+La clasificación española comprueba tanto los prefijos postales 07, 35, 38, 51 y 52 como los nombres de provincia. Baleares podrá habilitarse cuando LICAN defina una tarifa comercial específica. Los destinos internacionales también pueden incorporarse más adelante ampliando la política server-side.
+
 ## Endpoints
 
 - `GET /`: comprobación básica del servicio.
-- `GET /store-config`: configuración pública de envíos que consume el checkout.
-- `POST /create-checkout`: valida el pedido, calcula el importe y crea el Hosted Checkout.
+- `GET /store-config`: política pública estructurada y lista de países europeos habilitados.
+- `POST /create-checkout`: valida el pedido, deriva la zona, calcula subtotal/envío/total y crea el Hosted Checkout.
 - `GET /checkout-status?id=<checkout-id>`: consulta el estado directamente en SumUp.
-- `POST /sumup-webhook`: recibe el aviso, responde inmediatamente y vuelve a consultar SumUp antes de considerar fiable el estado.
+- `POST /sumup-webhook`: responde inmediatamente y vuelve a consultar SumUp antes de confiar en el estado.
 
-`POST /create-test-checkout` deja de ser necesario: el flujo sandbox y el de producción usan `/create-checkout` y se distinguen por las credenciales de SumUp.
+La respuesta de `/create-checkout` incluye, además de los datos de SumUp, `subtotal_cents`, `shipping_cents`, `total_cents` y `shipping_zone`. No contiene información sensible.
 
 ## Despliegue
 
-1. Copiar el contenido exacto de `worker.js` en el Worker `lican-merch-api` desde el panel de Cloudflare, o desplegarlo con Wrangler si el proyecto se incorpora a un flujo CI.
-2. Crear estos secretos en **Settings → Variables and Secrets**:
+1. Sustituir completamente el código publicado del Worker `lican-merch-api` por `worker.js`.
+2. Conservar o crear únicamente estos secretos en **Settings → Variables and Secrets**:
 
    - `SUMUP_API_KEY`
    - `SUMUP_MERCHANT_CODE`
 
-3. Configurar como variables de texto, siempre en céntimos enteros, únicamente las tarifas comerciales confirmadas:
+3. Desplegar y comprobar `GET /store-config`.
 
-   - `SHIPPING_PENINSULA_CENTS`
-   - `SHIPPING_BALEARIC_CENTS`
-   - `SHIPPING_CANARY_CENTS`
-   - `SHIPPING_EU_CENTS`
-   - `SHIPPING_INTERNATIONAL_CENTS`
-   - `SHIPPING_EVENT_PICKUP_CENTS`
-   - `SHIPPING_FREE_FROM_CENTS` (opcional)
+No hacen falta nuevas variables de Cloudflare para las tarifas: la política definitiva está centralizada mediante constantes dentro de `worker.js`.
 
-No hay tarifas confirmadas en el repositorio y deliberadamente no se ha supuesto ninguna. Mientras un método no tenga valor, no aparece en el checkout. Si no hay ningún método configurado, la compra permanece desactivada y el Worker rechaza el pedido con `SHIPPING_NOT_CONFIGURED`.
+Estas variables anteriores han quedado obsoletas y pueden eliminarse:
 
-Los orígenes admitidos están limitados en `ALLOWED_ORIGINS` a los dos dominios LICAN y a `localhost:4173` / `127.0.0.1:4173`. No debe sustituirse esa lista por `*`.
+- `SHIPPING_PENINSULA_CENTS`
+- `SHIPPING_BALEARIC_CENTS`
+- `SHIPPING_CANARY_CENTS`
+- `SHIPPING_EU_CENTS`
+- `SHIPPING_INTERNATIONAL_CENTS`
+- `SHIPPING_EVENT_PICKUP_CENTS`
+- `SHIPPING_FREE_FROM_CENTS`
 
-## Prueba sandbox
+Los orígenes CORS siguen limitados a los dos dominios LICAN y a `localhost:4173` / `127.0.0.1:4173`.
 
-1. Usar el API key y merchant code de la cuenta sandbox de SumUp como secretos del Worker.
-2. Definir al menos una tarifa de envío de prueba que haya sido aprobada por LICAN.
-3. Desplegar `worker.js`.
-4. Comprobar `GET /store-config` y que devuelve la tarifa esperada.
-5. Abrir `/merch/`, añadir un artículo y completar el checkout.
-6. Verificar que el navegador sale a `https://checkout.sumup.com/pay/...`.
-7. Completar el pago con las credenciales o medios de prueba de SumUp y volver a `/merch/success.html`.
-8. Confirmar que la página muestra `PEDIDO CONFIRMADO`, indica sandbox y solo entonces vacía el carrito.
+## Pruebas rápidas
 
-La página de éxito ignora IDs incluidos en la URL y consulta únicamente el checkout guardado en `sessionStorage`. Un retorno manual sin sesión válida no confirma ningún pago ni vacía el carrito.
+```bash
+npm run merch:test
+npm run merch:smoke
+```
 
-## Paso a producción
+Las pruebas unitarias cubren exactamente 0,01 €, 24,99 €, 25,00 €, 39,99 €, 40,00 € y 100,00 € en Península; Francia con 10 € y 100 €; Alemania; y los bloqueos de Canarias, Baleares, Ceuta, Melilla, Reino Unido y Estados Unidos. También comprueban que cualquier coste enviado por el navegador se ignora.
 
-Cuando SumUp y LICAN hayan validado el comercio, sustituir en Cloudflare los dos secretos sandbox por las credenciales live y confirmar las tarifas definitivas. No hay que mover ninguna clave al frontend ni cambiar el endpoint. El Worker consulta el campo `sandbox` del comercio; si no puede comprobarlo, adopta el valor seguro `true`, por lo que la analítica nunca registrará una compra de producción dudosa.
+Para una prueba visual, usa un código postal peninsular como `43001`, provincia `Tarragona` y país España. Cambia el país a Francia o Alemania para ver 12,99 €. Usa `35001 / Las Palmas`, `07001 / Illes Balears` o `51001 / Ceuta` para comprobar el bloqueo.
 
-Antes de fulfillment real debe añadirse persistencia idempotente del pedido confirmado (por ejemplo, D1 o KV) en el punto señalado dentro de `sumupWebhook`. El webhook es una señal para consultar la API, no una prueba de pago por sí solo.
+## Sandbox y producción
+
+En sandbox, configura el API key y merchant code de pruebas de SumUp, completa un checkout y confirma que el carrito solo se vacía después de que `/checkout-status` devuelva `PAID`. La página indica que no se ha movido dinero real y no emite el evento analítico `purchase`.
+
+Para producción, sustituye los dos secretos por las credenciales live. Antes de fulfillment real debe añadirse persistencia idempotente del pedido confirmado —por ejemplo D1 o KV— en el punto señalado dentro de `sumupWebhook`. El webhook es una señal para consultar la API, no una prueba de pago por sí solo.
 
 Referencias oficiales:
 
 - SumUp Hosted Checkout: https://developer.sumup.com/online-payments/checkouts/hosted-checkout
 - Consulta de checkout: https://developer.sumup.com/api/checkouts/get
-- Webhooks de pagos online: https://developer.sumup.com/online-payments/webhooks
+- Webhooks: https://developer.sumup.com/online-payments/webhooks
 - CORS en Cloudflare Workers: https://developers.cloudflare.com/workers/examples/cors-header-proxy/

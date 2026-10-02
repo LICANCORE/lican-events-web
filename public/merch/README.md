@@ -46,7 +46,7 @@ Para cambiar una imagen, sustituye o añade el original en la subcarpeta fuente 
 
 ## Envíos
 
-Las tarifas son autoridad del Worker y usan céntimos enteros. El navegador las obtiene mediante `GET /store-config`; la copia de `js/config.js` solo es un fallback seguro sin tarifas. Los campos son `peninsula`, `balearic`, `canary`, `eu`, `international`, `eventPickup` y `freeShippingFromCents`. Solo aparecen métodos cuyo valor sea un entero. Actualmente todos están en `null` porque no existe `INFORMACION_TIENDA.txt` ni una tarifa definitiva.
+Las tarifas son autoridad exclusiva del Worker y usan céntimos enteros. El navegador obtiene mediante `GET /store-config` la política pública necesaria para mostrar estimaciones, pero nunca envía un coste fiable. Península cuesta 4,99 € por debajo de 25 €, 3,99 € desde 25 € hasta 39,99 € y es gratis desde 40 €. Los países europeos habilitados tienen tarifa fija de 12,99 €. Baleares, Canarias, Ceuta, Melilla, Reino Unido y el resto internacional no están disponibles.
 
 ## Carrito
 
@@ -56,7 +56,7 @@ Guarda solo `productId`, `variantId` y `quantity` en `localStorage`, bajo `lican
 
 `js/config.js` contiene `PAYMENT_MODE`, actualmente en `sumup`, y apunta a `https://lican-merch-api.licancorp.workers.dev`. El código completo que debe desplegarse en ese Worker está en [`../../cloudflare-worker/worker.js`](../../cloudflare-worker/worker.js); las variables y el procedimiento están documentados en [`../../cloudflare-worker/README.md`](../../cloudflare-worker/README.md).
 
-El frontend envía a `POST /create-checkout` únicamente IDs de producto, variante, cantidad y los datos imprescindibles de cliente/envío. El Worker valida el catálogo, stock y variantes, calcula subtotal, envío y total, y devuelve el enlace de SumUp. Antes de salir se guardan el ID y la referencia en `sessionStorage`.
+El frontend envía a `POST /create-checkout` únicamente IDs de producto, variante, cantidad y los datos imprescindibles de cliente/dirección. No envía método, zona ni coste de envío. El Worker valida el catálogo, stock y variantes, deriva la zona desde país, código postal y provincia, calcula subtotal, envío y total, y devuelve el enlace de SumUp. Antes de salir se guardan el ID y la referencia en `sessionStorage`.
 
 Al volver, `success.html` consulta `GET /checkout-status?id=...`. El carrito solo se vacía cuando SumUp responde `PAID`; `PENDING`, `FAILED`, `EXPIRED`, un retorno manual o un error de red conservan la compra. El webhook `POST /sumup-webhook` vuelve a consultar la API de SumUp antes de confiar en el estado recibido.
 

@@ -1,49 +1,41 @@
 import { cartTotals, clearCart, readCart } from './cart.js';
-import { PAYMENT_ENDPOINT, PAYMENT_MODE, STORE_CONFIG, STORE_CONFIG_ENDPOINT } from './config.js';
+import { PAYMENT_ENDPOINT, PAYMENT_MODE, STORE_CONFIG } from './config.js';
 import { loadCatalog } from './data.js';
+import {
+  calculateEstimatedShipping,
+  loadShippingPolicy,
+  saveShippingDestination,
+  shippingErrorMessage,
+} from './shipping.js';
 import { track } from './tracking.js';
 import { initShell } from './ui.js';
 import { createElement, formatMoney, qs, safeRedirectTarget } from './utils.js';
 
 let catalog;
-let shippingConfig = STORE_CONFIG.shipping;
-let selectedShippingCents = null;
+let shippingPolicy;
 let submitting = false;
-
-const shippingLabels = {
-  peninsula: 'Península',
-  balearic: 'Baleares',
-  canary: 'Canarias',
-  eu: 'Unión Europea',
-  international: 'Internacional',
-  eventPickup: 'Recogida en evento',
-};
 
 function isDevelopment() {
   return ['localhost', '127.0.0.1'].includes(window.location.hostname);
 }
 
-function normalizeShippingConfig(value) {
-  return Object.fromEntries(Object.keys(STORE_CONFIG.shipping).map((key) => {
-    const cents = value?.[key];
-    return [key, Number.isInteger(cents) && cents >= 0 ? cents : null];
-  }));
+function cleanField(formData, name, maxLength = 160) {
+  return String(formData.get(name) ?? '').trim().slice(0, maxLength);
 }
 
-async function loadRemoteStoreConfig() {
-  if (PAYMENT_MODE !== 'sumup') return;
-  try {
-    const response = await fetch(STORE_CONFIG_ENDPOINT, { headers: { Accept: 'application/json' } });
-    if (!response.ok) throw new Error(`Store config HTTP ${response.status}`);
-    const payload = await response.json();
-    shippingConfig = normalizeShippingConfig(payload.shipping);
-  } catch (error) {
-    if (isDevelopment()) console.warn('No se pudo cargar la configuración pública del Worker.', error.message);
-  }
+function readDestination() {
+  return {
+    country: qs('[name="country"]').value,
+    postalCode: qs('[name="postalCode"]').value.trim(),
+    province: qs('[name="region"]').value.trim(),
+  };
 }
 
 function renderSummary() {
-  const totals = cartTotals(readCart(), catalog, selectedShippingCents);
+  const preliminary = cartTotals(readCart(), catalog);
+  const destination = readDestination();
+  const estimate = calculateEstimatedShipping(shippingPolicy, destination, preliminary.subtotalCents);
+  const totals = cartTotals(readCart(), catalog, estimate.shippingCents);
   const lines = qs('[data-checkout-lines]');
   lines.replaceChildren();
   totals.lines.forEach((line) => {
@@ -54,19 +46,41 @@ function renderSummary() {
     lines.append(row);
   });
   if (!totals.lines.length) lines.append(createElement('p', 'notice notice--warning', 'Tu carrito está vacío.'));
+
   qs('[data-subtotal]').textContent = formatMoney(totals.subtotalCents);
-  qs('[data-shipping]').textContent = Number.isInteger(totals.shippingCents) ? formatMoney(totals.shippingCents) : 'Pendiente';
+  qs('[data-shipping]').textContent = Number.isInteger(totals.shippingCents)
+    ? totals.shippingCents === 0 ? 'GRATIS' : formatMoney(totals.shippingCents)
+    : 'Pendiente';
   qs('[data-total]').textContent = formatMoney(totals.totalCents);
-  const ready = totals.lines.length > 0 && totals.pricesComplete && Number.isInteger(totals.shippingCents);
+
+  const destinationError = qs('[data-destination-error]');
+  destinationError.hidden = !estimate.error;
+  destinationError.textContent = estimate.error ? shippingErrorMessage(estimate.error) : '';
+
+  const freeShippingMessage = qs('[data-free-shipping-message]');
+  const peninsulaFreeFrom = shippingPolicy?.shipping.peninsula.freeFromCents;
+  freeShippingMessage.hidden = estimate.zone !== 'peninsula' || !Number.isInteger(totals.subtotalCents);
+  if (!freeShippingMessage.hidden) {
+    const remainingCents = Math.max(0, peninsulaFreeFrom - totals.subtotalCents);
+    freeShippingMessage.textContent = remainingCents > 0
+      ? `Te faltan ${formatMoney(remainingCents)} para conseguir envío gratis.`
+      : '¡Tienes envío gratis!';
+  }
+
+  const ready = totals.lines.length > 0 && totals.pricesComplete && Number.isInteger(totals.shippingCents) && !estimate.error;
+  const blocker = qs('[data-checkout-blocker]');
+  blocker.hidden = ready;
+  if (!ready) {
+    blocker.textContent = estimate.error
+      ? shippingErrorMessage(estimate.error)
+      : !shippingPolicy
+        ? STORE_CONFIG.shippingMessage
+        : 'Completa una dirección de envío disponible para calcular el total.';
+  }
   const button = qs('[data-pay]');
   button.disabled = !ready || submitting;
   button.textContent = submitting ? 'CONECTANDO CON SUMUP…' : ready ? 'PAGAR CON SUMUP' : 'CHECKOUT PENDIENTE DE ACTIVAR';
-  qs('[data-checkout-blocker]').hidden = ready;
   return { totals, ready };
-}
-
-function cleanField(formData, name, maxLength = 160) {
-  return String(formData.get(name) ?? '').trim().slice(0, maxLength);
 }
 
 function createOrder(formData, totals) {
@@ -88,7 +102,6 @@ function createOrder(formData, totals) {
       city: cleanField(formData, 'city', 100),
       province: cleanField(formData, 'region', 100),
       country: cleanField(formData, 'country', 2),
-      method: cleanField(formData, 'shippingMethod', 40),
     },
   };
 }
@@ -138,53 +151,65 @@ async function submitCheckout(event) {
 
     sessionStorage.setItem('lican_checkout_id', payload.checkout_id);
     sessionStorage.setItem('lican_checkout_reference', payload.checkout_reference);
-    track('begin_checkout', { currency: STORE_CONFIG.currency, value: totals.totalCents / 100, items: order.items });
+    const confirmedTotalCents = Number.isInteger(payload.total_cents) ? payload.total_cents : totals.totalCents;
+    track('begin_checkout', { currency: STORE_CONFIG.currency, value: confirmedTotalCents / 100, items: order.items });
     window.location.href = payload.hosted_checkout_url;
   } catch (error) {
     submitting = false;
     renderSummary();
+    errorNotice.textContent = shippingErrorMessage(error.message);
     errorNotice.hidden = false;
-    sessionStorage.setItem('lican-merch-payment-error', 'No se ha podido iniciar el pago. Inténtalo de nuevo.');
+    sessionStorage.setItem('lican-merch-payment-error', errorNotice.textContent);
     if (isDevelopment()) console.error('Error al iniciar el checkout de SumUp:', error.message);
   }
 }
 
-function renderShippingOptions() {
-  const shipping = qs('[name="shippingMethod"]');
-  const availableMethods = Object.entries(shippingConfig)
-    .filter(([key, cents]) => key !== 'freeShippingFromCents' && Number.isInteger(cents));
-  if (!availableMethods.length) {
-    const option = document.createElement('option');
-    option.value = '';
-    option.textContent = STORE_CONFIG.shippingMessage;
-    shipping.append(option);
-    shipping.disabled = true;
-    return;
-  }
+function renderShippingPolicy() {
+  const target = qs('[data-shipping-policy]');
+  const peninsula = shippingPolicy.shipping.peninsula;
+  const europe = shippingPolicy.shipping.europe;
+  target.replaceChildren(
+    createElement('p', 'eyebrow', 'TARIFAS DE ENVÍO'),
+    createElement('strong', '', 'Península'),
+    createElement('p', 'muted', `Pedidos inferiores a ${formatMoney(peninsula.lowOrderLimitCents)} — envío ${formatMoney(peninsula.under25Cents)}`),
+    createElement('p', 'muted', `Pedidos de ${formatMoney(peninsula.lowOrderLimitCents)} a ${formatMoney(peninsula.freeFromCents - 1)} — envío ${formatMoney(peninsula.from25To39Cents)}`),
+    createElement('p', 'muted', `Pedidos desde ${formatMoney(peninsula.freeFromCents)} — envío gratis`),
+    createElement('strong', '', 'Europa'),
+    createElement('p', 'muted', `Envío europeo — ${formatMoney(europe.flatRateCents)}`),
+  );
+}
 
+function renderCountries() {
+  const select = qs('[name="country"]');
+  select.replaceChildren();
   const placeholder = document.createElement('option');
   placeholder.value = '';
-  placeholder.textContent = 'Selecciona un método';
-  shipping.append(placeholder);
-  availableMethods.forEach(([key, cents]) => {
+  placeholder.textContent = 'Selecciona un país';
+  select.append(placeholder);
+  shippingPolicy.countries.forEach(({ code, name }) => {
     const option = document.createElement('option');
-    option.value = key;
-    option.dataset.cents = String(cents);
-    option.textContent = `${shippingLabels[key] ?? key} · ${formatMoney(cents)}`;
-    shipping.append(option);
+    option.value = code;
+    option.textContent = name;
+    select.append(option);
   });
-  shipping.addEventListener('change', () => {
-    selectedShippingCents = shipping.selectedOptions[0]?.dataset.cents
-      ? Number.parseInt(shipping.selectedOptions[0].dataset.cents, 10)
-      : null;
-    renderSummary();
+}
+
+function watchDestination() {
+  ['country', 'postalCode', 'region'].forEach((name) => {
+    qs(`[name="${name}"]`).addEventListener(name === 'country' ? 'change' : 'input', () => {
+      saveShippingDestination(readDestination());
+      renderSummary();
+    });
   });
+  window.addEventListener('lican:cart-change', renderSummary);
 }
 
 async function initCheckout() {
   await initShell();
-  [catalog] = await Promise.all([loadCatalog(), loadRemoteStoreConfig()]);
-  renderShippingOptions();
+  [catalog, shippingPolicy] = await Promise.all([loadCatalog(), loadShippingPolicy()]);
+  renderCountries();
+  renderShippingPolicy();
+  watchDestination();
   qs('[data-payment-mode]').textContent = PAYMENT_MODE === 'mock'
     ? 'MODO MOCK · NINGÚN COBRO REAL'
     : 'SUMUP · PAGO SEGURO REDIRIGIDO';
@@ -193,6 +218,6 @@ async function initCheckout() {
 }
 
 initCheckout().catch((error) => {
-  qs('[data-checkout-main]').replaceChildren(createElement('p', 'notice notice--error', 'No se ha podido cargar el checkout. Inténtalo de nuevo.'));
+  qs('[data-checkout-main]').replaceChildren(createElement('p', 'notice notice--error', 'No se ha podido cargar la política de envíos. Inténtalo de nuevo.'));
   if (isDevelopment()) console.error(error);
 });

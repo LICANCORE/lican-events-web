@@ -8,16 +8,10 @@ export const STORE_CONFIG_ENDPOINT = `${SUMUP_API_URL}/store-config`;
 export const STORE_CONFIG = Object.freeze({
   currency: 'EUR',
   locale: 'es-ES',
-  shipping: {
-    peninsula: null,
-    balearic: null,
-    canary: null,
-    eu: null,
-    international: null,
-    eventPickup: null,
-    freeShippingFromCents: null,
-  },
-  shippingMessage: 'Tarifas y condiciones de envío pendientes de confirmación.',
+  shipping: null,
+  availableZones: [],
+  countries: [],
+  shippingMessage: 'No se ha podido cargar la política de envíos.',
 });
 
 export const LEGAL_LINKS = Object.freeze({

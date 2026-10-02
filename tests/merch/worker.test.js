@@ -1,12 +1,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import worker, { getShippingConfig, validateOrder } from '../../cloudflare-worker/worker.js';
+import worker, { calculateShipping, getShippingConfig, validateOrder } from '../../cloudflare-worker/worker.js';
 
 const allowedOrigin = 'http://127.0.0.1:4173';
 const baseEnv = {
   SUMUP_API_KEY: 'test-secret',
   SUMUP_MERCHANT_CODE: 'TEST-MERCHANT',
-  SHIPPING_PENINSULA_CENTS: '495',
 };
 
 function validPayload(overrides = {}) {
@@ -19,7 +18,6 @@ function validPayload(overrides = {}) {
       city: 'Tarragona',
       province: 'Tarragona',
       country: 'ES',
-      method: 'peninsula',
     },
     ...overrides,
   };
@@ -33,23 +31,65 @@ function jsonRequest(path, body, origin = allowedOrigin) {
   });
 }
 
-test('normalizes shipping variables without inventing missing rates', () => {
-  assert.deepEqual(getShippingConfig({ SHIPPING_PENINSULA_CENTS: '495' }), {
-    peninsula: 495,
-    balearic: null,
-    canary: null,
-    eu: null,
-    international: null,
-    eventPickup: null,
-    freeShippingFromCents: null,
+test('publishes the definitive shipping policy without Cloudflare rate variables', () => {
+  assert.deepEqual(getShippingConfig(), {
+    peninsula: {
+      lowOrderLimitCents: 2500,
+      freeFromCents: 4000,
+      under25Cents: 499,
+      from25To39Cents: 399,
+    },
+    europe: { flatRateCents: 1299 },
   });
 });
 
+for (const [subtotalCents, expectedShippingCents] of [
+  [1, 499],
+  [2499, 499],
+  [2500, 399],
+  [3999, 399],
+  [4000, 0],
+  [10000, 0],
+]) {
+  test(`calculates peninsula shipping for ${subtotalCents} cents`, () => {
+    assert.deepEqual(calculateShipping({
+      country: 'ES', postalCode: '43001', province: 'Tarragona', subtotalCents,
+    }), {
+      zone: 'peninsula',
+      shippingCents: expectedShippingCents,
+      freeShipping: expectedShippingCents === 0,
+    });
+  });
+}
+
+for (const [country, subtotalCents] of [['FR', 1000], ['FR', 10000], ['DE', 3000]]) {
+  test(`charges the fixed European rate for ${country} at ${subtotalCents} cents`, () => {
+    assert.deepEqual(calculateShipping({
+      country, postalCode: '75001', province: 'Europa', subtotalCents,
+    }), { zone: 'europe', shippingCents: 1299, freeShipping: false });
+  });
+}
+
+for (const [name, destination, error] of [
+  ['Canary postal codes', { country: 'ES', postalCode: '35001', province: 'Las Palmas' }, 'CANARY_NOT_AVAILABLE'],
+  ['Canary provinces', { country: 'ES', postalCode: '28001', province: 'Santa Cruz de Tenerife' }, 'CANARY_NOT_AVAILABLE'],
+  ['Balearic postal codes', { country: 'ES', postalCode: '07001', province: 'Illes Balears' }, 'BALEARIC_NOT_AVAILABLE'],
+  ['Ceuta', { country: 'ES', postalCode: '51001', province: 'Ceuta' }, 'CEUTA_MELILLA_NOT_AVAILABLE'],
+  ['Melilla', { country: 'ES', postalCode: '52001', province: 'Melilla' }, 'CEUTA_MELILLA_NOT_AVAILABLE'],
+  ['the United Kingdom', { country: 'GB', postalCode: 'SW1A1AA', province: 'London' }, 'INTERNATIONAL_NOT_AVAILABLE'],
+  ['the United States', { country: 'US', postalCode: '10001', province: 'New York' }, 'INTERNATIONAL_NOT_AVAILABLE'],
+]) {
+  test(`blocks ${name}`, () => {
+    assert.throws(() => calculateShipping({ ...destination, subtotalCents: 10000 }), { message: error });
+  });
+}
+
 test('calculates product and shipping totals exclusively on the server', () => {
-  const order = validateOrder(validPayload(), baseEnv);
+  const order = validateOrder(validPayload());
   assert.equal(order.subtotalCents, 2000);
-  assert.equal(order.shippingCents, 495);
-  assert.equal(order.totalCents, 2495);
+  assert.equal(order.shippingCents, 499);
+  assert.equal(order.totalCents, 2499);
+  assert.equal(order.shippingZone, 'peninsula');
   assert.deepEqual(order.items, [{
     id: 'gorra-under-headbang-dealers',
     variant: null,
@@ -67,15 +107,20 @@ for (const [name, mutate, error] of [
   test(`rejects ${name}`, () => {
     const payload = validPayload();
     mutate(payload);
-    assert.throws(() => validateOrder(payload, baseEnv), { message: error });
+    assert.throws(() => validateOrder(payload), { message: error });
   });
 }
 
-test('rejects an unconfigured shipping method', () => {
-  assert.throws(() => validateOrder(validPayload(), {
-    SUMUP_API_KEY: 'test-secret',
-    SUMUP_MERCHANT_CODE: 'TEST-MERCHANT',
-  }), { message: 'SHIPPING_NOT_CONFIGURED' });
+test('ignores shipping prices and methods supplied by the browser', () => {
+  const payload = validPayload();
+  payload.shipping.shippingCents = 1;
+  payload.shipping.method = 'free';
+  payload.shipping.zone = 'europe';
+  payload.total_cents = 1;
+  const order = validateOrder(payload);
+  assert.equal(order.shippingCents, 499);
+  assert.equal(order.totalCents, 2499);
+  assert.equal(order.shippingZone, 'peninsula');
 });
 
 test('creates a hosted checkout with the server-calculated amount and strict CORS', async () => {
@@ -99,6 +144,7 @@ test('creates a hosted checkout with the server-calculated amount and strict COR
   const response = await worker.fetch(jsonRequest('/create-checkout', {
     ...validPayload(),
     total: 0.01,
+    shipping_cents: 1,
     items: [{ id: 'gorra-under-headbang-dealers', quantity: 1, variant: null, price: 0.01 }],
   }), env, { waitUntil() {} });
   const payload = await response.json();
@@ -106,7 +152,7 @@ test('creates a hosted checkout with the server-calculated amount and strict COR
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('Access-Control-Allow-Origin'), allowedOrigin);
   assert.notEqual(response.headers.get('Access-Control-Allow-Origin'), '*');
-  assert.equal(createBody.amount, 24.95);
+  assert.equal(createBody.amount, 24.99);
   assert.equal(createBody.currency, 'EUR');
   assert.equal(createBody.merchant_code, 'TEST-MERCHANT');
   assert.deepEqual(createBody.hosted_checkout, { enabled: true });
@@ -115,6 +161,24 @@ test('creates a hosted checkout with the server-calculated amount and strict COR
   assert.equal(payload.ok, true);
   assert.equal(payload.checkout_id, '12345678-abcd');
   assert.equal(payload.sandbox, true);
+  assert.equal(payload.subtotal_cents, 2000);
+  assert.equal(payload.shipping_cents, 499);
+  assert.equal(payload.total_cents, 2499);
+  assert.equal(payload.shipping_zone, 'peninsula');
+});
+
+test('returns the structured public shipping policy', async () => {
+  const request = new Request('https://lican-merch-api.licancorp.workers.dev/store-config', {
+    headers: { Origin: allowedOrigin },
+  });
+  const response = await worker.fetch(request, baseEnv, { waitUntil() {} });
+  const payload = await response.json();
+  assert.equal(payload.shipping.peninsula.under25Cents, 499);
+  assert.equal(payload.shipping.peninsula.from25To39Cents, 399);
+  assert.equal(payload.shipping.peninsula.freeFromCents, 4000);
+  assert.equal(payload.shipping.europe.flatRateCents, 1299);
+  assert.equal(payload.countries.some(({ code }) => code === 'FR'), true);
+  assert.equal(payload.countries.some(({ code }) => code === 'GB'), false);
 });
 
 test('returns authoritative PAID status from SumUp', async () => {
@@ -126,7 +190,7 @@ test('returns authoritative PAID status from SumUp', async () => {
         id: '12345678-status',
         checkout_reference: 'LICAN-QA-STATUS',
         status: 'PAID',
-        amount: 24.95,
+        amount: 24.99,
         currency: 'EUR',
       });
       if (url.includes('/v1/merchants/')) return Response.json({ sandbox: true });
@@ -142,7 +206,7 @@ test('returns authoritative PAID status from SumUp', async () => {
     checkout_id: '12345678-status',
     checkout_reference: 'LICAN-QA-STATUS',
     status: 'PAID',
-    amount: 24.95,
+    amount: 24.99,
     currency: 'EUR',
     sandbox: true,
   });

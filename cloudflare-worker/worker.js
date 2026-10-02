@@ -24,13 +24,39 @@ export const PRODUCTS = Object.freeze({
   'night-of-wolves-clipper-blue': { priceCents: 300, stock: null, purchasable: true, variants: null },
 });
 
-const SHIPPING_BINDINGS = Object.freeze({
-  peninsula: 'SHIPPING_PENINSULA_CENTS',
-  balearic: 'SHIPPING_BALEARIC_CENTS',
-  canary: 'SHIPPING_CANARY_CENTS',
-  eu: 'SHIPPING_EU_CENTS',
-  international: 'SHIPPING_INTERNATIONAL_CENTS',
-  eventPickup: 'SHIPPING_EVENT_PICKUP_CENTS',
+const PENINSULA_LOW_ORDER_LIMIT_CENTS = 2500;
+const PENINSULA_FREE_SHIPPING_FROM_CENTS = 4000;
+const PENINSULA_LOW_SHIPPING_CENTS = 499;
+const PENINSULA_MID_SHIPPING_CENTS = 399;
+const EUROPE_SHIPPING_CENTS = 1299;
+
+const EUROPEAN_COUNTRIES = Object.freeze({
+  AT: 'Austria',
+  BE: 'Bélgica',
+  BG: 'Bulgaria',
+  HR: 'Croacia',
+  CY: 'Chipre',
+  CZ: 'República Checa',
+  DK: 'Dinamarca',
+  EE: 'Estonia',
+  FI: 'Finlandia',
+  FR: 'Francia',
+  DE: 'Alemania',
+  GR: 'Grecia',
+  HU: 'Hungría',
+  IE: 'Irlanda',
+  IT: 'Italia',
+  LV: 'Letonia',
+  LT: 'Lituania',
+  LU: 'Luxemburgo',
+  MT: 'Malta',
+  NL: 'Países Bajos',
+  PL: 'Polonia',
+  PT: 'Portugal',
+  RO: 'Rumanía',
+  SK: 'Eslovaquia',
+  SI: 'Eslovenia',
+  SE: 'Suecia',
 });
 
 const merchantEnvironmentCache = new Map();
@@ -43,16 +69,61 @@ class ApiError extends Error {
   }
 }
 
-function parseOptionalCents(value) {
-  if (value === undefined || value === null || value === '') return null;
-  const cents = Number(value);
-  return Number.isSafeInteger(cents) && cents >= 0 ? cents : null;
+function normalizeLocation(value) {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
 }
 
-export function getShippingConfig(env = {}) {
-  const shipping = Object.fromEntries(Object.entries(SHIPPING_BINDINGS).map(([method, binding]) => [method, parseOptionalCents(env[binding])]));
-  shipping.freeShippingFromCents = parseOptionalCents(env.SHIPPING_FREE_FROM_CENTS);
-  return shipping;
+function spanishRestrictedZone(postalCode, province) {
+  const prefix = postalCode.slice(0, 2);
+  const normalizedProvince = normalizeLocation(province);
+  if (prefix === '35' || prefix === '38' || ['las palmas', 'santa cruz de tenerife', 'canarias'].includes(normalizedProvince)) return 'canary';
+  if (prefix === '07' || ['illes balears', 'islas baleares', 'baleares'].includes(normalizedProvince)) return 'balearic';
+  if (prefix === '51' || normalizedProvince === 'ceuta') return 'ceuta-melilla';
+  if (prefix === '52' || normalizedProvince === 'melilla') return 'ceuta-melilla';
+  return null;
+}
+
+export function getShippingConfig() {
+  return {
+    peninsula: {
+      lowOrderLimitCents: PENINSULA_LOW_ORDER_LIMIT_CENTS,
+      freeFromCents: PENINSULA_FREE_SHIPPING_FROM_CENTS,
+      under25Cents: PENINSULA_LOW_SHIPPING_CENTS,
+      from25To39Cents: PENINSULA_MID_SHIPPING_CENTS,
+    },
+    europe: { flatRateCents: EUROPE_SHIPPING_CENTS },
+  };
+}
+
+export function calculateShipping({ country, postalCode, province, subtotalCents }) {
+  if (!Number.isSafeInteger(subtotalCents) || subtotalCents < 0) throw new ApiError('INVALID_ORDER_TOTAL');
+  const normalizedCountry = requiredString(country, 2, 'INVALID_SHIPPING').toUpperCase();
+  const normalizedPostalCode = requiredString(postalCode, 16, 'INVALID_SHIPPING').replace(/\s+/g, '');
+  const normalizedProvince = requiredString(province, 100, 'INVALID_SHIPPING');
+
+  if (normalizedCountry === 'ES') {
+    if (!/^\d{5}$/.test(normalizedPostalCode)) throw new ApiError('INVALID_SHIPPING');
+    const restrictedZone = spanishRestrictedZone(normalizedPostalCode, normalizedProvince);
+    if (restrictedZone === 'canary') throw new ApiError('CANARY_NOT_AVAILABLE');
+    if (restrictedZone === 'balearic') throw new ApiError('BALEARIC_NOT_AVAILABLE');
+    if (restrictedZone === 'ceuta-melilla') throw new ApiError('CEUTA_MELILLA_NOT_AVAILABLE');
+
+    let shippingCents;
+    if (subtotalCents < PENINSULA_LOW_ORDER_LIMIT_CENTS) shippingCents = PENINSULA_LOW_SHIPPING_CENTS;
+    else if (subtotalCents < PENINSULA_FREE_SHIPPING_FROM_CENTS) shippingCents = PENINSULA_MID_SHIPPING_CENTS;
+    else shippingCents = 0;
+    return { zone: 'peninsula', shippingCents, freeShipping: shippingCents === 0 };
+  }
+
+  if (Object.hasOwn(EUROPEAN_COUNTRIES, normalizedCountry)) {
+    return { zone: 'europe', shippingCents: EUROPE_SHIPPING_CENTS, freeShipping: false };
+  }
+  if (['GB', 'US'].includes(normalizedCountry)) throw new ApiError('INTERNATIONAL_NOT_AVAILABLE');
+  throw new ApiError('UNSUPPORTED_COUNTRY');
 }
 
 function corsHeaders(origin) {
@@ -117,7 +188,7 @@ function validateCustomer(value) {
   return customer;
 }
 
-function validateShipping(value, env) {
+function validateShipping(value, subtotalCents) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new ApiError('INVALID_SHIPPING');
   const shipping = {
     address: requiredString(value.address, 180, 'INVALID_SHIPPING'),
@@ -125,17 +196,11 @@ function validateShipping(value, env) {
     city: requiredString(value.city, 100, 'INVALID_SHIPPING'),
     province: requiredString(value.province, 100, 'INVALID_SHIPPING'),
     country: requiredString(value.country, 2, 'INVALID_SHIPPING').toUpperCase(),
-    method: requiredString(value.method, 40, 'INVALID_SHIPPING'),
   };
-  if (shipping.country !== 'ES') throw new ApiError('UNSUPPORTED_COUNTRY');
-  const rates = getShippingConfig(env);
-  if (!Object.hasOwn(SHIPPING_BINDINGS, shipping.method)) throw new ApiError('INVALID_SHIPPING_METHOD');
-  const shippingCents = rates[shipping.method];
-  if (!Number.isInteger(shippingCents)) throw new ApiError('SHIPPING_NOT_CONFIGURED');
-  return { shipping, rates, shippingCents };
+  return { shipping, ...calculateShipping({ ...shipping, subtotalCents }) };
 }
 
-export function validateOrder(payload, env = {}) {
+export function validateOrder(payload) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) throw new ApiError('INVALID_REQUEST');
   if (!Array.isArray(payload.items) || payload.items.length < 1 || payload.items.length > MAX_CART_LINES) throw new ApiError('INVALID_ITEMS');
 
@@ -168,13 +233,11 @@ export function validateOrder(payload, env = {}) {
     lines.set(key, { id, variant, quantity, unitPriceCents });
   }
 
-  const customer = validateCustomer(payload.customer);
-  const shippingResult = validateShipping(payload.shipping, env);
   const normalizedLines = [...lines.values()];
   const subtotalCents = normalizedLines.reduce((sum, line) => sum + line.unitPriceCents * line.quantity, 0);
-  const freeShipping = Number.isInteger(shippingResult.rates.freeShippingFromCents)
-    && subtotalCents >= shippingResult.rates.freeShippingFromCents;
-  const shippingCents = freeShipping ? 0 : shippingResult.shippingCents;
+  const customer = validateCustomer(payload.customer);
+  const shippingResult = validateShipping(payload.shipping, subtotalCents);
+  const shippingCents = shippingResult.shippingCents;
   const totalCents = subtotalCents + shippingCents;
   if (!Number.isSafeInteger(totalCents) || totalCents < 1 || totalCents > MAX_ORDER_CENTS) throw new ApiError('INVALID_ORDER_TOTAL');
 
@@ -182,6 +245,8 @@ export function validateOrder(payload, env = {}) {
     items: normalizedLines,
     customer,
     shipping: shippingResult.shipping,
+    shippingZone: shippingResult.zone,
+    freeShipping: shippingResult.freeShipping,
     subtotalCents,
     shippingCents,
     totalCents,
@@ -256,7 +321,7 @@ async function retrieveCheckout(checkoutId, env) {
 
 async function createCheckout(request, env, origin) {
   assertSecrets(env);
-  const order = validateOrder(await readJson(request), env);
+  const order = validateOrder(await readJson(request));
   const checkoutReference = createReference();
   const itemCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
   const sumupRequest = {
@@ -284,6 +349,10 @@ async function createCheckout(request, env, origin) {
     hosted_checkout_url: checkout.hosted_checkout_url,
     status: checkout.status ?? 'PENDING',
     sandbox,
+    subtotal_cents: order.subtotalCents,
+    shipping_cents: order.shippingCents,
+    total_cents: order.totalCents,
+    shipping_zone: order.shippingZone,
   }, 200, origin);
 }
 
@@ -324,12 +393,16 @@ async function sumupWebhook(request, env, context, origin) {
   return emptyResponse(204, origin);
 }
 
-function storeConfig(env, origin) {
+function storeConfig(origin) {
   return jsonResponse({
     ok: true,
     currency: CURRENCY,
-    shipping: getShippingConfig(env),
-    shippingMessage: 'Tarifas y condiciones de envío pendientes de confirmación.',
+    shipping: getShippingConfig(),
+    availableZones: ['peninsula', 'europe'],
+    countries: [
+      { code: 'ES', name: 'España' },
+      ...Object.entries(EUROPEAN_COUNTRIES).map(([code, name]) => ({ code, name })),
+    ],
   }, 200, origin);
 }
 
@@ -342,7 +415,7 @@ async function handleRequest(request, env, context) {
   if (url.pathname === '/' && request.method === 'GET') {
     return jsonResponse({ ok: true, service: 'LICAN MERCH API', mode: 'sumup-hosted-checkout' }, 200, origin);
   }
-  if (url.pathname === '/store-config' && request.method === 'GET') return storeConfig(env, origin);
+  if (url.pathname === '/store-config' && request.method === 'GET') return storeConfig(origin);
   if (url.pathname === '/create-checkout' && request.method === 'POST') return createCheckout(request, env, origin);
   if (url.pathname === '/checkout-status' && request.method === 'GET') return checkoutStatus(url, env, origin);
   if (url.pathname === '/sumup-webhook' && request.method === 'POST') return sumupWebhook(request, env, context, origin);

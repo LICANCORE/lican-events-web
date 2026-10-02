@@ -12,6 +12,40 @@ const browser = await chromium.launch({ executablePath, headless: true });
 const errors = [];
 const failedRequests = [];
 
+function storeConfigPayload() {
+  return {
+    ok: true,
+    currency: 'EUR',
+    shipping: {
+      peninsula: {
+        lowOrderLimitCents: 2500,
+        freeFromCents: 4000,
+        under25Cents: 499,
+        from25To39Cents: 399,
+      },
+      europe: { flatRateCents: 1299 },
+    },
+    availableZones: ['peninsula', 'europe'],
+    countries: [
+      { code: 'ES', name: 'España' },
+      { code: 'DE', name: 'Alemania' },
+      { code: 'FR', name: 'Francia' },
+      { code: 'PT', name: 'Portugal' },
+    ],
+  };
+}
+
+async function routeStoreConfig(context) {
+  await context.route('https://lican-merch-api.licancorp.workers.dev/store-config', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      headers: { 'Access-Control-Allow-Origin': allowedOriginFor(baseUrl) },
+      body: JSON.stringify(storeConfigPayload()),
+    });
+  });
+}
+
 function watchPage(page) {
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   page.on('pageerror', (error) => errors.push(error.message));
@@ -20,6 +54,7 @@ function watchPage(page) {
 
 async function openPage(viewport) {
   const context = await browser.newContext({ viewport });
+  await routeStoreConfig(context);
   const page = await context.newPage();
   watchPage(page);
   return { context, page };
@@ -114,6 +149,7 @@ try {
   assert.equal(await capCard.locator('.quantity-stepper__value').innerText(), '3');
   await capCard.getByRole('button', { name: 'AÑADIR AL CARRITO' }).click();
   assert.equal(await page.locator('.cart-count').innerText(), '3');
+  await page.locator('.cart-line').waitFor();
   assert.equal(await page.locator('.cart-line').count(), 1);
   assert.equal(await page.locator('.cart-line input').inputValue(), '3');
   await page.reload({ waitUntil: 'networkidle' });
@@ -168,18 +204,11 @@ try {
   }
 
   const checkout = await openPage({ width: 390, height: 860 });
-  await checkout.context.route('https://lican-merch-api.licancorp.workers.dev/store-config', async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      headers: { 'Access-Control-Allow-Origin': allowedOriginFor(baseUrl) },
-      body: JSON.stringify({ ok: true, currency: 'EUR', shipping: {} }),
-    });
-  });
   await checkout.page.goto(`${baseUrl}/merch/checkout.html`, { waitUntil: 'networkidle' });
   assert.equal(await checkout.page.locator('[data-pay]').isDisabled(), true);
   assert.match(await checkout.page.locator('[data-payment-mode]').innerText(), /SUMUP.*PAGO SEGURO/);
-  assert.match(await checkout.page.locator('[data-checkout-blocker]').innerText(), /precio|pago/i);
+  assert.match(await checkout.page.locator('[data-checkout-blocker]').innerText(), /direcci.n/i);
+  assert.match(await checkout.page.locator('[data-shipping-policy]').innerText(), /4,99.*3,99.*gratis.*12,99/is);
   assert.equal(await checkout.page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), true);
   await checkout.page.screenshot({ path: path.join(screenshots, 'checkout-mobile.webp'), fullPage: true });
   await checkout.context.close();
@@ -191,6 +220,7 @@ try {
   await status.context.close();
 
   const mockContext = await browser.newContext({ viewport: { width: 390, height: 860 } });
+  await routeStoreConfig(mockContext);
   await mockContext.addInitScript(() => {
     window.addEventListener('lican:commerce', (event) => {
       const events = JSON.parse(sessionStorage.getItem('qa-commerce-events') ?? '[]');
@@ -201,8 +231,7 @@ try {
   await mockContext.route('**/merch/js/config.js', async (route) => {
     const response = await route.fetch();
     const source = (await response.text())
-      .replace("export const PAYMENT_MODE = 'sumup';", "export const PAYMENT_MODE = 'mock';")
-      .replace('peninsula: null', 'peninsula: 495');
+      .replace("export const PAYMENT_MODE = 'sumup';", "export const PAYMENT_MODE = 'mock';");
     await route.fulfill({ response, body: source, contentType: 'application/javascript' });
   });
   const mockPage = await mockContext.newPage();
@@ -223,10 +252,12 @@ try {
   await mockPage.locator('[name="postalCode"]').fill('43001');
   await mockPage.locator('[name="city"]').fill('Tarragona');
   await mockPage.locator('[name="region"]').fill('Tarragona');
-  await mockPage.locator('[name="shippingMethod"]').selectOption('peninsula');
+  await mockPage.locator('[name="country"]').selectOption('ES');
   await mockPage.locator('[name="terms"]').check();
   assert.equal(await mockPage.locator('[data-pay]').isEnabled(), true);
-  assert.match(await mockPage.locator('[data-total]').innerText(), /64,95/);
+  assert.match(await mockPage.locator('[data-shipping]').innerText(), /GRATIS/);
+  assert.match(await mockPage.locator('[data-total]').innerText(), /60,00/);
+  assert.match(await mockPage.locator('[data-free-shipping-message]').innerText(), /env.o gratis/i);
   await mockPage.locator('[data-pay]').click();
   await mockPage.waitForURL('**/merch/success.html?mode=mock&order=*');
   assert.match(await mockPage.locator('[data-status-copy]').innerText(), /ning[úu]n cobro/i);
@@ -238,32 +269,13 @@ try {
   await mockContext.close();
 
   const sumupContext = await browser.newContext({ viewport: { width: 390, height: 860 } });
+  await routeStoreConfig(sumupContext);
   let checkoutRequest;
   await sumupContext.addInitScript(() => {
     window.addEventListener('lican:commerce', (event) => {
       const events = JSON.parse(sessionStorage.getItem('qa-commerce-events') ?? '[]');
       events.push(event.detail.event);
       sessionStorage.setItem('qa-commerce-events', JSON.stringify(events));
-    });
-  });
-  await sumupContext.route('https://lican-merch-api.licancorp.workers.dev/store-config', async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      headers: { 'Access-Control-Allow-Origin': allowedOriginFor(baseUrl) },
-      body: JSON.stringify({
-        ok: true,
-        currency: 'EUR',
-        shipping: {
-          peninsula: 495,
-          balearic: null,
-          canary: null,
-          eu: null,
-          international: null,
-          eventPickup: null,
-          freeShippingFromCents: null,
-        },
-      }),
     });
   });
   await sumupContext.route('https://lican-merch-api.licancorp.workers.dev/create-checkout', async (route) => {
@@ -279,6 +291,10 @@ try {
         hosted_checkout_url: 'https://checkout.sumup.com/pay/qa-checkout',
         status: 'PENDING',
         sandbox: true,
+        subtotal_cents: 2000,
+        shipping_cents: 499,
+        total_cents: 2499,
+        shipping_zone: 'peninsula',
       }),
     });
   });
@@ -292,7 +308,7 @@ try {
         checkout_id: '12345678-browser',
         checkout_reference: 'LICAN-QA-BROWSER',
         status: 'PAID',
-        amount: 24.95,
+        amount: 24.99,
         currency: 'EUR',
         sandbox: true,
       }),
@@ -314,7 +330,19 @@ try {
   await sumupPage.locator('[name="postalCode"]').fill('43001');
   await sumupPage.locator('[name="city"]').fill('Tarragona');
   await sumupPage.locator('[name="region"]').fill('Tarragona');
-  await sumupPage.locator('[name="shippingMethod"]').selectOption('peninsula');
+  await sumupPage.locator('[name="country"]').selectOption('ES');
+  assert.match(await sumupPage.locator('[data-shipping]').innerText(), /4,99/);
+  assert.match(await sumupPage.locator('[data-free-shipping-message]').innerText(), /20,00/);
+  await sumupPage.locator('[name="country"]').selectOption('DE');
+  assert.match(await sumupPage.locator('[data-shipping]').innerText(), /12,99/);
+  assert.equal(await sumupPage.locator('[data-free-shipping-message]').isHidden(), true);
+  await sumupPage.locator('[name="country"]').selectOption('ES');
+  await sumupPage.locator('[name="postalCode"]').fill('35001');
+  await sumupPage.locator('[name="region"]').fill('Las Palmas');
+  assert.match(await sumupPage.locator('[data-destination-error]').innerText(), /Canarias/i);
+  assert.equal(await sumupPage.locator('[data-pay]').isDisabled(), true);
+  await sumupPage.locator('[name="postalCode"]').fill('43001');
+  await sumupPage.locator('[name="region"]').fill('Tarragona');
   await sumupPage.locator('[name="terms"]').check();
   await sumupPage.locator('[data-pay]').click();
   await sumupPage.waitForURL('https://checkout.sumup.com/pay/qa-checkout');
@@ -327,7 +355,6 @@ try {
       city: 'Tarragona',
       province: 'Tarragona',
       country: 'ES',
-      method: 'peninsula',
     },
   });
   const cartProbe = await sumupContext.newPage();

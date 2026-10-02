@@ -218,6 +218,10 @@ h1, h2, h3, p { margin-top: 0; }
 .checkout-form legend { padding-inline: 8px; color: var(--cyan); font-family: var(--display); font-size: .72rem; letter-spacing: .14em; }
 .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .form-grid__full { grid-column: 1 / -1; }
+.shipping-policy { display: grid; gap: 7px; padding: 24px 26px; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.shipping-policy .eyebrow { margin-bottom: 5px; }
+.shipping-policy strong:not(:first-of-type) { margin-top: 12px; }
+.shipping-policy p { margin: 0; }
 .checkbox-row { grid-template-columns: 20px 1fr !important; align-items: start; gap: 12px !important; color: var(--muted) !important; font-size: .72rem !important; font-weight: 500 !important; letter-spacing: 0 !important; line-height: 1.5; text-transform: none !important; }
 .checkbox-row input { min-height: 18px; accent-color: var(--blue); }
 .order-summary { position: sticky; top: 108px; padding: 28px; border: 1px solid rgba(207,56,255,.35); background: linear-gradient(150deg, rgba(8,28,61,.48), rgba(8,11,24,.92)); }

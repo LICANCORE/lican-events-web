@@ -27,15 +27,17 @@
             <label>Código postal<input name="postalCode" autocomplete="postal-code" maxlength="16" required></label>
             <label>Ciudad<input name="city" autocomplete="address-level2" maxlength="100" required></label>
             <label>Provincia / región<input name="region" autocomplete="address-level1" maxlength="100" required></label>
-            <label>País<select name="country" autocomplete="country" required><option value="ES">España</option></select></label>
-            <label class="form-grid__full">Método de envío<select name="shippingMethod" required></select></label>
+            <label>País<select name="country" autocomplete="country" required><option value="">Cargando destinos…</option></select></label>
+            <p class="notice notice--error form-grid__full" data-destination-error hidden></p>
           </div></fieldset>
+          <section class="shipping-policy" data-shipping-policy aria-label="Política de envíos"></section>
           <label class="checkbox-row"><input name="terms" type="checkbox" required><span>Acepto las condiciones de compra y la política de privacidad. Los textos definitivos de compra, devolución y envío están pendientes de proporcionar.</span></label>
         </div>
         <aside class="order-summary">
           <p class="eyebrow">RESUMEN</p><h2>TU PEDIDO</h2>
           <div data-checkout-lines></div>
           <div class="order-summary__totals"><div><span>Subtotal</span><strong data-subtotal></strong></div><div><span>Envío</span><strong data-shipping></strong></div><div class="order-summary__total"><span>Total</span><strong data-total></strong></div></div>
+          <p class="notice" data-free-shipping-message hidden></p>
           <p class="notice notice--warning" data-checkout-blocker>El pago se activará cuando existan precios, stock y tarifa de envío confirmados.</p>
           <p class="notice notice--error" data-checkout-error hidden>No se ha podido iniciar el pago. Inténtalo de nuevo.</p>
           <button class="button button--primary" data-pay type="submit">PAGAR CON SUMUP</button>

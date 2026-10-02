@@ -1,6 +1,7 @@
 import { loadCatalog } from './data.js';
 import { addItem, cartTotals, clearCart, readCart, removeItem, updateItem, writeCart } from './cart.js';
 import { track } from './tracking.js';
+import { calculateEstimatedShipping, loadShippingPolicy, readShippingDestination } from './shipping.js';
 import { createElement, formatMoney, productUrl, qs } from './utils.js';
 
 function buildHeader() {
@@ -144,7 +145,10 @@ function renderCartLine(line) {
   return article;
 }
 
+let cartRenderVersion = 0;
+
 export async function renderCart() {
+  const renderVersion = ++cartRenderVersion;
   const body = qs('.cart-drawer__body');
   if (!body) return;
   body.replaceChildren(createElement('p', 'muted', 'Cargando carrito…'));
@@ -152,6 +156,15 @@ export async function renderCart() {
     const catalog = await loadCatalog();
     const totals = cartTotals(readCart(), catalog);
     document.querySelectorAll('.cart-count').forEach((node) => { node.textContent = String(totals.itemCount); });
+    let policy = null;
+    if (totals.lines.length) {
+      try {
+        policy = await loadShippingPolicy();
+      } catch {
+        // El checkout seguirá bloqueado si el Worker no puede proporcionar su política.
+      }
+    }
+    if (renderVersion !== cartRenderVersion) return;
     body.replaceChildren();
 
     if (!totals.lines.length) {
@@ -171,6 +184,18 @@ export async function renderCart() {
     const subtotal = createElement('div', 'cart-summary__row');
     subtotal.append(createElement('span', '', 'Subtotal'), createElement('strong', '', formatMoney(totals.subtotalCents)));
     summary.append(subtotal);
+    if (policy) {
+      const destination = readShippingDestination();
+      const estimate = calculateEstimatedShipping(policy, destination, totals.subtotalCents);
+      let shippingCopy = `Envío gratis a Península desde ${formatMoney(policy.shipping.peninsula.freeFromCents)}.`;
+      if (estimate.zone === 'peninsula') {
+        const remainingCents = Math.max(0, policy.shipping.peninsula.freeFromCents - totals.subtotalCents);
+        shippingCopy = remainingCents > 0
+          ? `Te faltan ${formatMoney(remainingCents)} para conseguir envío gratis.`
+          : '¡Tienes envío gratis!';
+      }
+      if (estimate.zone !== 'europe' && !estimate.error) summary.append(createElement('p', 'notice', shippingCopy));
+    }
     if (!totals.pricesComplete) summary.append(createElement('p', 'notice notice--warning', 'Faltan precios confirmados. El checkout seguirá bloqueado hasta completar el catálogo.'));
     const checkout = createElement('a', `button button--primary${totals.pricesComplete ? '' : ' is-disabled'}`, 'IR AL CHECKOUT');
     checkout.href = totals.pricesComplete ? './checkout.html' : '#';
