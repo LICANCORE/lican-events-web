@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="/Headbang-Visualizer/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050706" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive" />
+    <meta http-equiv="X-Robots-Tag" content="noindex, nofollow, noarchive" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' blob: data:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; media-src 'self' blob: data:; connect-src 'self'; object-src 'none'; base-uri 'self'" />
+    <meta name="description" content="Creador de vídeos musicales reactivos para Headbang Dealers." />
+    <title>Headbang Visualizer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div><p class="eyebrow">HEADBANG DEALERS</p><h1>Visualizer</h1></div>
+      <div class="shortcut-strip" aria-label="Atajos de teclado">
+        <span><kbd>ESPACIO</kbd> bombo</span><span><kbd>P</kbd> partículas</span><span><kbd>O</kbd> ondas</span><span><kbd>F</kbd> forma</span>
+      </div>
+      <div class="format-pill"><span class="live-dot"></span> 1080 × 1920 · 60 FPS</div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel effects-panel" aria-labelledby="effects-title">
+        <div class="section-heading compact-heading">
+          <span class="step">FX</span>
+          <div><p class="eyebrow">BIBLIOTECA</p><h2 id="effects-title">Efectos</h2></div>
+        </div>
+        <p class="panel-intro">Capas vectoriales separadas por frecuencia. Pulsa para combinarlas.</p>
+        <div class="effect-library" role="group" aria-label="Biblioteca de efectos">
+          <button class="effect-tile is-active" data-effect="voiceBars" type="button"><i class="fx-icon voice"></i><span><b>Vocal Bars</b><small>160 Hz–4.5 kHz</small></span><em>ON</em></button>
+          <button class="effect-tile is-active" data-effect="bassDust" type="button"><i class="fx-icon dust"></i><span><b>Bass Dust</b><small>58–180 Hz</small></span><em>ON</em></button>
+          <button class="effect-tile is-active" data-effect="laserStreaks" type="button"><i class="fx-icon laser"></i><span><b>Laser Streaks</b><small>2.2–8.2 kHz</small></span><em>ON</em></button>
+          <button class="effect-tile is-active" data-effect="orbitDots" type="button"><i class="fx-icon orbit"></i><span><b>Orbit Dots</b><small>180–2.2 kHz</small></span><em>ON</em></button>
+          <button class="effect-tile is-active" data-effect="pulseTunnel" type="button"><i class="fx-icon tunnel"></i><span><b>Pulse Tunnel</b><small>24–58 Hz</small></span><em>ON</em></button>
+          <button class="effect-tile is-active" data-effect="chromaticArcs" type="button"><i class="fx-icon arcs"></i><span><b>Chromatic Arcs</b><small>520 Hz–8.2 kHz</small></span><em>ON</em></button>
+          <button class="effect-tile is-active" data-effect="scanlines" type="button"><i class="fx-icon scan"></i><span><b>Air Scan</b><small>8.2–16 kHz</small></span><em>ON</em></button>
+        </div>
+        <div class="logic-card">
+          <strong>MAPEO BASS MUSIC</strong>
+          <span><i class="logic-dot sub"></i>Sub · profundidad</span>
+          <span><i class="logic-dot mid"></i>Medios · geometría</span>
+          <span><i class="logic-dot high"></i>Agudos · detalle</span>
+        </div>
+      </section>
+
+      <section class="panel source-panel" aria-labelledby="track-title">
+        <div class="section-heading compact-heading">
+          <span class="step">01</span>
+          <div><p class="eyebrow">PISTA</p><h2 id="track-title">Carga la canción</h2></div>
+        </div>
+        <label class="drop-zone" id="dropZone" for="audioFile">
+          <input id="audioFile" type="file" accept="audio/*,video/mp4,video/webm,.wav,.mp3,.m4a,.aac,.ogg,.flac,.mp4" />
+          <span class="upload-glyph">＋</span>
+          <strong>Selecciona o arrastra</strong>
+          <small>WAV, MP3, M4A, AAC, OGG, FLAC o MP4</small>
+        </label>
+        <div class="track-card is-empty" id="trackCard" aria-live="polite">
+          <div class="track-icon">♪</div>
+          <div><strong id="trackName">Sin pista</strong><small id="trackMeta">Esperando audio</small></div>
+        </div>
+        <div class="transport">
+          <button class="round-button" id="playButton" type="button" aria-label="Reproducir" disabled>▶</button>
+          <div class="timeline-wrap">
+            <input id="seek" type="range" min="0" max="1000" value="0" disabled aria-label="Posición de reproducción" />
+            <div class="time-row"><span id="currentTime">00:00</span><span id="duration">00:00</span></div>
+          </div>
+        </div>
+        <div class="meter-block">
+          <div class="meter-label"><span>Subgrave + bajo</span><b id="bassValue">0</b></div><div class="meter"><i id="bassMeter"></i></div>
+          <div class="meter-label"><span>Medios</span><b id="midValue">0</b></div><div class="meter"><i id="midMeter"></i></div>
+          <div class="meter-label"><span>Agudos</span><b id="highValue">0</b></div><div class="meter"><i id="highMeter"></i></div>
+        </div>
+      </section>
+
+      <section class="stage" aria-label="Previsualización vertical">
+        <div class="stage-toolbar">
+          <div><p class="eyebrow">PREVIEW · 9:16</p><strong id="exportStatus">Carga una pista para grabar</strong></div>
+          <button id="recordButton" class="primary-button compact-record" type="button" disabled><i></i> GRABAR</button>
+        </div>
+        <div class="stage-frame"><canvas id="visualizer" width="1080" height="1920"></canvas></div>
+        <div class="stage-note"><span>Logo protegido · escala uniforme</span><span id="fpsLabel">60 FPS</span></div>
+      </section>
+
+      <section class="panel controls-panel" aria-labelledby="look-title">
+        <div class="section-heading compact-heading">
+          <span class="step">02</span>
+          <div><p class="eyebrow">LOOK</p><h2 id="look-title">Diseño reactivo</h2></div>
+        </div>
+        <div class="preset-grid" role="group" aria-label="Estilos visuales">
+          <button class="preset is-active" data-preset="ring" type="button"><span class="preset-orb ring"></span><b>Void Ring</b><small>Equilibrado</small></button>
+          <button class="preset" data-preset="shards" type="button"><span class="preset-orb shards"></span><b>Crystal Shatter</b><small>Vidrio reactivo</small></button>
+          <button class="preset" data-preset="grid" type="button"><span class="preset-orb grid"></span><b>Neon Grid</b><small>Preciso</small></button>
+          <button class="preset" data-preset="chrome" type="button"><span class="preset-orb chrome"></span><b>Radioactive Mercury</b><small>Metal líquido</small></button>
+          <button class="preset" data-preset="tunnel" type="button"><span class="preset-orb tunnel"></span><b>Pulse Tunnel</b><small>Subgrave</small></button>
+          <button class="preset" data-preset="minimal" type="button"><span class="preset-orb minimal"></span><b>Minimal</b><small>Limpio</small></button>
+        </div>
+        <div class="control-list">
+          <label><span><b>Intensidad</b><small>Respuesta general</small></span><output id="intensityOutput">82%</output><input id="intensity" type="range" min="20" max="140" value="82" /></label>
+          <label><span><b>Rebote del logo</b><small>Solo bombo manual</small></span><output id="bounceOutput">12%</output><input id="bounce" type="range" min="0" max="22" value="12" /></label>
+          <label><span><b>Corrección de latencia</b><small>Auto + ajuste fino si usas Bluetooth</small></span><output id="syncOffsetOutput">AUTO · 0 ms</output><input id="syncOffset" type="range" min="-250" max="500" step="5" value="0" /></label>
+          <div class="manual-kick-row"><span><b>Bombo manual</b><small>Clic o barra espaciadora</small></span><button id="manualKickButton" class="manual-kick-button" type="button"><i aria-hidden="true"></i>BOMBO</button></div>
+          <label class="switch-row"><span><b>Partículas <kbd>P</kbd></b><small>Agudos y transitorios</small></span><input id="particlesToggle" type="checkbox" checked /><i></i></label>
+          <label class="switch-row"><span><b>Ondas de impacto <kbd>O</kbd></b><small>Solo con bombo manual</small></span><input id="shockToggle" type="checkbox" checked /><i></i></label>
+          <label class="switch-row"><span><b>Forma de onda <kbd>F</kbd></b><small>Medios musicales</small></span><input id="waveToggle" type="checkbox" checked /><i></i></label>
+        </div>
+        <p class="codec-note" id="codecNote">Exportación optimizada para tres minutos por debajo de 150 MB.</p>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <audio id="audio" crossorigin="anonymous" preload="metadata"></audio>
+    <script src="vendor/mp4box.js"></script>
+    <script src="vendor/mp4-muxer.js"></script>
+    <script src="finalize-mp4.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
